@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+		<style>
+			body {
+				margin: 0;
+				padding: 0;
+				font-family: 'Inter', Arial, sans-serif;
+				background: #f8fafc;
+			}
+			.container {
+				max-width: 1200px;
+				margin: 0 auto;
+				padding: 0 4vw;
+			}
+			.vendas-hero {
+				background: linear-gradient(120deg, #1e293b 60%, #38bdf8 100%);
+				color: #fff;
+				padding: 64px 0 48px 0;
+				text-align: center;
+				border-radius: 0 0 32px 32px;
+				box-shadow: 0 8px 32px #0002;
+			}
+			.vendas-hero img {
+				max-width: 180px;
+				margin-bottom: 24px;
+				filter: drop-shadow(0 2px 12px #0005);
+			}
+			.vendas-hero h1 {
+				font-size: 2.6em;
+				font-weight: 800;
+				margin-bottom: 12px;
+				letter-spacing: -1px;
+			}
+			.vendas-hero p {
+				font-size: 1.25em;
+				max-width: 600px;
+				margin: 0 auto 28px auto;
+			}
+			.vendas-benefits {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 32px;
+				margin: 48px 0 32px 0;
+				justify-content: flex-start;
+				align-items: stretch;
+			}
+			.vendas-benefit {
+				background: #fff;
+				color: #222;
+				border-radius: 18px;
+				box-shadow: 0 4px 24px #0001;
+				padding: 36px 28px 32px 28px;
+				width: 100%;
+				max-width: 320px;
+				min-width: 260px;
+				flex: 0 1 23%;
+				text-align: left;
+				border-left: 6px solid #38bdf8;
+				transition: box-shadow 0.2s, transform 0.2s;
+				display: flex;
+				flex-direction: column;
+				justify-content: flex-start;
+			}
+			.vendas-benefit:hover {
+				box-shadow: 0 8px 32px #38bdf855;
+				transform: translateY(-4px) scale(1.03);
+			}
+			.vendas-benefit h3 {
+				margin-top: 0;
+				font-size: 1.2em;
+				color: #0ea5e9;
+			}
+			.vendas-cta {
+				margin: 48px 0 0 0;
+				text-align: center;
+			}
+			.vendas-cta .btn {
+				font-size: 1.35em;
+				padding: 22px 56px;
+				background: linear-gradient(90deg, #38bdf8 60%, #0ea5e9 100%);
+				color: #fff;
+				border-radius: 12px;
+				text-decoration: none;
+				font-weight: bold;
+				box-shadow: 0 4px 16px #38bdf855;
+				border: none;
+				transition: background 0.2s, transform 0.2s;
+				display: inline-block;
+				letter-spacing: 0.5px;
+			}
+			.vendas-cta .btn:hover {
+				background: linear-gradient(90deg, #0ea5e9 60%, #38bdf8 100%);
+				transform: scale(1.04);
+			}
+			.pagamento-seguro {
+				color: #222b3a;
+				font-size: 1em;
+			}
+			.vendas-garantia {
+				background: #f8fafc;
+				border-radius: 16px;
+				padding: 36px 24px 28px 24px;
+				margin: 48px auto 0 auto;
+				max-width: 700px;
+				text-align: center;
+				box-shadow: 0 2px 16px #0001;
+				position: relative;
+			}
+			.vendas-garantia:before {
+				content: '✔ Garantia 7 dias';
+				display: block;
+				position: absolute;
+				top: -22px;
+				left: 50%;
+				transform: translateX(-50%);
+				background: #0ea5e9;
+				color: #fff;
+				padding: 7px 26px;
+				border-radius: 18px;
+				font-weight: bold;
+				font-size: 1.08em;
+				box-shadow: 0 2px 8px #0ea5e955;
+				border: 2px solid #fff;
+			}
+			.vendas-garantia h2 {
+				color: #1e293b;
+				font-size: 2em;
+				font-weight: 800;
+				margin-bottom: 12px;
+			}
+			.vendas-garantia p {
+				color: #334155;
+				font-size: 1.13em;
+				margin: 0;
+			}
+			section h2 {
+				font-size: 2em;
+				font-weight: 800;
+				margin-bottom: 18px;
+				color: #0ea5e9;
+				text-align: center;
+				letter-spacing: -1px;
+			}
+			ul {
+				padding-left: 20px;
+			}
+			ul li {
+				margin-bottom: 10px;
+				font-size: 1.08em;
+			}
+			details {
+				background: #fff;
+				border-radius: 10px;
+				box-shadow: 0 2px 8px #0001;
+				margin-bottom: 12px;
+				padding: 16px 18px;
+				font-size: 1.08em;
+				color: #222b3a;
+			}
+			details summary {
+				font-weight: bold;
+				color: #0ea5e9;
+				cursor: pointer;
+			}
+			details p {
+				color: #222b3a;
+			}
+			@media (max-width: 900px) {
+				.vendas-benefits {
+					flex-direction: column;
+					align-items: center;
+				}
+				.container {
+					padding: 0 8px;
+				}
+				.vendas-hero {
+					border-radius: 0 0 18px 18px;
+					padding: 40px 0 28px 0;
+				}
+			}
+		</style>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>Curso completo de Informática</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="styles.css">
+	<link rel="stylesheet" href="parceiro.css">
+</head>
+<body>
+	<header class="site-header">
+		<div class="container header-inner">
+			<div class="brand">
+				<img src="img/LOGO MEDIA PNG BRANCA.png" alt="Logo Webtec" class="brand-logo">
+			</div>
+			<nav class="nav">
+				<a href="index.html">Início</a>
+				<a href="#conteudo">Conteúdo</a>
+				<a href="#duvidas">Dúvidas</a>
+				<a href="#comprar">Comprar</a>
+			</nav>
+		</div>
+	</header>
+	<main>
+		<section class="vendas-hero" style="background: linear-gradient(120deg, #1e293b 60%, #38bdf8 100%); color: #fff; padding: 60px 0 40px 0; text-align: center;">
+			<img src="img\logo curso png.png" alt="Logo do Curso" style="max-width:400px; margin-bottom: 50px;">
+			<h1>Curso Completo de Informática</h1>
+			<p style="font-size: 1.3em; max-width: 600px; margin: 0 auto 20px auto;">Aprenda informática do zero ao avançado com a Webtec Informática! Curso 100% online, com videoaulas práticas, certificado reconhecido e suporte direto dos instrutores.</p>
+			<div class="vendas-cta" style="margin: 40px 0 0 0; text-align: center;">
+				<a href="https://pay.kiwify.com.br/peyErFs" class="btn" id="comprar" style="font-size: 22px; padding: 20px 48px; background: #38bdf8; color: #fff; border-radius: 8px; text-decoration: none; font-weight: bold; transition: background 0.2s;">Quero me inscrever agora</a>
+			</div>
+		</section>
+		<section class="vendas-benefits container" style="display: flex; flex-wrap: wrap; gap: 30px; justify-content: center; margin: 40px 0;">
+			<div class="vendas-benefit" style="background: #fff; color: #222; border-radius: 12px; box-shadow: 0 2px 12px #0001; padding: 30px 24px; max-width: 320px; flex: 1 1 260px;">
+				<h3>✔️ Do básico ao avançado</h3>
+				<p>Aprenda desde o uso do computador, Windows, Word, Excel, PowerPoint, Internet, até noções de segurança digital e produtividade.</p>
+			</div>
+			<div class="vendas-benefit" style="background: #fff; color: #222; border-radius: 12px; box-shadow: 0 2px 12px #0001; padding: 30px 24px; max-width: 320px; flex: 1 1 260px;">
+				<h3>✔️ Acesso vitalício</h3>
+				<p>Estude no seu ritmo, quando e onde quiser. O acesso ao conteúdo é vitalício e você pode rever as aulas sempre que precisar.</p>
+			</div>
+			<div class="vendas-benefit" style="background: #fff; color: #222; border-radius: 12px; box-shadow: 0 2px 12px #0001; padding: 30px 24px; max-width: 320px; flex: 1 1 260px;">
+				<h3>✔️ Certificado reconhecido</h3>
+				<p>Ao concluir o curso, receba um certificado válido em todo o Brasil, ideal para currículo, concursos e oportunidades de emprego.</p>
+			</div>
+			<div class="vendas-benefit" style="background: #fff; color: #222; border-radius: 12px; box-shadow: 0 2px 12px #0001; padding: 30px 24px; max-width: 320px; flex: 1 1 260px;">
+				<h3>✔️ Suporte direto</h3>
+				<p>Tire dúvidas diretamente com os instrutores via WhatsApp e e-mail. A Webtec Informática preza pelo atendimento humanizado.</p>
+			</div>
+		</section>
+		<section class="container" id="conteudo">
+			<h2>O que você vai aprender?</h2>
+			<ul style="font-size: 1.1em; max-width: 700px; margin: 0 auto 30px auto; text-align: left;">
+				<li>Informática básica: hardware, software, periféricos</li>
+				<li>Windows: navegação, configurações, atalhos</li>
+				<li>Internet: navegação segura, e-mail, redes sociais</li>
+				<li>Pacote Office: Word, Excel, PowerPoint do zero ao avançado</li>
+				<li>Noções de segurança digital</li>
+				<li>Produtividade e dicas para o mercado de trabalho</li>
+			</ul>
+		</section>
+		<section class="vendas-garantia" style="background: #f1f5f9; border-radius: 10px; padding: 30px; margin: 40px auto; max-width: 700px; text-align: center;">
+			<h2>Garantia incondicional de 7 dias</h2>
+			<p>Se por qualquer motivo você não ficar satisfeito, devolvemos 100% do seu dinheiro. Sua compra é segura!</p>
+		</section>
+		<section class="container" id="duvidas">
+			<h2>Dúvidas frequentes</h2>
+			<details>
+				<summary>O curso é realmente online?</summary>
+				<p>Sim! Todo o conteúdo é 100% online, com acesso imediato após a inscrição.</p>
+			</details>
+			<details>
+				<summary>Como recebo o certificado?</summary>
+				<p>Após concluir todas as aulas, você poderá emitir seu certificado digital diretamente pela plataforma.</p>
+			</details>
+			<details>
+				<summary>Preciso ter conhecimento prévio?</summary>
+				<p>Não! O curso é para iniciantes e também para quem deseja se atualizar.</p>
+			</details>
+			<details>
+				<summary>Como funciona o suporte?</summary>
+				<p>Você pode tirar dúvidas diretamente com os instrutores via WhatsApp e e-mail.</p>
+			</details>
+		</section>
+		
+	</main>
+
+	<footer class="site-footer">
+		<div class="container footer-inner">
+			<div class="footer-grid">
+				<div class="footer-col">
+				
+						
+				
+		</div>
+	</footer>
+	<script src="script.js"></script>
+</body>
+</html>
