@@ -1,39 +1,39 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-		<style>
-			body {
-			.curso-logo-img-wrapper {
-				width: 100%;
-				display: flex;
-				justify-content: center;
-				align-items: center;
-				margin-bottom: 32px;
-			}
-			.curso-logo-img-wrapper img {
-				max-width: 400px;
-				width: 100%;
-				height: auto;
-				display: block;
-				margin: 0;
-				filter: drop-shadow(0 2px 12px #0005);
-			}
-			@media (max-width: 900px) {
-				.curso-logo-img-wrapper img {
-					max-width: 90vw;
-					min-width: 100px;
-				}
-			}
-			@media (max-width: 600px) {
-				.curso-logo-img-wrapper img {
-					max-width: 98vw;
-				}
-			}
-				margin: 0;
-				padding: 0;
-				font-family: 'Inter', Arial, sans-serif;
-				background: #f8fafc;
-			}
+		   <style>
+			   body {
+				   margin: 0;
+				   padding: 0;
+				   font-family: 'Inter', Arial, sans-serif;
+				   background: #f8fafc;
+			   }
+			   .curso-logo-img-wrapper {
+				   width: 100%;
+				   display: flex;
+				   justify-content: center;
+				   align-items: center;
+				   margin-bottom: 32px;
+			   }
+			   .curso-logo-img-wrapper img {
+				   max-width: 400px;
+				   width: 100%;
+				   height: auto;
+				   display: block;
+				   margin: 0;
+				   filter: drop-shadow(0 2px 12px #0005);
+			   }
+			   @media (max-width: 900px) {
+				   .curso-logo-img-wrapper img {
+					   max-width: 90vw;
+					   min-width: 100px;
+				   }
+			   }
+			   @media (max-width: 600px) {
+				   .curso-logo-img-wrapper img {
+					   max-width: 98vw;
+				   }
+			   }
 			.container {
 				max-width: 1200px;
 				margin-left: auto;
@@ -265,7 +265,9 @@
 	</header>
 	<main>
 		<section class="vendas-hero" style="background: linear-gradient(120deg, #1e293b 60%, #38bdf8 100%); color: #fff; padding: 60px 0 40px 0; text-align: center;">
-			<img src="img\logo curso png.png" alt="Logo do Curso" style="max-width:400px; margin-bottom: 50px;">
+			   <div class="curso-logo-img-wrapper">
+				   <img src="img/logo curso png.png" alt="Logo do Curso">
+			   </div>
 			<h1>Curso Completo de Informática</h1>
 			<p style="font-size: 1.3em; max-width: 600px; margin: 0 auto 20px auto;">Aprenda informática do zero ao avançado com a Webtec Informática! Curso 100% online, com videoaulas práticas, certificado reconhecido e suporte direto dos instrutores.</p>
 			<div class="vendas-cta" style="margin: 40px 0 0 0; text-align: center;">
