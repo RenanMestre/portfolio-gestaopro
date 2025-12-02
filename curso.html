@@ -3,6 +3,32 @@
 <head>
 		<style>
 			body {
+			.curso-logo-img-wrapper {
+				width: 100%;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				margin-bottom: 32px;
+			}
+			.curso-logo-img-wrapper img {
+				max-width: 400px;
+				width: 100%;
+				height: auto;
+				display: block;
+				margin: 0;
+				filter: drop-shadow(0 2px 12px #0005);
+			}
+			@media (max-width: 900px) {
+				.curso-logo-img-wrapper img {
+					max-width: 90vw;
+					min-width: 100px;
+				}
+			}
+			@media (max-width: 600px) {
+				.curso-logo-img-wrapper img {
+					max-width: 98vw;
+				}
+			}
 				margin: 0;
 				padding: 0;
 				font-family: 'Inter', Arial, sans-serif;
@@ -29,7 +55,9 @@
 				margin-bottom: 24px;
 				filter: drop-shadow(0 2px 12px #0005);
 				display: block;
-				margin-left: auto;
+			<div class="curso-logo-img-wrapper">
+				<img src="img/logo curso png.png" alt="Logo do Curso">
+			</div>
 				margin-right: auto;
 			}
 			.vendas-hero h1 {
