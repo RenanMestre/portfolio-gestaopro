@@ -10,8 +10,11 @@
 			}
 			.container {
 				max-width: 1200px;
-				margin: 0 auto;
-				padding: 0 4vw;
+				margin-left: auto;
+				margin-right: auto;
+				padding-left: 4vw;
+				padding-right: 4vw;
+				box-sizing: border-box;
 			}
 			.vendas-hero {
 				background: linear-gradient(120deg, #1e293b 60%, #38bdf8 100%);
@@ -175,17 +178,39 @@
 					align-items: center;
 				}
 				.container {
-					padding: 0 8px;
+					padding-left: 2vw;
+					padding-right: 2vw;
 				}
 				.vendas-hero {
 					border-radius: 0 0 18px 18px;
-					padding: 40px 0 28px 0;
+					padding: 32px 0 20px 0;
 				}
 				.vendas-hero img {
-					max-width: 80vw;
-					min-width: 120px;
+					max-width: 90vw;
+					min-width: 100px;
+				}
+				.vendas-benefit {
+					max-width: 100%;
+					min-width: 0;
+					width: 100%;
 				}
 			}
+				@media (max-width: 600px) {
+					.container {
+						padding-left: 1vw;
+						padding-right: 1vw;
+					}
+					.vendas-hero h1 {
+						font-size: 1.5em;
+					}
+					section h2 {
+						font-size: 1.2em;
+					}
+					.vendas-cta .btn {
+						font-size: 1em;
+						padding: 14px 18px;
+					}
+				}
 		</style>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width,initial-scale=1">
