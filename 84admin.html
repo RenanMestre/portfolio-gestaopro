@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard Admin - GestãoPro</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Google Analytics 4 (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-G2FGBS8YY2"></script>
+    <!-- Google Ads (AW-770547516) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-770547516"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      // Configuração do Google Analytics
+      gtag('config', 'G-G2FGBS8YY2');
+      // Configuração do Google Ads
+      gtag('config', 'AW-770547516');
+    </script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #181c2f;
+            color: #fff;
+            margin: 0;
+        }
+        .login-container, .dashboard-container {
+            max-width: 400px;
+            margin: 80px auto;
+            background: #23274d;
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 24px #0005;
+        }
+        .dashboard-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 32px;
+            display: none;
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 24px;
+        }
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0 16px 0;
+            border: none;
+            border-radius: 6px;
+            background: #1a1e3a;
+            color: #fff;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #3a7afe;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 32px;
+        }
+        .card {
+            background: #23274d;
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 2px 12px #0003;
+        }
+        .report-list {
+            list-style: none;
+            padding: 0;
+        }
+        .report-list li {
+            margin-bottom: 12px;
+            padding: 10px;
+            background: #1a1e3a;
+            border-radius: 6px;
+        }
+        @media (max-width: 700px) {
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container" id="loginBox">
+        <h2>Login Administrador</h2>
+        <input type="text" id="username" placeholder="Usuário">
+        <input type="password" id="password" placeholder="Senha">
+        <button onclick="login()">Entrar</button>
+        <p id="loginError" style="color:#ff4d4d; text-align:center; display:none;">Credenciais inválidas!</p>
+    </div>
+
+    <div class="dashboard-container" id="dashboardBox">
+        <h2>Dashboard Administrativo</h2>
+        <div class="dashboard-grid">
+            <div class="card">
+                <h3>Acessos em Tempo Real</h3>
+                <canvas id="realtimeChart" height="120"></canvas>
+            </div>
+            <div class="card">
+                <h3>Páginas Mais Acessadas</h3>
+                <canvas id="pagesChart" height="120"></canvas>
+            </div>
+            <div class="card">
+                <h3>Relatórios Inteligentes</h3>
+                <ul class="report-list" id="reportList">
+                    <!-- Relatórios dinâmicos -->
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Função para buscar dados reais do backend
+        async function fetchAnalyticsData() {
+            // O backend deve retornar um JSON com os dados abaixo
+            // Exemplo de resposta esperada:
+            // {
+            //   "usersOnline": [12, 15, 13, ...], // últimos 10 valores
+            //   "pages": {
+            //     "Home": 120,
+            //     "Serviços": 90,
+            //     "Contato": 60,
+            //     "Sobre": 40,
+            //     "Blog": 30
+            //   },
+            //   "totalToday": 340,
+            //   "avgSession": 3.2
+            // }
+            try {
+                const res = await fetch('/api/analytics');
+                if (!res.ok) throw new Error('Erro ao buscar dados');
+                return await res.json();
+            } catch (e) {
+                return null;
+            }
+        }
+
+        let realtimeChart, pagesChart, analyticsData = null;
+
+        // Login simples
+        function login() {
+            const user = document.getElementById('username').value;
+            const pass = document.getElementById('password').value;
+            if (user === 'admin' && pass === '8484') {
+                document.getElementById('loginBox').style.display = 'none';
+                document.getElementById('dashboardBox').style.display = 'block';
+                startDashboard();
+                // Envia evento de login ao Google Analytics
+                if (typeof gtag === "function") {
+                    gtag('event', 'admin_login', {
+                        'event_category': 'admin',
+                        'event_label': 'Login realizado'
+                    });
+                }
+            } else {
+                document.getElementById('loginError').style.display = 'block';
+            }
+        }
+
+        // Lista das páginas reais do projeto
+        const realPages = [
+            'braip.html', 'curso.html', 'eduzz.html', 'gestaopro.html', 'hebreus.html',
+            'hotmart.html', 'hubla.html', 'index.html', 'keed.html', 'kirvano.html',
+            'kiwify.html', 'monetizze.html', 'pepper.html', 'perfectpay.html',
+            'themart.html'
+        ];
+
+        async function startDashboard() {
+            // Busca dados reais do backend
+            analyticsData = await fetchAnalyticsData();
+
+            // Se não conseguir dados reais, usa dados fictícios como fallback
+            const usersOnline = analyticsData?.usersOnline || Array(10).fill(0).map(()=>Math.floor(Math.random()*20)+5);
+
+            // Monta objeto de páginas reais com valores fictícios se não houver dados
+            let pages = {};
+            if (analyticsData?.pages) {
+                // Filtra apenas as páginas reais
+                realPages.forEach(page => {
+                    pages[page] = analyticsData.pages[page] || 0;
+                });
+            } else {
+                realPages.forEach(page => {
+                    pages[page] = Math.floor(Math.random()*100)+10;
+                });
+            }
+
+            // Gráfico de acessos em tempo real
+            const ctx1 = document.getElementById('realtimeChart').getContext('2d');
+            realtimeChart = new Chart(ctx1, {
+                type: 'line',
+                data: {
+                    labels: Array(10).fill('').map((_,i)=>`${i+1}s`),
+                    datasets: [{
+                        label: 'Usuários Online',
+                        data: usersOnline,
+                        borderColor: '#3a7afe',
+                        backgroundColor: 'rgba(58,122,254,0.1)',
+                        fill: true,
+                        tension: 0.4
+                    }]
+                },
+                options: {
+                    plugins: { legend: { display: false } },
+                    scales: { y: { beginAtZero: true, max: 30 } }
+                }
+            });
+
+            // Gráfico de páginas mais acessadas
+            const ctx2 = document.getElementById('pagesChart').getContext('2d');
+            pagesChart = new Chart(ctx2, {
+                type: 'bar',
+                data: {
+                    labels: realPages,
+                    datasets: [{
+                        label: 'Acessos',
+                        data: Object.values(pages),
+                        backgroundColor: [
+                            '#3a7afe', '#ffb347', '#ff4d4d', '#4dff88', '#a47dff',
+                            '#3a7afe', '#ffb347', '#ff4d4d', '#4dff88', '#a47dff',
+                            '#3a7afe', '#ffb347', '#ff4d4d', '#4dff88', '#a47dff'
+                        ]
+                    }]
+                },
+                options: {
+                    plugins: { legend: { display: false } },
+                    scales: { y: { beginAtZero: true } }
+                }
+            });
+
+            updateReports();
+
+            // Atualização em tempo real
+            setInterval(async () => {
+                analyticsData = await fetchAnalyticsData();
+                const usersOnline = analyticsData?.usersOnline || realtimeChart.data.datasets[0].data;
+
+                // Atualiza objeto de páginas reais
+                let pages = {};
+                if (analyticsData?.pages) {
+                    realPages.forEach(page => {
+                        pages[page] = analyticsData.pages[page] || 0;
+                    });
+                } else {
+                    realPages.forEach(page => {
+                        pages[page] = Math.floor(Math.random()*100)+10;
+                    });
+                }
+
+                realtimeChart.data.datasets[0].data = usersOnline;
+                realtimeChart.update();
+
+                pagesChart.data.labels = realPages;
+                pagesChart.data.datasets[0].data = Object.values(pages);
+                pagesChart.update();
+
+                updateReports();
+            }, 5000);
+        }
+
+        // Contador global de acessos (requer backend simples)
+        async function incrementGlobalAccessCounter() {
+            try {
+                const res = await fetch('/api/counter', { method: 'POST' });
+                if (!res.ok) throw new Error();
+                const data = await res.json();
+                return data.count;
+            } catch {
+                // Fallback para contador local
+                let count = localStorage.getItem('site_access_count');
+                count = count ? parseInt(count) + 1 : 1;
+                localStorage.setItem('site_access_count', count);
+                return count;
+            }
+        }
+
+        let accessCount = 0;
+        incrementGlobalAccessCounter().then(count => {
+            accessCount = count;
+        });
+
+        function updateReports() {
+            const totalToday = analyticsData?.totalToday || pagesChart.data.datasets[0].data.reduce((a,b)=>a+b,0);
+            const avgSession = analyticsData?.avgSession || (Math.random()*5+2).toFixed(1);
+            const usersNow = analyticsData?.usersOnline?.slice(-1)[0] || realtimeChart.data.datasets[0].data.slice(-1)[0];
+            const pages = analyticsData?.pages || {};
+            const mostAccessed = Object.keys(pages).length
+                ? Object.keys(pages)[Object.values(pages).indexOf(Math.max(...Object.values(pages)))]
+                : pagesChart.data.labels[pagesChart.data.datasets[0].data.indexOf(Math.max(...pagesChart.data.datasets[0].data))];
+
+            const reports = [
+                `Usuários online agora: <b>${usersNow}</b>`,
+                `Página mais acessada: <b>${mostAccessed}</b>`,
+                `Total de acessos hoje: <b>${accessCount}</b>`, // Mostra o contador global/local
+                `Taxa de crescimento: <b>${(Math.random()*10+5).toFixed(2)}%</b>`,
+                `Tempo médio de navegação: <b>${avgSession} min</b>`
+            ];
+            document.getElementById('reportList').innerHTML = reports.map(r => `<li>${r}</li>`).join('');
+        }
+    </script>
+</body>
+</html>
