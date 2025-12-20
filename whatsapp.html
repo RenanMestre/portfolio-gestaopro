@@ -1,0 +1,485 @@
+﻿<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Planos WhatsApp | GestãoPro</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --brand: #7c3aed;
+            --brand-light: #a78bfa;
+            --success: #22c55e;
+            --success-light: #a7f3d0;
+            --bg: #f4f6fb;
+            --card-bg: #fff;
+            --shadow: 0 4px 24px 0 rgba(124, 58, 237, 0.10), 0 1.5px 6px 0 rgba(0,0,0,0.04);
+        }
+        body {
+            font-family: 'Inter', Arial, sans-serif;
+            background: var(--bg);
+            margin: 0;
+            color: #222;
+        }
+        header {
+            background: #fff;
+            color: #222;
+            padding: 36px 0 20px 0;
+            text-align: center;
+            box-shadow: 0 2px 8px #0001;
+            border-bottom: 1.5px solid #ececec;
+        }
+        header h1 {
+            font-size: 2.1rem;
+            font-weight: 900;
+            margin: 0 0 10px 0;
+            letter-spacing: -1px;
+            color: #222;
+        }
+        header p {
+            font-size: 1.08rem;
+            font-weight: 500;
+            margin: 0;
+            opacity: 0.93;
+            color: #444;
+        }
+        .container {
+            max-width: 1100px;
+            margin: 40px auto 0 auto;
+            padding: 0 12px 32px 12px;
+        }
+        .row-label {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            font-size: 15px;
+            color: #888;
+            font-weight: 700;
+        }
+        .row-label .section-title {
+            margin: 0;
+            color: var(--brand);
+            font-weight: 800;
+            letter-spacing: 2px;
+            font-size: 15px;
+        }
+        .row-label .section-title.annual {
+            color: var(--success);
+        }
+        .planos-grid {
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 36px;
+        }
+        .plano-card {
+            background: var(--card-bg);
+            border-radius: 18px;
+            box-shadow: var(--shadow);
+            padding: 32px 24px 28px 24px;
+            min-width: 220px;
+            max-width: 270px;
+            flex: 1 1 220px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            transition: transform 0.18s, box-shadow 0.18s;
+            border: none;
+        }
+        .plano-card:hover {
+            transform: translateY(-8px) scale(1.03);
+            box-shadow: 0 8px 32px 0 rgba(124, 58, 237, 0.16), 0 2px 8px 0 rgba(0,0,0,0.06);
+            z-index: 2;
+        }
+        .plano-card .badge {
+            position: absolute;
+            top: -18px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(90deg, var(--brand-light) 60%, var(--brand) 100%);
+            color: #fff;
+            font-size: 13px;
+            font-weight: 800;
+            border-radius: 10px;
+            padding: 5px 18px;
+            box-shadow: 0 2px 8px #a78bfa33;
+            letter-spacing: 1px;
+        }
+        .plano-card .economize {
+            color: var(--success);
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+        .plano-card .whats {
+            color: var(--brand);
+            font-weight: 800;
+            font-size: 15px;
+            margin-bottom: 12px;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 7px;
+        }
+        .plano-card .whats svg {
+            font-size: 22px;
+            color: var(--brand-light);
+        }
+        .plano-card h3 {
+            font-size: 2.3rem;
+            margin: 0 0 10px 0;
+            font-weight: 900;
+            color: #222;
+            display: flex;
+            align-items: flex-end;
+            gap: 6px;
+        }
+        .plano-card h3 span {
+            font-size: 1.1rem;
+            font-weight: 400;
+            color: #666;
+        }
+        .plano-card .desc {
+            color: #666;
+            font-size: 15px;
+            margin-bottom: 8px;
+        }
+        .plano-card .valor-whats {
+            color: var(--brand-light);
+            font-size: 14px;
+            margin-bottom: 18px;
+        }
+        .plano-card .btn {
+            background: linear-gradient(90deg, var(--brand-light) 60%, var(--brand) 100%);
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            padding: 14px 0;
+            width: 100%;
+            font-size: 18px;
+            font-weight: 800;
+            cursor: pointer;
+            transition: background 0.2s, box-shadow 0.2s;
+            margin-top: auto;
+            box-shadow: 0 2px 8px #a78bfa22;
+            text-decoration: none;
+            text-align: center;
+            letter-spacing: 1px;
+        }
+        .plano-card .btn:hover {
+            background: linear-gradient(90deg, var(--brand) 60%, var(--brand-light) 100%);
+            box-shadow: 0 4px 16px #a78bfa55;
+            color: #fff;
+        }
+        .plano-card.mais-vendido {
+            border: 2.5px solid var(--brand);
+            box-shadow: 0 0 0 4px #a78bfa33;
+        }
+        .plano-card.mais-vendido .btn {
+            background: linear-gradient(90deg, var(--brand) 60%, var(--brand-light) 100%);
+            box-shadow: 0 4px 16px #a78bfa55;
+        }
+        .plano-card.anual {
+            border: 2px solid var(--success);
+        }
+        .plano-card.anual .btn {
+            background: linear-gradient(90deg, var(--success) 60%, var(--success-light) 100%);
+            color: #222;
+        }
+        @media (max-width: 900px) {
+            .planos-grid {
+                flex-direction: column;
+                align-items: center;
+            }
+            .plano-card {
+                max-width: 400px;
+                width: 100%;
+            }
+        }
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 1.5rem;
+            }
+            .container {
+                padding: 0 2vw 24px 2vw;
+            }
+            .plano-card {
+                padding: 24px 10px 20px 10px;
+            }
+            .plano-card h3 {
+                font-size: 1.5rem;
+            }
+            .plano-card .btn {
+                font-size: 16px;
+                padding: 12px 0;
+            }
+        }
+        footer {
+            background: #fff;
+            color: #888;
+            text-align: center;
+            padding: 24px 0 12px 0;
+            font-size: 15px;
+            border-top: 1px solid #eee;
+            margin-top: 32px;
+        }
+        footer strong {
+            color: var(--brand);
+        }
+    </style>
+</head>
+<body>
+    <!-- Conteúdo novo no topo -->
+    <div style="background: #fffbe7; border-bottom: 1.5px solid #ffe066; padding: 18px 0; text-align: center;">
+        <span style="color: #b08900; font-weight: 700; font-size: 1.08rem;">
+            🚀 Promoção especial: Ganhe 2 meses grátis no plano anual! Aproveite agora.
+        </span>
+    </div>
+
+
+
+    <!-- Conteúdo novo adicionado aqui -->
+    <div style="background: linear-gradient(90deg, #a78bfa 0%, #7c3aed 100%); padding: 32px 0 32px 0; margin-bottom: 32px;">
+        <div style="max-width: 1100px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 32px; padding: 0 12px;">
+            <div style="flex: 1 1 340px; min-width: 280px;">
+                <span style="color: #fff; font-size: 13px; font-weight: 700; letter-spacing: 2px;">WHATSAPP + IA</span>
+                <h2 style="color: #fff; font-size: 2.5rem; font-weight: 900; margin: 10px 0 18px 0; line-height: 1.1;">
+                    Atenda,<br>responda e venda<br>no WhatsApp<br>automaticamente
+                </h2>
+                <p style="color: #fff; font-size: 1.15rem; font-weight: 400; margin-bottom: 18px;">
+                    Assistente de IA pronto para sua empresa, funcionando 24 horas por dia sem você precisar ficar no celular.<br><br>
+                    Ideal para empresas que atendem clientes pelo WhatsApp.<br>
+                </p>
+                <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+                    <a href="#planos" style="background: #fff; color: #7c3aed; font-weight: 800; border-radius: 8px; padding: 12px 22px; text-decoration: none; font-size: 1.08rem; box-shadow: 0 2px 8px #a78bfa33;">Configurar meu WhatsApp</a>
+                    <a href="#faq" style="background: transparent; border: 2px solid #fff; color: #fff; font-weight: 800; border-radius: 8px; padding: 12px 22px; text-decoration: none; font-size: 1.08rem;">🠔 Ajuda do suporte</a>
+                </div>
+            </div>
+            <div style="flex: 1 1 340px; min-width: 280px; display: flex; justify-content: center;">
+                <div style="border-radius: 18px; overflow: hidden; box-shadow: 0 4px 24px 0 rgba(124, 58, 237, 0.10), 0 1.5px 6px 0 rgba(0,0,0,0.04); max-width: 420px; width: 100%;">
+                    <iframe width="100%" height="240" src="https://www.youtube.com/embed/TQpRLSZS7fM?si=yfxnCsQ-TEstUTdP" title" title" title="O Novo Funcionário da Sua Empresa" frameborder="0" allowfullscreen style="display:block;"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+    <header>
+        <h1>Planos WhatsApp GestãoPro</h1>
+        <p>Todos os planos incluem todas as ferramentas.<br>O que muda é apenas a quantidade de conexões de WhatsApp.</p>
+    </header>
+    <div class="container">
+        <div class="row-label">
+            <span class="section-title">PLANOS MENSAIS</span>
+            <span style="color:var(--brand);font-weight:800;">Pagamento seguro</span>
+        </div>
+        <div class="planos-grid">
+            <div class="plano-card">
+                <div class="whats">
+                    <svg width="20" height="20" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2C6.48 2 2 6.26 2 11.5c0 2.19.93 4.18 2.47 5.7L2 22l5.04-2.13C8.67 20.28 10.29 20.5 12 20.5c5.52 0 10-4.26 10-9.5S17.52 2 12 2Zm-1.13 14.13c-2.13-.13-3.75-1.7-4.13-2.13-.38-.43-.88-1.13-.88-2.13s.5-1.7.69-1.94c.19-.24.41-.31.56-.31.15 0 .28.01.4.02.13.01.3.01.47.36.17.35.57 1.21.62 1.3.05.09.08.2.02.32-.06.12-.09.19-.18.3-.09.11-.19.24-.27.32-.08.08-.16.17-.07.33.09.16.41.67.89 1.09.61.54 1.13.71 1.29.79.16.08.25.07.34-.04.09-.11.39-.45.5-.6.11-.15.21-.13.36-.08.15.05.95.45 1.12.53.17.08.28.12.32.19.04.07.04.41-.1.8-.14.39-.56.7-.8.77-.24.07-.48.1-.73.09Z"/></svg>
+                    1 WHATSAPP ATIVO
+                </div>
+                <h3>R247<span>/mês</span></h3>
+                <div class="desc">Com 1 atendente de IA</div>
+                <div class="valor-whats">Valor por WhatsApp: R247,00</div>
+                <a class="btn" href="#">Assinar agora</a>
+            </div>
+            <div class="plano-card mais-vendido">
+                <div class="badge">MAIS VENDIDO</div>
+                <div class="whats">
+                    <svg width="20" height="20" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2C6.48 2 2 6.26 2 11.5c0 2.19.93 4.18 2.47 5.7L2 22l5.04-2.13C8.67 20.28 10.29 20.5 12 20.5c5.52 0 10-4.26 10-9.5S17.52 2 12 2Zm-1.13 14.13c-2.13-.13-3.75-1.7-4.13-2.13-.38-.43-.88-1.13-.88-2.13s.5-1.7.69-1.94c.19-.24.41-.31.56-.31.15 0 .28.01.4.02.13.01.3.01.47.36.17.35.57 1.21.62 1.3.05.09.08.2.02.32-.06.12-.09.19-.18.3-.09.11-.19.24-.27.32-.08.08-.16.17-.07.33.09.16.41.67.89 1.09.61.54 1.13.71 1.29.79.16.08.25.07.34-.04.09-.11.39-.45.5-.6.11-.15.21-.13.36-.08.15.05.95.45 1.12.53.17.08.28.12.32.19.04.07.04.41-.1.8-.14.39-.56.7-.8.77-.24.07-.48.1-.73.09Z"/></svg>
+                    3 WHATSAPPS ATIVOS
+                </div>
+                <h3>R347<span>/mês</span></h3>
+                <div class="desc">Com 3 atendentes de IA</div>
+                <div class="valor-whats">Valor por WhatsApp: R115,67</div>
+                <a class="btn" href="#">Assinar agora</a>
+            </div>
+            <div class="plano-card">
+                <div class="whats">
+                    <svg width="20" height="20" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2C6.48 2 2 6.26 2 11.5c0 2.19.93 4.18 2.47 5.7L2 22l5.04-2.13C8.67 20.28 10.29 20.5 12 20.5c5.52 0 10-4.26 10-9.5S17.52 2 12 2Zm-1.13 14.13c-2.13-.13-3.75-1.7-4.13-2.13-.38-.43-.88-1.13-.88-2.13s.5-1.7.69-1.94c.19-.24.41-.31.56-.31.15 0 .28.01.4.02.13.01.3.01.47.36.17.35.57 1.21.62 1.3.05.09.08.2.02.32-.06.12-.09.19-.18.3-.09.11-.19.24-.27.32-.08.08-.16.17-.07.33.09.16.41.67.89 1.09.61.54 1.13.71 1.29.79.16.08.25.07.34-.04.09-.11.39-.45.5-.6.11-.15.21-.13.36-.08.15.05.95.45 1.12.53.17.08.28.12.32.19.04.07.04.41-.1.8-.14.39-.56.7-.8.77-.24.07-.48.1-.73.09Z"/></svg>
+                    5 WHATSAPPS ATIVOS
+                </div>
+                <h3>R447<span>/mês</span></h3>
+                <div class="desc">Com 5 atendentes de IA</div>
+                <div class="valor-whats">Valor por WhatsApp: R89,40</div>
+                <a class="btn" href="#">Assinar agora</a>
+            </div>
+            <div class="plano-card">
+                <div class="whats">
+                    <svg width="20" height="20" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2C6.48 2 2 6.26 2 11.5c0 2.19.93 4.18 2.47 5.7L2 22l5.04-2.13C8.67 20.28 10.29 20.5 12 20.5c5.52 0 10-4.26 10-9.5S17.52 2 12 2Zm-1.13 14.13c-2.13-.13-3.75-1.7-4.13-2.13-.38-.43-.88-1.13-.88-2.13s.5-1.7.69-1.94c.19-.24.41-.31.56-.31.15 0 .28.01.4.02.13.01.3.01.47.36.17.35.57 1.21.62 1.3.05.09.08.2.02.32-.06.12-.09.19-.18.3-.09.11-.19.24-.27.32-.08.08-.16.17-.07.33.09.16.41.67.89 1.09.61.54 1.13.71 1.29.79.16.08.25.07.34-.04.09-.11.39-.45.5-.6.11-.15.21-.13.36-.08.15.05.95.45 1.12.53.17.08.28.12.32.19.04.07.04.41-.1.8-.14.39-.56.7-.8.77-.24.07-.48.1-.73.09Z"/></svg>
+                    10 WHATSAPPS ATIVOS
+                </div>
+                <h3>R547<span>/mês</span></h3>
+                <div class="desc">Com 10 atendentes de IA</div>
+                <div class="valor-whats">Valor por WhatsApp: R54,70</div>
+                <a class="btn" href="#">Assinar agora</a>
+            </div>
+        </div>
+
+        <div class="row-label">
+            <span class="section-title annual">PLANOS ANUAIS</span>
+            <span style="color:var(--success);font-weight:800;">Economize 2 meses</span>
+        </div>
+        <div class="planos-grid">
+            <div class="plano-card anual">
+                <div class="whats">
+                    <svg width="20" height="20" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2C6.48 2 2 6.26 2 11.5c0 2.19.93 4.18 2.47 5.7L2 22l5.04-2.13C8.67 20.28 10.29 20.5 12 20.5c5.52 0 10-4.26 10-9.5S17.52 2 12 2Zm-1.13 14.13c-2.13-.13-3.75-1.7-4.13-2.13-.38-.43-.88-1.13-.88-2.13s.5-1.7.69-1.94c.19-.24.41-.31.56-.31.15 0 .28.01.4.02.13.01.3.01.47.36.17.35.57 1.21.62 1.3.05.09.08.2.02.32-.06.12-.09.19-.18.3-.09.11-.19.24-.27.32-.08.08-.16.17-.07.33.09.16.41.67.89 1.09.61.54 1.13.71 1.29.79.16.08.25.07.34-.04.09-.11.39-.45.5-.6.11-.15.21-.13.36-.08.15.05.95.45 1.12.53.17.08.28.12.32.19.04.07.04.41-.1.8-.14.39-.56.7-.8.77-.24.07-.48.1-.73.09Z"/></svg>
+                    1 WHATSAPP ATIVO
+                </div>
+                <h3>R197<span>/mês</span></h3>
+                <div class="desc">Com 1 atendente de IA</div>
+                <div class="valor-whats">Valor por WhatsApp: R197,00</div>
+                <div class="economize">Economize R600</div>
+                <a class="btn" href="#">Assinar anual</a>
+            </div>
+            <div class="plano-card anual">
+                <div class="whats">
+                    <svg width="20" height="20" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2C6.48 2 2 6.26 2 11.5c0 2.19.93 4.18 2.47 5.7L2 22l5.04-2.13C8.67 20.28 10.29 20.5 12 20.5c5.52 0 10-4.26 10-9.5S17.52 2 12 2Zm-1.13 14.13c-2.13-.13-3.75-1.7-4.13-2.13-.38-.43-.88-1.13-.88-2.13s.5-1.7.69-1.94c.19-.24.41-.31.56-.31.15 0 .28.01.4.02.13.01.3.01.47.36.17.35.57 1.21.62 1.3.05.09.08.2.02.32-.06.12-.09.19-.18.3-.09.11-.19.24-.27.32-.08.08-.16.17-.07.33.09.16.41.67.89 1.09.61.54 1.13.71 1.29.79.16.08.25.07.34-.04.09-.11.39-.45.5-.6.11-.15.21-.13.36-.08.15.05.95.45 1.12.53.17.08.28.12.32.19.04.07.04.41-.1.8-.14.39-.56.7-.8.77-.24.07-.48.1-.73.09Z"/></svg>
+                    3 WHATSAPPS ATIVOS
+                </div>
+                <h3>R297<span>/mês</span></h3>
+                <div class="desc">Com 3 atendentes de IA</div>
+                <div class="valor-whats">Valor por WhatsApp: R99,00</div>
+                <div class="economize">Economize R600</div>
+                <a class="btn" href="#">Assinar anual</a>
+            </div>
+            <div class="plano-card anual">
+                <div class="whats">
+                    <svg width="20" height="20" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2C6.48 2 2 6.26 2 11.5c0 2.19.93 4.18 2.47 5.7L2 22l5.04-2.13C8.67 20.28 10.29 20.5 12 20.5c5.52 0 10-4.26 10-9.5S17.52 2 12 2Zm-1.13 14.13c-2.13-.13-3.75-1.7-4.13-2.13-.38-.43-.88-1.13-.88-2.13s.5-1.7.69-1.94c.19-.24.41-.31.56-.31.15 0 .28.01.4.02.13.01.3.01.47.36.17.35.57 1.21.62 1.3.05.09.08.2.02.32-.06.12-.09.19-.18.3-.09.11-.19.24-.27.32-.08.08-.16.17-.07.33.09.16.41.67.89 1.09.61.54 1.13.71 1.29.79.16.08.25.07.34-.04.09-.11.39-.45.5-.6.11-.15.21-.13.36-.08.15.05.95.45 1.12.53.17.08.28.12.32.19.04.07.04.41-.1.8-.14.39-.56.7-.8.77-.24.07-.48.1-.73.09Z"/></svg>
+                    5 WHATSAPPS ATIVOS
+                </div>
+                <h3>R397<span>/mês</span></h3>
+                <div class="desc">Com 5 atendentes de IA</div>
+                <div class="valor-whats">Valor por WhatsApp: R79,40</div>
+                <div class="economize">Economize R600</div>
+                <a class="btn" href="#">Assinar anual</a>
+            </div>
+            <div class="plano-card anual">
+                <div class="whats">
+                    <svg width="20" height="20" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2C6.48 2 2 6.26 2 11.5c0 2.19.93 4.18 2.47 5.7L2 22l5.04-2.13C8.67 20.28 10.29 20.5 12 20.5c5.52 0 10-4.26 10-9.5S17.52 2 12 2Zm-1.13 14.13c-2.13-.13-3.75-1.7-4.13-2.13-.38-.43-.88-1.13-.88-2.13s.5-1.7.69-1.94c.19-.24.41-.31.56-.31.15 0 .28.01.4.02.13.01.3.01.47.36.17.35.57 1.21.62 1.3.05.09.08.2.02.32-.06.12-.09.19-.18.3-.09.11-.19.24-.27.32-.08.08-.16.17-.07.33.09.16.41.67.89 1.09.61.54 1.13.71 1.29.79.16.08.25.07.34-.04.09-.11.39-.45.5-.6.11-.15.21-.13.36-.08.15.05.95.45 1.12.53.17.08.28.12.32.19.04.07.04.41-.1.8-.14.39-.56.7-.8.77-.24.07-.48.1-.73.09Z"/></svg>
+                    10 WHATSAPPS ATIVOS
+                </div>
+                <h3>R497<span>/mês</span></h3>
+                <div class="desc">Com 10 atendentes de IA</div>
+                <div class="valor-whats">Valor por WhatsApp: R49,70</div>
+                <div class="economize">Economize R600</div>
+                <a class="btn" href="#">Assinar anual</a>
+            </div></div></div><div class="features-section">
+   
+    <div class="features-header">
+        <span class="features-label">RECURSOS INTEGRADOS</span>
+        <h2>Tudo que você precisa em qualquer plano</h2>
+        <p>Todos os recursos inclusos. Sem surpresas e sem custos escondidos.</p>
+    </div>
+    <div class="features-grid">
+        <div class="feature-card"><span class="icon"><svg width="22" height="22" fill="none" viewBox="0 0 24 24"><path fill="#7c3aed" d="M12 2C6.48 2 2 6.26 2 11.5c0 2.19.93 4.18 2.47 5.7L2 22l5.04-2.13C8.67 20.28 10.29 20.5 12 20.5c5.52 0 10-4.26 10-9.5S17.52 2 12 2Zm-1.13 14.13c-2.13-.13-3.75-1.7-4.13-2.13-.38-.43-.88-1.13-.88-2.13s.5-1.7.69-1.94c.19-.24.41-.31.56-.31.15 0 .28.01.4.02.13.01.3.01.47.36.17.35.57 1.21.62 1.3.05.09.08.2.02.32-.06.12-.09.19-.18.3-.09.11-.19.24-.27.32-.08.08-.16.17-.07.33.09.16.41.67.89 1.09.61.54 1.13.71 1.29.79.16.08.25.07.34-.04.09-.11.39-.45.5-.6.11-.15.21-.13.36-.08.15.05.95.45 1.12.53.17.08.28.12.32.19.04.07.04.41-.1.8-.14.39-.56.7-.8.77-.24.07-.48.1-.73.09Z"/></svg></span>Assistente inteligente que atende automático</div>
+        <div class="feature-card"><span class="icon"><svg width="22" height="22" fill="none" viewBox="0 0 24 24"><path fill="#7c3aed" d="M13 2.05v2.02A8.001 8.001 0 0 1 20 12h2.01A10.003 10.003 0 0 0 13 2.05Zm-2 .02A10.003 10.003 0 0 0 2 12h2.01A8.001 8.001 0 0 1 11 4.07V2.07ZM12 6a6 6 0 0 0-6 6c0 2.21 1.2 4.15 3 5.19V22h6v-4.81c1.8-1.04 3-2.98 3-5.19a6 6 0 0 0-6-6Zm1 14h-2v-2h2v2Zm0-4h-2v-2h2v2Zm0-4h-2V8h2v2Z"/></svg></span>Fluxos de atendimento personalizados</div>
+        <div class="feature-card"><span class="icon"><svg width="22" height="22" fill="none" viewBox="0 0 24 24"><path fill="#7c3aed" d="M19 4h-1V2h-2v2H8V2H6v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 16H5V9h14v11Zm0-13H5V6h14v1Z"/></svg></span>Agendamento automático</div>
+        <div class="feature-card"><span class="icon"><svg width="22" height="22" fill="none" viewBox="0 0 24 24"><path fill="#7c3aed" d="M21 19V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2Zm-2 0H5V5h14v14ZM7 7h10v2H7V7Zm0 4h10v2H7v-2Zm0 4h7v2H7v-2Zm10 2h-2v-2h2v2Zm0-4h-2v-2h2v2Zm0-4h-2V7h2v2Z"/></svg></span>Envio de mídia (vídeo, imagem, áudio, PDF)</div>
+        <div class="feature-card"><span class="icon"><svg width="22" height="22" fill="none" viewBox="0 0 24 24"><path fill="#7c3aed" d="M3 12l18-9-9 18-2-7-7-2Z"/></svg></span>Busca de links externos</div>
+        <div class="feature-card"><span class="icon"><svg width="22" height="22" fill="none" viewBox="0 0 24 24"><path fill="#7c3aed" d="M12 22a2 2 0 0 1-2-2h4a2 2 0 0 1-2 2Zm6-6V11a6 6 0 1 0-12 0v5l-2 2v1h16v-1l-2-2Z"/></svg></span>Notificação para administrador</div>
+        <div class="feature-card"><span class="icon"><svg width="22" height="22" fill="none" viewBox="0 0 24 24"><path fill="#7c3aed" d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4Zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4Z"/></svg></span>Transferência para atendimento humano</div>
+        <div class="feature-card"><span class="icon"><svg width="22" height="22" fill="none" viewBox="0 0 24 24"><path fill="#7c3aed" d="M2 12l1.41 1.41L11 5.83V22h2V5.83l7.59 7.58L22 12l-10-10-10 10Z"/></svg></span>Sequências automáticas</div>
+        <div class="feature-card"><span class="icon"><svg width="22" height="22" fill="none" viewBox="0 0 24 24"><path fill="#7c3aed" d="M17 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h10Zm0 2H7v14h10V5Zm-2 2v2h-2V7h2Zm-4 0v2H9V7h2Zm0 4v2H9v-2h2Zm4 0v2h-2v-2h2Zm-4 4v2H9v-2h2Zm4 0v2h-2v-2h2Z"/></svg></span>Tags automáticas</div>
+        <div class="feature-card"><span class="icon"><svg width="22" height="22" fill="none" viewBox="0 0 24 24"><path fill="#7c3aed" d="M20 2H4a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2Zm0 18H4V4h16v16ZM7 7h10v2H7V7Zm0 4h10v2H7v-2Zm0 4h7v2H7v-2Z"/></svg></span>Mensagens ilimitadas</div>
+        <div class="feature-card"><span class="icon"><svg width="22" height="22" fill="none" viewBox="0 0 24 24"><path fill="#7c3aed" d="M3 13h2v-2H3v2Zm0 4h2v-2H3v2Zm0-8h2V7H3v2Zm4 8h2v-2H7v2Zm0-4h2v-2H7v2Zm0-4h2V7H7v2Zm4 8h2v-2h-2v2Zm0-4h2v-2h-2v2Zm0-4h2V7h-2v2Zm4 8h2v-2h-2v2Zm0-4h2v-2h-2v2Zm0-4h2V7h-2v2Z"/></svg></span>Dashboard completo</div>
+    </div>
+</div>
+<style>
+.features-section {
+    max-width: 1100px;
+    margin: 0 auto 40px auto;
+    padding: 0 12px;
+}
+.features-header {
+    text-align: center;
+    margin-bottom: 32px;
+}
+.features-label {
+    color: var(--brand-light);
+    font-weight: 800;
+    letter-spacing: 3px;
+    font-size: 14px;
+    display: block;
+    margin-bottom: 8px;
+}
+.features-header h2 {
+    font-size: 2rem;
+    font-weight: 900;
+    margin: 0 0 8px 0;
+    color: #222;
+}
+.features-header p {
+    color: #666;
+    font-size: 1.1rem;
+    margin: 0;
+}
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 18px;
+}
+.feature-card {
+    background: #fff;
+    border-radius: 14px;
+    box-shadow: 0 2px 12px #a78bfa11;
+    padding: 22px 18px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-size: 1.08rem;
+    font-weight: 600;
+    color: #222;
+    border: 1.5px solid #f3e8ff;
+    transition: box-shadow 0.18s, border 0.18s;
+}
+.feature-card:hover {
+    box-shadow: 0 4px 24px #a78bfa33;
+    border: 1.5px solid var(--brand-light);
+}
+.feature-card .icon {
+    background: #f3e8ff;
+    color: var(--brand);
+    border-radius: 8px;
+    font-size: 1.5rem;
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+@media (max-width: 600px) {
+    .features-header h2 {
+        font-size: 1.2rem;
+    }
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
+    .feature-card {
+        font-size: 1rem;
+        padding: 16px 10px;
+    }
+}
+</style>
+<footer>
+     <span id="year"></span> <strong>GestãoPro</strong>. Todos os direitos reservados.
+</footer>
+<script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+<!-- Código personalizado adicionado -->
+<script>
+    // Exemplo de código personalizado: alerta ao clicar em qualquer botão "Assinar agora" ou "Assinar anual"
+    document.querySelectorAll('.plano-card .btn').forEach(function(btn) {
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            alert('Em breve você será redirecionado para o checkout!');
+        });
+    });
+</script>
+</body>
+</html>
+
