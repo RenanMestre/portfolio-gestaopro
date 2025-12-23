@@ -186,12 +186,16 @@
 				align-items: center;
 			}
 
+			/* Centraliza e evita corte do vídeo */
 			iframe {
-				width: 98vw !important;
+				width: 100vw !important;
 				max-width: 420px !important;
+				min-width: 280px !important;
 				height: 240px !important;
 				display: block;
-				margin: 0 auto 24px auto !important;
+				margin-left: auto !important;
+				margin-right: auto !important;
+				margin-bottom: 24px !important;
 				border-radius: 12px;
 				box-shadow: 0 4px 24px #58a6ff33;
 				align-self: center;
