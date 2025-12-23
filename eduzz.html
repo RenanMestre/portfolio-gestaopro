@@ -180,20 +180,63 @@
 				padding: 80px 0 60px;
 			}
 
+			.hero-inner {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+			}
+
+			/* Centraliza e evita corte do vídeo */
 			iframe {
-				width: 320px;
-				height: auto;
+				width: 100% !important;
+				max-width: 420px !important;
+				min-width: 280px !important;
+				height: 240px !important;
+				display: block;
+				margin: 0 auto 24px auto !important;
+				border-radius: 12px;
+				box-sizing: border-box;
+				box-shadow: 0 4px 24px #58a6ff33;
+			}
+
+			/* Reduz tamanho dos planos no mobile */
+			.plans-container {
+				gap: 16px !important;
+			}
+			.plan-card {
+				width: 95vw !important;
+				max-width: 340px !important;
+				padding: 20px 10px !important;
+				font-size: 15px !important;
+			}
+			.plan-card span,
+			.plan-card div,
+			.plan-card ul,
+			.plan-card a {
+				font-size: 15px !important;
+			}
+			.plan-card ul {
+				margin-bottom: 16px !important;
+			}
+			.plan-card .btn,
+			.plan-card .btn.alt {
+				padding: 12px 0 !important;
+				font-size: 16px !important;
+			}
+			/* Deixa os valores maiores */
+			.plan-card > div:first-of-type {
+				font-size: 28px !important;
 			}
 		}
 	</style>
 	<!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-G2FGBS8YY2"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-G2FGBS8YY2');
-    </script>
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-G2FGBS8YY2"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+	  gtag('config', 'G-G2FGBS8YY2');
+	</script>
 </head>
 <body>
 	<header class="site-header">
@@ -232,7 +275,7 @@
 							<li>✔ Suporte 24/7</li>
 							<li>✔ Atualizações inclusas</li>
 						</ul>
-						<a href="https://app.keedpay.com.br/checkout/ruacJRlVRZ3" class="btn" style="width: 100%; text-align: center;">Assinar Mensal</a>
+						<a href="https://chk.eduzz.com/Z0B544G3WA" class="btn" style="width: 100%; text-align: center;">Assinar Mensal</a>
 					</div>
 					<!-- Plano Anual -->
 					<div class="plan-card" style="background: #181f27; border: 2px solid #00d4aa; border-radius: 18px; padding: 36px 28px; width: 320px; box-shadow: 0 6px 32px 0 rgba(0,212,170,0.08); display: flex; flex-direction: column; align-items: center; position: relative;">
@@ -245,7 +288,7 @@
 							<li>✔ Suporte prioritário</li>
 							<li>✔ Atualizações inclusas</li>
 						</ul>
-						<a href="https://app.keedpay.com.br/checkout/KkuniQa9nWl" class="btn alt" style="width: 100%; text-align: center; background: #00d4aa; color: #fff;">Assinar Anual</a>
+						<a href="https://chk.eduzz.com/7WXQ344G9A" class="btn alt" style="width: 100%; text-align: center; background: #00d4aa; color: #fff;">Assinar Anual</a>
 					</div>
 					<!-- Plano Definitivo -->
 					<div class="plan-card" style="background: #232c38; border: 2px solid #ffd700; border-radius: 18px; padding: 36px 28px; width: 320px; box-shadow: 0 6px 32px 0 rgba(255,215,0,0.08); display: flex; flex-direction: column; align-items: center;">
@@ -258,7 +301,7 @@
 							<li>✔ Suporte vitalício</li>
 							<li>✔ Todas as funcionalidades inclusas</li>
 						</ul>
-						<a href="https://app.keedpay.com.br/checkout/sBUCRaCMZ81" class="btn" style="width: 100%; text-align: center; background: #ffd700; color: #232c38;">Comprar Definitivo</a>
+						<a href="https://chk.eduzz.com/Q9N5K6BK01" class="btn" style="width: 100%; text-align: center; background: #ffd700; color: #232c38;">Comprar Definitivo</a>
 					</div>
 				</div>
 				<!-- FIM DOS PLANOS -->
@@ -433,8 +476,8 @@
 				</div>
 				<nav class="footer-col">
 					<strong class="footer-title">Links</strong>
-					<a href="https://chk.eduzz.com/7WXQ344G9A">Plano Anual</a>
-					<a href="https://chk.eduzz.com/Z0B544G3WA">Plano Mensal</a>
+					<a href=>Plano Anual</a>
+					<a href=>Plano Mensal</a>
 				</nav>
 				<div class="footer-col">
 					<strong class="footer-title">Contato</strong>
