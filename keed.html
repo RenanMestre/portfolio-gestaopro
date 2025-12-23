@@ -181,8 +181,13 @@
 			}
 
 			iframe {
-				width: 320px;
-				height: auto;
+				width: 98vw !important;
+				max-width: 420px !important;
+				height: 240px !important;
+				display: block;
+				margin: 0 auto 24px auto;
+				border-radius: 12px;
+				box-shadow: 0 4px 24px #58a6ff33;
 			}
 
 			/* Reduz tamanho dos planos no mobile */
@@ -208,6 +213,10 @@
 			.plan-card .btn.alt {
 				padding: 12px 0 !important;
 				font-size: 16px !important;
+			}
+			/* Deixa os valores maiores */
+			.plan-card > div:first-of-type {
+				font-size: 28px !important;
 			}
 		}
 	</style>
