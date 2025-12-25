@@ -177,17 +177,14 @@
 			.benefits-grid {
 				grid-template-columns: 1fr;
 			}
-
 			.hero-gestaopro {
 				padding: 80px 0 60px;
 			}
-
 			.hero-inner {
 				display: flex;
 				flex-direction: column;
 				align-items: center;
 			}
-
 			/* Centraliza e evita corte do vídeo */
 			iframe {
 				width: 100% !important;
@@ -200,10 +197,11 @@
 				box-sizing: border-box;
 				box-shadow: 0 4px 24px #58a6ff33;
 			}
-
 			/* Reduz tamanho dos planos no mobile */
 			.plans-container {
 				gap: 16px !important;
+				flex-direction: column !important;
+				align-items: center !important;
 			}
 			.plan-card {
 				width: 95vw !important;
@@ -228,6 +226,27 @@
 			/* Deixa os valores maiores */
 			.plan-card > div:first-of-type {
 				font-size: 28px !important;
+			}
+			/* Ajuste para frase de liberdade e container dos planos/tabela */
+			.mobile-align-container {
+				padding: 0 8px;
+				max-width: 100vw;
+				box-sizing: border-box;
+			}
+			.frase-liberdade {
+				font-size: 1.05rem !important;
+				padding: 0 4px !important;
+				margin: 0 0 10px 0 !important;
+				text-align: center !important;
+				word-break: break-word;
+			}
+			.tabela-comparativa-container {
+				overflow-x: auto;
+				max-width: 100vw;
+				margin: 0 auto 36px auto !important;
+			}
+			.tabela-comparativa-container table {
+				min-width: 600px;
 			}
 		}
 	</style>
@@ -382,78 +401,80 @@
 					<!-- Espaço entre planos e tabela -->
 					<div style="height:32px;"></div>
 					<!-- Tabela comparativa organizada e alinhada -->
-					<div class="hero-stats">
-						<div class="stat">
-							<div class="section-header center">
-								<h2>Diferença entre os planos</h2>
-								<p class="section-desc">Escolha o plano certo para o seu negócio</p>
-							</div>
-							<div style="overflow-x:auto; margin-top:0;">
-								<table style="
-									width:100%;
-									max-width: 900px;
-									margin: 0 auto 36px auto;
-									border-collapse: separate;
-									border-spacing: 0;
-									background: #181f27;
-									color: #fdfdfd;
-									border-radius: 18px;
-									box-shadow: 0 4px 24px #58a6ff22;
-									font-family: 'Inter',sans-serif;
-								">
-									<thead>
-										<tr style="background:#232c38;">
-											<th style="padding:18px 12px; border-radius:18px 0 0 0; font-size:18px; font-weight:800; text-align:left; min-width:180px;">Recursos</th>
-											<th style="padding:18px 12px; font-size:18px; font-weight:700; text-align:center; min-width:140px;">Essencial</th>
-											<th style="padding:18px 12px; font-size:18px; font-weight:700; text-align:center; min-width:140px;">Profissional</th>
-											<th style="padding:18px 12px; border-radius:0 18px 0 0; font-size:18px; font-weight:700; text-align:center; min-width:140px;">Premium IA</th>
-										</tr>
-									</thead>
-									<tbody style="font-size:16px;">
-										<tr style="background:#202834;">
-											<td style="padding:14px 12px; text-align:left; border-top-left-radius:12px;">Vendas e histórico</td>
-											<td style="text-align:center;">✔</td>
-											<td style="text-align:center;">✔</td>
-											<td style="text-align:center;">✔</td>
-										</tr>
-										<tr>
-											<td style="padding:14px 12px; text-align:left;">Relatórios financeiros</td>
-											<td style="text-align:center;">✔</td>
-											<td style="text-align:center;">✔</td>
-											<td style="text-align:center;">✔</td>
-										</tr>
-										<tr style="background:#202834;">
-											<td style="padding:14px 12px; text-align:left;">Controle de estoque</td>
-											<td style="text-align:center;">✖</td>
-											<td style="text-align:center;">✔</td>
-											<td style="text-align:center;">✔</td>
-										</tr>
-										<tr>
-											<td style="padding:14px 12px; text-align:left;">Gráficos e rankings</td>
-											<td style="text-align:center;">✖</td>
-											<td style="text-align:center;">✔</td>
-											<td style="text-align:center;">✔</td>
-										</tr>
-										<tr style="background:#202834;">
-											<td style="padding:14px 12px; text-align:left;">Exportação PDF</td>
-											<td style="text-align:center;">✖</td>
-											<td style="text-align:center;">✔</td>
-											<td style="text-align:center;">✔</td>
-										</tr>
-										<tr>
-											<td style="padding:14px 12px; text-align:left;">Integrações e IA</td>
-											<td style="text-align:center;">✖</td>
-											<td style="text-align:center;">✖</td>
-											<td style="text-align:center;">✔</td>
-										</tr>
-										<tr style="background:#202834;">
-											<td style="padding:14px 12px; text-align:left; border-bottom-left-radius:12px;">Suporte prioritário</td>
-											<td style="text-align:center;">✖</td>
-											<td style="text-align:center;">✔</td>
-											<td style="text-align:center;">✔✔</td>
-										</tr>
-									</tbody>
-								</table>
+					<div class="tabela-comparativa-container">
+						<div class="hero-stats">
+							<div class="stat">
+								<div class="section-header center">
+									<h2>Diferença entre os planos</h2>
+									<p class="section-desc">Escolha o plano certo para o seu negócio</p>
+								</div>
+								<div style="overflow-x:auto; margin-top:0;">
+									<table style="
+										width:100%;
+										max-width: 900px;
+										margin: 0 auto 36px auto;
+										border-collapse: separate;
+										border-spacing: 0;
+										background: #181f27;
+										color: #fdfdfd;
+										border-radius: 18px;
+										box-shadow: 0 4px 24px #58a6ff22;
+										font-family: 'Inter',sans-serif;
+									">
+										<thead>
+											<tr style="background:#232c38;">
+												<th style="padding:18px 12px; border-radius:18px 0 0 0; font-size:18px; font-weight:800; text-align:left; min-width:180px;">Recursos</th>
+												<th style="padding:18px 12px; font-size:18px; font-weight:700; text-align:center; min-width:140px;">Essencial</th>
+												<th style="padding:18px 12px; font-size:18px; font-weight:700; text-align:center; min-width:140px;">Profissional</th>
+												<th style="padding:18px 12px; border-radius:0 18px 0 0; font-size:18px; font-weight:700; text-align:center; min-width:140px;">Premium IA</th>
+											</tr>
+										</thead>
+										<tbody style="font-size:16px;">
+											<tr style="background:#202834;">
+												<td style="padding:14px 12px; text-align:left; border-top-left-radius:12px;">Vendas e histórico</td>
+												<td style="text-align:center;">✔</td>
+												<td style="text-align:center;">✔</td>
+												<td style="text-align:center;">✔</td>
+											</tr>
+											<tr>
+												<td style="padding:14px 12px; text-align:left;">Relatórios financeiros</td>
+												<td style="text-align:center;">✔</td>
+												<td style="text-align:center;">✔</td>
+												<td style="text-align:center;">✔</td>
+											</tr>
+											<tr style="background:#202834;">
+												<td style="padding:14px 12px; text-align:left;">Controle de estoque</td>
+												<td style="text-align:center;">✖</td>
+												<td style="text-align:center;">✔</td>
+												<td style="text-align:center;">✔</td>
+											</tr>
+											<tr>
+												<td style="padding:14px 12px; text-align:left;">Gráficos e rankings</td>
+												<td style="text-align:center;">✖</td>
+												<td style="text-align:center;">✔</td>
+												<td style="text-align:center;">✔</td>
+											</tr>
+											<tr style="background:#202834;">
+												<td style="padding:14px 12px; text-align:left;">Exportação PDF</td>
+												<td style="text-align:center;">✖</td>
+												<td style="text-align:center;">✔</td>
+												<td style="text-align:center;">✔</td>
+											</tr>
+											<tr>
+												<td style="padding:14px 12px; text-align:left;">Integrações e IA</td>
+												<td style="text-align:center;">✖</td>
+												<td style="text-align:center;">✖</td>
+												<td style="text-align:center;">✔</td>
+											</tr>
+											<tr style="background:#202834;">
+												<td style="padding:14px 12px; text-align:left; border-bottom-left-radius:12px;">Suporte prioritário</td>
+												<td style="text-align:center;">✖</td>
+												<td style="text-align:center;">✔</td>
+												<td style="text-align:center;">✔✔</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
 							</div>
 						</div>
 					</div>
