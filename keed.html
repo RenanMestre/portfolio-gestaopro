@@ -390,46 +390,238 @@
 						<span style="color:#58a6ff; font-weight:700; font-size:1.35rem; display:inline-block; margin-top:6px;">Escolha seu plano abaixo:</span>
 					</p>
 					<div style="height: 40px;"></div>
-	
+					
+					<!-- Botão de alternância Mensal/Anual -->
+					<style>
+						#period-switch button {
+							transition: 
+								background 0.25s cubic-bezier(.4,0,.2,1),
+								color 0.25s cubic-bezier(.4,0,.2,1),
+								box-shadow 0.25s cubic-bezier(.4,0,.2,1),
+								transform 0.18s cubic-bezier(.4,0,.2,1);
+							box-shadow: none;
+							position: relative;
+							z-index: 1;
+						}
+						#period-switch button.active {
+							background: linear-gradient(90deg, #58a6ff 0%, #00d4aa 100%);
+							color: #fff !important;
+							box-shadow: 0 4px 18px #58a6ff33;
+							transform: scale(1.06);
+						}
+						#period-switch button.active::after {
+							content: "";
+							position: absolute;
+							inset: 0;
+							border-radius: 14px;
+							box-shadow: 0 0 0 3px #58a6ff44;
+							animation: pulseBtn 0.7s;
+							pointer-events: none;
+						}
+						@keyframes pulseBtn {
+							0% { box-shadow: 0 0 0 0 #58a6ff44; }
+							70% { box-shadow: 0 0 0 8px #58a6ff22; }
+							100% { box-shadow: 0 0 0 3px #58a6ff44; }
+						}
+					</style>
+					<!-- Botão de alternância Mensal/Anual já está abaixo deste comentário -->
+					<style>
+						#period-switch button.selected {
+							background: linear-gradient(90deg, #58a6ff 0%, #00d4aa 100%);
+							color: #000000 !important;
+							box-shadow: 0 4px 18px #58a6ff33;
+							transform: scale(1.06);
+						}
+					</style>
+					<script>
+						document.addEventListener("DOMContentLoaded", function() {
+							const btnMensal = document.getElementById("btn-mensal");
+							const btnAnual = document.getElementById("btn-anual");
+
+							function selectButton(tipo) {
+								btnMensal.classList.remove("selected");
+								btnAnual.classList.remove("selected");
+								if (tipo === "mensal") {
+									btnMensal.classList.add("selected");
+									btnAnual.style.color = "#fff"; // volta ao padrão
+								} else {
+									btnAnual.classList.add("selected");
+									btnAnual.style.color = "#fff"; // texto branco ao selecionar anual
+								}
+							}
+
+							// Inicialização padrão: mensal está ativo
+							selectButton("mensal");
+
+							btnMensal.addEventListener("click", function() {
+								selectButton("mensal");
+							});
+							btnAnual.addEventListener("click", function() {
+								selectButton("anual");
+							});
+						});
+					</script>
+					<script>
+					document.addEventListener("DOMContentLoaded", function() {
+						// Dados dos planos
+						const planos = {
+							mensal: {
+								essencial: {
+									preco: "R$ 59,90",
+									label: "/mês",
+									link: "https://app.keedpay.com.br/checkout/cIUOsEjSTdl"
+								},
+								profissional: {
+									preco: "R$ 199,90",
+									label: "/mês",
+									link: "https://app.keedpay.com.br/checkout/5RiBBO4H1ZC"
+								},
+								premium: {
+									preco: "R$ 349,90",
+									label: "/mês",
+									link: "https://app.keedpay.com.br/checkout/RSzdUgoGHou"
+								}
+							},
+							anual: {
+								essencial: {
+									preco: "R$ 618",
+									label: "/ano",
+									link: "https://app.keedpay.com.br/checkout/1wQwqQwQwQw" // Troque pelo link anual correto
+								},
+								profissional: {
+									preco: "R$ 2.198",
+									label: "/ano",
+									link: "https://app.keedpay.com.br/checkout/2eEeEeEeEeE" // Troque pelo link anual correto
+								},
+								premium: {
+									preco: "R$ 3.898",
+									label: "/ano",
+									link: "https://app.keedpay.com.br/checkout/3rRrRrRrRrR" // Troque pelo link anual correto
+								}
+							}
+						};
+
+						// Elementos dos botões
+						const btnMensal = document.getElementById("btn-mensal");
+						const btnAnual = document.getElementById("btn-anual");
+
+						// Elementos dos planos
+						const planoEssencial = document.getElementById("plano-essencial");
+						const planoProfissional = document.getElementById("plano-profissional");
+						const planoPremium = document.getElementById("plano-premium");
+
+						function atualizaPlanos(tipo) {
+							// Essencial
+							planoEssencial.querySelector(".preco-plano").innerHTML = 
+								planos[tipo].essencial.preco + '<span class="periodo-label" style="font-size: 18px; font-weight: 400;">' + planos[tipo].essencial.label + '</span>';
+							planoEssencial.querySelector("a.btn").setAttribute("href", planos[tipo].essencial.link);
+
+							// Profissional
+							planoProfissional.querySelector(".preco-plano").innerHTML = 
+								planos[tipo].profissional.preco + '<span class="periodo-label" style="font-size: 18px; font-weight: 400;">' + planos[tipo].profissional.label + '</span>';
+							planoProfissional.querySelector("a.btn.alt").setAttribute("href", planos[tipo].profissional.link);
+
+							// Premium
+							planoPremium.querySelector(".preco-plano").innerHTML = 
+								planos[tipo].premium.preco + '<span class="periodo-label" style="font-size: 18px; font-weight: 400;">' + planos[tipo].premium.label + '</span>';
+							planoPremium.querySelector("a.btn").setAttribute("href", planos[tipo].premium.link);
+						}
+
+						// Alternância visual dos botões
+						function ativaBotao(tipo) {
+							if (tipo === "mensal") {
+								btnMensal.style.background = "#fff";
+								btnMensal.style.color = "#0a1a2f";
+								btnMensal.style.fontWeight = "700";
+								btnAnual.style.background = "#0a1a2f";
+								btnAnual.style.color = "#fff";
+								btnAnual.style.fontWeight = "600";
+							} else {
+								btnMensal.style.background = "#fff";
+								btnMensal.style.color = "#0a1a2f";
+								btnMensal.style.fontWeight = "600";
+								btnAnual.style.background = "#0a1a2f";
+								btnAnual.style.color = "#fff";
+								btnAnual.style.fontWeight = "700";
+							}
+						}
+
+						// Inicialização padrão: mensal está ativo
+						atualizaPlanos("mensal");
+						ativaBotao("mensal");
+
+						btnMensal.addEventListener("click", function() {
+							atualizaPlanos("mensal");
+							ativaBotao("mensal");
+						});
+
+						btnAnual.addEventListener("click", function() {
+							atualizaPlanos("anual");
+							ativaBotao("anual");
+						});
+					});
+					</script>
+					<div id="toggle-period" style="display: flex; justify-content: center; margin-bottom: 28px;">
+						<div id="period-switch" style="display: flex; border: 1.5px solid #e3eaf3; border-radius: 16px; overflow: hidden; background: #fff;">
+							<button id="btn-mensal" type="button" style="padding: 12px 38px; background: #fff; color: #0a1a2f; border: none; font-size: 1.08rem; font-weight: 600; cursor: pointer; border-radius: 14px 0 0 14px; transition: background 0.2s, color 0.2s;">Mensal</button>
+							<button id="btn-anual" type="button" style="padding: 12px 38px; background: #0a1a2f; color: #fff; border: none; font-size: 1.08rem; font-weight: 700; cursor: pointer; border-radius: 0 14px 14px 0; display: flex; align-items: center; gap: 6px; transition: background 0.2s, color 0.2s;">
+								Anual
+								<svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+									<circle cx="10" cy="10" r="8" stroke="#fff" stroke-width="2" fill="none"/>
+									<path d="M6.5 13.5L13.5 6.5" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+									<text x="10" y="15" text-anchor="middle" font-size="11" fill="#fff" font-family="Inter, Arial" font-weight="bold">%</text>
+								</svg>
+							</button>
+						</div>
+					</div>
+					<!-- Fim do botão de alternância -->
+
 					<!-- Planos novos no padrão do site (AGORA ACIMA DA TABELA) -->
 					<div class="plans-container" style="display: flex; flex-wrap: wrap; gap: 32px; justify-content: center;">
 						<!-- Essencial -->
-						<div class="plan-card" style="background: #181f27; border: 2px solid #58a6ff; border-radius: 18px; padding: 36px 28px; width: 320px; box-shadow: 0 6px 32px 0 rgba(88,166,255,0.08); display: flex; flex-direction: column; align-items: center;">
+						<div class="plan-card" id="plano-essencial" style="background: #181f27; border: 2px solid #58a6ff; border-radius: 18px; padding: 36px 28px; width: 320px; box-shadow: 0 6px 32px 0 rgba(88,166,255,0.08); display: flex; flex-direction: column; align-items: center;">
 							<span style="font-size: 18px; color: #58a6ff; font-weight: 700;">Essencial</span>
-							<div style="font-size: 38px; font-weight: 800; margin: 18px 0 8px 0;">R$ 59,90<span style="font-size: 18px; font-weight: 400;">/mês</span></div>
+							<div class="preco-plano" style="font-size: 38px; font-weight: 800; margin: 18px 0 8px 0;">
+								R$ 59,90<span class="periodo-label" style="font-size: 18px; font-weight: 400;">/mês</span>
+							</div>
 							<ul style="list-style: none; padding: 0; margin: 0 0 18px 0; color: #b3c2d1; font-size: 15px; text-align:left;">
 								<li>✔ Vendas, clientes e estoque</li>
 								<li>✔ Relatórios financeiros completos</li>
 								<li>✔ Impressão de cupom e recibo</li>
 								<li>✔ Backup automático diário</li>
 							</ul>
-							<a href="https://app.keedpay.com.br/checkout/cIUOsEjSTdl" class="btn" style="width: 100%; text-align: center;">Assinar Agora</a>
+							<a id="btn-essencial" href="https://app.keedpay.com.br/checkout/cIUOsEjSTdl" class="btn" style="width: 100%; text-align: center;">Assinar Agora</a>
 						</div>
 						<!-- Profissional -->
-						<div class="plan-card" style="background: #181f27; border: 2px solid #00d4aa; border-radius: 18px; padding: 36px 28px; width: 320px; box-shadow: 0 6px 32px 0 rgba(0,212,170,0.08); display: flex; flex-direction: column; align-items: center; position: relative;">
+						<div class="plan-card" id="plano-profissional" style="background: #181f27; border: 2px solid #00d4aa; border-radius: 18px; padding: 36px 28px; width: 320px; box-shadow: 0 6px 32px 0 rgba(0,212,170,0.08); display: flex; flex-direction: column; align-items: center; position: relative;">
 							<span style="font-size: 18px; color: #00d4aa; font-weight: 700;">Profissional <span style="background: #00d4aa; color: #fff; border-radius: 8px; padding: 2px 10px; font-size: 13px; margin-left: 6px;">MAIS VENDIDO</span></span>
-							<div style="font-size: 38px; font-weight: 800; margin: 18px 0 8px 0;">R$ 199,90<span style="font-size: 18px; font-weight: 400;">/mês</span></div>
+							<div class="preco-plano" style="font-size: 38px; font-weight: 800; margin: 18px 0 8px 0;">
+								R$ 199,90<span class="periodo-label" style="font-size: 18px; font-weight: 400;">/mês</span>
+							</div>
 							<ul style="list-style: none; padding: 0; margin: 0 0 18px 0; color: #b3c2d1; font-size: 15px; text-align:left;">
 								<li>✔ Importação CSV</li>
 								<li>✔ Margem de lucro</li>
 								<li>✔ Controle de validade/estoque</li>
 								<li>✔ Gráficos e rankings</li>
 							</ul>
-							<a href="https://app.keedpay.com.br/checkout/5RiBBO4H1ZC" class="btn alt" style="width: 100%; text-align: center; background: #00d4aa; color: #fff;">Quero Esse Plano</a>
+							<a id="btn-profissional" href="https://app.keedpay.com.br/checkout/5RiBBO4H1ZC" class="btn alt" style="width: 100%; text-align: center; background: #00d4aa; color: #fff;">Quero Esse Plano</a>
 						</div>
 						<!-- Premium IA -->
-						<div class="plan-card" style="background: #232c38; border: 2px solid #ffd700; border-radius: 18px; padding: 36px 28px; width: 320px; box-shadow: 0 6px 32px 0 rgba(255,215,0,0.08); display: flex; flex-direction: column; align-items: center;">
+						<div class="plan-card" id="plano-premium" style="background: #232c38; border: 2px solid #ffd700; border-radius: 18px; padding: 36px 28px; width: 320px; box-shadow: 0 6px 32px 0 rgba(255,215,0,0.08); display: flex; flex-direction: column; align-items: center;">
 							<span style="font-size: 18px; color: #ffd700; font-weight: 700;">Premium IA</span>
-							<div style="font-size: 38px; font-weight: 800; margin: 18px 0 8px 0;">R$ 349,90<span style="font-size: 18px; font-weight: 400;">/mês</span></div>
+							<div class="preco-plano" style="font-size: 38px; font-weight: 800; margin: 18px 0 8px 0;">
+								R$ 349,90<span class="periodo-label" style="font-size: 18px; font-weight: 400;">/mês</span>
+							</div>
 							<ul style="list-style: none; padding: 0; margin: 0 0 18px 0; color: #b3c2d1; font-size: 15px; text-align:left;">
 								<li>✔ Acesso a todas as ferramentas</li>
 								<li>✔ Integrações e inteligência artificial </li>
 								<li>✔ Atualizações grátis</li>
 								<li>✔ Suporte máximo</li>
 							</ul>
-							<a href="https://app.keedpay.com.br/checkout/RSzdUgoGHou" class="btn" style="width: 100%; text-align: center; background: #ffd700; color: #232c38;">Ativar IA Agora</a>
+							<a id="btn-premium" href="https://app.keedpay.com.br/checkout/RSzdUgoGHou" class="btn" style="width: 100%; text-align: center; background: #ffd700; color: #232c38;">Ativar IA Agora</a>
 						</div>
 					</div>
+	
 					<!-- Espaço entre planos e tabela -->
 					<div style="height:32px;"></div>
 					<!-- Tabela comparativa organizada e alinhada -->
@@ -710,7 +902,7 @@
 					<div class="social">
                         <a target="_blank" rel="noopener" aria-label="GitHub">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+                                <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.0 0 0024 12c0-6.63-5.37-12-12-12z"/>
                             </svg>
                         </a>
                         <a target="_blank" rel="noopener" aria-label="LinkedIn">
