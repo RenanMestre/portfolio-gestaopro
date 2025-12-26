@@ -510,6 +510,38 @@
 						const planoProfissional = document.getElementById("plano-profissional");
 						const planoPremium = document.getElementById("plano-premium");
 
+						// Elementos das etiquetas de destaque
+						let badgeEssencial = planoEssencial.querySelector('.badge-destaque');
+						let badgeProfissional = planoProfissional.querySelector('.badge-destaque');
+						let badgePremium = planoPremium.querySelector('.badge-destaque');
+
+						// Cria as badges se não existirem
+						function ensureBadges() {
+							if (!badgeEssencial) {
+								badgeEssencial = document.createElement('span');
+								badgeEssencial.className = 'badge-destaque';
+								badgeEssencial.style.cssText = "background:#ffd700;color:#232c38;font-size:13px;font-weight:700;border-radius:8px;padding:2px 10px;margin-left:6px;vertical-align:middle;display:none;";
+								planoEssencial.querySelector('span').after(badgeEssencial);
+							}
+							if (!badgeProfissional) {
+								badgeProfissional = document.createElement('span');
+								badgeProfissional.className = 'badge-destaque';
+								badgeProfissional.style.cssText = "background:#ffd700;color:#232c38;font-size:13px;font-weight:700;border-radius:8px;padding:2px 10px;margin-left:6px;vertical-align:middle;display:none;";
+								const spanProf = planoProfissional.querySelector('span');
+								// Remove badge antiga "MAIS VENDIDO" se existir
+								const oldBadge = spanProf.querySelector('span');
+								if (oldBadge) oldBadge.remove();
+								spanProf.after(badgeProfissional);
+							}
+							if (!badgePremium) {
+								badgePremium = document.createElement('span');
+								badgePremium.className = 'badge-destaque';
+								badgePremium.style.cssText = "background:#ffd700;color:#232c38;font-size:13px;font-weight:700;border-radius:8px;padding:2px 10px;margin-left:6px;vertical-align:middle;display:none;";
+								planoPremium.querySelector('span').after(badgePremium);
+							}
+						}
+						ensureBadges();
+
 						function atualizaPlanos(tipo) {
 							// Essencial
 							planoEssencial.querySelector(".preco-plano").innerHTML = 
@@ -525,6 +557,20 @@
 							planoPremium.querySelector(".preco-plano").innerHTML = 
 								planos[tipo].premium.preco + '<span class="periodo-label" style="font-size: 18px; font-weight: 400;">' + planos[tipo].premium.label + '</span>';
 							planoPremium.querySelector("a.btn").setAttribute("href", planos[tipo].premium.link);
+
+							// Badge destaque/desconto
+							if (tipo === "anual") {
+								badgeEssencial.textContent = "Economize R$100,80";
+								badgeProfissional.textContent = "Economize R$200,80";
+								badgePremium.textContent = "Economize R$300,80";
+								badgeEssencial.style.display = "inline-block";
+								badgeProfissional.style.display = "inline-block";
+								badgePremium.style.display = "inline-block";
+							} else {
+								badgeEssencial.style.display = "none";
+								badgeProfissional.style.display = "none";
+								badgePremium.style.display = "none";
+							}
 						}
 
 						// Alternância visual dos botões
