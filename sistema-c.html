@@ -8,6 +8,8 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="styles.css">
+	<link rel="shortcut icon" href="/portfolio-gestaopro/img/Logo escura 600x300.jpg" type="image/x-icon">
+
 	<style>
 		.hero-gestaopro {
 			padding: 120px 0 80px;
@@ -175,17 +177,14 @@
 			.benefits-grid {
 				grid-template-columns: 1fr;
 			}
-
 			.hero-gestaopro {
 				padding: 80px 0 60px;
 			}
-
 			.hero-inner {
 				display: flex;
 				flex-direction: column;
 				align-items: center;
 			}
-
 			/* Centraliza e evita corte do vídeo */
 			iframe {
 				width: 100% !important;
@@ -198,10 +197,11 @@
 				box-sizing: border-box;
 				box-shadow: 0 4px 24px #58a6ff33;
 			}
-
 			/* Reduz tamanho dos planos no mobile */
 			.plans-container {
 				gap: 16px !important;
+				flex-direction: column !important;
+				align-items: center !important;
 			}
 			.plan-card {
 				width: 95vw !important;
@@ -227,7 +227,60 @@
 			.plan-card > div:first-of-type {
 				font-size: 28px !important;
 			}
+			/* Ajuste para frase de liberdade e container dos planos/tabela */
+			.mobile-align-container {
+				padding: 0 8px;
+				max-width: 100vw;
+				box-sizing: border-box;
+			}
+			.frase-liberdade {
+				font-size: 1.05rem !important;
+				padding: 0 4px !important;
+				margin: 0 0 10px 0 !important;
+				text-align: center !important;
+				word-break: break-word;
+			}
+			.tabela-comparativa-container {
+				overflow-x: auto;
+				max-width: 100vw;
+				margin: 0 auto 36px auto !important;
+			}
+			.tabela-comparativa-container table {
+				min-width: 600px;
+			}
 		}
+		@media (max-width: 600px) {
+	.tabela-comparativa-container table {
+		font-size: 12px !important;
+		min-width: 360px !important;
+		width: 100% !important;
+	}
+	.tabela-comparativa-container th,
+	.tabela-comparativa-container td {
+		padding: 6px 4px !important;
+		font-size: 12px !important;
+		min-width: 70px !important;
+		max-width: 90px !important;
+		word-break: break-word;
+		text-align: center !important;
+	}
+	.tabela-comparativa-container th:first-child,
+	.tabela-comparativa-container td:first-child {
+		min-width: 100px !important;
+		max-width: 120px !important;
+		text-align: left !important;
+	}
+	.tabela-comparativa-container thead th {
+		font-size: 13px !important;
+		padding: 8px 4px !important;
+	}
+	.tabela-comparativa-container {
+		padding-bottom: 10px;
+	}
+	.tabela-comparativa-container table {
+		border-radius: 10px !important;
+	}
+}
 	</style>
 	<!-- Google tag (gtag.js) -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=G-G2FGBS8YY2"></script>
@@ -237,6 +290,37 @@
 	  gtag('js', new Date());
 	  gtag('config', 'G-G2FGBS8YY2');
 	</script>
+	<!-- Facebook Pixel Code -->
+	<script>
+		!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+		n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+		n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+		t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+		document,'script','https://connect.facebook.net/en_US/fbevents.js');
+		fbq('init', '287970066052490');
+		fbq('track', 'PageView');
+	</script>
+	<noscript>
+		<img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=287970066052490&ev=PageView&noscript=1"/>
+	</noscript>
+	<!-- End Facebook Pixel Code -->
+	<!-- Facebook Pixel Code 2 -->
+	<script>
+		!function(f,b,e,v,n,t,s)
+		{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+		n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+		if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+		n.queue=[];t=b.createElement(e);t.async=!0;
+		t.src=v;s=b.getElementsByTagName(e)[0];
+		s.parentNode.insertBefore(t,s)}(window, document,'script',
+		'https://connect.facebook.net/en_US/fbevents.js');
+		fbq('init', '375122057249098');
+		fbq('track', 'PageView');
+	</script>
+	<noscript>
+		<img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=375122057249098&ev=PageView&noscript=1"/>
+	</noscript>
+	<!-- End Facebook Pixel Code 2 -->
 </head>
 <body>
 	<header class="site-header">
@@ -250,7 +334,7 @@
 				<span></span>
 			</button>
 			<nav class="nav">
-				<a href="sistema-c.html">Voltar</a>
+				<a href="sistema-a.html">Voltar</a>
 				<a href="https://sandbox.gestaoproapp.com.br/login">Entrar</a>
 			</nav>
 		</div>
@@ -260,52 +344,458 @@
 			<div class="hero-bg"></div>
 			<div class="container hero-inner">
 				<div class="hero-badge">🚀 Sistema de Gestão Inteligente</div>
-				<h1>Impulsionamos <span class="gradient-text">resultados</span> com soluções sob medida</h1>
-				<p>O sistema GestãoPro é uma solução que une tecnologia avançada com gestão empresarial, trazendo monitoramento, acompanhamento de avanços, suporte dedicado e Inteligência Artificial para perto das pessoas.</p>
-				<iframe width="560" height="315" src="https://www.youtube.com/embed/Qgft_ohfV9g?si=ZRzS7VCLMKAqg7Wy" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-				<!-- INÍCIO DOS PLANOS -->
-				<div class="plans-container" style="display: flex; flex-wrap: wrap; gap: 32px; justify-content: center; margin: 48px 0;">
-					<!-- Plano Mensal -->
-					<div class="plan-card" style="background: #181f27; border: 2px solid #58a6ff; border-radius: 18px; padding: 36px 28px; width: 320px; box-shadow: 0 6px 32px 0 rgba(88,166,255,0.08); display: flex; flex-direction: column; align-items: center;">
-						<span style="font-size: 18px; color: #58a6ff; font-weight: 700;">Mensal</span>
-						<div style="font-size: 38px; font-weight: 800; margin: 18px 0 8px 0;">R$ 100<span style="font-size: 18px; font-weight: 400;">/mês</span></div>
-						<div style="color:#58a6ff; font-size:14px; font-weight:600; margin-bottom:8px;">Parcele em até 3x</div>
-						<ul style="list-style: none; padding: 0; margin: 0 0 24px 0; color: #b3c2d1; font-size: 15px;">
-							<li>✔ Acesso completo ao sistema</li>
-							<li>✔ Suporte 24/7</li>
-							<li>✔ Atualizações inclusas</li>
-						</ul>
-						<a href="https://chk.eduzz.com/Z0B544G3WA" class="btn" style="width: 100%; text-align: center;">Assinar Mensal</a>
+				<h1>Organize sua empresa <span class="gradient-text">aumente o lucro</span> e pare de perder dinheiro</h1>
+				<div class="section-header center">
+			<p class="section-desc" style="color:#b3c2d1;">
+				Mais de 80% das pequenas empresas fecham por falta de gestão.<br>
+				O <strong>Gestão Pro</strong> resolve isso controlando vendas, estoque, financeiro e atendimento em um único sistema simples e eficiente.
+			</p>
+		</div>
+				
+				<iframe width="560" height="315" src="https://www.youtube.com/embed/gaE7cP9RZb4?si=fpCObhdImZIrzRYa" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+	
+			
+		
+			
+				<!-- Espaço extra abaixo do vídeo -->
+				 
+	
+		<div class="hero-stats">
+					<div class="stat">
+						<strong>500+</strong>
+						<span>Usuários</span>
 					</div>
-					<!-- Plano Anual -->
-					<div class="plan-card" style="background: #181f27; border: 2px solid #00d4aa; border-radius: 18px; padding: 36px 28px; width: 320px; box-shadow: 0 6px 32px 0 rgba(0,212,170,0.08); display: flex; flex-direction: column; align-items: center; position: relative;">
-						<span style="font-size: 18px; color: #00d4aa; font-weight: 700;">Anual <span style="background: #00d4aa; color: #fff; border-radius: 8px; padding: 2px 10px; font-size: 13px; margin-left: 6px;">-R$200</span></span>
-						<div style="font-size: 38px; font-weight: 800; margin: 18px 0 8px 0;">R$ 1.000<span style="font-size: 18px; font-weight: 400;">/ano</span></div>
-						<div style="color:#00d4aa; font-size:14px; font-weight:600; margin-bottom:8px;">Parcele em até 12x</div>
-						<ul style="list-style: none; padding: 0; margin: 0 0 24px 0; color: #b3c2d1; font-size: 15px;">
-							<li>✔ Economize R$200 por ano</li>
-							<li>✔ Acesso completo ao sistema</li>
-							<li>✔ Suporte prioritário</li>
-							<li>✔ Atualizações inclusas</li>
-						</ul>
-						<a href="https://chk.eduzz.com/7WXQ344G9A" class="btn alt" style="width: 100%; text-align: center; background: #00d4aa; color: #fff;">Assinar Anual</a>
+					<div class="stat">
+						<strong>98%</strong>
+						<span>Satisfação</span>
 					</div>
-					<!-- Plano Definitivo -->
-					<div class="plan-card" style="background: #232c38; border: 2px solid #ffd700; border-radius: 18px; padding: 36px 28px; width: 320px; box-shadow: 0 6px 32px 0 rgba(255,215,0,0.08); display: flex; flex-direction: column; align-items: center;">
-						<span style="font-size: 18px; color: #ffd700; font-weight: 700;">Definitivo</span>
-						<div style="font-size: 38px; font-weight: 800; margin: 18px 0 8px 0;">R$ 1.500<span style="font-size: 18px; font-weight: 400;">/único</span></div>
-						<div style="color:#ffd700; font-size:14px; font-weight:600; margin-bottom:8px;">Parcele em até 12x</div>
-						<ul style="list-style: none; padding: 0; margin: 0 0 24px 0; color: #b3c2d1; font-size: 15px;">
-							<li>✔ Pagamento único</li>
-							<li>✔ Sistema definitivo, sem mensalidades</li>
-							<li>✔ Suporte vitalício</li>
-							<li>✔ Todas as funcionalidades inclusas</li>
-						</ul>
-						<a href="https://chk.eduzz.com/Q9N5K6BK01" class="btn" style="width: 100%; text-align: center; background: #ffd700; color: #232c38;">Comprar Definitivo</a>
-					</div>
+					<div class="stat">
+						<strong>24/7</strong>
+						<span>Suporte</span>
+					</div>	
 				</div>
-				<!-- FIM DOS PLANOS -->
+				</div>
+				<div class="hero-stats">
+					<div class="stat">
+					<p style="
+						text-align: center;
+						font-size: 1.18rem;
+						font-weight: 600;
+						color: #fdfdfd;
+						margin: 0 0 10px 0;
+						letter-spacing: 0.01em;
+						font-family: 'Inter', sans-serif;
+					">
+						Você tem liberdade total: <span style="font-weight:700; font-size:1.18rem;">cancele quando quiser</span> e mantenha o controle da sua assinatura.<br>
+						<span style="color:#58a6ff; font-weight:700; font-size:1.35rem; display:inline-block; margin-top:6px;">Escolha seu plano abaixo:</span>
+					</p>
+					<div style="height: 40px;"></div>
+					
+					<!-- Botão de alternância Mensal/Anual -->
+					<style>
+						#period-switch button {
+							transition: 
+								background 0.25s cubic-bezier(.4,0,.2,1),
+								color 0.25s cubic-bezier(.4,0,.2,1),
+								box-shadow 0.25s cubic-bezier(.4,0,.2,1),
+								transform 0.18s cubic-bezier(.4,0,.2,1);
+							box-shadow: none;
+							position: relative;
+							z-index: 1;
+						}
+						#period-switch button.active {
+							background: linear-gradient(90deg, #58a6ff 0%, #00d4aa 100%);
+							color: #fff !important;
+							box-shadow: 0 4px 18px #58a6ff33;
+							transform: scale(1.06);
+						}
+						#period-switch button.active::after {
+							content: "";
+							position: absolute;
+							inset: 0;
+							border-radius: 14px;
+							box-shadow: 0 0 0 3px #58a6ff44;
+							animation: pulseBtn 0.7s;
+							pointer-events: none;
+						}
+						@keyframes pulseBtn {
+							0% { box-shadow: 0 0 0 0 #58a6ff44; }
+							70% { box-shadow: 0 0 0 8px #58a6ff22; }
+							100% { box-shadow: 0 0 0 3px #58a6ff44; }
+						}
+					</style>
+					<!-- Botão de alternância Mensal/Anual já está abaixo deste comentário -->
+					<style>
+						#period-switch button.selected {
+							background: linear-gradient(90deg, #58a6ff 0%, #00d4aa 100%);
+							color: #000000 !important;
+							box-shadow: 0 4px 18px #58a6ff33;
+							transform: scale(1.06);
+						}
+					</style>
+					<script>
+						document.addEventListener("DOMContentLoaded", function() {
+							const btnMensal = document.getElementById("btn-mensal");
+							const btnAnual = document.getElementById("btn-anual");
+
+							function selectButton(tipo) {
+								btnMensal.classList.remove("selected");
+								btnAnual.classList.remove("selected");
+								if (tipo === "mensal") {
+									btnMensal.classList.add("selected");
+									btnAnual.style.color = "#fff"; // volta ao padrão
+								} else {
+									btnAnual.classList.add("selected");
+									btnAnual.style.color = "#fff"; // texto branco ao selecionar anual
+								}
+							}
+
+							// Inicialização padrão: mensal está ativo
+							selectButton("mensal");
+
+							btnMensal.addEventListener("click", function() {
+								selectButton("mensal");
+							});
+							btnAnual.addEventListener("click", function() {
+								selectButton("anual");
+							});
+						});
+					</script>
+					<script>
+					document.addEventListener("DOMContentLoaded", function() {
+						// Dados dos planos
+						const planos = {
+							mensal: {
+								essencial: {
+									preco: "R$ 59,90",
+									label: "/mês",
+									link: "https://sun.eduzz.com/8WPA8OKPWP"
+								},
+								profissional: {
+									preco: "R$ 199,90",
+									label: "/mês",
+									link: "https://sun.eduzz.com/1W3ZAYRQW2"
+								},
+								premium: {
+									preco: "R$ 349,90",
+									label: "/mês",
+									link: "https://sun.eduzz.com/E0D6RE7Y91"
+								}
+							},
+							anual: {
+								essencial: {
+									preco: "R$ 618",
+									label: "/ano",
+									link: "https://app.keedpay.com.br/checkout/83r2lnMEJEL" // Troque pelo link anual correto
+								},
+								profissional: {
+									preco: "R$ 2.198",
+									label: "/ano",
+									link: "https://app.keedpay.com.br/checkout/RG22NKckbsm" // Troque pelo link anual correto
+								},
+								premium: {
+									preco: "R$ 3.898",
+									label: "/ano",
+									link: "https://app.keedpay.com.br/checkout/Ig5dyvKVgAx" // Troque pelo link anual correto
+								}
+							}
+						};
+
+						// Elementos dos botões
+						const btnMensal = document.getElementById("btn-mensal");
+						const btnAnual = document.getElementById("btn-anual");
+
+						// Elementos dos planos
+						const planoEssencial = document.getElementById("plano-essencial");
+						const planoProfissional = document.getElementById("plano-profissional");
+						const planoPremium = document.getElementById("plano-premium");
+
+						// Elementos das etiquetas de destaque
+						let badgeEssencial = planoEssencial.querySelector('.badge-destaque');
+						let badgeProfissional = planoProfissional.querySelector('.badge-destaque');
+						let badgePremium = planoPremium.querySelector('.badge-destaque');
+
+						// Cria as badges se não existirem
+						function ensureBadges() {
+							if (!badgeEssencial) {
+								badgeEssencial = document.createElement('span');
+								badgeEssencial.className = 'badge-destaque';
+								badgeEssencial.style.cssText = "background:#ffd700;color:#232c38;font-size:13px;font-weight:700;border-radius:8px;padding:2px 10px;margin-left:6px;vertical-align:middle;display:none;";
+								planoEssencial.querySelector('span').after(badgeEssencial);
+							}
+							if (!badgeProfissional) {
+								badgeProfissional = document.createElement('span');
+								badgeProfissional.className = 'badge-destaque';
+								badgeProfissional.style.cssText = "background:#ffd700;color:#232c38;font-size:13px;font-weight:700;border-radius:8px;padding:2px 10px;margin-left:6px;vertical-align:middle;display:none;";
+								const spanProf = planoProfissional.querySelector('span');
+								// Remove badge antiga "MAIS VENDIDO" se existir
+								const oldBadge = spanProf.querySelector('span');
+								if (oldBadge) oldBadge.remove();
+								spanProf.after(badgeProfissional);
+							}
+							if (!badgePremium) {
+								badgePremium = document.createElement('span');
+								badgePremium.className = 'badge-destaque';
+								badgePremium.style.cssText = "background:#ffd700;color:#232c38;font-size:13px;font-weight:700;border-radius:8px;padding:2px 10px;margin-left:6px;vertical-align:middle;display:none;";
+								planoPremium.querySelector('span').after(badgePremium);
+							}
+						}
+						ensureBadges();
+
+						function atualizaPlanos(tipo) {
+							// Essencial
+							planoEssencial.querySelector(".preco-plano").innerHTML = 
+								planos[tipo].essencial.preco + '<span class="periodo-label" style="font-size: 18px; font-weight: 400;">' + planos[tipo].essencial.label + '</span>';
+							planoEssencial.querySelector("a.btn").setAttribute("href", planos[tipo].essencial.link);
+
+							// Profissional
+							planoProfissional.querySelector(".preco-plano").innerHTML = 
+								planos[tipo].profissional.preco + '<span class="periodo-label" style="font-size: 18px; font-weight: 400;">' + planos[tipo].profissional.label + '</span>';
+							planoProfissional.querySelector("a.btn.alt").setAttribute("href", planos[tipo].profissional.link);
+
+							// Premium
+							planoPremium.querySelector(".preco-plano").innerHTML = 
+								planos[tipo].premium.preco + '<span class="periodo-label" style="font-size: 18px; font-weight: 400;">' + planos[tipo].premium.label + '</span>';
+							planoPremium.querySelector("a.btn").setAttribute("href", planos[tipo].premium.link);
+
+							// Badge destaque/desconto
+							if (tipo === "anual") {
+								badgeEssencial.textContent = "Economize R$100,80";
+								badgeProfissional.textContent = "Economize R$200,80";
+								badgePremium.textContent = "Economize R$300,80";
+								badgeEssencial.style.display = "inline-block";
+								badgeProfissional.style.display = "inline-block";
+								badgePremium.style.display = "inline-block";
+							} else {
+								badgeEssencial.style.display = "none";
+								badgeProfissional.style.display = "none";
+								badgePremium.style.display = "none";
+							}
+						}
+
+						// Alternância visual dos botões
+						function ativaBotao(tipo) {
+							if (tipo === "mensal") {
+								btnMensal.style.background = "#fff";
+								btnMensal.style.color = "#0a1a2f";
+								btnMensal.style.fontWeight = "700";
+								btnAnual.style.background = "#0a1a2f";
+								btnAnual.style.color = "#fff";
+								btnAnual.style.fontWeight = "600";
+							} else {
+								btnMensal.style.background = "#fff";
+								btnMensal.style.color = "#0a1a2f";
+								btnMensal.style.fontWeight = "600";
+								btnAnual.style.background = "#0a1a2f";
+								btnAnual.style.color = "#fff";
+								btnAnual.style.fontWeight = "700";
+							}
+						}
+
+						// Inicialização padrão: mensal está ativo
+						atualizaPlanos("mensal");
+						ativaBotao("mensal");
+
+						btnMensal.addEventListener("click", function() {
+							atualizaPlanos("mensal");
+							ativaBotao("mensal");
+						});
+
+						btnAnual.addEventListener("click", function() {
+							atualizaPlanos("anual");
+							ativaBotao("anual");
+						});
+					});
+					</script>
+					<div id="toggle-period" style="display: flex; justify-content: center; margin-bottom: 28px;">
+						<div id="period-switch" style="display: flex; border: 1.5px solid #e3eaf3; border-radius: 16px; overflow: hidden; background: #fff;">
+							<button id="btn-mensal" type="button" style="padding: 12px 38px; background: #fff; color: #0a1a2f; border: none; font-size: 1.08rem; font-weight: 600; cursor: pointer; border-radius: 14px 0 0 14px; transition: background 0.2s, color 0.2s;">Mensal</button>
+							<button id="btn-anual" type="button" style="padding: 12px 38px; background: #0a1a2f; color: #fff; border: none; font-size: 1.08rem; font-weight: 700; cursor: pointer; border-radius: 0 14px 14px 0; display: flex; align-items: center; gap: 6px; transition: background 0.2s, color 0.2s;">
+								Anual
+								<svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+									<circle cx="10" cy="10" r="8" stroke="#fff" stroke-width="2" fill="none"/>
+									<path d="M6.5 13.5L13.5 6.5" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+									<text x="10" y="15" text-anchor="middle" font-size="11" fill="#fff" font-family="Inter, Arial" font-weight="bold">%</text>
+								</svg>
+							</button>
+						</div>
+					</div>
+					<!-- Fim do botão de alternância -->
+
+					<!-- Planos novos no padrão do site (AGORA ACIMA DA TABELA) -->
+					<div class="plans-container" style="display: flex; flex-wrap: wrap; gap: 32px; justify-content: center;">
+						<!-- Essencial -->
+						<div class="plan-card" id="plano-essencial" style="background: #181f27; border: 2px solid #58a6ff; border-radius: 18px; padding: 36px 28px; width: 320px; box-shadow: 0 6px 32px 0 rgba(88,166,255,0.08); display: flex; flex-direction: column; align-items: center;">
+							<span style="font-size: 18px; color: #58a6ff; font-weight: 700;">Essencial</span>
+							<div class="preco-plano" style="font-size: 38px; font-weight: 800; margin: 18px 0 8px 0;">
+								R$ 59,90<span class="periodo-label" style="font-size: 18px; font-weight: 400;">/mês</span>
+							</div>
+							<ul style="list-style: none; padding: 0; margin: 0 0 18px 0; color: #b3c2d1; font-size: 15px; text-align:left;">
+								<li>✔ Vendas, clientes e estoque</li>
+								<li>✔ Relatórios financeiros completos</li>
+								<li>✔ Impressão de cupom e recibo</li>
+								<li>✔ Backup automático diário</li>
+							</ul>
+							<a id="btn-essencial" href="https://sun.eduzz.com/8WPA8OKPWP" class="btn" style="width: 100%; text-align: center;">Assinar Agora</a>
+						</div>
+						<!-- Profissional -->
+						<div class="plan-card" id="plano-profissional" style="background: #181f27; border: 2px solid #00d4aa; border-radius: 18px; padding: 36px 28px; width: 320px; box-shadow: 0 6px 32px 0 rgba(0,212,170,0.08); display: flex; flex-direction: column; align-items: center; position: relative;">
+							<!-- Selo MAIS VENDIDO no canto superior esquerdo -->
+							<img src="img/maisvendido.png" alt="Mais Vendido" style="position: absolute; top: -9px; left: -10px; width: 130px; z-index: 10; pointer-events: none; display: block;">
+							<span style="font-size: 18px; color: #00d4aa; font-weight: 700;">Profissional <span style="background: #00d4aa; color: #fff; border-radius: 8px; padding: 2px 10px; font-size: 13px; margin-left: 6px;">MAIS VENDIDO</span></span>
+							<div class="preco-plano" style="font-size: 38px; font-weight: 800; margin: 18px 0 8px 0;">
+								R$ 199,90<span class="periodo-label" style="font-size: 18px; font-weight: 400;">/mês</span>
+							</div>
+							<ul style="list-style: none; padding: 0; margin: 0 0 18px 0; color: #b3c2d1; font-size: 15px; text-align:left;">
+								<li>✔ Importação CSV</li>
+								<li>✔ Margem de lucro</li>
+								<li>✔ Controle de validade/estoque</li>
+								<li>✔ Gráficos e rankings</li>
+							</ul>
+							<a id="btn-profissional" href="https://sun.eduzz.com/1W3ZAYRQW2" class="btn alt" style="width: 100%; text-align: center; background: #00d4aa; color: #fff;">Quero Esse Plano</a>
+						</div>
+						<!-- Premium IA -->
+						<div class="plan-card" id="plano-premium" style="background: #232c38; border: 2px solid #ffd700; border-radius: 18px; padding: 36px 28px; width: 320px; box-shadow: 0 6px 32px 0 rgba(255,215,0,0.08); display: flex; flex-direction: column; align-items: center;">
+							<span style="font-size: 18px; color: #ffd700; font-weight: 700;">Premium IA</span>
+							<div class="preco-plano" style="font-size: 38px; font-weight: 800; margin: 18px 0 8px 0;">
+								R$ 349,90<span class="periodo-label" style="font-size: 18px; font-weight: 400;">/mês</span>
+							</div>
+							<ul style="list-style: none; padding: 0; margin: 0 0 18px 0; color: #b3c2d1; font-size: 15px; text-align:left;">
+								<li>✔ Acesso a todas as ferramentas</li>
+								<li>✔ Integrações e inteligência artificial </li>
+								<li>✔ Atualizações grátis</li>
+								<li>✔ Suporte máximo</li>
+							</ul>
+							<a id="btn-premium" href="https://sun.eduzz.com/E0D6RE7Y91" class="btn" style="width: 100%; text-align: center; background: #ffd700; color: #232c38;">Ativar IA Agora</a>
+						</div>
+					</div>
+	
+					<!-- Espaço entre planos e tabela -->
+					<div style="height:32px;"></div>
+					<!-- Tabela comparativa organizada e alinhada -->
+					<div class="tabela-comparativa-container">
+						<div class="hero-stats">
+							<div class="stat">
+								<div class="section-header center">
+									<h2>Diferença entre os planos</h2>
+									<p class="section-desc">Escolha o plano certo para o seu negócio</p>
+								</div>
+								<div style="overflow-x:auto; margin-top:0;">
+									<table style="
+										width:100%;
+										max-width: 900px;
+										margin: 0 auto 36px auto;
+										border-collapse: separate;
+										border-spacing: 0;
+										background: #181f27;
+										color: #fdfdfd;
+										border-radius: 18px;
+										box-shadow: 0 4px 24px #58a6ff22;
+										font-family: 'Inter',sans-serif;
+									">
+										<thead>
+											<tr style="background:#232c38;">
+												<th style="padding:18px 12px; border-radius:18px 0 0 0; font-size:18px; font-weight:800; text-align:left; min-width:180px;">Recursos</th>
+												<th style="padding:18px 12px; font-size:18px; font-weight:700; text-align:center; min-width:140px;">Essencial</th>
+												<th style="padding:18px 12px; font-size:18px; font-weight:700; text-align:center; min-width:140px;">Profissional</th>
+												<th style="padding:18px 12px; border-radius:0 18px 0 0; font-size:18px; font-weight:700; text-align:center; min-width:140px;">Premium IA</th>
+											</tr>
+										</thead>
+										<tbody style="font-size:16px;">
+											<tr style="background:#202834;">
+												<td style="padding:14px 12px; text-align:left; border-top-left-radius:12px;">Vendas e histórico</td>
+												<td style="text-align:center;">✔</td>
+												<td style="text-align:center;">✔</td>
+												<td style="text-align:center;">✔</td>
+											</tr>
+											<tr>
+												<td style="padding:14px 12px; text-align:left;">Relatórios financeiros</td>
+												<td style="text-align:center;">✔</td>
+												<td style="text-align:center;">✔</td>
+												<td style="text-align:center;">✔</td>
+											</tr>
+											<tr style="background:#202834;">
+												<td style="padding:14px 12px; text-align:left;">Controle de estoque</td>
+												<td style="text-align:center;">✖</td>
+												<td style="text-align:center;">✔</td>
+												<td style="text-align:center;">✔</td>
+											</tr>
+											<tr>
+												<td style="padding:14px 12px; text-align:left;">Gráficos e rankings</td>
+												<td style="text-align:center;">✖</td>
+												<td style="text-align:center;">✔</td>
+												<td style="text-align:center;">✔</td>
+											</tr>
+											<tr style="background:#202834;">
+												<td style="padding:14px 12px; text-align:left;">Exportação PDF</td>
+												<td style="text-align:center;">✖</td>
+												<td style="text-align:center;">✔</td>
+												<td style="text-align:center;">✔</td>
+											</tr>
+											<tr>
+												<td style="padding:14px 12px; text-align:left;">Integrações e IA</td>
+												<td style="text-align:center;">✖</td>
+												<td style="text-align:center;">✖</td>
+												<td style="text-align:center;">✔</td>
+											</tr>
+											<tr style="background:#202834;">
+												<td style="padding:14px 12px; text-align:left; border-bottom-left-radius:12px;">Suporte prioritário</td>
+												<td style="text-align:center;">✖</td>
+												<td style="text-align:center;">✔</td>
+												<td style="text-align:center;">✔✔</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- Fim da tabela comparativa -->
+				</div>
 			</div>
+		</section>
+		<section class="hero-stats">
+			<div class="stat">
+				<div class="section-header center">
+					<h2>Funcionalidades Principais</h2>
+					<p class="section-desc">Tudo que você precisa para gerenciar sua empresa de forma eficiente</p>
+				</div>
+				<div class="product-features">
+					<div class="feature-card reveal">
+						<span class="feature-icon" style="font-size:20px;">📊</span>
+						<h3>Monitoramento em Tempo Real</h3>
+						<p>Acompanhe todos os indicadores e métricas do seu negócio em tempo real com dashboards intuitivos.</p>
+					</div>
+					<div class="feature-card reveal">
+						<span class="feature-icon" style="font-size:20px;">📈</span>
+						<h3>Relatórios Avançados</h3>
+						<p>Gere relatórios detalhados e personalizados para análise profunda do desempenho empresarial.</p>
+					</div>
+					<div class="feature-card reveal">
+						<span class="feature-icon" style="font-size:20px;">🔔</span>
+						<h3>Alertas Inteligentes</h3>
+						<p>Receba notificações automáticas sobre eventos importantes e tome decisões mais rápidas.</p>
+					</div>
+					<div class="feature-card reveal">
+						<span class="feature-icon" style="font-size:20px;">🤝</span>
+						<h3>Gestão de Equipes</h3>
+						<p>Organize e acompanhe o desempenho da sua equipe com ferramentas colaborativas.</p>
+					</div>
+					<div class="feature-card reveal">
+						<span class="feature-icon" style="font-size:20px;">💰</span>
+						<h3>Controle Financeiro</h3>
+						<p>Gerencie receitas, despesas e fluxo de caixa com precisão e segurança.</p>
+					</div>
+					<div class="feature-card reveal">
+						<span class="feature-icon" style="font-size:20px;">🤖</span>
+						<h3>WhatsApp IA</h3>
+						<p>Recursos de inteligência artificial para automatizar processos e otimizar decisões.</p>
+					</div>
+					<div style="height: 50px;"></div>
+				</div>
+				</div>
+			</div>
+			
 		</section>
 
 		<section class="section alt reveal">
@@ -369,52 +859,52 @@
 					<h2>Por que escolher o GestãoPro?</h2>
 					<p class="section-desc">Desenvolvido por profissionais com foco em excelência e inovação</p>
 				</div>
-				<div class="differentials-list">
-					<div class="differential-item reveal">
-						<span class="differential-number">01</span>
-						<div>
-							<h3 style="margin: 0 0 8px 0; font-size: 20px;">Arquitetura Otimizada para SEO</h3>
-							<p style="margin: 0; color: var(--text-secondary);">Sistema desenvolvido com as melhores práticas de performance e otimização para mecanismos de busca.</p>
-						</div>
-					</div>
-					<div class="differential-item reveal">
-						<span class="differential-number">02</span>
-						<div>
-							<h3 style="margin: 0 0 8px 0; font-size: 20px;">Conteúdo Claro e Objetivo</h3>
-							<p style="margin: 0; color: var(--text-secondary);">Informações apresentadas de forma direta e compreensível, facilitando a tomada de decisões.</p>
-						</div>
-					</div>
-					<div class="differential-item reveal">
-						<span class="differential-number">03</span>
-						<div>
-							<h3 style="margin: 0 0 8px 0; font-size: 20px;">Navegação Fluida</h3>
-							<p style="margin: 0; color: var(--text-secondary);">Interface responsiva e intuitiva que proporciona uma experiência de uso excepcional.</p>
-						</div>
-					</div>
-					<div class="differential-item reveal">
-						<span class="differential-number">04</span>
-						<div>
-							<h3 style="margin: 0 0 8px 0; font-size: 20px;">Suporte 24/7</h3>
-							<p style="margin: 0; color: var(--text-secondary);">Equipe dedicada pronta para auxiliar sua empresa a qualquer momento.</p>
-						</div>
-					</div>
-					<div class="differential-item reveal">
-						<span class="differential-number">05</span>
-						<div>
-							<h3 style="margin: 0 0 8px 0; font-size: 20px;">Atualizações Constantes</h3>
-							<p style="margin: 0; color: var(--text-secondary);">Novas funcionalidades e melhorias implementadas regularmente sem custo adicional.</p>
-						</div>
-					</div>
-					<div class="differential-item reveal">
-						<span class="differential-number">06</span>
-						<div>
-							<h3 style="margin: 0 0 8px 0; font-size: 20px;">Segurança de dados</h3>
-							<p style="margin: 0; color: var(--text-secondary);">Criado por especialistas em segurança cibernética e desenvolvimento de software de alta qualidade.</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
+				<div class="differentials-list" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; margin-top: 32px;">
+            <div class="differential-item reveal" style="display: flex; align-items: flex-start; gap: 20px; padding: 24px; background: rgba(22, 27, 34, 0.4); border-left: 4px solid var(--brand); border-radius: var(--radius-md); min-height: 120px;">
+                <span class="differential-number">01</span>
+                <div>
+                    <h3 style="margin: 0 0 8px 0; font-size: 20px;">Arquitetura Otimizada para SEO</h3>
+                    <p style="margin: 0; color: var(--text-secondary);">Sistema desenvolvido com as melhores práticas de performance e otimização para mecanismos de busca.</p>
+                </div>
+            </div>
+            <div class="differential-item reveal" style="display: flex; align-items: flex-start; gap: 20px; padding: 24px; background: rgba(22, 27, 34, 0.4); border-left: 4px solid var(--brand); border-radius: var(--radius-md); min-height: 120px;">
+                <span class="differential-number">02</span>
+                <div>
+                    <h3 style="margin: 0 0 8px 0; font-size: 20px;">Conteúdo Claro e Objetivo</h3>
+                    <p style="margin: 0; color: var(--text-secondary);">Informações apresentadas de forma direta e compreensível, facilitando a tomada de decisões.</p>
+                </div>
+            </div>
+            <div class="differential-item reveal" style="display: flex; align-items: flex-start; gap: 20px; padding: 24px; background: rgba(22, 27, 34, 0.4); border-left: 4px solid var(--brand); border-radius: var(--radius-md); min-height: 120px;">
+                <span class="differential-number">03</span>
+                <div>
+                    <h3 style="margin: 0 0 8px 0; font-size: 20px;">Navegação Fluida</h3>
+                    <p style="margin: 0; color: var(--text-secondary);">Interface responsiva e intuitiva que proporciona uma experiência de uso excepcional.</p>
+                </div>
+            </div>
+            <div class="differential-item reveal" style="display: flex; align-items: flex-start; gap: 20px; padding: 24px; background: rgba(22, 27, 34, 0.4); border-left: 4px solid var(--brand); border-radius: var(--radius-md); min-height: 120px;">
+                <span class="differential-number">04</span>
+                <div>
+                    <h3 style="margin: 0 0 8px 0; font-size: 20px;">Suporte 24/7</h3>
+                    <p style="margin: 0; color: var(--text-secondary);">Equipe dedicada pronta para auxiliar sua empresa a qualquer momento.</p>
+                </div>
+            </div>
+            <div class="differential-item reveal" style="display: flex; align-items: flex-start; gap: 20px; padding: 24px; background: rgba(22, 27, 34, 0.4); border-left: 4px solid var(--brand); border-radius: var(--radius-md); min-height: 120px;">
+                <span class="differential-number">05</span>
+                <div>
+                    <h3 style="margin: 0 0 8px 0; font-size: 20px;">Atualizações Constantes</h3>
+                    <p style="margin: 0; color: var(--text-secondary); font-size: 15px;">Novas funcionalidades e melhorias implementadas regularmente sem custo adicional.</p>
+                </div>
+            </div>
+            <div class="differential-item reveal" style="display: flex; align-items: flex-start; gap: 20px; padding: 24px; background: rgba(22, 27, 34, 0.4); border-left: 4px solid var(--brand); border-radius: var(--radius-md); min-height: 120px;">
+                <span class="differential-number">06</span>
+                <div>
+                    <h3 style="margin: 0 0 8px 0; font-size: 20px;">Segurança de dados</h3>
+                    <p style="margin: 0; color: var(--text-secondary); font-size: 15px;">Criado por especialistas em segurança cibernética e desenvolvimento de software de alta qualidade.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
 		<section class="section alt reveal">
 			<div class="container">
@@ -426,7 +916,8 @@
 				<!-- Elfsight Google Reviews | Untitled Google Reviews -->
 				<script src="https://elfsightcdn.com/platform.js" async></script>
 				<div class="elfsight-app-af2a2eee-344c-4631-88e1-7db38b8b588c" data-elfsight-app-lazy></div>
-
+			</div>
+		</section>
 		<section class="section reveal">
 			<div class="container" style="text-align: center;">
 				<div class="section-header center">
@@ -441,7 +932,7 @@
 							<path d="M5 12h14M12 5l7 7-7 7"/>
 						</svg>
 					</a>
-					<a href="sistema-c.html" class="btn alt" style="font-size: 18px; padding: 18px 40px;">
+					<a href="sistema-a.html" class="btn alt" style="font-size: 18px; padding: 18px 40px;">
 						<span>Voltar ao início</span>
 					</a>
 				</div>
@@ -459,7 +950,7 @@
 					<div class="social">
                         <a target="_blank" rel="noopener" aria-label="GitHub">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+                                <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.0 0 0024 12c0-6.63-5.37-12-12-12z"/>
                             </svg>
                         </a>
                         <a target="_blank" rel="noopener" aria-label="LinkedIn">
@@ -476,8 +967,9 @@
 				</div>
 				<nav class="footer-col">
 					<strong class="footer-title">Links</strong>
-					<a href=>Plano Anual</a>
-					<a href=>Plano Mensal</a>
+					<a>Plano Essencial</a>
+					<a>Plano Profissional </a>
+					<a>Plano Premium IA</a>
 				</nav>
 				<div class="footer-col">
 					<strong class="footer-title">Contato</strong>
@@ -491,5 +983,14 @@
 			</div>
 	</footer>
 	<script src="script.js"></script>
+	<!-- Hotmart Launcher -->
+	<script>
+		(function(l,a,u,n,c,h,e,r){l['HotmartLauncherObject']=c;l[c]=l[c]||function(){
+		(l[c].q=l[c].q||[]).push(arguments)},l[c].l=1*new Date();h=a.createElement(u),
+		e=a.getElementsByTagName(u)[0];h.async=1;h.src=n;e.parentNode.insertBefore(h,e)
+		})(window,document,'script','//launcher.hotmart.com/launcher.js','hot');
+		hot('account','22667724-c8d1-3164-bc30-5f7ae4848f18');
+	</script>
+	<!-- End Hotmart Launcher -->
 </body>
 </html>
