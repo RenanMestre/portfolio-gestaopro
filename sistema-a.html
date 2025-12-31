@@ -423,7 +423,7 @@ software de gestão para pequenas empresas"/>
 	<!-- End Facebook Pixel Code 2 -->
 </head>
 <body>
-	<header class="site-header">
+	<header class="site-header" role="banner">
 		<div class="container header-inner">
 			<div class="brand">
 				<img src="img/logo escura png.png" alt="Logo da Empresa" class="brand-logo">
@@ -433,59 +433,50 @@ software de gestão para pequenas empresas"/>
 				<span></span>
 				<span></span>
 			</button>
-			<nav class="nav">
+			<nav class="nav" aria-label="Menu principal">
 				<a href="sistema-a.html">Voltar</a>
 				<a href="https://sandbox.gestaoproapp.com.br/login">Entrar</a>
 			</nav>
 		</div>
 	</header>
-	<main>
-		<section class="hero reveal">
+	<main id="conteudo-principal">
+		<!-- HERO SECTION -->
+		<section class="hero reveal" aria-labelledby="titulo-hero">
 			<div class="hero-bg"></div>
 			<div class="container hero-inner">
-				<div class="hero-badge">🚀 Sistema de Gestão Inteligente</div>
-				<h1>Organize sua empresa <span class="gradient-text">aumente o lucro</span> e pare de perder dinheiro</h1>
+				<span class="hero-badge">🚀 Sistema de Gestão Inteligente</span>
+				<h1 id="titulo-hero">
+					Organize sua empresa <span class="gradient-text">aumente o lucro</span> e pare de perder dinheiro
+				</h1>
 				<div class="section-header center">
-			<p class="section-desc" style="color:#b3c2d1;">
-				Mais de 80% das pequenas empresas fecham por falta de gestão.<br>
-				O <strong>Gestão Pro</strong> resolve isso controlando vendas, estoque, financeiro e atendimento em um único sistema simples e eficiente.
-			</p>
-		</div>
-				
-				<iframe width="560" height="315" src="https://www.youtube.com/embed/gaE7cP9RZb4?si=fpCObhdImZIrzRYa" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-	
-			
-		
-			
-				<!-- Espaço extra abaixo do vídeo -->
-				 
-	
-		<div class="hero-stats">
-					<div class="stat">
-						<strong>500+</strong>
-						<span>Usuários</span>
-					</div>
-					<div class="stat">
-						<strong>98%</strong>
-						<span>Satisfação</span>
-					</div>
-					<div class="stat">
-						<strong>24/7</strong>
-						<span>Suporte</span>
-					</div>	
+					<p class="section-desc" style="color:#b3c2d1;">
+						Mais de 80% das pequenas empresas fecham por falta de gestão.<br>
+						O <strong>Gestão Pro</strong> resolve isso controlando vendas, estoque, financeiro e atendimento em um único sistema simples e eficiente.
+					</p>
 				</div>
+				<figure>
+					<iframe width="560" height="315" src="https://www.youtube.com/embed/gaE7cP9RZb4?si=fpCObhdImZIrzRYa" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+				</figure>
+				<div class="hero-stats" aria-label="Estatísticas do sistema">
+					<ul style="display:flex;gap:32px;list-style:none;padding:0;margin:0;">
+						<li class="stat">
+							<strong>500+</strong>
+							<span>Usuários</span>
+						</li>
+						<li class="stat">
+							<strong>98%</strong>
+							<span>Satisfação</span>
+						</li>
+						<li class="stat">
+							<strong>24/7</strong>
+							<span>Suporte</span>
+						</li>
+					</ul>
 				</div>
-				<div class="hero-stats">
-					<div class="stat">
-					<p style="
-						text-align: center;
-						font-size: 1.18rem;
-						font-weight: 600;
-						color: #fdfdfd;
-						margin: 0 0 10px 0;
-						letter-spacing: 0.01em;
-						font-family: 'Inter', sans-serif;
-					">
+			</div>
+			<aside class="hero-stats" aria-label="Liberdade de assinatura">
+				<div class="stat">
+					<p style="text-align: center; font-size: 1.18rem; font-weight: 600; color: #fdfdfd; margin: 0 0 10px 0; letter-spacing: 0.01em; font-family: 'Inter', sans-serif;">
 						Você tem liberdade total: <span style="font-weight:700; font-size:1.18rem;">cancele quando quiser</span> e mantenha o controle da sua assinatura.<br>
 						<span style="color:#58a6ff; font-weight:700; font-size:1.35rem; display:inline-block; margin-top:6px;">Escolha seu plano abaixo:</span>
 					</p>
@@ -723,10 +714,10 @@ software de gestão para pequenas empresas"/>
 					<!-- Fim do botão de alternância -->
 
 					<!-- Planos novos no padrão do site (AGORA ACIMA DA TABELA) -->
-					<div class="plans-container" style="display: flex; flex-wrap: wrap; gap: 32px; justify-content: center;">
+					<div class="plans-container" style="display: flex; flex-wrap: wrap; gap: 32px; justify-content: center;" aria-label="Planos disponíveis">
 						<!-- Essencial -->
-						<div class="plan-card" id="plano-essencial" style="background: #181f27; border: 2px solid #58a6ff; border-radius: 18px; padding: 36px 28px; width: 320px; box-shadow: 0 6px 32px 0 rgba(88,166,255,0.08); display: flex; flex-direction: column; align-items: center;">
-							<span style="font-size: 18px; color: #58a6ff; font-weight: 700;">Essencial</span>
+						<article class="plan-card" id="plano-essencial" style="background: #181f27; border: 2px solid #58a6ff; border-radius: 18px; padding: 36px 28px; width: 320px; box-shadow: 0 6px 32px 0 rgba(88,166,255,0.08); display: flex; flex-direction: column; align-items: center;" aria-labelledby="plano-essencial-titulo">
+							<span id="plano-essencial-titulo" style="font-size: 18px; color: #58a6ff; font-weight: 700;">Essencial</span>
 							<div class="preco-plano" style="font-size: 38px; font-weight: 800; margin: 18px 0 8px 0;">
 								R$ 59,90<span class="periodo-label" style="font-size: 18px; font-weight: 400;">/mês</span>
 							</div>
@@ -737,12 +728,11 @@ software de gestão para pequenas empresas"/>
 								<li>✔ Backup automático diário</li>
 							</ul>
 							<a id="btn-essencial" href="https://app.keedpay.com.br/checkout/cIUOsEjSTdl" class="btn" style="width: 100%; text-align: center;">Assinar Agora</a>
-						</div>
+						</article>
 						<!-- Profissional -->
-						<div class="plan-card" id="plano-profissional" style="background: #181f27; border: 2px solid #00d4aa; border-radius: 18px; padding: 36px 28px; width: 320px; box-shadow: 0 6px 32px 0 rgba(0,212,170,0.08); display: flex; flex-direction: column; align-items: center; position: relative;">
-							<!-- Selo MAIS VENDIDO no canto superior esquerdo -->
+						<article class="plan-card" id="plano-profissional" style="background: #181f27; border: 2px solid #00d4aa; border-radius: 18px; padding: 36px 28px; width: 320px; box-shadow: 0 6px 32px 0 rgba(0,212,170,0.08); display: flex; flex-direction: column; align-items: center; position: relative;" aria-labelledby="plano-profissional-titulo">
 							<img src="img/maisvendido.png" alt="Mais Vendido" style="position: absolute; top: -9px; left: -10px; width: 130px; z-index: 10; pointer-events: none; display: block;">
-							<span style="font-size: 18px; color: #00d4aa; font-weight: 700;">Profissional <span style="background: #00d4aa; color: #fff; border-radius: 8px; padding: 2px 10px; font-size: 13px; margin-left: 6px;">MAIS VENDIDO</span></span>
+							<span id="plano-profissional-titulo" style="font-size: 18px; color: #00d4aa; font-weight: 700;">Profissional <span style="background: #00d4aa; color: #fff; border-radius: 8px; padding: 2px 10px; font-size: 13px; margin-left: 6px;">MAIS VENDIDO</span></span>
 							<div class="preco-plano" style="font-size: 38px; font-weight: 800; margin: 18px 0 8px 0;">
 								R$ 199,90<span class="periodo-label" style="font-size: 18px; font-weight: 400;">/mês</span>
 							</div>
@@ -753,10 +743,10 @@ software de gestão para pequenas empresas"/>
 								<li>✔ Gráficos e rankings</li>
 							</ul>
 							<a id="btn-profissional" href="https://app.keedpay.com.br/checkout/5RiBBO4H1ZC" class="btn alt" style="width: 100%; text-align: center; background: #00d4aa; color: #fff;">Quero Esse Plano</a>
-						</div>
+						</article>
 						<!-- Premium IA -->
-						<div class="plan-card" id="plano-premium" style="background: #232c38; border: 2px solid #ffd700; border-radius: 18px; padding: 36px 28px; width: 320px; box-shadow: 0 6px 32px 0 rgba(255,215,0,0.08); display: flex; flex-direction: column; align-items: center;">
-							<span style="font-size: 18px; color: #ffd700; font-weight: 700;">Premium IA</span>
+						<article class="plan-card" id="plano-premium" style="background: #232c38; border: 2px solid #ffd700; border-radius: 18px; padding: 36px 28px; width: 320px; box-shadow: 0 6px 32px 0 rgba(255,215,0,0.08); display: flex; flex-direction: column; align-items: center;" aria-labelledby="plano-premium-titulo">
+							<span id="plano-premium-titulo" style="font-size: 18px; color: #ffd700; font-weight: 700;">Premium IA</span>
 							<div class="preco-plano" style="font-size: 38px; font-weight: 800; margin: 18px 0 8px 0;">
 								R$ 349,90<span class="periodo-label" style="font-size: 18px; font-weight: 400;">/mês</span>
 							</div>
@@ -767,7 +757,7 @@ software de gestão para pequenas empresas"/>
 								<li>✔ Suporte máximo</li>
 							</ul>
 							<a id="btn-premium" href="https://app.keedpay.com.br/checkout/RSzdUgoGHou" class="btn" style="width: 100%; text-align: center; background: #ffd700; color: #232c38;">Ativar IA Agora</a>
-						</div>
+						</article>
 					</div>
 	
 					<!-- Espaço entre planos e tabela -->
@@ -854,163 +844,161 @@ software de gestão para pequenas empresas"/>
 				</div>
 			</div>
 		</section>
-		<section class="hero-stats">
+		<!-- FUNCIONALIDADES PRINCIPAIS -->
+		<section class="hero-stats" aria-labelledby="funcionalidades-titulo">
 			<div class="stat">
 				<div class="section-header center">
-					<h2>Funcionalidades Principais</h2>
+					<h2 id="funcionalidades-titulo">Funcionalidades Principais</h2>
 					<p class="section-desc">Tudo que você precisa para gerenciar sua empresa de forma eficiente</p>
 				</div>
-				<div class="product-features">
-					<div class="feature-card reveal">
+				<ul class="product-features" style="list-style:none;padding:0;margin:0;">
+					<li class="feature-card reveal">
 						<span class="feature-icon" style="font-size:20px;">📊</span>
 						<h3>Monitoramento em Tempo Real</h3>
 						<p>Acompanhe todos os indicadores e métricas do seu negócio em tempo real com dashboards intuitivos.</p>
-					</div>
-					<div class="feature-card reveal">
+					</li>
+					<li class="feature-card reveal">
 						<span class="feature-icon" style="font-size:20px;">📈</span>
 						<h3>Relatórios Avançados</h3>
 						<p>Gere relatórios detalhados e personalizados para análise profunda do desempenho empresarial.</p>
-					</div>
-					<div class="feature-card reveal">
+					</li>
+					<li class="feature-card reveal">
 						<span class="feature-icon" style="font-size:20px;">🔔</span>
 						<h3>Alertas Inteligentes</h3>
 						<p>Receba notificações automáticas sobre eventos importantes e tome decisões mais rápidas.</p>
-					</div>
-					<div class="feature-card reveal">
+					</li>
+					<li class="feature-card reveal">
 						<span class="feature-icon" style="font-size:20px;">🤝</span>
 						<h3>Gestão de Equipes</h3>
 						<p>Organize e acompanhe o desempenho da sua equipe com ferramentas colaborativas.</p>
-					</div>
-					<div class="feature-card reveal">
+					</li>
+					<li class="feature-card reveal">
 						<span class="feature-icon" style="font-size:20px;">💰</span>
 						<h3>Controle Financeiro</h3>
 						<p>Gerencie receitas, despesas e fluxo de caixa com precisão e segurança.</p>
-					</div>
-					<div class="feature-card reveal">
+					</li>
+					<li class="feature-card reveal">
 						<span class="feature-icon" style="font-size:20px;">🤖</span>
 						<h3>WhatsApp IA</h3>
 						<p>Recursos de inteligência artificial para automatizar processos e otimizar decisões.</p>
-					</div>
-					<div style="height: 50px;"></div>
-				</div>
-				</div>
+					</li>
+				</ul>
 			</div>
-			
 		</section>
-
-		<section class="section alt reveal">
+		<!-- BENEFÍCIOS -->
+		<section class="section alt reveal" aria-labelledby="beneficios-titulo">
 			<div class="container">
 				<div class="section-header center">
 					<span class="label">Vantagens</span>
-					<h2>Benefícios do GestãoPro</h2>
+					<h2 id="beneficios-titulo">Benefícios do GestãoPro</h2>
 					<p class="section-desc">Descubra como nossa solução pode transformar sua gestão empresarial</p>
 				</div>
-				<div class="benefits-grid">
-					<div class="benefit-item reveal">
+				<ul class="benefits-grid" style="list-style:none;padding:0;margin:0;">
+					<li class="benefit-item reveal">
 						<span class="benefit-icon">⚡</span>
 						<div>
 							<h3 style="margin: 0 0 8px 0; font-size: 18px;">Aumento de Produtividade</h3>
 							<p style="margin: 0; color: var(--text-secondary); font-size: 15px;">Automatize tarefas repetitivas e ganhe até 40% mais tempo para focar no que realmente importa.</p>
 						</div>
-					</div>
-					<div class="benefit-item reveal">
+					</li>
+					<li class="benefit-item reveal">
 						<span class="benefit-icon">💡</span>
 						<div>
 							<h3 style="margin: 0 0 8px 0; font-size: 18px;">Decisões Baseadas em Dados</h3>
 							<p style="margin: 0; color: var(--text-secondary); font-size: 15px;">Tenha acesso a insights valiosos para tomar decisões estratégicas com confiança.</p>
 						</div>
-					</div>
-					<div class="benefit-item reveal">
+					</li>
+					<li class="benefit-item reveal">
 						<span class="benefit-icon">🔒</span>
 						<div>
 							<h3 style="margin: 0 0 8px 0; font-size: 18px;">Segurança de Dados</h3>
 							<p style="margin: 0; color: var(--text-secondary); font-size: 15px;">Criptografia avançada e backups automáticos garantem a proteção das suas informações.</p>
 						</div>
-					</div>
-					<div class="benefit-item reveal">
+					</li>
+					<li class="benefit-item reveal">
 						<span class="benefit-icon">📱</span>
 						<div>
 							<h3 style="margin: 0 0 8px 0; font-size: 18px;">Acesso de Qualquer Lugar</h3>
 							<p style="margin: 0; color: var(--text-secondary); font-size: 15px;">Sistema 100% web responsivo, acessível de computadores, tablets e smartphones.</p>
 						</div>
-					</div>
-					<div class="benefit-item reveal">
+					</li>
+					<li class="benefit-item reveal">
 						<span class="benefit-icon">💵</span>
 						<div>
 							<h3 style="margin: 0 0 8px 0; font-size: 18px;">Redução de Custos</h3>
 							<p style="margin: 0; color: var(--text-secondary); font-size: 15px;">Elimine desperdícios e otimize recursos com análises precisas de gastos.</p>
 						</div>
-					</div>
-					<div class="benefit-item reveal">
+					</li>
+					<li class="benefit-item reveal">
 						<span class="benefit-icon">🎯</span>
 						<div>
 							<h3 style="margin: 0 0 8px 0; font-size: 18px;">Facilidade de Uso</h3>
 							<p style="margin: 0; color: var(--text-secondary); font-size: 15px;">Interface intuitiva que não requer treinamento extensivo para começar a usar.</p>
 						</div>
-					</div>
-				</div>
+					</li>
+				</ul>
 			</div>
 		</section>
-
-		<section class="section reveal">
+		<!-- DIFERENCIAIS -->
+		<section class="section reveal" aria-labelledby="diferenciais-titulo">
 			<div class="container">
 				<div class="section-header center">
 					<span class="label">Diferenciais</span>
-					<h2>Por que escolher o GestãoPro?</h2>
+					<h2 id="diferenciais-titulo">Por que escolher o GestãoPro?</h2>
 					<p class="section-desc">Desenvolvido por profissionais com foco em excelência e inovação</p>
 				</div>
-				<div class="differentials-list" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; margin-top: 32px;">
-            <div class="differential-item reveal" style="display: flex; align-items: flex-start; gap: 20px; padding: 24px; background: rgba(22, 27, 34, 0.4); border-left: 4px solid var(--brand); border-radius: var(--radius-md); min-height: 120px;">
-                <span class="differential-number">01</span>
-                <div>
-                    <h3 style="margin: 0 0 8px 0; font-size: 20px;">Arquitetura Otimizada para SEO</h3>
-                    <p style="margin: 0; color: var(--text-secondary);">Sistema desenvolvido com as melhores práticas de performance e otimização para mecanismos de busca.</p>
-                </div>
-            </div>
-            <div class="differential-item reveal" style="display: flex; align-items: flex-start; gap: 20px; padding: 24px; background: rgba(22, 27, 34, 0.4); border-left: 4px solid var(--brand); border-radius: var(--radius-md); min-height: 120px;">
-                <span class="differential-number">02</span>
-                <div>
-                    <h3 style="margin: 0 0 8px 0; font-size: 20px;">Conteúdo Claro e Objetivo</h3>
-                    <p style="margin: 0; color: var(--text-secondary);">Informações apresentadas de forma direta e compreensível, facilitando a tomada de decisões.</p>
-                </div>
-            </div>
-            <div class="differential-item reveal" style="display: flex; align-items: flex-start; gap: 20px; padding: 24px; background: rgba(22, 27, 34, 0.4); border-left: 4px solid var(--brand); border-radius: var(--radius-md); min-height: 120px;">
-                <span class="differential-number">03</span>
-                <div>
-                    <h3 style="margin: 0 0 8px 0; font-size: 20px;">Navegação Fluida</h3>
-                    <p style="margin: 0; color: var(--text-secondary);">Interface responsiva e intuitiva que proporciona uma experiência de uso excepcional.</p>
-                </div>
-            </div>
-            <div class="differential-item reveal" style="display: flex; align-items: flex-start; gap: 20px; padding: 24px; background: rgba(22, 27, 34, 0.4); border-left: 4px solid var(--brand); border-radius: var(--radius-md); min-height: 120px;">
-                <span class="differential-number">04</span>
-                <div>
-                    <h3 style="margin: 0 0 8px 0; font-size: 20px;">Suporte 24/7</h3>
-                    <p style="margin: 0; color: var(--text-secondary);">Equipe dedicada pronta para auxiliar sua empresa a qualquer momento.</p>
-                </div>
-            </div>
-            <div class="differential-item reveal" style="display: flex; align-items: flex-start; gap: 20px; padding: 24px; background: rgba(22, 27, 34, 0.4); border-left: 4px solid var(--brand); border-radius: var(--radius-md); min-height: 120px;">
-                <span class="differential-number">05</span>
-                <div>
-                    <h3 style="margin: 0 0 8px 0; font-size: 20px;">Atualizações Constantes</h3>
-                    <p style="margin: 0; color: var(--text-secondary); font-size: 15px;">Novas funcionalidades e melhorias implementadas regularmente sem custo adicional.</p>
-                </div>
-            </div>
-            <div class="differential-item reveal" style="display: flex; align-items: flex-start; gap: 20px; padding: 24px; background: rgba(22, 27, 34, 0.4); border-left: 4px solid var(--brand); border-radius: var(--radius-md); min-height: 120px;">
-                <span class="differential-number">06</span>
-                <div>
-                    <h3 style="margin: 0 0 8px 0; font-size: 20px;">Segurança de dados</h3>
-                    <p style="margin: 0; color: var(--text-secondary); font-size: 15px;">Criado por especialistas em segurança cibernética e desenvolvimento de software de alta qualidade.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-		<section class="section alt reveal">
+				<ul class="differentials-list" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; margin-top: 32px; list-style:none;padding:0;">
+					<li class="differential-item reveal" style="display: flex; align-items: flex-start; gap: 20px; padding: 24px; background: rgba(22, 27, 34, 0.4); border-left: 4px solid var(--brand); border-radius: var(--radius-md); min-height: 120px;">
+						<span class="differential-number">01</span>
+						<div>
+							<h3 style="margin: 0 0 8px 0; font-size: 20px;">Arquitetura Otimizada para SEO</h3>
+							<p style="margin: 0; color: var(--text-secondary);">Sistema desenvolvido com as melhores práticas de performance e otimização para mecanismos de busca.</p>
+						</div>
+					</li>
+					<li class="differential-item reveal" style="display: flex; align-items: flex-start; gap: 20px; padding: 24px; background: rgba(22, 27, 34, 0.4); border-left: 4px solid var(--brand); border-radius: var(--radius-md); min-height: 120px;">
+						<span class="differential-number">02</span>
+						<div>
+							<h3 style="margin: 0 0 8px 0; font-size: 20px;">Conteúdo Claro e Objetivo</h3>
+							<p style="margin: 0; color: var(--text-secondary);">Informações apresentadas de forma direta e compreensível, facilitando a tomada de decisões.</p>
+						</div>
+					</li>
+					<li class="differential-item reveal" style="display: flex; align-items: flex-start; gap: 20px; padding: 24px; background: rgba(22, 27, 34, 0.4); border-left: 4px solid var(--brand); border-radius: var(--radius-md); min-height: 120px;">
+						<span class="differential-number">03</span>
+						<div>
+							<h3 style="margin: 0 0 8px 0; font-size: 20px;">Navegação Fluida</h3>
+							<p style="margin: 0; color: var(--text-secondary);">Interface responsiva e intuitiva que proporciona uma experiência de uso excepcional.</p>
+						</div>
+					</li>
+					<li class="differential-item reveal" style="display: flex; align-items: flex-start; gap: 20px; padding: 24px; background: rgba(22, 27, 34, 0.4); border-left: 4px solid var(--brand); border-radius: var(--radius-md); min-height: 120px;">
+						<span class="differential-number">04</span>
+						<div>
+							<h3 style="margin: 0 0 8px 0; font-size: 20px;">Suporte 24/7</h3>
+							<p style="margin: 0; color: var(--text-secondary);">Equipe dedicada pronta para auxiliar sua empresa a qualquer momento.</p>
+						</div>
+					</li>
+					<li class="differential-item reveal" style="display: flex; align-items: flex-start; gap: 20px; padding: 24px; background: rgba(22, 27, 34, 0.4); border-left: 4px solid var(--brand); border-radius: var(--radius-md); min-height: 120px;">
+						<span class="differential-number">05</span>
+						<div>
+							<h3 style="margin: 0 0 8px 0; font-size: 20px;">Atualizações Constantes</h3>
+							<p style="margin: 0; color: var(--text-secondary); font-size: 15px;">Novas funcionalidades e melhorias implementadas regularmente sem custo adicional.</p>
+						</div>
+					</li>
+					<li class="differential-item reveal" style="display: flex; align-items: flex-start; gap: 20px; padding: 24px; background: rgba(22, 27, 34, 0.4); border-left: 4px solid var(--brand); border-radius: var(--radius-md); min-height: 120px;">
+						<span class="differential-number">06</span>
+						<div>
+							<h3 style="margin: 0 0 8px 0; font-size: 20px;">Segurança de dados</h3>
+							<p style="margin: 0; color: var(--text-secondary); font-size: 15px;">Criado por especialistas em segurança cibernética e desenvolvimento de software de alta qualidade.</p>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</section>
+		<!-- AVALIAÇÕES -->
+		<section class="section alt reveal" aria-labelledby="avaliacoes-titulo">
 			<div class="container">
 				<div class="section-header center">
 					<span class="label">Avaliações</span>
-					<h2>O que nossos clientes dizem</h2>
+					<h2 id="avaliacoes-titulo">O que nossos clientes dizem</h2>
 					<p class="section-desc">Feedback real de empresas que transformaram sua gestão com o GestãoPro</p>
 				</div>
 				<!-- Elfsight Google Reviews | Untitled Google Reviews -->
@@ -1018,11 +1006,12 @@ software de gestão para pequenas empresas"/>
 				<div class="elfsight-app-af2a2eee-344c-4631-88e1-7db38b8b588c" data-elfsight-app-lazy></div>
 			</div>
 		</section>
-		<section class="section reveal">
+		<!-- CTA -->
+		<section class="section reveal" aria-labelledby="cta-titulo">
 			<div class="container" style="text-align: center;">
 				<div class="section-header center">
 					<span class="label">Comece agora</span>
-					<h2>Pronto para transformar sua gestão?</h2>
+					<h2 id="cta-titulo">Pronto para transformar sua gestão?</h2>
 					<p class="section-desc">Entre em contato conosco e descubra como o GestãoPro pode impulsionar seu negócio</p>
 				</div>
 				<div class="cta" style="margin-top: 40px;">
@@ -1039,7 +1028,7 @@ software de gestão para pequenas empresas"/>
 			</div>
 		</section>
 	</main>
-	<footer class="site-footer">
+	<footer class="site-footer" role="contentinfo">
 		<div class="container footer-inner">
 			<div class="footer-grid">
 				<div class="footer-col">
@@ -1047,7 +1036,7 @@ software de gestão para pequenas empresas"/>
 						<img src="img/logo escura png.png" alt="Logo da Empresa" class="brand-logo">
 					</div>
 					<p class="footer-text">Soluções digitais focadas em resultado, performance e experiência.</p>
-					<div class="social">
+					<div class="social" aria-label="Redes sociais">
                         <a target="_blank" rel="noopener" aria-label="GitHub">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.0 0 0024 12c0-6.63-5.37-12-12-12z"/>
@@ -1065,22 +1054,27 @@ software de gestão para pequenas empresas"/>
                         </a>
                     </div>
 				</div>
-				<nav class="footer-col">
+				<nav class="footer-col" aria-label="Links rápidos">
 					<strong class="footer-title">Links</strong>
-					<a>Plano Essencial</a>
-					<a>Plano Profissional </a>
-					<a>Plano Premium IA</a>
+					<ul style="list-style:none;padding:0;margin:0;">
+						<li><a>Plano Essencial</a></li>
+						<li><a>Plano Profissional </a></li>
+						<li><a>Plano Premium IA</a></li>
+					</ul>
 				</nav>
 				<div class="footer-col">
 					<strong class="footer-title">Contato</strong>
-					<a href="mailto:gestaoproapp@gmail.com">gestaoproapp@gmail.com</a>
-					<a href="tel:+5562994496323">(62) 99449-6323</a>
+					<ul style="list-style:none;padding:0;margin:0;">
+						<li><a href="mailto:gestaoproapp@gmail.com">gestaoproapp@gmail.com</a></li>
+						<li><a href="tel:+5562994496323">(62) 99449-6323</a></li>
+					</ul>
 				</div>
 			</div>
 			<div class="footer-bottom">
 				<span>© <span id="year"></span> GestãoPro. Todos os direitos reservados.</span>
 				<span>Desenvolvido por <strong><a target="_blank" rel="noopener" style="color: inherit; text-decoration: none;">ScriptHadder</a></strong></span>
 			</div>
+		</div>
 	</footer>
 	<script src="script.js"></script>
 	<!-- Hotmart Launcher -->
