@@ -85,10 +85,10 @@
       box-shadow: 0 2px 12px #00d4aa33;
     }
     .header {
-      background: linear-gradient(120deg, #1a2332 0%, #22304a 60%, #1e2a3a 100%);
+      background: #f6f8fa;
       padding: 32px 0 24px 0;
       text-align: center;
-      color: #fff;
+      color: #232c38;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -110,12 +110,13 @@
       max-width: 700px;
       margin-left: auto;
       margin-right: auto;
+      color: #1a2332;
     }
     .header p {
       font-size: 1.18rem;
       font-weight: 500;
       margin: 0 0 10px 0;
-      color: #eaf6ff;
+      color: #2d3a4a;
       text-align: center;
       max-width: 700px;
       margin-left: auto;
@@ -123,8 +124,8 @@
     }
     .cta-btn {
       display: inline-block;
-      background: #fff;
-      color: #00bfae;
+      background: #232c38;
+      color: #fff;
       font-weight: 700;
       font-size: 1.15rem;
       padding: 16px 38px;
@@ -197,102 +198,177 @@
       font-weight: 800;
       margin: 56px 0 18px 0;
       text-align: center;
-      color: #232c38;
+      color: #1a2332;
       width: 100%;
     }
     .plans {
       display: flex;
       flex-wrap: wrap;
-      gap: 32px;
+      gap: 38px;
       justify-content: center;
       margin: 48px 0 0 0;
       width: 100%;
     }
     .plan-card {
-      background: #fff;
-      border-radius: 16px;
-      box-shadow: 0 2px 16px #58a6ff11;
-      border: 2px solid #e3eaf3;
-      padding: 36px 28px;
-      width: 320px;
+      background: linear-gradient(135deg, #232c38 0%, #181f27 100%);
+      border-radius: 22px;
+      box-shadow: 0 8px 32px #00d4aa33, 0 2px 16px #181f2733;
+      border: 2.5px solid #232c38;
+      padding: 44px 32px 38px 32px;
+      width: 340px;
       display: flex;
       flex-direction: column;
       align-items: center;
       position: relative;
-      transition: border .2s, box-shadow .2s;
+      transition: border .2s, box-shadow .2s, transform .18s;
       margin: 0 auto;
+      z-index: 1;
+      overflow: hidden;
+    }
+    .plan-card:hover {
+      border-color: #00d4aa;
+      box-shadow: 0 12px 48px #00d4aa55, 0 2px 16px #181f2733;
+      transform: scale(1.03);
     }
     .plan-card.popular {
-      border: 2px solid #00d4aa;
-      box-shadow: 0 8px 32px #00d4aa22;
+      border: 2.5px solid #00d4aa;
+      box-shadow: 0 12px 48px #00d4aa88, 0 2px 16px #181f2733;
+      background: linear-gradient(135deg, #00d4aa 0%, #232c38 100%);
     }
     .plan-title {
-      font-size: 1.18rem;
-      font-weight: 700;
-      color: #00d4aa;
+      font-size: 1.32rem;
+      font-weight: 800;
+      color: #f6f8fa;
       margin-bottom: 8px;
       text-align: center;
+      letter-spacing: -0.5px;
+      text-transform: uppercase;
+      text-shadow: 0 2px 8px #232c38cc;
+    }
+    .plan-card.popular .plan-title {
+      color: #fff;
+      text-shadow: 0 2px 8px #00d4aa99;
+    }
+    .plan-card[style*="border-color:#ffd700;"] .plan-title {
+      color: #fff !important;
+      font-weight: 800;
+      text-shadow: 0 2px 8px #ffd70099;
     }
     .plan-price {
-      font-size: 2.2rem;
-      font-weight: 800;
+      font-size: 2.4rem;
+      font-weight: 900;
       margin: 10px 0 8px 0;
-      color: #232c38;
+      color: #f6f8fa;
       text-align: center;
+      letter-spacing: -1px;
+      background: linear-gradient(90deg, #fff 0%, #58a6ff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-shadow: 0 2px 8px #232c38cc;
+    }
+    .plan-card.popular .plan-price {
+      color: #ffd700;
+      background: linear-gradient(90deg, #ffd700 0%, #fff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-shadow: 0 2px 8px #ffd70099;
+    }
+    .plan-card[style*="border-color:#ffd700;"] .plan-price {
+      background: none;
+      color: #fff !important;
+      -webkit-text-fill-color: initial;
+      text-shadow: 0 2px 8px #ffd70099;
     }
     .plan-desc {
-      font-size: 1rem;
-      color: #5a6b7b;
+      font-size: 1.08rem;
+      color: #f6f8fa;
       margin-bottom: 18px;
       text-align: center;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+      text-shadow: 0 2px 8px #232c38cc;
     }
     .plan-features {
       list-style: none;
       padding: 0;
       margin: 0 0 18px 0;
-      color: #5a6b7b;
+      color: #f6f8fa;
       font-size: 1rem;
       text-align: left;
       width: 100%;
       max-width: 260px;
       margin-left: auto;
       margin-right: auto;
+      text-shadow: 0 2px 8px #232c38cc;
     }
     .plan-features li {
       margin-bottom: 8px;
       padding-left: 1.2em;
       text-indent: -1.2em;
+      position: relative;
+      font-size: 1.02rem;
+      font-weight: 500;
+    }
+    .plan-features li:before {
+      content: '✔';
+      color: #ffd700;
+      font-weight: bold;
+      margin-right: 6px;
+      font-size: 1.1em;
+      position: absolute;
+      left: 0;
+      top: 0;
+      text-shadow: 0 2px 8px #232c38cc;
     }
     .plan-btn {
       display: block;
       width: 100%;
-      background: #00d4aa;
+      background: linear-gradient(90deg, #00d4aa 0%, #58a6ff 100%);
       color: #fff;
-      font-weight: 700;
-      font-size: 1.08rem;
-      padding: 14px 0;
-      border-radius: 10px;
+      font-weight: 800;
+      font-size: 1.18rem;
+      padding: 16px 0;
+      border-radius: 12px;
       text-decoration: none;
       text-align: center;
       margin-top: 10px;
-      transition: background .2s;
+      letter-spacing: 0.02em;
+      box-shadow: 0 2px 12px #00d4aa33;
+      border: none;
+      transition: background .2s, color .2s, box-shadow .2s, transform .18s;
     }
     .plan-btn:hover {
-      background: #58a6ff;
+      background: linear-gradient(90deg, #232c38 0%, #00d4aa 100%);
+      color: #ffd700;
+      box-shadow: 0 8px 32px #00d4aa55;
+      transform: scale(1.04);
+    }
+    .plan-card[style*="border-color:#ffd700;"] .plan-btn {
+      background: linear-gradient(90deg, #ffd700 0%, #bfa600 100%);
+      color: #232c38 !important;
+    }
+    .plan-card[style*="border-color:#ffd700;"] .plan-btn:hover {
+      background: linear-gradient(90deg, #232c38 0%, #ffd700 100%);
+      color: #ffd700 !important;
     }
     .plan-badge {
       position: absolute;
       top: -18px;
       left: 50%;
       transform: translateX(-50%);
-      background: #ffd700;
+      background: linear-gradient(90deg, #ffd700 0%, #fffbe6 100%);
       color: #232c38;
-      font-size: 0.98rem;
-      font-weight: 700;
-      border-radius: 8px;
-      padding: 4px 18px;
+      font-size: 1.05rem;
+      font-weight: 800;
+      border-radius: 10px;
+      padding: 6px 22px;
       box-shadow: 0 2px 8px #ffd70033;
       letter-spacing: .01em;
+      border: 2px solid #fffbe6;
+      text-transform: uppercase;
+      z-index: 2;
     }
     .footer {
       background: #232c38;
@@ -341,7 +417,10 @@
       display: block;
       font-size: 1.22rem;
       font-weight: 700;
-      color: #ffd700;
+      color: #bfa600;
+    }
+    .hero-stats span {
+      color: #232c38;
     }
     .video-wrapper {
       max-width: 640px;
@@ -350,6 +429,12 @@
       overflow: hidden;
       box-shadow: 0 4px 24px #58a6ff22;
       width: 100%;
+    }
+    details summary {
+      color: #1a2332;
+    }
+    details div {
+      color: #2d3a4a;
     }
     @media (max-width: 1100px) {
       .container { max-width: 100vw; }
@@ -408,8 +493,18 @@
   </nav>
 
   <header class="header">
-    <img src="img/logonovafundoescuro.png" alt="GestãoPro Logo" class="logo">
-    <h1>Organize sua empresa aumente o lucro e pare de perder dinheiro</h1>
+    <img src="img/logo clara png.png" alt="GestãoPro Logo" class="logo">
+    <h1 style="font-size:2.8rem; font-weight:900; color:#181f27; line-height:1.15; margin-bottom:18px; letter-spacing:-1px;">
+      <span style="display:block; font-size:2.1rem; font-weight:700; color:#232c38; margin-bottom:8px;">
+        Organize sua empresa
+      </span>
+      <span style="display:block; font-size:2.5rem; font-weight:900; color:#005c7c; margin-bottom:8px;">
+        Aumente o lucro
+      </span>
+      <span style="display:block; font-size:1.5rem; font-weight:700; color:#ffffff; background: linear-gradient(90deg, #018d18 60%, #181f27 100%); padding: 4px 0; border-radius: 6px;">
+        Pare de perder dinheiro
+      </span>
+    </h1>
     <p>
       Mais de 80% das pequenas empresas fecham por falta de gestão.<br>
       O Gestão Pro resolve isso controlando vendas, estoque, financeiro e atendimento em um único sistema simples e eficiente.
@@ -437,10 +532,10 @@
         </ul>
       </div>
     <a href="#planos" class="cta-btn">Ver Planos e Preços</a>
-    <div style="height:40px;"></div>
   </header>
 
   <main>
+    <hr style="border:0;height:2px;background:linear-gradient(90deg,#58a6ff 0%,#00d4aa 100%);margin:48px auto 0 auto;max-width:420px;">
     <div class="container">
       <h2 class="section-title">Por que escolher o GestãoPro?</h2>
       <div class="features">
@@ -488,10 +583,10 @@
           <div class="plan-price">R$ 59,90 <span style="font-size:1rem;font-weight:400;">/mês</span></div>
           <div class="plan-desc">Ideal para quem está começando e precisa do básico para organizar o negócio.</div>
           <ul class="plan-features">
-            <li>✔ Vendas, clientes e estoque</li>
-            <li>✔ Relatórios financeiros completos</li>
-            <li>✔ Impressão de cupom e recibo</li>
-            <li>✔ Backup automático diário</li>
+            <li>Vendas, clientes e estoque</li>
+            <li>Relatórios financeiros completos</li>
+            <li>Impressão de cupom e recibo</li>
+            <li>Backup automático diário</li>
           </ul>
           <a href="https://app.keedpay.com.br/checkout/cIUOsEjSTdl" class="plan-btn" target="_blank">Assinar Essencial</a>
         </div>
@@ -501,10 +596,10 @@
           <div class="plan-price">R$ 199,90 <span style="font-size:1rem;font-weight:400;">/mês</span></div>
           <div class="plan-desc">Para empresas que buscam controle total e recursos avançados de gestão.</div>
           <ul class="plan-features">
-            <li>✔ Importação CSV</li>
-            <li>✔ Margem de lucro</li>
-            <li>✔ Controle de validade/estoque</li>
-            <li>✔ Gráficos e rankings</li>
+            <li>Importação CSV</li>
+            <li>Margem de lucro</li>
+            <li>Controle de validade/estoque</li>
+            <li>Gráficos e rankings</li>
           </ul>
           <a href="https://app.keedpay.com.br/checkout/5RiBBO4H1ZC" class="plan-btn" target="_blank">Assinar Profissional</a>
         </div>
@@ -513,12 +608,12 @@
           <div class="plan-price" style="color:#ffd700;">R$ 349,90 <span style="font-size:1rem;font-weight:400;">/mês</span></div>
           <div class="plan-desc">Acesso a todas as ferramentas, integrações e inteligência artificial.</div>
           <ul class="plan-features">
-            <li>✔ Todas as funcionalidades</li>
-            <li>✔ Integrações e IA</li>
-            <li>✔ Atualizações grátis</li>
-            <li>✔ Suporte máximo</li>
+            <li>Todas as funcionalidades</li>
+            <li>Integrações e IA</li>
+            <li>Atualizações grátis</li>
+            <li>Suporte máximo</li>
           </ul>
-          <a href="https://app.keedpay.com.br/checkout/RSzdUgoGHou" class="plan-btn" style="background:#ffd700;color:#232c38;" target="_blank">Assinar Premium IA</a>
+          <a href="https://app.keedpay.com.br/checkout/RSzdUgoGHou" class="plan-btn" target="_blank">Assinar Premium IA</a>
         </div>
       </div>
 
