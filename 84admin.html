@@ -1,313 +1,560 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <title>Dashboard Admin - GestãoPro</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Chart.js CDN -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <!-- Google Analytics 4 (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-G2FGBS8YY2"></script>
-    <!-- Google Ads (AW-770547516) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-770547516"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      // Configuração do Google Analytics
-      gtag('config', 'G-G2FGBS8YY2');
-      // Configuração do Google Ads
-      gtag('config', 'AW-770547516');
-    </script>
-    <style>
-        body {
-            font-family: 'Segoe UI', Arial, sans-serif;
-            background: #181c2f;
-            color: #fff;
-            margin: 0;
-        }
-        .login-container, .dashboard-container {
-            max-width: 400px;
-            margin: 80px auto;
-            background: #23274d;
-            padding: 32px;
-            border-radius: 12px;
-            box-shadow: 0 4px 24px #0005;
-        }
-        .dashboard-container {
-            max-width: 1200px;
-            margin: 40px auto;
-            padding: 32px;
-            display: none;
-        }
-        h2 {
-            text-align: center;
-            margin-bottom: 24px;
-        }
-        input[type="text"], input[type="password"] {
-            width: 100%;
-            padding: 12px;
-            margin: 8px 0 16px 0;
-            border: none;
-            border-radius: 6px;
-            background: #1a1e3a;
-            color: #fff;
-        }
-        button {
-            width: 100%;
-            padding: 12px;
-            background: #3a7afe;
-            color: #fff;
-            border: none;
-            border-radius: 6px;
-            font-size: 16px;
-            cursor: pointer;
-        }
-        .dashboard-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 32px;
-        }
-        .card {
-            background: #23274d;
-            border-radius: 12px;
-            padding: 24px;
-            box-shadow: 0 2px 12px #0003;
-        }
-        .report-list {
-            list-style: none;
-            padding: 0;
-        }
-        .report-list li {
-            margin-bottom: 12px;
-            padding: 10px;
-            background: #1a1e3a;
-            border-radius: 6px;
-        }
-        @media (max-width: 700px) {
-            .dashboard-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>GestãoPro - Sistema de Gestão Empresarial</title>
+  <meta name="description" content="O GestãoPro é o sistema de gestão empresarial completo para pequenas e médias empresas. Controle vendas, estoque, financeiro e muito mais em um só lugar.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', Arial, sans-serif;
+      background: #f6f8fa;
+      color: #232c38;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    .topbar {
+      width: 100%;
+      background: #232c38;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+      min-height: 64px;
+      box-shadow: 0 2px 12px #232c3822;
+      position: relative;
+      z-index: 10;
+    }
+    .topbar-inner {
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 24px;
+      height: 64px;
+    }
+    .topbar-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .topbar-logo img {
+      height: 38px;
+      width: auto;
+      border-radius: 6px;
+      background: #fff;
+      padding: 2px 6px;
+      box-shadow: 0 2px 8px #58a6ff22;
+    }
+    .topbar-title {
+      color: #fff;
+      font-size: 1.22rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin-left: 8px;
+    }
+    .topbar-menu {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+    .topbar-menu a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.05rem;
+      padding: 8px 22px;
+      border-radius: 8px;
+      transition: background .18s, color .18s;
+      background: transparent;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      letter-spacing: 0.01em;
+    }
+    .topbar-menu a:hover {
+      background: linear-gradient(90deg, #58a6ff 0%, #00d4aa 100%);
+      color: #fff;
+      box-shadow: 0 2px 12px #00d4aa33;
+    }
+    .header {
+      background: linear-gradient(120deg, #1a2332 0%, #22304a 60%, #1e2a3a 100%);
+      padding: 32px 0 24px 0;
+      text-align: center;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .header .logo {
+      width: 180px;
+      margin-bottom: 18px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .header h1 {
+      font-size: 2.4rem;
+      font-weight: 800;
+      margin: 0 0 12px 0;
+      letter-spacing: -1px;
+      text-align: center;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .header p {
+      font-size: 1.18rem;
+      font-weight: 500;
+      margin: 0 0 10px 0;
+      color: #eaf6ff;
+      text-align: center;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .cta-btn {
+      display: inline-block;
+      background: #fff;
+      color: #00bfae;
+      font-weight: 700;
+      font-size: 1.15rem;
+      padding: 16px 38px;
+      border-radius: 12px;
+      text-decoration: none;
+      margin-top: 18px;
+      box-shadow: 0 4px 18px #58a6ff33;
+      transition: background .2s, color .2s, box-shadow .2s;
+      text-align: center;
+    }
+    .cta-btn:hover {
+      background: #00d4aa;
+      color: #fff;
+      box-shadow: 0 8px 32px #00d4aa33;
+    }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 32px 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 28px;
+      margin: 48px 0 0 0;
+      width: 100%;
+      justify-items: center;
+    }
+    .feature-card {
+      background: #fff;
+      border-radius: 14px;
+      box-shadow: 0 2px 16px #58a6ff11;
+      padding: 32px 24px;
+      text-align: center;
+      border: 1.5px solid #e3eaf3;
+      transition: box-shadow .2s, border .2s;
+      width: 100%;
+      max-width: 320px;
+      min-width: 0;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .feature-card:hover {
+      box-shadow: 0 8px 32px #58a6ff22;
+      border: 1.5px solid #00d4aa;
+    }
+    .feature-icon {
+      font-size: 2.5rem;
+      margin-bottom: 14px;
+      color: #00d4aa;
+    }
+    .feature-title {
+      font-size: 1.18rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: #232c38;
+    }
+    .feature-desc {
+      font-size: 1rem;
+      color: #5a6b7b;
+      margin: 0;
+    }
+    .section-title {
+      font-size: 2rem;
+      font-weight: 800;
+      margin: 56px 0 18px 0;
+      text-align: center;
+      color: #232c38;
+      width: 100%;
+    }
+    .plans {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 32px;
+      justify-content: center;
+      margin: 48px 0 0 0;
+      width: 100%;
+    }
+    .plan-card {
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 2px 16px #58a6ff11;
+      border: 2px solid #e3eaf3;
+      padding: 36px 28px;
+      width: 320px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      transition: border .2s, box-shadow .2s;
+      margin: 0 auto;
+    }
+    .plan-card.popular {
+      border: 2px solid #00d4aa;
+      box-shadow: 0 8px 32px #00d4aa22;
+    }
+    .plan-title {
+      font-size: 1.18rem;
+      font-weight: 700;
+      color: #00d4aa;
+      margin-bottom: 8px;
+      text-align: center;
+    }
+    .plan-price {
+      font-size: 2.2rem;
+      font-weight: 800;
+      margin: 10px 0 8px 0;
+      color: #232c38;
+      text-align: center;
+    }
+    .plan-desc {
+      font-size: 1rem;
+      color: #5a6b7b;
+      margin-bottom: 18px;
+      text-align: center;
+    }
+    .plan-features {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 18px 0;
+      color: #5a6b7b;
+      font-size: 1rem;
+      text-align: left;
+      width: 100%;
+      max-width: 260px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .plan-features li {
+      margin-bottom: 8px;
+      padding-left: 1.2em;
+      text-indent: -1.2em;
+    }
+    .plan-btn {
+      display: block;
+      width: 100%;
+      background: #00d4aa;
+      color: #fff;
+      font-weight: 700;
+      font-size: 1.08rem;
+      padding: 14px 0;
+      border-radius: 10px;
+      text-decoration: none;
+      text-align: center;
+      margin-top: 10px;
+      transition: background .2s;
+    }
+    .plan-btn:hover {
+      background: #58a6ff;
+    }
+    .plan-badge {
+      position: absolute;
+      top: -18px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #ffd700;
+      color: #232c38;
+      font-size: 0.98rem;
+      font-weight: 700;
+      border-radius: 8px;
+      padding: 4px 18px;
+      box-shadow: 0 2px 8px #ffd70033;
+      letter-spacing: .01em;
+    }
+    .footer {
+      background: #232c38;
+      color: #fff;
+      text-align: center;
+      padding: 32px 12px 18px 12px;
+      margin-top: 64px;
+      width: 100%;
+    }
+    .footer .footer-logo {
+      width: 120px;
+      margin-bottom: 12px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .footer p {
+      color: #b3c2d1;
+      font-size: 1rem;
+      margin: 0 0 10px 0;
+    }
+    .footer small {
+      color: #b3c2d1;
+      font-size: 0.95rem;
+    }
+    .hero-stats {
+      display: flex;
+      justify-content: center;
+      margin-top: 18px;
+      margin-bottom: 0;
+    }
+    .hero-stats ul {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      justify-content: center;
+    }
+    .hero-stats li {
+      text-align: center;
+      color: #fff;
+      font-size: 1.08rem;
+    }
+    .hero-stats strong {
+      display: block;
+      font-size: 1.22rem;
+      font-weight: 700;
+      color: #ffd700;
+    }
+    .video-wrapper {
+      max-width: 640px;
+      margin: 36px auto 0 auto;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 4px 24px #58a6ff22;
+      width: 100%;
+    }
+    @media (max-width: 1100px) {
+      .container { max-width: 100vw; }
+      .topbar-inner { max-width: 100vw; }
+    }
+    @media (max-width: 900px) {
+      .container { padding: 32px 8px; }
+      .plans { gap: 16px; }
+      .plan-card { width: 98vw; max-width: 340px; }
+    }
+    @media (max-width: 700px) {
+      .topbar-inner { padding: 0 8px; }
+      .topbar-title { display: none; }
+      .topbar-menu a { padding: 8px 10px; font-size: 0.98rem; }
+      .container { padding: 18px 2vw; }
+      .features { gap: 14px; }
+      .plan-card { padding: 18px 6px; }
+      .feature-card { padding: 18px 8px; }
+      .header .logo { width: 120px; }
+      .header h1 { font-size: 1.3rem; }
+      .section-title { font-size: 1.1rem; }
+    }
+    @media (max-width: 480px) {
+      .plan-card, .feature-card { max-width: 98vw; }
+      .header .logo { width: 90px; }
+      .container { padding: 8px 2vw; }
+      .footer { padding: 18px 4px 10px 4px; }
+    }
+    @media (min-width: 700px) and (max-width: 700px) {
+      .video-wrapper {
+        max-width: 800px;
+      }
+    }
+    @media (min-width: 700px) {
+      .video-wrapper {
+        max-width: 700px !important;
+      }
+    }
+  </style>
 </head>
 <body>
-    <div class="login-container" id="loginBox">
-        <h2>Login Administrador</h2>
-        <input type="text" id="username" placeholder="Usuário">
-        <input type="password" id="password" placeholder="Senha">
-        <button onclick="login()">Entrar</button>
-        <p id="loginError" style="color:#ff4d4d; text-align:center; display:none;">Credenciais inválidas!</p>
+  <!-- Topbar/Menu Profissional -->
+  <nav class="topbar">
+    <div class="topbar-inner">
+      <div class="topbar-logo">
+        <span class="topbar-title">
+          GestãoPro
+          <sup style="font-size:0.60em; vertical-align:super; margin-left:-5px;">®</sup>
+        </span>
+      </div>
+      <div class="topbar-menu">
+        <a href="https://sandbox.gestaoproapp.com.br/login" target="_blank">Entrar</a>
+        <a href="javascript:history.back()">Voltar</a>
+      </div>
     </div>
+  </nav>
 
-    <div class="dashboard-container" id="dashboardBox">
-        <h2>Dashboard Administrativo</h2>
-        <div class="dashboard-grid">
-            <div class="card">
-                <h3>Acessos em Tempo Real</h3>
-                <canvas id="realtimeChart" height="120"></canvas>
-            </div>
-            <div class="card">
-                <h3>Páginas Mais Acessadas</h3>
-                <canvas id="pagesChart" height="120"></canvas>
-            </div>
-            <div class="card">
-                <h3>Relatórios Inteligentes</h3>
-                <ul class="report-list" id="reportList">
-                    <!-- Relatórios dinâmicos -->
-                </ul>
-            </div>
+  <header class="header">
+    <img src="img/logonovafundoescuro.png" alt="GestãoPro Logo" class="logo">
+    <h1>Organize sua empresa aumente o lucro e pare de perder dinheiro</h1>
+    <p>
+      Mais de 80% das pequenas empresas fecham por falta de gestão.<br>
+      O Gestão Pro resolve isso controlando vendas, estoque, financeiro e atendimento em um único sistema simples e eficiente.
+    </p>
+    <div class="video-wrapper">
+      <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;">
+        <iframe src="https://www.youtube.com/embed/gaE7cP9RZb4?rel=0" title="Vídeo de vendas GestãoPro" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>
+      </div>
+    </div>
+     <div class="hero-stats" aria-label="Estatísticas do sistema">
+        <ul>
+          <li class="stat">
+            <strong>500+</strong>
+            <span>Usuários</span>
+          </li>
+          <li class="stat">
+            <strong>98%</strong>
+            <span>Satisfação</span>
+          </li>
+          <li class="stat">
+            <strong>24/7</strong>
+            <span>Suporte</span>
+            <div style="height:40px;"></div>
+          </li>
+        </ul>
+      </div>
+    <a href="#planos" class="cta-btn">Ver Planos e Preços</a>
+    <div style="height:40px;"></div>
+  </header>
+
+  <main>
+    <div class="container">
+      <h2 class="section-title">Por que escolher o GestãoPro?</h2>
+      <div class="features">
+        <div class="feature-card">
+          <div class="feature-icon">📊</div>
+          <div class="feature-title">Painel em Tempo Real</div>
+          <div class="feature-desc">Acompanhe vendas, estoque e financeiro em dashboards intuitivos e atualizados.</div>
         </div>
+        <div class="feature-card">
+          <div class="feature-icon">📈</div>
+          <div class="feature-title">Relatórios Avançados</div>
+          <div class="feature-desc">Gere relatórios detalhados para tomar decisões estratégicas com confiança.</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🔔</div>
+          <div class="feature-title">Alertas Inteligentes</div>
+          <div class="feature-desc">Receba notificações automáticas sobre estoque baixo, vendas e vencimentos.</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🤝</div>
+          <div class="feature-title">Gestão de Equipes</div>
+          <div class="feature-desc">Controle permissões, acompanhe desempenho e otimize o trabalho do seu time.</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">💰</div>
+          <div class="feature-title">Controle Financeiro</div>
+          <div class="feature-desc">Gerencie contas a pagar/receber, fluxo de caixa e tenha total controle financeiro.</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🤖</div>
+          <div class="feature-title">Automação e IA</div>
+          <div class="feature-desc">Automatize tarefas e utilize inteligência artificial para otimizar processos.</div>
+        </div>
+      </div>
+
+      <h2 class="section-title" id="planos">Planos GestãoPro</h2>
+      <div class="stat">
+					<p style="text-align: center; font-size: 1.18rem; font-weight: 600; color: #292727; margin: 0 0 10px 0; letter-spacing: 0.01em; font-family: 'Inter', sans-serif;">
+						Você tem liberdade total: <span style="font-weight:700; font-size:1.18rem;">cancele quando quiser</span> e mantenha o controle da sua assinatura.<br>
+						<span style="color:#58a6ff; font-weight:700; font-size:1.35rem; display:inline-block; margin-top:6px;">Escolha seu plano abaixo:</span>
+					</p>
+      <div class="plans">
+        <div class="plan-card">
+          <div class="plan-title">Essencial</div>
+          <div class="plan-price">R$ 59,90 <span style="font-size:1rem;font-weight:400;">/mês</span></div>
+          <div class="plan-desc">Ideal para quem está começando e precisa do básico para organizar o negócio.</div>
+          <ul class="plan-features">
+            <li>✔ Vendas, clientes e estoque</li>
+            <li>✔ Relatórios financeiros completos</li>
+            <li>✔ Impressão de cupom e recibo</li>
+            <li>✔ Backup automático diário</li>
+          </ul>
+          <a href="https://app.keedpay.com.br/checkout/cIUOsEjSTdl" class="plan-btn" target="_blank">Assinar Essencial</a>
+        </div>
+        <div class="plan-card popular">
+          <div class="plan-badge">MAIS VENDIDO</div>
+          <div class="plan-title">Profissional</div>
+          <div class="plan-price">R$ 199,90 <span style="font-size:1rem;font-weight:400;">/mês</span></div>
+          <div class="plan-desc">Para empresas que buscam controle total e recursos avançados de gestão.</div>
+          <ul class="plan-features">
+            <li>✔ Importação CSV</li>
+            <li>✔ Margem de lucro</li>
+            <li>✔ Controle de validade/estoque</li>
+            <li>✔ Gráficos e rankings</li>
+          </ul>
+          <a href="https://app.keedpay.com.br/checkout/5RiBBO4H1ZC" class="plan-btn" target="_blank">Assinar Profissional</a>
+        </div>
+        <div class="plan-card" style="border-color:#ffd700;">
+          <div class="plan-title" style="color:#ffd700;">Premium IA</div>
+          <div class="plan-price" style="color:#ffd700;">R$ 349,90 <span style="font-size:1rem;font-weight:400;">/mês</span></div>
+          <div class="plan-desc">Acesso a todas as ferramentas, integrações e inteligência artificial.</div>
+          <ul class="plan-features">
+            <li>✔ Todas as funcionalidades</li>
+            <li>✔ Integrações e IA</li>
+            <li>✔ Atualizações grátis</li>
+            <li>✔ Suporte máximo</li>
+          </ul>
+          <a href="https://app.keedpay.com.br/checkout/RSzdUgoGHou" class="plan-btn" style="background:#ffd700;color:#232c38;" target="_blank">Assinar Premium IA</a>
+        </div>
+      </div>
+
+      <h2 class="section-title">Dúvidas Frequentes</h2>
+      <div style="max-width:700px;margin:0 auto;">
+        <details style="margin-bottom:18px;">
+          <summary style="font-weight:700;cursor:pointer;">Posso cancelar quando quiser?</summary>
+          <div style="margin-top:8px;color:#5a6b7b;">Sim! Você tem liberdade total para cancelar sua assinatura a qualquer momento, sem burocracia.</div>
+        </details>
+        <details style="margin-bottom:18px;">
+          <summary style="font-weight:700;cursor:pointer;">O sistema funciona em celular?</summary>
+          <div style="margin-top:8px;color:#5a6b7b;">Sim, o GestãoPro é 100% web responsivo e funciona em computadores, tablets e smartphones.</div>
+        </details>
+        <details style="margin-bottom:18px;">
+          <summary style="font-weight:700;cursor:pointer;">Como funciona o suporte?</summary>
+          <div style="margin-top:8px;color:#5a6b7b;">Nosso suporte é humanizado e está disponível 24/7 para te ajudar sempre que precisar.</div>
+        </details>
+        <details>
+          <summary style="font-weight:700;cursor:pointer;">Meus dados estão seguros?</summary>
+          <div style="margin-top:8px;color:#5a6b7b;">Sim, utilizamos criptografia avançada e backups automáticos para garantir a segurança das suas informações.</div>
+        </details>
+      </div>
+
+      <div style="text-align:center;margin:48px 0 0 0;">
+        <a href="https://wa.me/556294496323" class="cta-btn" style="background:#00d4aa;color:#fff;">Falar com um especialista</a>
+      </div>
     </div>
-
-    <script>
-        // Função para buscar dados reais do backend
-        async function fetchAnalyticsData() {
-            // O backend deve retornar um JSON com os dados abaixo
-            // Exemplo de resposta esperada:
-            // {
-            //   "usersOnline": [12, 15, 13, ...], // últimos 10 valores
-            //   "pages": {
-            //     "Home": 120,
-            //     "Serviços": 90,
-            //     "Contato": 60,
-            //     "Sobre": 40,
-            //     "Blog": 30
-            //   },
-            //   "totalToday": 340,
-            //   "avgSession": 3.2
-            // }
-            try {
-                const res = await fetch('/api/analytics');
-                if (!res.ok) throw new Error('Erro ao buscar dados');
-                return await res.json();
-            } catch (e) {
-                return null;
-            }
-        }
-
-        let realtimeChart, pagesChart, analyticsData = null;
-
-        // Login simples
-        function login() {
-            const user = document.getElementById('username').value;
-            const pass = document.getElementById('password').value;
-            if (user === 'admin' && pass === '8484') {
-                document.getElementById('loginBox').style.display = 'none';
-                document.getElementById('dashboardBox').style.display = 'block';
-                startDashboard();
-                // Envia evento de login ao Google Analytics
-                if (typeof gtag === "function") {
-                    gtag('event', 'admin_login', {
-                        'event_category': 'admin',
-                        'event_label': 'Login realizado'
-                    });
-                }
-            } else {
-                document.getElementById('loginError').style.display = 'block';
-            }
-        }
-
-        // Lista das páginas reais do projeto
-        const realPages = [
-            'braip.html', 'curso.html', 'eduzz.html', 'gestaopro.html', 'hebreus.html',
-            'hotmart.html', 'hubla.html', 'index.html', 'keed.html', 'kirvano.html',
-            'kiwify.html', 'monetizze.html', 'pepper.html', 'perfectpay.html',
-            'themart.html'
-        ];
-
-        async function startDashboard() {
-            // Busca dados reais do backend
-            analyticsData = await fetchAnalyticsData();
-
-            // Se não conseguir dados reais, usa dados fictícios como fallback
-            const usersOnline = analyticsData?.usersOnline || Array(10).fill(0).map(()=>Math.floor(Math.random()*20)+5);
-
-            // Monta objeto de páginas reais com valores fictícios se não houver dados
-            let pages = {};
-            if (analyticsData?.pages) {
-                // Filtra apenas as páginas reais
-                realPages.forEach(page => {
-                    pages[page] = analyticsData.pages[page] || 0;
-                });
-            } else {
-                realPages.forEach(page => {
-                    pages[page] = Math.floor(Math.random()*100)+10;
-                });
-            }
-
-            // Gráfico de acessos em tempo real
-            const ctx1 = document.getElementById('realtimeChart').getContext('2d');
-            realtimeChart = new Chart(ctx1, {
-                type: 'line',
-                data: {
-                    labels: Array(10).fill('').map((_,i)=>`${i+1}s`),
-                    datasets: [{
-                        label: 'Usuários Online',
-                        data: usersOnline,
-                        borderColor: '#3a7afe',
-                        backgroundColor: 'rgba(58,122,254,0.1)',
-                        fill: true,
-                        tension: 0.4
-                    }]
-                },
-                options: {
-                    plugins: { legend: { display: false } },
-                    scales: { y: { beginAtZero: true, max: 30 } }
-                }
-            });
-
-            // Gráfico de páginas mais acessadas
-            const ctx2 = document.getElementById('pagesChart').getContext('2d');
-            pagesChart = new Chart(ctx2, {
-                type: 'bar',
-                data: {
-                    labels: realPages,
-                    datasets: [{
-                        label: 'Acessos',
-                        data: Object.values(pages),
-                        backgroundColor: [
-                            '#3a7afe', '#ffb347', '#ff4d4d', '#4dff88', '#a47dff',
-                            '#3a7afe', '#ffb347', '#ff4d4d', '#4dff88', '#a47dff',
-                            '#3a7afe', '#ffb347', '#ff4d4d', '#4dff88', '#a47dff'
-                        ]
-                    }]
-                },
-                options: {
-                    plugins: { legend: { display: false } },
-                    scales: { y: { beginAtZero: true } }
-                }
-            });
-
-            updateReports();
-
-            // Atualização em tempo real
-            setInterval(async () => {
-                analyticsData = await fetchAnalyticsData();
-                const usersOnline = analyticsData?.usersOnline || realtimeChart.data.datasets[0].data;
-
-                // Atualiza objeto de páginas reais
-                let pages = {};
-                if (analyticsData?.pages) {
-                    realPages.forEach(page => {
-                        pages[page] = analyticsData.pages[page] || 0;
-                    });
-                } else {
-                    realPages.forEach(page => {
-                        pages[page] = Math.floor(Math.random()*100)+10;
-                    });
-                }
-
-                realtimeChart.data.datasets[0].data = usersOnline;
-                realtimeChart.update();
-
-                pagesChart.data.labels = realPages;
-                pagesChart.data.datasets[0].data = Object.values(pages);
-                pagesChart.update();
-
-                updateReports();
-            }, 5000);
-        }
-
-        // Contador global de acessos (requer backend simples)
-        async function incrementGlobalAccessCounter() {
-            try {
-                const res = await fetch('/api/counter', { method: 'POST' });
-                if (!res.ok) throw new Error();
-                const data = await res.json();
-                return data.count;
-            } catch {
-                // Fallback para contador local
-                let count = localStorage.getItem('site_access_count');
-                count = count ? parseInt(count) + 1 : 1;
-                localStorage.setItem('site_access_count', count);
-                return count;
-            }
-        }
-
-        let accessCount = 0;
-        incrementGlobalAccessCounter().then(count => {
-            accessCount = count;
-        });
-
-        function updateReports() {
-            const totalToday = analyticsData?.totalToday || pagesChart.data.datasets[0].data.reduce((a,b)=>a+b,0);
-            const avgSession = analyticsData?.avgSession || (Math.random()*5+2).toFixed(1);
-            const usersNow = analyticsData?.usersOnline?.slice(-1)[0] || realtimeChart.data.datasets[0].data.slice(-1)[0];
-            const pages = analyticsData?.pages || {};
-            const mostAccessed = Object.keys(pages).length
-                ? Object.keys(pages)[Object.values(pages).indexOf(Math.max(...Object.values(pages)))]
-                : pagesChart.data.labels[pagesChart.data.datasets[0].data.indexOf(Math.max(...pagesChart.data.datasets[0].data))];
-
-            const reports = [
-                `Usuários online agora: <b>${usersNow}</b>`,
-                `Página mais acessada: <b>${mostAccessed}</b>`,
-                `Total de acessos hoje: <b>${accessCount}</b>`, // Mostra o contador global/local
-                `Taxa de crescimento: <b>${(Math.random()*10+5).toFixed(2)}%</b>`,
-                `Tempo médio de navegação: <b>${avgSession} min</b>`
-            ];
-            document.getElementById('reportList').innerHTML = reports.map(r => `<li>${r}</li>`).join('');
-        }
-    </script>
+  </main>
+  <footer class="footer">
+    <img src="img/logo escura png.png" alt="GestãoPro Logo" class="footer-logo">
+    <p>Soluções digitais focadas em resultado, performance e experiência.</p>
+    <small>© <span id="year"></span> GestãoPro. Todos os direitos reservados.<br>
+    Desenvolvido por <strong>ScriptHadder</strong></small>
+  </footer>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
