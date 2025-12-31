@@ -447,74 +447,16 @@
       .plan-card { width: 98vw; max-width: 340px; }
     }
     @media (max-width: 700px) {
-      html, body {
-        width: 100vw;
-        min-height: 100vh;
-        background: #f6f8fa;
-        overflow-x: hidden;
-      }
-      body {
-        padding: 0;
-        margin: 0;
-        box-sizing: border-box;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: flex-start;
-        min-height: 100vh;
-        background: #f6f8fa;
-      }
-      .container {
-        padding: 8vw 2vw;
-        margin: 0 auto;
-        border-radius: 18px;
-        box-shadow: 0 0 0 8px rgba(0,0,0,0.03);
-        background: #fff;
-        max-width: 98vw;
-        width: 98vw;
-      }
-      .header {
-        padding: 18px 2vw 18px 2vw;
-        border-radius: 18px;
-        box-shadow: 0 0 0 8px rgba(0,0,0,0.03);
-        background: #fff;
-        width: 98vw;
-        margin: 0 auto 12px auto;
-      }
-      .video-wrapper {
-        max-width: 98vw !important;
-        border-radius: 14px;
-      }
-      .plans {
-        gap: 10px;
-      }
-      .plan-card {
-        width: 98vw;
-        max-width: 340px;
-        margin: 0 auto;
-        border-radius: 16px;
-        box-shadow: 0 0 0 6px rgba(0,0,0,0.03);
-      }
-      .feature-card {
-        padding: 12px 4px;
-        border-radius: 14px;
-        box-shadow: 0 0 0 6px rgba(0,0,0,0.03);
-      }
-      .footer {
-        border-radius: 14px;
-        box-shadow: 0 0 0 6px rgba(0,0,0,0.03);
-        margin-bottom: 8px;
-        width: 98vw;
-        margin-left: auto;
-        margin-right: auto;
-      }
-      .topbar {
-        border-radius: 14px;
-        box-shadow: 0 0 0 6px rgba(0,0,0,0.03);
-        width: 98vw;
-        margin-left: auto;
-        margin-right: auto;
-      }
+      .topbar-inner { padding: 0 8px; }
+      .topbar-title { display: inline-block; font-size: 1.08rem; margin-left: 0; }
+      .topbar-menu a { padding: 8px 10px; font-size: 0.98rem; }
+      .container { padding: 18px 2vw; }
+      .features { gap: 14px; }
+      .plan-card { padding: 18px 6px; }
+      .feature-card { padding: 18px 8px; }
+      .header .logo { width: 120px; }
+      .header h1 { font-size: 1.3rem; }
+      .section-title { font-size: 1.1rem; }
     }
     @media (max-width: 480px) {
       .plan-card, .feature-card { max-width: 98vw; }
