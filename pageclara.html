@@ -225,6 +225,7 @@
       margin: 0 auto;
       z-index: 1;
       overflow: hidden;
+      min-height: 480px;
     }
     .plan-card:hover {
       border-color: #00d4aa;
@@ -444,7 +445,10 @@
     @media (max-width: 900px) {
       .container { padding: 32px 8px; }
       .plans { gap: 16px; }
-      .plan-card { width: 98vw; max-width: 340px; }
+      .plan-card {
+        min-height: 440px;
+        padding: 40px 8px 32px 8px;
+      }
     }
     @media (max-width: 700px) {
       .topbar-inner { padding: 0 8px; }
@@ -452,7 +456,10 @@
       .topbar-menu a { padding: 8px 10px; font-size: 0.98rem; }
       .container { padding: 18px 2vw; }
       .features { gap: 14px; }
-      .plan-card { padding: 18px 6px; }
+      .plan-card {
+        min-height: 420px;
+        padding: 28px 4px 24px 4px;
+      }
       .feature-card { padding: 18px 8px; }
       .header .logo { width: 120px; }
       .header h1 { font-size: 1.3rem; }
@@ -501,7 +508,7 @@
       <span style="display:block; font-size:2.5rem; font-weight:900; color:#005c7c; margin-bottom:8px;">
         Aumente o lucro
       </span>
-      <span style="display:block; font-size:1.5rem; font-weight:700; color:#ffffff; background: linear-gradient(90deg, #018d18 60%, #181f27 100%); padding: 4px 0; border-radius: 6px;">
+      <span style="display:block; font-size:1.5rem; font-weight:700; color:#ffffff; background: linear-gradient(90deg, #018d18 60%, #02d814 100%); padding: 4px 0; border-radius: 6px;">
         Pare de perder dinheiro
       </span>
     </h1>
