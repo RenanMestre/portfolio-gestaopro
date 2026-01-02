@@ -320,6 +320,53 @@
                             </tbody>
                         </table>
                     </div>
+                    <!-- Seta para indicar arraste lateral -->
+                    <div style="display: flex; justify-content: center; margin-top: -18px; margin-bottom: 18px;">
+                        <img 
+                            src="img/seta.png" 
+                            alt="Arraste para o lado" 
+                            style="
+                                width: 220px; 
+                                max-width: 90vw; 
+                                height: 32px; 
+                                object-fit: contain; 
+                                filter: drop-shadow(0 2px 8px #2563eb33); 
+                                opacity: 0.85;
+                                animation: setaArraste 2.2s infinite alternate;
+                                margin: 0 auto;
+                                display: block;
+                                pointer-events: none;
+                            "
+                            loading="lazy"
+                        >
+                    </div>
+                    <style>
+                    @keyframes setaArraste {
+                        0% { transform: translateX(0); opacity: 0.85; }
+                        20% { transform: translateX(-18px) scaleX(1.08); opacity: 1; }
+                        50% { transform: translateX(0) scaleX(1.12); opacity: 0.95; }
+                        80% { transform: translateX(18px) scaleX(1.08); opacity: 1; }
+                        100% { transform: translateX(0); opacity: 0.85; }
+                    }
+                    </style>
+                    <!-- Caso não tenha a imagem, pode usar SVG abaixo como fallback -->
+                    <!--
+                    <div style="display: flex; justify-content: center; margin-top: -18px; margin-bottom: 18px;">
+                        <svg width="220" height="32" viewBox="0 0 220 32" fill="none" xmlns="http://www.w3.org/2000/svg"
+                            style="display:block; max-width:90vw; filter:drop-shadow(0 2px 8px #2563eb33); opacity:0.85; animation: setaArraste 2.2s infinite alternate;">
+                            <defs>
+                                <linearGradient id="seta-grad" x1="0" y1="16" x2="220" y2="16" gradientUnits="userSpaceOnUse">
+                                    <stop stop-color="#2563eb"/>
+                                    <stop offset="1" stop-color="#10b499"/>
+                                </linearGradient>
+                            </defs>
+                            <path d="M10 16 H210" stroke="url(#seta-grad)" stroke-width="5" stroke-linecap="round"/>
+                            <polygon points="210,16 200,10 200,22" fill="#2563eb"/>
+                            <polygon points="10,16 20,10 20,22" fill="#10b499"/>
+                            <text x="110" y="28" text-anchor="middle" font-size="13" fill="#2563eb" font-family="Inter, Arial" font-weight="bold" opacity="0.7">Arraste para o lado</text>
+                        </svg>
+                    </div>
+                    -->
                     
 <!-- GARANTIA 7 DIAS -->
 <section class="py-12 px-4 sm:px-6 lg:px-8 bg-white">
