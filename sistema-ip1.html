@@ -185,6 +185,106 @@
         <!-- Fim do botão de alternância -->
         <!-- Planos novos no padrão do site (AGORA ACIMA DA TABELA) -->
         <div class="plans-container" style="display: flex; flex-wrap: wrap; gap: 32px; justify-content: center; margin-top: 18px;" aria-label="Planos disponíveis">
+            <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                // Planos e preços
+                const planos = {
+                    mensal: [
+                        {
+                            id: "plano-essencial",
+                            preco: "R$ 59,90",
+                            periodo: "/mês",
+                            link: "https://app.keedpay.com.br/checkout/cIUOsEjSTdl",
+                            botao: "Assinar Agora"
+                        },
+                        {
+                            id: "plano-profissional",
+                            preco: "R$ 199,90",
+                            periodo: "/mês",
+                            link: "https://app.keedpay.com.br/checkout/5RiBBO4H1ZC",
+                            botao: "Quero Esse Plano"
+                        },
+                        {
+                            id: "plano-premium",
+                            preco: "R$ 349,90",
+                            periodo: "/mês",
+                            link: "https://app.keedpay.com.br/checkout/RSzdUgoGHou",
+                            botao: "Ativar IA Agora"
+                        }
+                    ],
+                    anual: [
+                        {
+                            id: "plano-essencial",
+                            preco: "R$ 618,00",
+                            periodo: "/mês",
+                            link: "https://app.keedpay.com.br/checkout/83r2lnMEJEL", // Exemplo, ajuste para o link anual real
+                            botao: "Assinar Anual"
+                        },
+                        {
+                            id: "plano-profissional",
+                            preco: "R$ 2.198,00",
+                            periodo: "/mês",
+                            link: "https://app.keedpay.com.br/checkout/RG22NKckbsm", // Exemplo, ajuste para o link anual real
+                            botao: "Quero Anual"
+                        },
+                        {
+                            id: "plano-premium",
+                            preco: "R$ 3.898,00",
+                            periodo: "/mês",
+                            link: "https://app.keedpay.com.br/checkout/Ig5dyvKVgAx", // Exemplo, ajuste para o link anual real
+                            botao: "Ativar IA Anual"
+                        }
+                    ]
+                };
+
+                function atualizarPlanos(periodo) {
+                    planos[periodo].forEach(function (plano) {
+                        // Preço
+                        document.querySelector(`#${plano.id} .preco-plano`).innerHTML =
+                            plano.preco + `<span class="periodo-label" style="font-size: 18px; font-weight: 400;">${plano.periodo}</span>`;
+                        // Botão
+                        const btn = document.querySelector(`#${plano.id} a.btn, #${plano.id} a.btn.alt`);
+                        btn.href = plano.link;
+                        btn.textContent = plano.botao;
+                    });
+                }
+
+                // Alternância visual dos botões
+                function ativarBotao(periodo) {
+                    const btnMensal = document.getElementById("btn-mensal");
+                    const btnAnual = document.getElementById("btn-anual");
+                    if (periodo === "mensal") {
+                        btnMensal.style.background = "#fff";
+                        btnMensal.style.color = "#0a1a2f";
+                        btnMensal.style.fontWeight = "700";
+                        btnAnual.style.background = "#e0e7ef";
+                        btnAnual.style.color = "#2563eb";
+                        btnAnual.style.fontWeight = "600";
+                    } else {
+                        btnAnual.style.background = "#fff";
+                        btnAnual.style.color = "#0a1a2f";
+                        btnAnual.style.fontWeight = "700";
+                        btnMensal.style.background = "#e0e7ef";
+                        btnMensal.style.color = "#2563eb";
+                        btnMensal.style.fontWeight = "600";
+                    }
+                }
+
+                // Eventos
+                document.getElementById("btn-mensal").addEventListener("click", function () {
+                    atualizarPlanos("mensal");
+                    ativarBotao("mensal");
+                });
+                document.getElementById("btn-anual").addEventListener("click", function () {
+                    atualizarPlanos("anual");
+                    ativarBotao("anual");
+                });
+
+                // Inicialização padrão
+                atualizarPlanos("mensal");
+                ativarBotao("mensal");
+            });
+            </script>
             <!-- Essencial -->
             <article class="plan-card" id="plano-essencial" style="background: #fff; border: 2px solid #58a6ff; border-radius: 18px; padding: 36px 28px; width: 320px; box-shadow: 0 6px 32px 0 rgba(88,166,255,0.08); display: flex; flex-direction: column; align-items: center;" aria-labelledby="plano-essencial-titulo">
                 <span id="plano-essencial-titulo" style="font-size: 18px; color: #2563eb; font-weight: 700;">Essencial</span>
@@ -244,7 +344,7 @@
                             <span style="display:block; text-align:center;">
                                 <span style="background: linear-gradient(90deg, #2563eb 0%, #10b499 100%); color: #fff; padding: 2px 10px; border-radius: 8px; font-weight: 500; box-shadow: 0 2px 8px #2563eb22; margin-left: 0px;">
                                     arraste a tabela para o lado
-                                    <svg style="vertical-align: middle; margin-left: 6px; display: inline-block; min-width: 18px; min-height: 18px;" width="18" height="18" viewBox="0 0 20 20" fill="none">
+                                    <svg style="vertical-align: middle; margin-left: 6px; display: inline-block; min-width: 18px; min-height: 18px;" width="18" height="18" viewBox="0 0 24 24" fill="none">
                                         <rect x="2" y="9" width="14" height="2" rx="1" fill="#fff" opacity="0.7"/>
                                         <path d="M5 6l-3 4 3 4" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                         <path d="M13 6l3 4-3 4" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -424,7 +524,7 @@
                 <h3 class="font-semibold text-blue-700 mb-1">WhatsApp IA</h3>
                 <p class="text-gray-700">Recursos de inteligência artificial para automatizar processos e otimizar decisões.</p>
             </li>
-        </ul>
+        </div>
     </div>
 </section>
 
@@ -467,7 +567,7 @@
                 <h3 class="font-semibold text-blue-700 mb-1">Facilidade de Uso</h3>
                 <p class="text-gray-700">Interface intuitiva que não requer treinamento extensivo para começar a usar.</p>
             </li>
-        </ul>
+        </div>
     </div>
 </section>
 
