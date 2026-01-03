@@ -2,7 +2,7 @@
 <html lang="pt-BR" translate="no">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
     <meta name="google" content="notranslate">
     <title>GestãoPro | Sistema de Gestão Empresarial Inteligente</title>
     <script src="https://cdn.jsdelivr.net/npm/lucide@latest/dist/umd/lucide.min.js"></script>
@@ -18,6 +18,17 @@
 
         body {
             font-family: 'Inter', system-ui, sans-serif;
+        }
+
+        /* Zoom out para melhor visualização no mobile */
+        @media (max-width: 600px) {
+            html {
+                font-size: 92% !important;
+            }
+            body {
+                zoom: 0.96;
+                -webkit-text-size-adjust: 96%;
+            }
         }
     </style>
 </head>
@@ -258,7 +269,7 @@
             left: 50% !important;
             transform: translateX(-50%) !important;
             box-sizing: border-box !important;
-            padding: 8px 2vw !important;
+            padding: 8px 0 !important;
             }
             #promo-timer-bar .promo-label {
             font-size: 0.92rem !important;
