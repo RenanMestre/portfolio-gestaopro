@@ -248,6 +248,36 @@
         </div>
         <script>
         // Cronômetro regressivo de 2h (exemplo, ajuste conforme necessário)
+        // Ajuste visual mobile para cronômetro e frase
+        const style = document.createElement('style');
+        style.innerHTML = `
+        @media (max-width: 600px) {
+            #promo-timer-bar {
+            width: 98vw !important;
+            min-width: 0 !important;
+            left: 50% !important;
+            transform: translateX(-50%) !important;
+            box-sizing: border-box !important;
+            padding: 8px 2vw !important;
+            }
+            #promo-timer-bar .promo-label {
+            font-size: 0.92rem !important;
+            line-height: 1.2 !important;
+            font-weight: 600 !important;
+            }
+            #promo-timer {
+            font-size: 1.05rem !important;
+            padding: 4px 10px !important;
+            border-radius: 6px !important;
+            min-width: 70px !important;
+            }
+            #promo-timer-bar svg {
+            width: 18px !important;
+            height: 18px !important;
+            }
+        }
+        `;
+        document.head.appendChild(style);
         (function() {
             const timerEl = document.getElementById('promo-timer');
             // Defina o tempo final (2 horas a partir do carregamento)
