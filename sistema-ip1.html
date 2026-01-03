@@ -163,6 +163,40 @@
 </div>
 <aside class="hero-stats" aria-label="Liberdade de assinatura" style="display: flex; justify-content: center; margin-top: 32px;">
     <div class="stat" style="background: linear-gradient(120deg, #f8fafc 60%, #e0e7ef 100%); border-radius: 18px; box-shadow: 0 4px 24px #58a6ff22; padding: 32px 24px; max-width: 700px; width: 100%; text-align: center;">
+        <!-- FAIXA PROMOÇÃO COM CRONÔMETRO -->
+        <div id="promo-timer-bar" style="background: linear-gradient(90deg, #ff2d2d 0%, #ff6a00 100%); color: #fff; border-radius: 12px; box-shadow: 0 2px 12px #ff2d2d33; padding: 18px 24px; margin-bottom: 18px; display: flex; align-items: center; justify-content: center; gap: 18px; font-family: 'Inter',sans-serif; font-size: 1.18rem; font-weight: 700;">
+            <span style="display: flex; align-items: center; gap: 8px;">
+                <svg width="28" height="28" fill="none" viewBox="0 0 28 28" style="vertical-align: middle;">
+                    <circle cx="14" cy="14" r="13" stroke="#fff" stroke-width="2" fill="none"/>
+                    <path d="M14 7v7l5 3" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+                Promoção especial termina em:
+            </span>
+            <span id="promo-timer" style="background: #fff; color: #d90429; border-radius: 8px; padding: 6px 18px; font-size: 1.25rem; font-weight: 900; letter-spacing: 0.05em; box-shadow: 0 2px 8px #d9042933;">00:00:00</span>
+        </div>
+        <script>
+        // Cronômetro regressivo de 2h (exemplo, ajuste conforme necessário)
+        (function() {
+            const timerEl = document.getElementById('promo-timer');
+            // Defina o tempo final (2 horas a partir do carregamento)
+            const endTime = new Date(Date.now() + 2 * 60 * 60 * 1000);
+            function updateTimer() {
+                const now = new Date();
+                let diff = Math.max(0, endTime - now);
+                let h = Math.floor(diff / (1000 * 60 * 60));
+                let m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                let s = Math.floor((diff % (1000 * 60)) / 1000);
+                timerEl.textContent =
+                    (h < 10 ? '0' : '') + h + ':' +
+                    (m < 10 ? '0' : '') + m + ':' +
+                    (s < 10 ? '0' : '') + s;
+                if (diff > 0) setTimeout(updateTimer, 1000);
+                else timerEl.textContent = "00:00:00";
+            }
+            updateTimer();
+        })();
+        </script>
+        <!-- Fim da faixa de promoção -->
         <p style="font-size: 1.18rem; font-weight: 600; color: #232c38; margin: 0 0 10px 0; letter-spacing: 0.01em; font-family: 'Inter', sans-serif;">
             Você tem liberdade total: <span style="font-weight:700; font-size:1.18rem; color:#ff0000;">cancele quando quiser</span> e mantenha o controle da sua assinatura.<br>
             <span style="color:#2563eb; font-weight:700; font-size:1.35rem; display:inline-block; margin-top:6px;">Escolha seu plano abaixo:</span>
@@ -172,7 +206,7 @@
         <div id="toggle-period" style="display: flex; justify-content: center; margin-bottom: 28px;">
             <div id="period-switch" style="display: flex; border: 1.5px solid #e3eaf3; border-radius: 16px; overflow: hidden; background: #fff; box-shadow: 0 2px 12px #58a6ff11;">
                 <button id="btn-mensal" type="button" style="padding: 12px 38px; background: #fff; color: #0a1a2f; border: none; font-size: 1.08rem; font-weight: 600; cursor: pointer; border-radius: 14px 0 0 14px; transition: background 0.2s, color 0.2s;">Mensal</button>
-                <button id="btn-anual" type="button" style="padding: 12px 38px; background: #e0e7ef; color: #2563eb; border: none; font-size: 1.08rem; font-weight: 700; cursor: pointer; border-radius: 0 14px 14px 0; display: flex; align-items: center; gap: 6px; transition: background 0.2s, color 0.2s;">
+                <button id="btn-anual" type="button" style="padding: 12px 38px; background: #e0e7ef; color: #2563eb; border: none; font-size: 1.08rem; font-weight: 700, cursor: pointer; border-radius: 0 14px 14px 0; display: flex; align-items: center; gap: 6px; transition: background 0.2s, color 0.2s;">
                     Anual
                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
                         <circle cx="10" cy="10" r="8" stroke="#2563eb" stroke-width="2" fill="none"/>
