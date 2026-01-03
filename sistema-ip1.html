@@ -804,15 +804,44 @@
         </div>
         <!-- Avaliações reais Google (imagem) -->
         <div class="mb-10 flex justify-center">
-          <img 
-            src="img/avaliacoes-google-gestaopro.png.png" 
-            style="width: 100%; max-width: 900px; height: auto; border-radius: 18px; box-shadow: 0 4px 24px #58a6ff22; background: #292929;"
-            style="max-width: 100%; border-radius: 18px; box-shadow: 0 4px 24px #58a6ff22; background: #292929;"
-            alt="Avaliações reais dos clientes no Google" 
-            style="max-width: 100%; border-radius: 18px; box-shadow: 0 4px 24px #58a6ff22;"
-            loading="lazy"
-          >
-        </div>
+  <img 
+    src="img/avaliacoes-google-gestaopro.png.png" 
+    alt="Avaliações reais dos clientes no Google"
+    class="avaliacoes-img"
+    loading="lazy"
+    width="900"
+    height="auto"
+    style="max-width: 100%; border-radius: 18px; box-shadow: 0 4px 24px #58a6ff22;"
+  >
+</div>
+<style>
+.avaliacoes-img {
+    opacity: 0;
+    transition: opacity 0.7s cubic-bezier(.4,0,.2,1);
+    background: linear-gradient(90deg, #f8fafc 60%, #e0e7ef 100%);
+    /* fallback para caso a imagem demore */
+    min-height: 180px;
+    display: block;
+}
+.avaliacoes-img.loaded {
+    opacity: 1;
+    background: none;
+}
+</style>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    var img = document.querySelector('.avaliacoes-img');
+    if (img) {
+        img.addEventListener('load', function() {
+            img.classList.add('loaded');
+        });
+        // Se já estiver em cache
+        if (img.complete) {
+            img.classList.add('loaded');
+        }
+    }
+});
+</script>
         <!-- Botão para ver mais avaliações -->
         <div class="text-center mb-8">
           <a href="https://g.page/r/CcM8atjQeHCHEAE/review" target="_blank" rel="noopener"
