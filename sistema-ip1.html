@@ -763,7 +763,7 @@
                 <h3 class="font-semibold text-blue-700 mb-1">Facilidade de Uso</h3>
                 <p class="text-gray-700">Interface intuitiva que não requer treinamento extensivo para começar a usar.</p>
             </li>
-        </ul>
+        </div>
     </div>
 </section>
 
@@ -945,9 +945,21 @@ document.addEventListener("DOMContentLoaded", () => {
 </script>
 
 <footer class="flex flex-col items-center gap-5 bg-slate-900 py-10 text-sm text-white text-opacity-70">
-        
-        <p>&copy; 2026 GestãoPro. Todos os direitos reservados. | <a class="text-blue-500 transition-colors hover:text-emerald-500">Política de Privacidade</a></p>
-    </footer>
+    <p class="footer-copyright">
+        &copy; 2026 GestãoPro. Todos os direitos reservados. | <a class="text-blue-500 transition-colors hover:text-emerald-500">Política de Privacidade</a>
+    </p>
+</footer>
+<style>
+@media (max-width: 600px) {
+    .footer-copyright {
+        text-align: center !important;
+        width: 100%;
+        margin: 0 auto;
+        display: block;
+        line-height: 1.6;
+    }
+}
+</style>
 <script type="text/javascript">
     (function(c,l,a,r,i,t,y){
         c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
