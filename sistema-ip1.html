@@ -598,6 +598,7 @@
                         <img 
                             src="img/seta.png" 
                             alt="Arraste para o lado" 
+                            class="seta-mobile-only"
                             style="
                                 width: 220px; 
                                 max-width: 90vw; 
@@ -614,6 +615,12 @@
                         >
                     </div>
                     <style>
+                    @media (min-width: 601px) {
+    .seta-mobile-only,
+    .frase-mobile-only {
+        display: none !important;
+    }
+}
                     @keyframes setaArraste {
                         0% { transform: translateX(0); opacity: 0.85; }
                         20% { transform: translateX(-18px) scaleX(1.08); opacity: 1; }
