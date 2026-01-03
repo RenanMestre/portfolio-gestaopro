@@ -730,5 +730,23 @@ document.addEventListener("DOMContentLoaded", () => {
         y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
     })(window, document, "clarity", "script", "tr4llnpaza");
 </script>
+<!-- BLOQUEIO DE CÓDIGO FONTE -->
+<script>
+document.addEventListener('contextmenu', function(e) {
+  e.preventDefault();
+});
+document.addEventListener('keydown', function(e) {
+  // F12, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U, Ctrl+S, Ctrl+Shift+C
+  if (
+    e.key === "F12" ||
+    (e.ctrlKey && e.shiftKey && (e.key === "I" || e.key === "J" || e.key === "C")) ||
+    (e.ctrlKey && (e.key === "U" || e.key === "S"))
+  ) {
+    e.preventDefault();
+    e.stopPropagation();
+    return false;
+  }
+});
+</script>
 </body>
 </html>
