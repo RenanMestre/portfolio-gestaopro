@@ -170,7 +170,49 @@
                     <circle cx="14" cy="14" r="13" stroke="#fff" stroke-width="2" fill="none"/>
                     <path d="M14 7v7l5 3" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
                 </svg>
-                Promoção especial termina em:
+                <span class="promo-label" style="display:block; text-align:center;">
+                    Promoção especial termina em:
+                </span>
+                <style>
+                @media (max-width: 600px) {
+                    #promo-timer-bar {
+                        flex-direction: column !important;
+                        gap: 8px !important;
+                        padding: 10px 8px !important;
+                        font-size: 0.98rem !important;
+                        border-radius: 8px !important;
+                        min-width: 0 !important;
+                        width: 98vw !important;
+                        max-width: 360px !important;
+                        margin: 0 auto 12px auto !important;
+                        box-shadow: 0 2px 8px #ff2d2d22 !important;
+                    }
+                    #promo-timer-bar .promo-label {
+                        font-size: 0.98rem !important;
+                        padding: 0 !important;
+                        margin: 0 auto 2px auto !important;
+                        text-align: center !important;
+                        font-weight: 500 !important;
+                        letter-spacing: 0.01em !important;
+                        color: #fff !important;
+                        background: none !important;
+                        box-shadow: none !important;
+                        border-radius: 0 !important;
+                    }
+                    #promo-timer {
+                        font-size: 1.08rem !important;
+                        padding: 4px 12px !important;
+                        border-radius: 6px !important;
+                        margin: 0 auto !important;
+                        min-width: 90px !important;
+                        box-shadow: 0 1px 4px #d9042922 !important;
+                    }
+                    #promo-timer-bar svg {
+                        width: 22px !important;
+                        height: 22px !important;
+                    }
+                }
+                </style>
             </span>
             <span id="promo-timer" style="background: #fff; color: #d90429; border-radius: 8px; padding: 6px 18px; font-size: 1.25rem; font-weight: 900; letter-spacing: 0.05em; box-shadow: 0 2px 8px #d9042933;">00:00:00</span>
         </div>
