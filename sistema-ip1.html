@@ -271,21 +271,24 @@
                             preco: "R$ 59,90",
                             periodo: "/mês",
                             link: "https://app.keedpay.com.br/checkout/cIUOsEjSTdl",
-                            botao: "Assinar Agora"
+                            botao: "Assinar Agora",
+                            antigo: "R$ 79,90/mês"
                         },
                         {
                             id: "plano-profissional",
                             preco: "R$ 199,90",
                             periodo: "/mês",
                             link: "https://app.keedpay.com.br/checkout/5RiBBO4H1ZC",
-                            botao: "Quero Esse Plano"
+                            botao: "Quero Esse Plano",
+                            antigo: "R$ 249,90/mês"
                         },
                         {
                             id: "plano-premium",
                             preco: "R$ 349,90",
                             periodo: "/mês",
                             link: "https://app.keedpay.com.br/checkout/RSzdUgoGHou",
-                            botao: "Ativar IA Agora"
+                            botao: "Ativar IA Agora",
+                            antigo: "R$ 399,90/mês"
                         }
                     ],
                     anual: [
@@ -293,29 +296,34 @@
                             id: "plano-essencial",
                             preco: "R$ 51,60",
                             periodo: "/mês",
-                            link: "https://app.keedpay.com.br/checkout/83r2lnMEJEL", // Exemplo, ajuste para o link anual real
-                            botao: "Assinar Anual"
+                            link: "https://app.keedpay.com.br/checkout/83r2lnMEJEL",
+                            botao: "Assinar Anual",
+                            antigo: "R$ 59,90/mês"
                         },
                         {
                             id: "plano-profissional",
                             preco: "R$ 183,16",
                             periodo: "/mês",
-                            link: "https://app.keedpay.com.br/checkout/RG22NKckbsm", // Exemplo, ajuste para o link anual real
-                            botao: "Quero Anual"
+                            link: "https://app.keedpay.com.br/checkout/RG22NKckbsm",
+                            botao: "Quero Anual",
+                            antigo: "R$ 199,90/mês"
                         },
                         {
                             id: "plano-premium",
                             preco: "R$ 324,83",
                             periodo: "/mês",
-                            link: "https://app.keedpay.com.br/checkout/Ig5dyvKVgAx", // Exemplo, ajuste para o link anual real
-                            botao: "Ativar IA Anual"
+                            link: "https://app.keedpay.com.br/checkout/Ig5dyvKVgAx",
+                            botao: "Ativar IA Anual",
+                            antigo: "R$ 349,90/mês"
                         }
                     ]
                 };
 
                 function atualizarPlanos(periodo) {
                     planos[periodo].forEach(function (plano) {
-                        // Preço
+                        // Preço antigo
+                        document.querySelector(`#${plano.id} .preco-antigo`).textContent = plano.antigo;
+                        // Preço atual
                         document.querySelector(`#${plano.id} .preco-plano`).innerHTML =
                             plano.preco + `<span class="periodo-label" style="font-size: 18px; font-weight: 400;">${plano.periodo}</span>`;
                         // Botão
@@ -364,6 +372,9 @@
             <!-- Essencial -->
             <article class="plan-card" id="plano-essencial" style="background: #fff; border: 2px solid #58a6ff; border-radius: 18px; padding: 36px 28px; width: 320px; box-shadow: 0 6px 32px 0 rgba(88,166,255,0.08); display: flex; flex-direction: column; align-items: center;" aria-labelledby="plano-essencial-titulo">
                 <span id="plano-essencial-titulo" style="font-size: 18px; color: #2563eb; font-weight: 700;">Essencial</span>
+                <div class="preco-antigo" style="font-size: 1.1rem; color: #94a3b8; text-decoration: line-through; margin-bottom: 2px; font-weight: 500; opacity: 0.7; letter-spacing: -1px; display: block; text-align: center;">
+                    R$ 79,90/mês
+                </div>
                 <div class="preco-plano" style="font-size: 38px; font-weight: 800; margin: 18px 0 8px 0; color: #2563eb;">
                     R$ 59,90<span class="periodo-label" style="font-size: 18px; font-weight: 400;">/mês</span>
                 </div>
@@ -379,6 +390,9 @@
             <article class="plan-card" id="plano-profissional" style="background: #fff; border: 2px solid #10b499; border-radius: 18px; padding: 36px 28px; width: 320px; box-shadow: 0 6px 32px 0 rgba(16,180,153,0.08); display: flex; flex-direction: column; align-items: center; position: relative;" aria-labelledby="plano-profissional-titulo">
                 <img src="img/maisvendido.png" alt="Mais Vendido" style="position: absolute; top: -9px; left: -10px; width: 130px; z-index: 10; pointer-events: none; display: block;">
                 <span id="plano-profissional-titulo" style="font-size: 18px; color: #10b499; font-weight: 700;">Profissional <span style="background: #10b499; color: #fff; border-radius: 8px; padding: 2px 10px; font-size: 13px; margin-left: 6px;">RECOMENDADO</span></span>
+                <div class="preco-antigo" style="font-size: 1.1rem; color: #94a3b8; text-decoration: line-through; margin-bottom: 2px; font-weight: 500; opacity: 0.7; letter-spacing: -1px; display: block; text-align: center;">
+                    R$ 249,90/mês
+                </div>
                 <div class="preco-plano" style="font-size: 38px; font-weight: 800; margin: 18px 0 8px 0; color: #10b499;">
                     R$ 199,90<span class="periodo-label" style="font-size: 18px; font-weight: 400;">/mês</span>
                 </div>
@@ -393,6 +407,9 @@
             <!-- Premium IA -->
             <article class="plan-card" id="plano-premium" style="background: #fffbe6; border: 2px solid #ffd700; border-radius: 18px; padding: 36px 28px; width: 320px; box-shadow: 0 6px 32px 0 rgba(255,215,0,0.08); display: flex; flex-direction: column; align-items: center;" aria-labelledby="plano-premium-titulo">
                 <span id="plano-premium-titulo" style="font-size: 18px; color: #bfa600; font-weight: 700;">Premium IA</span>
+                <div class="preco-antigo" style="font-size: 1.1rem; color: #bfa60099; text-decoration: line-through; margin-bottom: 2px; font-weight: 500; opacity: 0.7; letter-spacing: -1px; display: block; text-align: center;">
+                    R$ 399,90/mês
+                </div>
                 <div class="preco-plano" style="font-size: 38px; font-weight: 800; margin: 18px 0 8px 0; color: #bfa600;">
                     R$ 349,90<span class="periodo-label" style="font-size: 18px; font-weight: 400;">/mês</span>
                 </div>
