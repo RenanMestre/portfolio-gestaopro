@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html lang="pt-BR" translate="no">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+    <meta name="google" content="notranslate">
+    <title>GestãoPro | Sistema de Gestão Empresarial Inteligente</title>
+    <script src="https://cdn.jsdelivr.net/npm/lucide@latest/dist/umd/lucide.min.js"></script>
+    <link rel="preload" as="style" href="build/assets/app-DtSl1bDO.css" />
+<link rel="modulepreload" as="script" href="build/assets/app-C10iFsbT.js" />
+<link rel="stylesheet" href="build/assets/app-DtSl1bDO.css" />
+<script type="module" src="build/assets/app-C10iFsbT.js"></script>
+<link rel="shortcut icon" href="/portfolio-gestaopro/img/Logo clara  600x300.jpg" type="image/x-icon">
+    <style>
+        [x-cloak] {
+            display: none !important;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+        }
+
+        /* Zoom out para melhor visualização no mobile */
+        @media (max-width: 600px) {
+            html {
+                font-size: 92% !important;
+            }
+            body {
+                zoom: 0.96;
+                -webkit-text-size-adjust: 96%;
+            }
+            /* Aumenta o tamanho da fonte dos cards de funcionalidades, benefícios e diferenciais */
+            .main-feature-card,
+            .beneficio-card,
+            .diferencial-card {
+                font-size: 1.09rem !important;
+            }
+            .main-feature-card h3,
+            .beneficio-card h3,
+            .diferencial-card h3 {
+                font-size: 1.18rem !important;
+            }
+            .main-feature-card span,
+            .beneficio-card span,
+            .diferencial-card span {
+                font-size: 1.25rem !important;
+            }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 antialiased">
+    <div
+        x-data="pricingPage"
+        x-init="$nextTick(() => refreshIcons())"
+        x-effect="refreshIcons()"
+        class="min-h-screen relative"
+    >
+        <header class="fixed inset-x-0 top-0 z-50 bg-white/90 backdrop-blur-md border-b border-white/40 shadow-sm">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-center gap-4 py-3 sm:justify-between">
+                <div class="flex items-center gap-3 text-center sm:text-left">
+                    <img src="img/logo clara png.png" alt="GestãoPro" class="hidden sm:block h-10 w-auto" />
+                    <div>
+                        <p class="text-sm text-gray-500 uppercase tracking-[0.3em]">GestãoPro</p>
+                        <p class="text-lg font-semibold text-gray-900 leading-tight">Sistema de Gestão Empresarial Inteligente</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-3 sm:gap-4">
+                    <a
+                        
+                        class="text-sm font-medium text-gray-600 hover:text-gray-600 transition"
+                    >
+                        Faça login
+                    </a>
+                    <a
+                      href="https://sandbox.gestaoproapp.com.br/login"
+                      class="px-5 py-2 rounded-full bg-blue-600 hover:bg-blue-700 text-white font-semibold shadow-lg shadow-blue-500/30 transition-transform hover:-translate-y-0.5"
+                    >
+                        Entrar
+                    </a>
+                </div>
+            </div>
+        </header>
+
+        <main class="pt-28">
+            <section class="relative overflow-hidden isolate">
+                <div style="background: #2563eb; opacity: 0.8; position: absolute; inset: 0; z-index: 0;"></div>
+                <style>
+                .hero-gradient-bg {
+                  position: absolute;
+                  inset: 0;
+                  z-index: 0;
+                  background: linear-gradient(120deg, #13074b 0%, #2563eb 40%, #13074b 100%);
+                  opacity: 0.92;
+                  pointer-events: none;
+                }
+                .hero-gradient-bg::before {
+                  content: "";
+                  position: absolute;
+                  top: -10%;
+                  left: 60%;
+                  width: 600px;
+                  height: 600px;
+                  background: radial-gradient(circle at 50% 50%, #fff 0%, transparent 70%);
+                  opacity: 0.12;
+                  filter: blur(40px);
+                  z-index: 1;
+                }
+                .hero-gradient-bg::after {
+                  content: "";
+                  position: absolute;
+                  bottom: -15%;
+                  right: 10%;
+                  width: 400px;
+                  height: 400px;
+                  background: radial-gradient(circle at 50% 50%, #f472b6 0%, transparent 80%);
+                  opacity: 0.10;
+                  filter: blur(60px);
+                  z-index: 1;
+                }
+                </style>
+                <div class="hero-gradient-bg"></div>
+                <div class="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20 space-y-10 text-white">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+                        <div class="max-w-3xl space-y-6">
+                            <p class="text-sm uppercase tracking-[0.5em] text-purple-200">Acesse o sistema pelo computador ou celular</p>
+                            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight">
+                                Organize sua empresa aumente o lucro e pare de perder dinheiro
+                            </h1>
+                            <p class="text-lg text-purple-100">
+                                Mais de 80% das pequenas empresas fecham por falta de gestão.<br>
+                                <span style="display:inline-block; background: linear-gradient(90deg, #fff 0%, #e0e7ff 100%); color: #312e81; font-weight: 700; border-radius: 10px; padding: 6px 18px; margin-top: 10px; box-shadow: 0 2px 12px #312e8133;">
+                                    O Gestão Pro resolve isso controlando vendas, estoque, financeiro e atendimento em um único sistema simples e eficiente.
+                                </span>
+                            </p>
+                            <div class="space-y-1 text-base text-purple-100">
+                                <p>Desenvolvido para empresas que precisam centralizar processos, otimizar a gestão e tomar decisões com mais segurança.</p>
+                            </div>
+                            
+                        </div>
+                        <div>
+                            <div class="aspect-video rounded-3xl overflow-hidden border border-white/20 shadow-2xl shadow-black/30">
+                                <iframe
+                                    src="https://www.youtube.com/embed/yJvucMWo3cI?si=fjV4ydVQxZsAHRM-"
+                                    title="Apresentação GestãoPro"
+                                    class="w-full h-full"
+                                    loading="lazy"
+                                    frameborder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    allowfullscreen
+                                ></iframe>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div class="flex flex-col gap-2 bg-white/5 rounded-2xl p-5 shadow-xl backdrop-blur">
+                            <p class="text-sm text-purple-200 uppercase">Produtividade</p>
+                            <p class="text-2xl font-bold">Comece a usar</p>
+                            <p class="text-sm text-purple-100">Gerencie processos, acompanhe resultados e mantenha todas as áreas da empresa integradas.</p>
+                        </div>
+                        <div class="flex flex-col gap-2 bg-white/5 rounded-2xl p-5 shadow-xl backdrop-blur">
+                            <p class="text-sm text-purple-200 uppercase">Segurança</p>
+                            <p class="text-2xl font-bold">Dados protegidos</p>
+                            <p class="text-sm text-purple-100">As informações ficam armazenadas de forma segura, com controle de acesso por usuário, garantindo confidencialidade, integridade e proteção dos dados.</p>
+                        </div>
+                        <div class="flex flex-col gap-2 bg-white/5 rounded-2xl p-5 shadow-xl backdrop-blur">
+                            <p class="text-sm text-purple-200 uppercase">Suporte</p>
+                            <p class="text-2xl font-bold">Pessoas reais</p>
+                            <p class="text-sm text-purple-100">Conte com um time especializado pronto para ajudar sempre que precisar.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <div class="hero-stats" aria-label="Estatísticas do sistema" style="display: flex; justify-content: center; margin-top: 32px;">
+    <ul style="display: flex; gap: 48px; list-style: none; padding: 0; margin: 0; background: #f8fafc; border-radius: 18px; box-shadow: 0 4px 24px #58a6ff22; padding: 18px 36px;">
+        <li class="stat" style="text-align: center;">
+            <strong style="display: block; font-size: 2rem; color: #2563eb; font-weight: 800; letter-spacing: -1px;">700+</strong>
+            <span style="color: #232c38; font-size: 1.08rem;">Usuários</span>
+        </li>
+        <li class="stat" style="text-align: center;">
+            <strong style="display: block; font-size: 2rem; color: #10b499; font-weight: 800; letter-spacing: -1px;">98%</strong>
+            <span style="color: #232c38; font-size: 1.08rem;">Satisfação</span>
+        </li>
+        <li class="stat" style="text-align: center;">
+            <strong style="display: block; font-size: 2rem; color: #eeca00; font-weight: 800; letter-spacing: -1px;">24/7</strong>
+            <span style="color: #232c38; font-size: 1.08rem;">Suporte</span>
+        </li>
+    </ul>
+</div>
+</div>
+<aside class="hero-stats" aria-label="Liberdade de assinatura" style="display: flex; justify-content: center; margin-top: 32px;">
+    <div class="stat" style="background: linear-gradient(120deg, #f8fafc 60%, #e0e7ef 100%); border-radius: 18px; box-shadow: 0 4px 24px #58a6ff22; padding: 32px 24px; max-width: 700px; width: 100%; text-align: center;">
+        <!-- FAIXA PROMOÇÃO COM CRONÔMETRO -->
+        <div id="promo-timer-bar" style="background: linear-gradient(90deg, #ff2d2d 0%, #ff6a00 100%); color: #fff; border-radius: 12px; box-shadow: 0 2px 12px #ff2d2d33; padding: 18px 24px; margin-bottom: 18px; display: flex; align-items: center; justify-content: center; gap: 18px; font-family: 'Inter',sans-serif; font-size: 1.18rem; font-weight: 700;">
+            <span style="display: flex; align-items: center; gap: 8px;">
+                <svg width="28" height="28" fill="none" viewBox="0 0 28 28" style="vertical-align: middle;">
+                    <circle cx="14" cy="14" r="13" stroke="#fff" stroke-width="2" fill="none"/>
+                    <path d="M14 7v7l5 3" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+                <span class="promo-label" style="display:block; text-align:center;">
+                    Promoção especial termina em:
+                </span>
+                <style>
+                @media (max-width: 600px) {
+                    #promo-timer-bar {
+                        flex-direction: row !important;
+                        align-items: center !important;
+                        justify-content: center !important;
+                        gap: 10px !important;
+                        padding: 10px 0 !important;
+                        border-radius: 0 !important;
+                        min-width: 0 !important;
+                        width: 100vw !important;
+                        left: 50% !important;
+                        transform: translateX(-50%) !important;
+                        max-width: none !important;
+                        margin: 0 !important;
+                        box-shadow: 0 2px 8px #ff2d2d22 !important;
+                        position: relative !important;
+                    }
+                    #promo-timer-bar > span {
+                        flex-direction: row !important;
+                        align-items: center !important;
+                        gap: 8px !important;
+                        display: flex !important;
+                        width: auto !important;
+                        padding-left: 12px !important;
+                        padding-right: 12px !important;
+                        box-sizing: border-box !important;
+                    }
+                    #promo-timer-bar .promo-label {
+                        font-size: 0.98rem !important;
+                        padding-left: 4px !important;
+                        padding-right: 4px !important;
+                        margin: 0 !important;
+                        text-align: left !important;
+                        font-weight: 500 !important;
+                        letter-spacing: 0.01em !important;
+                        color: #fff !important;
+                        background: none !important;
+                        box-shadow: none !important;
+                        border-radius: 0 !important;
+                        flex: 1 1 auto !important;
+                        display: block !important;
+                    }
+                    #promo-timer {
+                        font-size: 1.08rem !important;
+                        padding: 4px 12px !important;
+                        border-radius: 6px !important;
+                        margin: 0 !important;
+                        min-width: 90px !important;
+                        box-shadow: 0 1px 4px #d9042922 !important;
+                        background: #fff !important;
+                        color: #d90429 !important;
+                        font-weight: 900 !important;
+                        letter-spacing: 0.05em !important;
+                        display: block !important;
+                    }
+                    #promo-timer-bar svg {
+                        width: 22px !important;
+                        height: 22px !important;
+                        margin-right: 4px !important;
+                    }
+                    #promo-timer-bar > span {
+                        flex-direction: row !important;
+                        align-items: center !important;
+                        gap: 8px !important;
+                        display: flex !important;
+                        width: auto !important;
+                    }
+                }
+                </style>
+            </span>
+            <span id="promo-timer" style="background: #fff; color: #d90429; border-radius: 8px; padding: 6px 18px; font-size: 1.25rem; font-weight: 900; letter-spacing: 0.05em; box-shadow: 0 2px 8px #d9042933;">00:00:00</span>
+        </div>
+        <script>
+        // Cronômetro regressivo de 2h (exemplo, ajuste conforme necessário)
+        // Ajuste visual mobile para cronômetro e frase
+        const style = document.createElement('style');
+        style.innerHTML = `
+        @media (max-width: 600px) {
+            #promo-timer-bar {
+            width: 98vw !important;
+            min-width: 0 !important;
+            left: 50% !important;
+            transform: translateX(-50%) !important;
+            box-sizing: border-box !important;
+            padding: 8px 0 !important;
+            }
+            #promo-timer-bar .promo-label {
+            font-size: 0.92rem !important;
+            line-height: 1.2 !important;
+            font-weight: 600 !important;
+            }
+            #promo-timer {
+            font-size: 1.05rem !important;
+            padding: 4px 10px !important;
+            border-radius: 6px !important;
+            min-width: 70px !important;
+            }
+            #promo-timer-bar svg {
+            width: 18px !important;
+            height: 18px !important;
+            }
+        }
+        `;
+        document.head.appendChild(style);
+        (function() {
+            const timerEl = document.getElementById('promo-timer');
+            // Defina o tempo final (2 horas a partir do carregamento)
+            const endTime = new Date(Date.now() + 2 * 60 * 60 * 1000);
+            function updateTimer() {
+                const now = new Date();
+                let diff = Math.max(0, endTime - now);
+                let h = Math.floor(diff / (1000 * 60 * 60));
+                let m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                let s = Math.floor((diff % (1000 * 60)) / 1000);
+                timerEl.textContent =
+                    (h < 10 ? '0' : '') + h + ':' +
+                    (m < 10 ? '0' : '') + m + ':' +
+                    (s < 10 ? '0' : '') + s;
+                if (diff > 0) setTimeout(updateTimer, 1000);
+                else timerEl.textContent = "00:00:00";
+            }
+            updateTimer();
+        })();
+        </script>
+        <!-- Fim da faixa de promoção -->
+        <p style="font-size: 1.18rem; font-weight: 600; color: #232c38; margin: 0 0 10px 0; letter-spacing: 0.01em; font-family: 'Inter', sans-serif;">
+        <style>
+        @media (max-width: 600px) {
+            .liberdade-mobile-space {
+            margin-top: 24px !important;
+            display: block;
+            }
+        }
+        </style>
+        <span class="liberdade-mobile-space"></span>
+            Você tem liberdade total: <span style="font-weight:700; font-size:1.18rem; color:#ff0000;">cancele quando quiser</span> e mantenha o controle da sua assinatura.<br>
+            <span style="color:#2563eb; font-weight:700; font-size:1.35rem; display:inline-block; margin-top:6px;">Escolha seu plano abaixo:</span>
+        </p>
+        <div style="height: 24px;"></div>
+        <!-- Botão de alternância Mensal/Anual -->
+        <div id="toggle-period" style="display: flex; justify-content: center; margin-bottom: 28px;">
+            <div id="period-switch" style="display: flex; border: 1.5px solid #e3eaf3; border-radius: 16px; overflow: hidden; background: #fff; box-shadow: 0 2px 12px #58a6ff11;">
+                <button id="btn-mensal" type="button" style="padding: 12px 38px; background: #fff; color: #0a1a2f; border: none; font-size: 1.08rem; font-weight: 600; cursor: pointer; border-radius: 14px 0 0 14px; transition: background 0.2s, color 0.2s;">Mensal</button>
+                <button id="btn-anual" type="button" style="padding: 12px 38px; background: #e0e7ef; color: #2563eb; border: none; font-size: 1.08rem; font-weight: 700; cursor: pointer; border-radius: 0 14px 14px 0; display: flex; align-items: center; gap: 6px; transition: background 0.2s, color 0.2s;">
+                    Anual
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <circle cx="10" cy="10" r="8" stroke="#2563eb" stroke-width="2" fill="none"/>
+                        <path d="M6.5 13.5L13.5 6.5" stroke="#2563eb" stroke-width="2" stroke-linecap="round"/>
+                        <text x="10" y="15" text-anchor="middle" font-size="11" fill="#2563eb" font-family="Inter, Arial" font-weight="bold">%</text>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <!-- Fim do botão de alternância -->
+        <!-- Planos novos no padrão do site (AGORA ACIMA DA TABELA) -->
+        <div class="plans-container" style="display: flex; flex-wrap: wrap; gap: 32px; justify-content: center; margin-top: 18px;" aria-label="Planos disponíveis">
+            <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                // Planos e preços
+                const planos = {
+                    mensal: [
+                        {
+                            id: "plano-essencial",
+                            preco: "R$ 59,90",
+                            periodo: "/mês",
+                            link: "https://pay.kirvano.com/d75116a2-dbc1-40b5-afad-792c1c2d54b9",
+                            botao: "Assinar Agora",
+                            antigo: "R$ 79,90/mês"
+                        },
+                        {
+                            id: "plano-profissional",
+                            preco: "R$ 199,90",
+                            periodo: "/mês",
+                            link: "https://pay.kirvano.com/c95f758c-090e-42dd-bb8f-884fc66090fc",
+                            botao: "Quero Esse Plano",
+                            antigo: "R$ 249,90/mês"
+                        },
+                        {
+                            id: "plano-premium",
+                            preco: "R$ 349,90",
+                            periodo: "/mês",
+                            link: "https://pay.kirvano.com/81fa8988-e034-449f-bbdf-9361ec20587f",
+                            botao: "Ativar IA Agora",
+                            antigo: "R$ 399,90/mês"
+                        }
+                    ],
+                    anual: [
+                        {
+                            id: "plano-essencial",
+                            preco: "R$ 51,60",
+                            periodo: "/mês",
+                            link: "https://pay.kirvano.com/39211aa9-1ce8-4c09-92c3-2c2ce4a865ae",
+                            botao: "Assinar Anual",
+                            antigo: "R$ 59,90/mês"
+                        },
+                        {
+                            id: "plano-profissional",
+                            preco: "R$ 183,16",
+                            periodo: "/mês",
+                            link: "https://pay.kirvano.com/6d1f277f-3fd2-45d2-b14a-7bcc5730e6f2",
+                            botao: "Quero Anual",
+                            antigo: "R$ 199,90/mês"
+                        },
+                        {
+                            id: "plano-premium",
+                            preco: "R$ 324,83",
+                            periodo: "/mês",
+                            link: "https://pay.kirvano.com/b67c1bae-0b0c-44f4-abee-22749b3e1865",
+                            botao: "Ativar IA Anual",
+                            antigo: "R$ 349,90/mês"
+                        }
+                    ]
+                };
+
+                function atualizarPlanos(periodo) {
+                    planos[periodo].forEach(function (plano) {
+                        // Preço antigo
+                        document.querySelector(`#${plano.id} .preco-antigo`).textContent = plano.antigo;
+                        // Preço atual
+                        document.querySelector(`#${plano.id} .preco-plano`).innerHTML =
+                            plano.preco + `<span class="periodo-label" style="font-size: 18px; font-weight: 400;">${plano.periodo}</span>`;
+                        // Botão
+                        const btn = document.querySelector(`#${plano.id} a.btn, #${plano.id} a.btn.alt`);
+                        btn.href = plano.link;
+                        btn.textContent = plano.botao;
+                    });
+                }
+
+                // Alternância visual dos botões
+                function ativarBotao(periodo) {
+                    const btnMensal = document.getElementById("btn-mensal");
+                    const btnAnual = document.getElementById("btn-anual");
+                    if (periodo === "mensal") {
+                        btnMensal.style.background = "#fff";
+                        btnMensal.style.color = "#0a1a2f";
+                        btnMensal.style.fontWeight = "700";
+                        btnAnual.style.background = "#e0e7ef";
+                        btnAnual.style.color = "#2563eb";
+                        btnAnual.style.fontWeight = "600";
+                    } else {
+                        btnAnual.style.background = "#fff";
+                        btnAnual.style.color = "#0a1a2f";
+                        btnAnual.style.fontWeight = "700";
+                        btnMensal.style.background = "#e0e7ef";
+                        btnMensal.style.color = "#2563eb";
+                        btnMensal.style.fontWeight = "600";
+                    }
+                }
+
+                // Eventos
+                document.getElementById("btn-mensal").addEventListener("click", function () {
+                    atualizarPlanos("mensal");
+                    ativarBotao("mensal");
+                });
+                document.getElementById("btn-anual").addEventListener("click", function () {
+                    atualizarPlanos("anual");
+                    ativarBotao("anual");
+                });
+
+                // Inicialização padrão
+                atualizarPlanos("mensal");
+                ativarBotao("mensal");
+            });
+            </script>
+            <!-- Essencial -->
+            <article class="plan-card" id="plano-essencial" style="background: #fff; border: 2px solid #58a6ff; border-radius: 18px; padding: 36px 28px; width: 320px; box-shadow: 0 6px 32px 0 rgba(88,166,255,0.08); display: flex; flex-direction: column; align-items: center;" aria-labelledby="plano-essencial-titulo">
+                <span id="plano-essencial-titulo" style="font-size: 18px; color: #2563eb; font-weight: 700;">Essencial</span>
+                <div class="preco-antigo" style="font-size: 1.1rem; color: #94a3b8; text-decoration: line-through; margin-bottom: 2px; font-weight: 500; opacity: 0.7; letter-spacing: -1px; display: block; text-align: center;">
+                    R$ 79,90/mês
+                </div>
+                <div class="preco-plano" style="font-size: 38px; font-weight: 800; margin: 18px 0 8px 0; color: #2563eb;">
+                    R$ 59,90<span class="periodo-label" style="font-size: 18px; font-weight: 400;">/mês</span>
+                </div>
+                <ul style="list-style: none; padding: 0; margin: 0 0 18px 0; color: #232c38; font-size: 15px; text-align:left;">
+                    <li>✔ Vendas, clientes e estoque</li>
+                    <li>✔ Relatórios financeiros completos</li>
+                    <li>✔ Impressão de cupom e recibo</li>
+                    <li>✔ Backup automático diário</li>
+                </ul>
+                <a id="btn-essencial" href="https://pay.kirvano.com/d75116a2-dbc1-40b5-afad-792c1c2d54b9" class="btn" style="width: 100%; text-align: center; background: linear-gradient(90deg, #58a6ff 0%, #10b499 100%); color: #fff; font-weight: 700; border-radius: 10px; padding: 14px 0; font-size: 1.1rem; margin-top: 8px; box-shadow: 0 2px 12px #58a6ff33;">Assinar Agora</a>
+            </article>
+            <!-- Profissional -->
+            <article class="plan-card" id="plano-profissional" style="background: #fff; border: 2px solid #10b499; border-radius: 18px; padding: 36px 28px; width: 320px; box-shadow: 0 6px 32px 0 rgba(16,180,153,0.08); display: flex; flex-direction: column; align-items: center; position: relative;" aria-labelledby="plano-profissional-titulo">
+                <img src="img/maisvendido.png" alt="Mais Vendido" style="position: absolute; top: -9px; left: -10px; width: 130px; z-index: 10; pointer-events: none; display: block;">
+                <span id="plano-profissional-titulo" style="font-size: 18px; color: #10b499; font-weight: 700;">Profissional <span style="background: #10b499; color: #fff; border-radius: 8px; padding: 2px 10px; font-size: 13px; margin-left: 6px;">RECOMENDADO</span></span>
+                <div class="preco-antigo" style="font-size: 1.1rem; color: #94a3b8; text-decoration: line-through; margin-bottom: 2px; font-weight: 500; opacity: 0.7; letter-spacing: -1px; display: block; text-align: center;">
+                    R$ 249,90/mês
+                </div>
+                <div class="preco-plano" style="font-size: 38px; font-weight: 800; margin: 18px 0 8px 0; color: #10b499;">
+                    R$ 199,90<span class="periodo-label" style="font-size: 18px; font-weight: 400;">/mês</span>
+                </div>
+                <ul style="list-style: none; padding: 0; margin: 0 0 18px 0; color: #232c38; font-size: 15px; text-align:left;">
+                    <li>✔ Importação CSV</li>
+                    <li>✔ Margem de lucro</li>
+                    <li>✔ Controle de validade/estoque</li>
+                    <li>✔ Gráficos e rankings</li>
+                </ul>
+                <a id="btn-profissional" href="https://pay.kirvano.com/c95f758c-090e-42dd-bb8f-884fc66090fc" class="btn alt" style="width: 100%; text-align: center; background: linear-gradient(90deg, #10b499 0%, #58a6ff 100%); color: #fff; font-weight: 700; border-radius: 10px; padding: 14px 0; font-size: 1.1rem; margin-top: 8px; box-shadow: 0 2px 12px #10b49933;">Quero Esse Plano</a>
+            </article>
+            <!-- Premium IA -->
+            <article class="plan-card" id="plano-premium" style="background: #fffbe6; border: 2px solid #ffd700; border-radius: 18px; padding: 36px 28px; width: 320px; box-shadow: 0 6px 32px 0 rgba(255,215,0,0.08); display: flex; flex-direction: column; align-items: center;" aria-labelledby="plano-premium-titulo">
+                <span id="plano-premium-titulo" style="font-size: 18px; color: #bfa600; font-weight: 700;">Premium IA</span>
+                <div class="preco-antigo" style="font-size: 1.1rem; color: #bfa60099; text-decoration: line-through; margin-bottom: 2px; font-weight: 500; opacity: 0.7; letter-spacing: -1px; display: block; text-align: center;">
+                    R$ 399,90/mês
+                </div>
+                <div class="preco-plano" style="font-size: 38px; font-weight: 800; margin: 18px 0 8px 0; color: #bfa600;">
+                    R$ 349,90<span class="periodo-label" style="font-size: 18px; font-weight: 400;">/mês</span>
+                </div>
+                <ul style="list-style: none; padding: 0; margin: 0 0 18px 0; color: #232c38; font-size: 15px; text-align:left;">
+                    <li>✔ Acesso a todas as ferramentas</li>
+                    <li>✔ Integrações e inteligência artificial </li>
+                    <li>✔ Atualizações grátis</li>
+                    <li>✔ Suporte máximo</li>
+                </ul>
+                <a id="btn-premium" href="https://pay.kirvano.com/81fa8988-e034-449f-bbdf-9361ec20587f" class="btn" style="width: 100%; text-align: center; background: linear-gradient(90deg, #ffd700 0%, #fffbe6 100%); color: #232c38; font-weight: 700; border-radius: 10px; padding: 14px 0; font-size: 1.1rem; margin-top: 8px; box-shadow: 0 2px 12px #ffd70033;">Ativar IA Agora</a>
+            </article>
+        </div>
+        <!-- Espaço entre planos e tabela -->
+        <div style="height:32px;"></div>
+        <!-- Tabela comparativa organizada e alinhada -->
+        <div class="tabela-comparativa-container" style="margin-top: 0; display: flex; justify-content: center;">
+            <div class="hero-stats" style="width: 100%;">
+                <div class="stat" style="max-width: 900px; margin: 0 auto;">
+                    <div class="section-header center" style="margin-bottom: 12px;">
+                        <h2 style="font-size: 1.5rem; color: #2563eb; font-weight: 800; margin-bottom: 2px;">Diferença entre os planos</h2>
+                        <p class="section-desc" style="color: #232c38; font-size: 1.08rem;">
+                            <span style="display:block; text-align:center; font-size:1.18rem; color:#232c38; margin-bottom:6px;">
+                                Escolha o plano certo para o seu negócio
+                            </span>
+                            <span style="display:block; text-align:center;">
+                                <span class="frase-mobile-only" style="background: linear-gradient(90deg, #2563eb 0%, #10b499 100%); color: #fff; padding: 2px 10px; border-radius: 8px; font-weight: 500; box-shadow: 0 2px 8px #2563eb22; margin-left: 0px;">
+                                    arraste a tabela para o lado
+                                    <svg style="vertical-align: middle; margin-left: 6px; display: inline-block; min-width: 18px; min-height: 18px;" width="18" height="18" viewBox="0 0 24 24" fill="none">
+                                        <rect x="2" y="9" width="14" height="2" rx="1" fill="#fff" opacity="0.7"/>
+                                        <path d="M5 6l-3 4 3 4" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M13 6l3 4-3 4" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </span>
+                            </span>
+                        </p>
+                    </div>
+                    <div style="overflow-x:auto; margin-top:0;">
+                        <table style="
+                            width:100%;
+                            max-width: 900px;
+                            margin: 0 auto 36px auto;
+                            border-collapse: separate;
+                            border-spacing: 0;
+                            background: #fff;
+                            color: #232c38;
+                            border-radius: 18px;
+                            box-shadow: 0 4px 24px #58a6ff22;
+                            font-family: 'Inter',sans-serif;
+                        ">
+                            <thead>
+                                <tr style="background:#e0e7ef;">
+                                    <th style="padding:18px 12px; border-radius:18px 0 0 0; font-size:18px; font-weight:800; text-align:left; min-width:180px;">Recursos</th>
+                                    <th style="padding:18px 12px; font-size:18px; font-weight:700; text-align:center; min-width:140px;">Essencial</th>
+                                    <th style="padding:18px 12px; font-size:18px; font-weight:700; text-align:center; min-width:140px;">Profissional</th>
+                                    <th style="padding:18px 12px; border-radius:0 18px 0 0; font-size:18px; font-weight:700; text-align:center; min-width:140px;">Premium IA</th>
+                                </tr>
+                            </thead>
+                            <tbody style="font-size:16px;">
+                                <tr style="background:#f8fafc;">
+                                    <td style="padding:14px 12px; text-align:left; border-top-left-radius:12px;">Vendas e histórico</td>
+                                    <td style="text-align:center;">✔</td>
+                                    <td style="text-align:center;">✔</td>
+                                    <td style="text-align:center;">✔</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding:14px 12px; text-align:left;">Relatórios financeiros</td>
+                                    <td style="text-align:center;">✔</td>
+                                    <td style="text-align:center;">✔</td>
+                                    <td style="text-align:center;">✔</td>
+                                </tr>
+                                <tr style="background:#f8fafc;">
+                                    <td style="padding:14px 12px; text-align:left;">Controle de estoque</td>
+                                    <td style="text-align:center;">✔</td>
+                                    <td style="text-align:center;">✔</td>
+                                    <td style="text-align:center;">✔</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding:14px 12px; text-align:left;">Gráficos e rankings</td>
+                                    <td style="text-align:center;">✖</td>
+                                    <td style="text-align:center;">✔</td>
+                                    <td style="text-align:center;">✔</td>
+                                </tr>
+                                <tr style="background:#f8fafc;">
+                                    <td style="padding:14px 12px; text-align:left;">Exportação PDF</td>
+                                    <td style="text-align:center;">✖</td>
+                                    <td style="text-align:center;">✔</td>
+                                    <td style="text-align:center;">✔</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding:14px 12px; text-align:left;">Integrações e IA</td>
+                                    <td style="text-align:center;">✖</td>
+                                    <td style="text-align:center;">✖</td>
+                                    <td style="text-align:center;">✔</td>
+                                </tr>
+                                <tr style="background:#f8fafc;">
+                                    <td style="padding:14px 12px; text-align:left; border-bottom-left-radius:12px;">Suporte prioritário</td>
+                                    <td style="text-align:center;">✖</td>
+                                    <td style="text-align:center;">✔</td>
+                                    <td style="text-align:center;">✔✔</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- Seta para indicar arraste lateral -->
+                    <div style="display: flex; justify-content: center; margin-top: -18px; margin-bottom: 18px;">
+                        <img 
+                            src="img/seta.png" 
+                            alt="Arraste para o lado" 
+                            class="seta-mobile-only"
+                            style="
+                                width: 220px; 
+                                max-width: 90vw; 
+                                height: 32px; 
+                                object-fit: contain; 
+                                filter: drop-shadow(0 2px 8px #2563eb33); 
+                                opacity: 0.85;
+                                animation: setaArraste 2.2s infinite alternate;
+                                margin: 0 auto;
+                                display: block;
+                                pointer-events: none;
+                            "
+                            loading="lazy"
+                        >
+                    </div>
+                    <style>
+                    @media (min-width: 601px) {
+    .seta-mobile-only,
+    .frase-mobile-only {
+        display: none !important;
+    }
+}
+                    @keyframes setaArraste {
+                        0% { transform: translateX(0); opacity: 0.85; }
+                        20% { transform: translateX(-18px) scaleX(1.08); opacity: 1; }
+                        50% { transform: translateX(0) scaleX(1.12); opacity: 0.95; }
+                        80% { transform: translateX(18px) scaleX(1.08); opacity: 1; }
+                        100% { transform: translateX(0); opacity: 0.85; }
+                    }
+                    </style>
+                    <!-- Caso não tenha a imagem, pode usar SVG abaixo como fallback -->
+                    <!--
+                    <div style="display: flex; justify-content: center; margin-top: -18px; margin-bottom: 18px;">
+                        <svg width="220" height="32" viewBox="0 0 220 32" fill="none" xmlns="http://www.w3.org/2000/svg"
+                            style="display:block; max-width:90vw; filter:drop-shadow(0 2px 8px #2563eb33); opacity:0.85; animation: setaArraste 2.2s infinite alternate;">
+                            <defs>
+                                <linearGradient id="seta-grad" x1="0" y1="16" x2="220" y2="16" gradientUnits="userSpaceOnUse">
+                                    <stop stop-color="#2563eb"/>
+                                    <stop offset="1" stop-color="#10b499"/>
+                                </linearGradient>
+                            </defs>
+                            <path d="M10 16 H210" stroke="url(#seta-grad)" stroke-width="5" stroke-linecap="round"/>
+                            <polygon points="210,16 200,10 200,22" fill="#2563eb"/>
+                            <polygon points="10,16 20,10 20,22" fill="#10b499"/>
+                            <text x="110" y="28" text-anchor="middle" font-size="13" fill="#2563eb" font-family="Inter, Arial" font-weight="bold" opacity="0.7">Arraste para o lado</text>
+                        </svg>
+                    </div>
+                    -->
+                    
+<!-- GARANTIA 7 DIAS -->
+<section class="py-12 px-4 sm:px-6 lg:px-8 bg-white">
+    <div class="max-w-3xl mx-auto text-center space-y-4">
+        <p class="text-sm uppercase tracking-[0.4em]" style="color: #000;">Teste sem risco</p>
+        <h2 class="text-3xl font-bold text-red-500">7 dias de garantia</h2>
+        <p class="text-lg text-gray-700" style="font-weight: 700;">
+            <strong style="font-weight: 800;">
+                Experimente todas as funcionalidades do GestãoPro por 7 dias. Se não gostar, devolvemos 100% do seu dinheiro. Simples, transparente e sem burocracia.
+            </strong>
+        </p>
+    </div>
+</section>                </div>
+            </div>
+        </div>
+    </div>
+</aside>
+<div style="height: 32px;"></div>
+
+<!-- FUNCIONALIDADES PRINCIPAIS -->
+<section class="py-16 px-4 sm:px-6 lg:px-8 bg-white">
+    <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-10">
+            <h2 class="text-3xl font-bold mb-2" style="color: #000;">Funcionalidades Principais</h2>
+            <p class="text-lg text-gray-600">Tudo que você precisa para gerenciar sua empresa de forma eficiente</p>
+        </div>
+        <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <li class="bg-blue-50 rounded-xl p-6 shadow hover:shadow-lg transition main-feature-card">
+                <span class="text-2xl mb-2 block">📊</span>
+                <h3 class="font-semibold text-blue-700 mb-1">Monitoramento em Tempo Real</h3>
+                <p class="text-gray-700">Acompanhe todos os indicadores e métricas do seu negócio em tempo real com dashboards intuitivos.</p>
+            </li>
+            <li class="bg-blue-50 rounded-xl p-6 shadow hover:shadow-lg transition main-feature-card">
+                <span class="text-2xl mb-2 block">📈</span>
+                <h3 class="font-semibold text-blue-700 mb-1">Relatórios Avançados</h3>
+                <p class="text-gray-700">Gere relatórios detalhados e personalizados para análise profunda do desempenho empresarial.</p>
+            </li>
+            <li class="bg-blue-50 rounded-xl p-6 shadow hover:shadow-lg transition main-feature-card">
+                <span class="text-2xl mb-2 block">🔔</span>
+                <h3 class="font-semibold text-blue-700 mb-1">Alertas Inteligentes</h3>
+                <p class="text-gray-700">Receba notificações automáticas sobre eventos importantes e tome decisões mais rápidas.</p>
+            </li>
+            <li class="bg-blue-50 rounded-xl p-6 shadow hover:shadow-lg transition main-feature-card">
+                <span class="text-2xl mb-2 block">🤝</span>
+                <h3 class="font-semibold text-blue-700 mb-1">Gestão de Equipes</h3>
+                <p class="text-gray-700">Organize e acompanhe o desempenho da sua equipe com ferramentas colaborativas.</p>
+            </li>
+            <li class="bg-blue-50 rounded-xl p-6 shadow hover:shadow-lg transition main-feature-card">
+                <span class="text-2xl mb-2 block">💰</span>
+                <h3 class="font-semibold text-blue-700 mb-1">Controle Financeiro</h3>
+                <p class="text-gray-700">Gerencie receitas, despesas e fluxo de caixa com precisão e segurança.</p>
+            </li>
+            <li class="bg-blue-50 rounded-xl p-6 shadow hover:shadow-lg transition main-feature-card">
+                <span class="text-2xl mb-2 block">🤖</span>
+                <h3 class="font-semibold text-blue-700 mb-1">WhatsApp IA</h3>
+                <p class="text-gray-700">Recursos de inteligência artificial para automatizar processos e otimizar decisões.</p>
+            </li>
+        </ul>
+    </div>
+</section>
+
+<!-- BENEFÍCIOS -->
+<section class="py-16 px-4 sm:px-6 lg:px-8 bg-slate-100">
+    <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-10">
+            <span class="uppercase font-bold tracking-widest text-sm" style="color: #000;">Vantagens</span>
+            <h2 class="text-3xl font-bold mb-2" style="color: #000;">Benefícios do GestãoPro</h2>
+            <p class="text-lg text-gray-600">Descubra como nossa solução pode transformar sua gestão empresarial</p>
+        </div>
+        <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <li class="bg-white rounded-xl p-6 shadow hover:shadow-lg transition beneficio-card">
+                <span class="text-2xl mb-2 block">⚡</span>
+                <h3 class="font-semibold text-blue-700 mb-1">Aumento de Produtividade</h3>
+                <p class="text-gray-700">Automatize tarefas repetitivas e ganhe até 40% mais tempo para focar no que realmente importa.</p>
+            </li>
+            <li class="bg-white rounded-xl p-6 shadow hover:shadow-lg transition beneficio-card">
+                <span class="text-2xl mb-2 block">💡</span>
+                <h3 class="font-semibold text-blue-700 mb-1">Decisões Baseadas em Dados</h3>
+                <p class="text-gray-700">Tenha acesso a insights valiosos para tomar decisões estratégicas com confiança.</p>
+            </li>
+            <li class="bg-white rounded-xl p-6 shadow hover:shadow-lg transition beneficio-card">
+                <span class="text-2xl mb-2 block">🔒</span>
+                <h3 class="font-semibold text-blue-700 mb-1">Segurança de Dados</h3>
+                <p class="text-gray-700">Criptografia avançada e backups automáticos garantem a proteção das suas informações.</p>
+            </li>
+            <li class="bg-white rounded-xl p-6 shadow hover:shadow-lg transition beneficio-card">
+                <span class="text-2xl mb-2 block">📱</span>
+                <h3 class="font-semibold text-blue-700 mb-1">Acesso de Qualquer Lugar</h3>
+                <p class="text-gray-700">Sistema 100% web responsivo, acessível de computadores, tablets e smartphones.</p>
+            </li>
+            <li class="bg-white rounded-xl p-6 shadow hover:shadow-lg transition beneficio-card">
+                <span class="text-2xl mb-2 block">💵</span>
+                <h3 class="font-semibold text-blue-700 mb-1">Redução de Custos</h3>
+                <p class="text-gray-700">Elimine desperdícios e otimize recursos com análises precisas de gastos.</p>
+            </li>
+            <li class="bg-white rounded-xl p-6 shadow hover:shadow-lg transition beneficio-card">
+                <span class="text-2xl mb-2 block">🎯</span>
+                <h3 class="font-semibold text-blue-700 mb-1">Facilidade de Uso</h3>
+                <p class="text-gray-700">Interface intuitiva que não requer treinamento extensivo para começar a usar.</p>
+            </li>
+        </div>
+    </div>
+</section>
+
+<!-- DIFERENCIAIS -->
+<section class="py-16 px-4 sm:px-6 lg:px-8 bg-white">
+    <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-10">
+            <span class="uppercase font-bold tracking-widest text-sm" style="color: #000;">Diferenciais</span>
+            <h2 class="text-3xl font-bold mb-2" style="color: #000;">Por que escolher o GestãoPro?</h2>
+            <p class="text-lg text-gray-600">Desenvolvido por profissionais com foco em excelência e inovação</p>
+        </div>
+        <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <li class="bg-blue-50 rounded-xl p-6 shadow hover:shadow-lg transition diferencial-card">
+                <span class="font-bold text-blue-700 text-xl mb-2 block">01</span>
+                <h3 class="font-semibold text-blue-700 mb-1">Arquitetura Otimizada para SEO</h3>
+                <p class="text-gray-700">Sistema desenvolvido com as melhores práticas de performance e otimização para mecanismos de busca.</p>
+            </li>
+            <li class="bg-blue-50 rounded-xl p-6 shadow hover:shadow-lg transition diferencial-card">
+                <span class="font-bold text-blue-700 text-xl mb-2 block">02</span>
+                <h3 class="font-semibold text-blue-700 mb-1">Conteúdo Claro e Objetivo</h3>
+                <p class="text-gray-700">Informações apresentadas de forma direta e compreensível, facilitando a tomada de decisões.</p>
+            </li>
+            <li class="bg-blue-50 rounded-xl p-6 shadow hover:shadow-lg transition diferencial-card">
+                <span class="font-bold text-blue-700 text-xl mb-2 block">03</span>
+                <h3 class="font-semibold text-blue-700 mb-1">Navegação Fluida</h3>
+                <p class="text-gray-700">Interface responsiva e intuitiva que proporciona uma experiência de uso excepcional.</p>
+            </li>
+            <li class="bg-blue-50 rounded-xl p-6 shadow hover:shadow-lg transition diferencial-card">
+                <span class="font-bold text-blue-700 text-xl mb-2 block">04</span>
+                <h3 class="font-semibold text-blue-700 mb-1">Suporte 24/7</h3>
+                <p class="text-gray-700">Equipe dedicada pronta para auxiliar sua empresa a qualquer momento.</p>
+            </li>
+            <li class="bg-blue-50 rounded-xl p-6 shadow hover:shadow-lg transition diferencial-card">
+                <span class="font-bold text-blue-700 text-xl mb-2 block">05</span>
+                <h3 class="font-semibold text-blue-700 mb-1">Atualizações Constantes</h3>
+                <p class="text-gray-700">Novas funcionalidades e melhorias implementadas regularmente sem custo adicional.</p>
+            </li>
+            <li class="bg-blue-50 rounded-xl p-6 shadow hover:shadow-lg transition diferencial-card">
+                <span class="font-bold text-blue-700 text-xl mb-2 block">06</span>
+                <h3 class="font-semibold text-blue-700 mb-1">Segurança de dados</h3>
+                <p class="text-gray-700">Criado por especialistas em segurança cibernética e desenvolvimento de software de alta qualidade.</p>
+            </li>
+        </ul>
+    </div>
+</section>
+
+<!-- AVALIAÇÕES -->
+<section class="py-16 px-4 sm:px-6 lg:px-8 bg-slate-100">
+    <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-10">
+            <span class="uppercase font-bold tracking-widest text-sm" style="color: #000;">Avaliações</span>
+            <h2 class="text-3xl font-bold mb-2" style="color: #000;">O que nossos clientes dizem</h2>
+            <p class="text-lg text-gray-600">Feedback real de empresas que transformaram sua gestão com o GestãoPro</p>
+        </div>
+        <!-- Avaliações reais Google (imagem) -->
+        <div class="mb-10 flex justify-center">
+  <img 
+    src="img/avaliacoes-google-gestaopro.png.png" 
+    alt="Avaliações reais dos clientes no Google"
+    class="avaliacoes-img"
+    loading="lazy"
+    width="900"
+    height="auto"
+    style="max-width: 100%; border-radius: 18px; box-shadow: 0 4px 24px #58a6ff22;"
+  >
+</div>
+<style>
+.avaliacoes-img {
+    opacity: 0;
+    transition: opacity 0.7s cubic-bezier(.4,0,.2,1);
+    background: linear-gradient(90deg, #f8fafc 60%, #e0e7ef 100%);
+    /* fallback para caso a imagem demore */
+    min-height: 180px;
+    display: block;
+}
+.avaliacoes-img.loaded {
+    opacity: 1;
+    background: none;
+}
+</style>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    var img = document.querySelector('.avaliacoes-img');
+    if (img) {
+        img.addEventListener('load', function() {
+            img.classList.add('loaded');
+        });
+        // Se já estiver em cache
+        if (img.complete) {
+            img.classList.add('loaded');
+        }
+    }
+});
+</script>
+        <!-- Botão para ver mais avaliações -->
+        <div class="text-center mb-8">
+          <a href="https://g.page/r/CcM8atjQeHCHEAE/review" target="_blank" rel="noopener"
+             class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white border border-blue-300 text-blue-700 font-semibold shadow hover:bg-blue-50 transition">
+            <span>Avaliações no Google</span>
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
+        </div>
+        <div class="elfsight-app-af2a2eee-344c-4631-88e1-7db38b8b588c" data-elfsight-app-lazy></div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="py-16 px-4 sm:px-6 lg:px-8 bg-white">
+    <div class="max-w-6xl mx-auto text-center">
+        <div class="mb-8">
+            <span class="uppercase font-bold tracking-widest text-sm" style="color: #000;">Comece agora</span>
+           <h2 class="text-3xl font-bold mb-2" style="color: #000;">Pronto para transformar sua gestão?</h2>
+            <p class="text-lg text-gray-600">Entre em contato conosco e descubra como o GestãoPro pode impulsionar seu negócio</p>
+        </div>
+        <div class="flex flex-wrap justify-center gap-6 mt-6">
+            <a href="https://wa.me/556294496323" class="inline-flex items-center gap-2 rounded-full bg-blue-600 text-white font-semibold py-4 px-8 shadow-lg hover:scale-105 transition-transform text-lg">
+                <span>Falar com especialista</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+            </a>
+        </div>
+    </div>
+</section>
+
+        <!-- BOTÃO WHATSAPP FIXO -->
+<div class="fixed bottom-6 right-6 z-50 flex items-center gap-3">
+  
+  <!-- Balão de texto -->
+  <div id="whatsapp-bubble"
+       class="hidden md:flex items-center bg-white text-slate-800 px-4 py-2 rounded-full shadow-lg border border-slate-200 animate-fade-in">
+    <span class="text-sm font-medium">
+      Fale com a gente no WhatsApp
+    </span>
+  </div>
+
+  <!-- Botão -->
+  <a href="https://wa.me/5562994496323"
+     target="_blank"
+     aria-label="Fale conosco no WhatsApp"
+     class="flex h-16 w-16 items-center justify-center rounded-full bg-green-500 text-white shadow-lg shadow-green-500/40 
+            transition-all duration-300 hover:scale-110 hover:bg-green-600 hover:shadow-green-500/60 relative">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M20.52 3.48A11.81 11.81 0 0012.07 0C5.52 0 .08 5.25 0 11.74a11.66 11.66 0 001.64 6L0 24l6.38-1.67a12.13 12.13 0 005.67 1.44h.05c6.56 0 11.9-5.25 11.96-11.74a11.69 11.69 0 00-3.54-8.55zM12.1 21.54a9.66 9.66 0 01-4.87-1.31l-.35-.21-3.78 1 1-3.67-.23-.38a9.55 9.55 0 01-1.48-5.15c.05-5.3 4.4-9.61 9.71-9.61a9.64 9.64 0 016.9 2.84 9.53 9.53 0 012.86 6.89c-.05 5.3-4.4 9.6-9.76 9.6zm5.45-7.23c-.3-.15-1.78-.88-2.06-.98s-.48-.15-.67.15-.77.97-.94 1.17-.35.22-.65.07a7.95 7.95 0 01-2.34-1.44 8.5 8.5 0 01-1.58-1.95c-.17-.3 0-.46.13-.61.14-.14.3-.35.44-.52s.2-.3.3-.5a.57.57 0 000-.53c-.08-.15-.67-1.62-.92-2.23-.24-.58-.5-.5-.67-.5l-.58-.01a1.1 1.1 0 00-.8.37 3.36 3.36 0 00-1.06 2.5c0 1.47 1.07 2.89 1.22 3.09.15.2 2.1 3.2 5.08 4.49 2.38 1 3.3 1.09 4.48.92.72-.1 2.18-.88 2.5-1.73a2.14 2.14 0 00.15-1.74c-.06-.13-.25-.2-.54-.35z"/>
+                        </svg>
+  </a>
+</div>
+
+<!-- ANIMAÇÃO CSS -->
+<style>
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+</style>
+
+<!-- SCRIPT para ocultar o balão após alguns segundos -->
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const bubble = document.getElementById("whatsapp-bubble");
+  // Exibe o balão com delay (apenas desktop)
+  setTimeout(() => {
+    if (window.innerWidth > 768) bubble.classList.remove("hidden");
+  }, 1000);
+
+  // Oculta automaticamente após 8 segundos
+  setTimeout(() => {
+    bubble.classList.add("hidden");
+  }, 8000);
+});
+</script>
+
+<footer class="flex flex-col items-center gap-5 bg-slate-900 py-10 text-sm text-white text-opacity-70">
+    <p class="footer-copyright">
+        &copy; 2026 GestãoPro. Todos os direitos reservados. | <a class="text-blue-500 transition-colors hover:text-emerald-500">Política de Privacidade</a>
+    </p>
+</footer>
+<style>
+@media (max-width: 600px) {
+    .footer-copyright {
+        text-align: center !important;
+        width: 100%;
+        margin: 0 auto;
+        display: block;
+        line-height: 1.6;
+    }
+}
+</style>
+<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "tr4llnpaza");
+</script>
+<!-- BLOQUEIO DE CÓDIGO FONTE -->
+<script>
+document.addEventListener('contextmenu', function(e) {
+  e.preventDefault();
+});
+document.addEventListener('keydown', function(e) {
+  // F12, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U, Ctrl+S, Ctrl+Shift+C
+  if (
+    e.key === "F12" ||
+    (e.ctrlKey && e.shiftKey && (e.key === "I" || e.key === "J" || e.key === "C")) ||
+    (e.ctrlKey && (e.key === "U" || e.key === "S"))
+  ) {
+    e.preventDefault();
+    e.stopPropagation();
+    return false;
+  }
+});
+</script>
+</body>
+</html>
