@@ -334,7 +334,7 @@
                 overflow-x: auto;
                 overflow-y: hidden;
                 white-space: nowrap;
-                /* Para garantir que todos os itens fiquem visíveis */
+                position: relative;
             }
             .sidebar-nav a,
             .sidebar.collapsed .sidebar-nav a {
@@ -471,6 +471,28 @@
                     sidebar.classList.toggle('collapsed');
                 });
             }
+
+            // Mobile menu scroll indicator
+            function updateSidebarScrollIndicator() {
+                const nav = document.querySelector('.sidebar-nav');
+                const indicator = document.querySelector('.sidebar-scroll-indicator');
+                if (!nav || !indicator) return;
+                // Se chegou ao fim do scroll, some o indicador
+                if (nav.scrollWidth - nav.scrollLeft - nav.clientWidth < 8) {
+                    nav.classList.add('scrolled-end');
+                } else {
+                    nav.classList.remove('scrolled-end');
+                }
+            }
+            // Só ativa em telas pequenas
+            if (window.innerWidth <= 600) {
+                const nav = document.querySelector('.sidebar-nav');
+                if (nav) {
+                    nav.addEventListener('scroll', updateSidebarScrollIndicator);
+                    window.addEventListener('resize', updateSidebarScrollIndicator);
+                    setTimeout(updateSidebarScrollIndicator, 300);
+                }
+            }
         });
     </script>
     <!-- Meta Pixel Code -->
@@ -523,6 +545,10 @@
                 <a href="https://dash.ticto.com.br/invitation/affiliation/PE313EA89" class="active"><i class="bi bi-currency-dollar"></i> <span>Comissões</span></a>
                 <a href="https://dash.ticto.com.br/dashboard"><i class="bi bi-bar-chart-line"></i> <span>Relatórios</span></a>
             </nav>
+            <!-- Indicador de rolagem discreto só no mobile -->
+            <div class="sidebar-scroll-indicator" style="display:none;">
+                <i class="bi bi-arrow-right-circle"></i>
+            </div>
             <div class="sidebar-footer">
                 &copy; 2026 GestãoPro
             </div>
@@ -581,5 +607,28 @@
             </div>
         </div>
     </div>
+    <script>
+        // Exibe o indicador apenas em telas pequenas e se houver overflow
+        function handleSidebarIndicator() {
+            var nav = document.querySelector('.sidebar-nav');
+            var indicator = document.querySelector('.sidebar-scroll-indicator');
+            if (!nav || !indicator) return;
+            if (window.innerWidth <= 600 && nav.scrollWidth > nav.clientWidth + 8) {
+                indicator.style.display = 'block';
+                // Atualiza a posição do indicador
+                nav.addEventListener('scroll', function () {
+                    if (nav.scrollWidth - nav.scrollLeft - nav.clientWidth < 8) {
+                        indicator.style.opacity = '0';
+                    } else {
+                        indicator.style.opacity = '1';
+                    }
+                });
+            } else {
+                indicator.style.display = 'none';
+            }
+        }
+        window.addEventListener('DOMContentLoaded', handleSidebarIndicator);
+        window.addEventListener('resize', handleSidebarIndicator);
+    </script>
 </body>
 </html>
