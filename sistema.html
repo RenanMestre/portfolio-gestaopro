@@ -325,13 +325,113 @@ software de gestão para pequenas empresas"/>
                     </div>
                 </div>
             </section>
-
+            <!-- CLIENTES QUE USAM O SISTEMA -->
+            <div style="height: 40px;"></div>
+            <section class="py-14 px-4 sm:px-6 lg:px-8 bg-white" style="padding-top: 0px;">
+                <div class="max-w-6xl mx-auto">
+                    <div class="text-center mb-8">
+                        <!-- Espaço extra acima da frase -->
+                        <div style="height: 22px;"></div>
+                        <span class="uppercase font-bold tracking-widest text-sm text-blue-700" style="letter-spacing:0.18em;">Empresas que confiam</span>
+                        <h2 class="text-3xl sm:text-4xl font-extrabold mb-2 text-slate-900 leading-tight" style="font-family:'Inter',sans-serif;">Quem usa o <span class="text-blue-700">GestãoPro</span></h2>
+                        <p class="text-lg sm:text-xl text-gray-600 font-medium" style="max-width:600px;margin:0 auto;">
+                            Mais de <span class="font-extrabold text-blue-700 text-2xl align-middle">700 empresas</span> já confiam no sistema para gerir seus negócios diariamente
+                        </p>
+                    </div>
+                </div>
+            <section class="py-14 px-4 sm:px-6 lg:px-8 bg-white">
+                    <div class="flex flex-wrap items-center justify-center gap-8 md:gap-12 py-4">
+                        <!-- Logos de empresas clientes - visual aprimorado -->
+                        <style>
+                        .empresas-logos-grid {
+                            display: flex;
+                            flex-wrap: wrap;
+                            gap: 32px 48px;
+                            justify-content: center;
+                            align-items: center;
+                            padding: 16px 0 8px 0;
+                            background: linear-gradient(90deg, #f8fafc 60%, #e0e7ef 100%);
+                            border-radius: 18px;
+                            box-shadow: 0 4px 24px #58a6ff22;
+                            margin-bottom: 12px;
+                        }
+                        .empresa-logo-card {
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            height: 72px;
+                            width: 148px;
+                            background: #fff;
+                            border-radius: 14px;
+                            box-shadow: 0 2px 12px #2563eb11;
+                            transition: box-shadow 0.2s, transform 0.2s;
+                            border: 1.5px solid #e0e7ef;
+                            position: relative;
+                            overflow: hidden;
+                        }
+                        .empresa-logo-card:hover {
+                            box-shadow: 0 6px 24px #2563eb22;
+                            transform: translateY(-4px) scale(1.04);
+                            border-color: #2563eb33;
+                            z-index: 2;
+                        }
+                        .empresa-logo-card img {
+                            max-height: 48px;
+                            max-width: 110px;
+                            object-fit: contain;
+                            filter: grayscale(1) brightness(0.98) contrast(1.1);
+                            opacity: 0.85;
+                            transition: filter 0.3s, opacity 0.3s;
+                            margin: 0 auto;
+                            display: block;
+                        }
+                        .empresa-logo-card:hover img {
+                            filter: none;
+                            opacity: 1;
+                        }
+                        @media (max-width: 900px) {
+                            .empresas-logos-grid {
+                                gap: 20px 16px;
+                                padding: 10px 0 4px 0;
+                            }
+                            .empresa-logo-card {
+                                height: 56px;
+                                width: 110px;
+                            }
+                            .empresa-logo-card img {
+                                max-height: 36px;
+                                max-width: 80px;
+                            }
+                        }
+                        </style>
+                        <div class="empresas-logos-grid">
+                            <div class="empresa-logo-card">
+                                <img src="img/cafe.png" alt="Cafe Pacheco" loading="lazy">
+                            </div>
+                            <div class="empresa-logo-card">
+                                <img src="img/webtec.png" alt="Webtec Informática" loading="lazy">
+                            </div>
+                            <div class="empresa-logo-card">
+                                <img src="img/parceiro.png" alt="ScriptHeader" loading="lazy">
+                            </div>
+                            <div class="empresa-logo-card">
+                                <img src="img/rm.png" alt="RM Cosmeticos e Perfumes" loading="lazy">
+                            </div>
+                            <div class="empresa-logo-card">
+                                <img src="img/decore.png" alt="Pão de Açúcar" loading="lazy">
+                            </div>
+                            <div class="empresa-logo-card">
+                                <img src="img/emporio.png" alt="Renner" loading="lazy">
+                            </div>
+                            <div class="empresa-logo-card">
+                                <img src="img/moto.png" alt="Unilever" loading="lazy">
+                            </div>
+                        </div>
+                    </div>
+                </div>
             <div class="hero-stats" aria-label="Estatísticas do sistema" style="display: flex; justify-content: center; margin-top: 32px;">
     <ul style="display: flex; gap: 48px; list-style: none; padding: 0; margin: 0; background: #f8fafc; border-radius: 18px; box-shadow: 0 4px 24px #58a6ff22; padding: 18px 36px;">
-        <li class="stat" style="text-align: center;">
-            <strong style="display: block; font-size: 2rem; color: #2563eb; font-weight: 800; letter-spacing: -1px;">700+</strong>
-            <span style="color: #232c38; font-size: 1.08rem;">Usuários</span>
-        </li>
+        
         <li class="stat" style="text-align: center;">
             <strong style="display: block; font-size: 2rem; color: #10b499; font-weight: 800; letter-spacing: -1px;">98%</strong>
             <span style="color: #232c38; font-size: 1.08rem;">Satisfação</span>
