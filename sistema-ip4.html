@@ -170,8 +170,8 @@ software de gestão para pequenas empresas"/>
                 font-size: 92% !important;
             }
             body {
-                zoom: 0.90;
-                -webkit-text-size-adjust: 90%;
+                zoom: 0.75;
+                -webkit-text-size-adjust: 75%;
             }
             /* Aumenta o tamanho da fonte dos cards de funcionalidades, benefícios e diferenciais */
             .main-feature-card,
@@ -188,6 +188,13 @@ software de gestão para pequenas empresas"/>
             .beneficio-card span,
             .diferencial-card span {
                 font-size: 1.25rem !important;
+            }
+        }
+        /* Zoom out para desktop */
+        @media (min-width: 601px) {
+            body {
+                zoom: 0.92;
+                -webkit-text-size-adjust: 92%;
             }
         }
     </style>
