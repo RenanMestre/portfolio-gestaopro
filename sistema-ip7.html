@@ -46,6 +46,12 @@
                 font-size: 1.25rem !important;
             }
         }
+        @media (min-width: 601px) {
+        body {
+            zoom: 0.92;
+            -webkit-text-size-adjust: 92%;
+        }
+    }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-900 antialiased">
@@ -286,7 +292,6 @@
             <span style="color: #232c38; font-size: 1.08rem;">Suporte</span>
         </li>
     </ul>
-</div>
 </div>
 <aside class="hero-stats" aria-label="Liberdade de assinatura" style="display: flex; justify-content: center; margin-top: 32px;">
     <div class="stat" style="background: linear-gradient(120deg, #f8fafc 60%, #e0e7ef 100%); border-radius: 18px; box-shadow: 0 4px 24px #58a6ff22; padding: 32px 24px; max-width: 700px; width: 100%; text-align: center;">
@@ -1050,7 +1055,7 @@ document.addEventListener("DOMContentLoaded", () => {
 @media (max-width: 600px) {
     .footer-copyright {
         text-align: center !important;
-        width: 100%;
+        width:  100%;
         margin: 0 auto;
         display: block;
         line-height: 1.6;
