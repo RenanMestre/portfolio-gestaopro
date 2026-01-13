@@ -558,7 +558,13 @@
                 <div class="topbar-title"><i class="bi bi-people"></i> Área do Vendedor</div>
                 <div class="user-info">
                     <span style="font-size:1em;color:#888;">Bem-vindo(a)</span>
-                    <div class="user-avatar"><i class="bi bi-person"></i></div>
+                    <div class="user-avatar" id="userAvatar" style="position: relative; cursor: pointer;">
+                        <img id="avatarImg" src="img/avatar-default.png" alt="Avatar" style="width:34px;height:34px;border-radius:50%;object-fit:cover;display:block;">
+                        <input type="file" id="avatarInput" accept="image/*" style="display:none;">
+                        <span id="avatarIcon" style="position:absolute;bottom:0;right:0;background:#fff;border-radius:50%;padding:2px;">
+                            <i class="bi bi-camera" style="font-size:1em;color:#1976d2;"></i>
+                        </span>
+                    </div>
                 </div>
             </div>
             <div class="container">
@@ -629,6 +635,35 @@
         }
         window.addEventListener('DOMContentLoaded', handleSidebarIndicator);
         window.addEventListener('resize', handleSidebarIndicator);
+    </script>
+    <script>
+        // Avatar upload
+        document.addEventListener('DOMContentLoaded', function () {
+            var avatarDiv = document.getElementById('userAvatar');
+            var avatarInput = document.getElementById('avatarInput');
+            var avatarImg = document.getElementById('avatarImg');
+
+            // Carrega avatar salvo no localStorage
+            var savedAvatar = localStorage.getItem('afiliado_avatar');
+            if (savedAvatar) {
+                avatarImg.src = savedAvatar;
+            }
+
+            avatarDiv.addEventListener('click', function () {
+                avatarInput.click();
+            });
+
+            avatarInput.addEventListener('change', function (e) {
+                var file = e.target.files[0];
+                if (!file) return;
+                var reader = new FileReader();
+                reader.onload = function (evt) {
+                    avatarImg.src = evt.target.result;
+                    localStorage.setItem('afiliado_avatar', evt.target.result);
+                };
+                reader.readAsDataURL(file);
+            });
+        });
     </script>
 </body>
 </html>
