@@ -170,8 +170,14 @@ software de gestão para pequenas empresas"/>
                 font-size: 92% !important;
             }
             body {
-                zoom: 0.85;
-                -webkit-text-size-adjust: 85%;
+                zoom: 0.80;
+                -webkit-text-size-adjust: 80%;
+                /* Adiciona borda escura arredondada para evitar corte dos cantos */
+                border-radius: 18px;
+                box-shadow: 0 0 0 2px #2228, 0 0 24px #2222;
+                margin: 6px;
+                background-clip: padding-box;
+                overflow: hidden !important;
             }
             /* Aumenta o tamanho da fonte dos cards de funcionalidades, benefícios e diferenciais */
             .main-feature-card,
