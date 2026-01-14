@@ -157,11 +157,9 @@ software de gestão para pequenas empresas"/>
         [x-cloak] {
             display: none !important;
         }
-
         body {
             font-family: 'Inter', system-ui, sans-serif;
         }
-
         /* Zoom out para melhor visualização no mobile */
         @media (max-width: 600px) {
             html {
@@ -196,6 +194,14 @@ software de gestão para pequenas empresas"/>
             }
         }
     </style>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17849168531"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-17849168531');
+    </script>
 </head>
 <body class="bg-slate-50 text-slate-900 antialiased">
     <!-- Scripts essenciais -->
@@ -1181,6 +1187,7 @@ document.addEventListener("DOMContentLoaded", function() {
 document.addEventListener("DOMContentLoaded", () => {
   const bubble = document.getElementById("whatsapp-bubble");
   // Exibe o balão com delay (apenas desktop)
+
   setTimeout(() => {
     if (window.innerWidth > 768) bubble.classList.remove("hidden");
   }, 1000);
