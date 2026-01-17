@@ -497,10 +497,148 @@
             font-weight: 700;
             margin-top: 24px;
         }
+        @media (max-width: 1100px) {
+            .container {
+                max-width: 98vw;
+                padding: 10px 2vw;
+            }
+            .produtos {
+                gap: 18px;
+            }
+            .produto {
+                width: 45vw;
+                min-width: 220px;
+                max-width: 340px;
+            }
+        }
         @media (max-width: 800px) {
-            .produtos { flex-direction: column; align-items: center; }
-            .produto { width: 95%; }
-            .container { padding: 10px 2px; }
+            .produtos {
+                flex-direction: column;
+                align-items: center;
+                gap: 18px;
+            }
+            .produto {
+                width: 95vw;
+                min-width: 180px;
+                max-width: 99vw;
+            }
+            .container {
+                padding: 8px 2vw;
+            }
+            .logo-main {
+                width: 70px;
+                height: 70px;
+            }
+            .brand-title {
+                font-size: 1.4em;
+            }
+            .top-bar {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+                padding: 8px 10px;
+            }
+            .search-cart-area {
+                width: 100%;
+                justify-content: flex-start;
+                gap: 10px;
+            }
+        }
+        @media (max-width: 600px) {
+            .container {
+                padding: 4px 0;
+                margin: 10px 0;
+                border-radius: 0;
+                box-shadow: none;
+            }
+            .top-bar {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 8px;
+                padding: 8px 4px;
+            }
+            .logo-area {
+                gap: 10px;
+            }
+            .logo-main {
+                width: 48px;
+                height: 48px;
+            }
+            .brand-title {
+                font-size: 1.1em;
+                letter-spacing: 1px;
+            }
+            .search-cart-area {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 8px;
+                width: 100%;
+            }
+            .search-box {
+                width: 100%;
+                font-size: 0.98em;
+            }
+            .cart-btn, .theme-toggle-btn {
+                width: 100%;
+                margin-left: 0;
+                margin-top: 4px;
+            }
+            nav {
+                margin-top: 10px;
+                text-align: center;
+            }
+            nav a {
+                display: inline-block;
+                margin: 4px 4px;
+                font-size: 0.98em;
+                padding: 6px 8px;
+            }
+            .promo-banner {
+                font-size: 1em;
+                padding: 8px 2px;
+                margin: 12px 0;
+            }
+            .metal-bar {
+                margin: 0 0 16px 0;
+            }
+            .titulo-loja {
+                font-size: 1.1em;
+                margin-bottom: 14px;
+            }
+            .produto {
+                padding: 12px 6px 10px 6px;
+                min-width: 140px;
+                max-width: 99vw;
+            }
+            .produto img {
+                width: 60px;
+                height: 60px;
+            }
+            .produto h2 {
+                font-size: 1em;
+            }
+            .produto .preco {
+                font-size: 1em;
+            }
+            .modal-carrinho {
+                max-width: 98vw;
+                padding: 18px 6px 12px 6px;
+            }
+        }
+        @media (max-width: 400px) {
+            .logo-main {
+                width: 36px;
+                height: 36px;
+            }
+            .brand-title {
+                font-size: 0.95em;
+            }
+            .promo-banner {
+                font-size: 0.93em;
+            }
+            .produto {
+                padding: 8px 2px 8px 2px;
+            }
         }
     </style>
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800&display=swap" rel="stylesheet">
