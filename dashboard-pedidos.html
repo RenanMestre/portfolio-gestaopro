@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard de Pedidos - Mundo das Motos</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600,700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: #f4f7fb;
+            font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+            margin: 0;
+            color: #23272a;
+        }
+        header {
+            background: linear-gradient(90deg, #1976d2 60%, #fff 100%);
+            color: #fff;
+            padding: 32px 0 18px 0;
+            text-align: center;
+            font-size: 2.2em;
+            font-weight: 800;
+            letter-spacing: 2px;
+            box-shadow: 0 4px 16px #0002;
+            border-bottom: 4px solid #1976d2;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 38px auto;
+            background: #fff;
+            border-radius: 18px;
+            box-shadow: 0 4px 24px #1976d233;
+            padding: 38px 32px;
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+        }
+        h2 {
+            font-size: 1.5em;
+            color: #1976d2;
+            margin-bottom: 28px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-align: left;
+        }
+        .info-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #e3eaf6;
+            border-radius: 8px;
+            padding: 14px 22px;
+            margin-bottom: 22px;
+            font-size: 1.08em;
+            color: #1976d2;
+            font-weight: 600;
+        }
+        .info-bar span {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .table-wrapper {
+            width: 100%;
+            overflow-x: auto;
+            display: flex;
+            justify-content: center;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 18px;
+            background: #fff;
+            min-width: 900px;
+        }
+        th, td {
+            padding: 14px 10px;
+            text-align: center;
+            vertical-align: middle;
+        }
+        th {
+            background: #1976d2;
+            color: #fff;
+            font-weight: 700;
+            font-size: 1em;
+            border-bottom: 2px solid #e3eaf6;
+        }
+        tr {
+            background: #f7f7f7;
+            transition: background 0.2s;
+        }
+        tr:nth-child(even) {
+            background: #e3eaf6;
+        }
+        tr.pendente {
+            border-left: 4px solid #ffd600;
+            background: #fffde7;
+        }
+        tr.enviado {
+            border-left: 4px solid #43a047;
+            background: #eaf6ea;
+        }
+        td.status {
+            font-weight: 700;
+            font-size: 1em;
+        }
+        .btn-enviar {
+            background: #43a047;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            padding: 8px 18px;
+            font-size: 1em;
+            font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+            cursor: pointer;
+            font-weight: 700;
+            transition: background 0.2s;
+            box-shadow: 0 2px 8px #43a04733;
+        }
+        .btn-enviar:hover {
+            background: #388e3c;
+        }
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.98em;
+            font-weight: 600;
+            color: #fff;
+            background: #1976d2;
+            margin-right: 6px;
+            margin-bottom: 2px;
+        }
+        .badge.enviado {
+            background: #43a047;
+        }
+        .whatsapp-btn {
+            display: inline-flex;
+            align-items: center;
+            background: #25d366;
+            color: #fff;
+            padding: 7px 16px;
+            border-radius: 6px;
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 1em;
+            box-shadow: 0 2px 8px #25d36633;
+            transition: background 0.2s;
+            border: none;
+            outline: none;
+        }
+        .whatsapp-btn:hover {
+            background: #128c7e;
+        }
+        .whatsapp-btn svg {
+            margin-right: 7px;
+        }
+        .footer {
+            text-align: center;
+            color: #888;
+            font-size: 1em;
+            margin-top: 38px;
+            padding-bottom: 18px;
+        }
+        .menu-bar {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 18px;
+            background: transparent;
+            padding: 0;
+            margin: 0;
+            border: none;
+            position: absolute;
+            top: 18px;
+            right: 32px;
+            z-index: 10;
+        }
+        .menu-btn {
+            background: #fff;
+            color: #1976d2;
+            border: 1px solid #e3eaf6;
+            border-radius: 50%;
+            padding: 8px;
+            font-size: 1.15em;
+            font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background 0.2s, color 0.2s, border 0.2s;
+            box-shadow: 0 2px 8px #1976d211;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        .menu-tooltip {
+            display: none;
+            position: absolute;
+            top: 44px;
+            right: 0;
+            background: #fff0f0;
+            color: #d32f2f;
+            border: 1px solid #d32f2f;
+            border-radius: 6px;
+            padding: 6px 14px;
+            font-size: 0.95em;
+            font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+            font-weight: 500;
+            box-shadow: 0 2px 8px #d32f2f22;
+            z-index: 100;
+            white-space: nowrap;
+            min-width: 160px;
+            text-align: left;
+        }
+        .menu-btn:hover + .menu-tooltip,
+        .menu-btn:focus + .menu-tooltip {
+            display: block;
+            animation: fadeInTooltip 0.2s;
+        }
+        @keyframes fadeInTooltip {
+            from { opacity: 0; transform: translateY(-6px);}
+            to { opacity: 1; transform: translateY(0);}
+        }
+        .logo-dashboard {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 0 2px 12px #1976d233;
+            border: 2px solid #1976d2;
+            background: #fff;
+            margin-right: 18px;
+            vertical-align: middle;
+        }
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 18px;
+        }
+        @media (max-width: 1200px) {
+            .container { padding: 18px 2vw; }
+            .table-wrapper { min-width: 0; }
+        }
+        @media (max-width: 900px) {
+            .container { padding: 12px 2vw; }
+            th, td { padding: 8px 4px; }
+        }
+        @media (max-width: 600px) {
+            .container { padding: 4px 0; }
+            .table-wrapper { padding: 0; }
+            table, thead, tbody, th, td, tr { display: block; }
+            th { position: absolute; left: -9999px; }
+            tr { margin-bottom: 18px; border-radius: 8px; box-shadow: 0 2px 8px #1976d211; }
+            td { border: none; position: relative; padding-left: 50%; min-height: 32px; text-align: left; }
+            td:before {
+                position: absolute;
+                left: 12px;
+                top: 12px;
+                width: 45%;
+                white-space: nowrap;
+                font-weight: 700;
+                color: #1976d2;
+            }
+            td:nth-of-type(1):before { content: "Pedido"; }
+            td:nth-of-type(2):before { content: "Cliente"; }
+            td:nth-of-type(3):before { content: "Produtos"; }
+            td:nth-of-type(4):before { content: "Endereço"; }
+            td:nth-of-type(5):before { content: "WhatsApp"; }
+            td:nth-of-type(6):before { content: "Data"; }
+            td:nth-of-type(7):before { content: "Status"; }
+            td:nth-of-type(8):before { content: "Ações"; }
+        }
+    </style>
+</head>
+<body>
+    <header style="position:relative;">
+        <div class="menu-bar">
+            <button class="menu-btn" onclick="baixarBackup()" title="Baixar backup JSON" tabindex="0">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                    <rect x="4" y="4" width="16" height="16" rx="4" stroke="#1976d2" stroke-width="2" fill="#fff"/>
+                    <path d="M12 8v5m0 0l-2-2m2 2l2-2m-6 5h8" stroke="#1976d2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
+            <div class="menu-tooltip">
+                ⚠️ Faça o backup dos pedidos diariamente.<br>
+                Clique para baixar o arquivo JSON.
+            </div>
+        </div>
+        <div class="header-content">
+        </div>
+    </header>
+    <div class="container">
+        <h2>Pedidos Recebidos</h2>
+        <div class="info-bar">
+            <span>📦 <b>Total de Pedidos:</b> <span id="total-pedidos">0</span></span>
+            <span>🟢 <b>Enviados:</b> <span id="total-enviados">0</span></span>
+            <span>🟡 <b>Pendentes:</b> <span id="total-pendentes">0</span></span>
+        </div>
+        <div class="table-wrapper">
+            <table id="tabela-pedidos">
+                <thead>
+                    <tr>
+                        <th>Pedido</th>
+                        <th>Cliente</th>
+                        <th>Produtos</th>
+                        <th>Endereço</th>
+                        <th>WhatsApp</th>
+                        <th>Data</th>
+                        <th>Status</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Os pedidos serão inseridos via JS -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="footer">
+        &copy; 2024 Mundo das Motos | Dashboard de Pedidos
+    </div>
+    <script>
+        function buscarPedidos() {
+            let pedidos = [];
+            try {
+                pedidos = JSON.parse(localStorage.getItem('pedidos_motos')) || [];
+            } catch (e) {
+                pedidos = [];
+            }
+            // Inverte a ordem para mostrar os mais recentes no topo
+            renderPedidos(pedidos.slice().reverse());
+        }
+
+        function renderPedidos(pedidos) {
+            const tbody = document.querySelector("#tabela-pedidos tbody");
+            const totalPedidos = document.getElementById("total-pedidos");
+            const totalEnviados = document.getElementById("total-enviados");
+            const totalPendentes = document.getElementById("total-pendentes");
+            tbody.innerHTML = "";
+            let enviados = 0, pendentes = 0;
+            if (!pedidos || pedidos.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="8" style="text-align:center;color:#888;">Nenhum pedido recebido.</td></tr>`;
+                totalPedidos.textContent = "0";
+                totalEnviados.textContent = "0";
+                totalPendentes.textContent = "0";
+                return;
+            }
+            pedidos.forEach((pedido, idx) => {
+                const statusClass = pedido.status === "Enviado" ? "enviado" : "pendente";
+                if (pedido.status === "Enviado") enviados++; else pendentes++;
+                const whatsappBtn = pedido.whatsapp
+                    ? `<a href="https://wa.me/${pedido.whatsapp.replace(/\D/g,'')}" target="_blank" class="whatsapp-btn" title="Enviar mensagem">
+                        <svg width="20" height="20" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="16" fill="#25d366"/><path d="M22.7 19.3c-.4-.2-2.3-1.1-2.6-1.2-.3-.1-.5-.2-.7.2-.2.4-.8 1.2-1 1.4-.2.2-.4.3-.8.1-.4-.2-1.7-.6-3.2-2-1.2-1.1-2-2.4-2.2-2.8-.2-.4 0-.6.2-.8.2-.2.4-.5.6-.7.2-.2.2-.4.3-.6.1-.2 0-.5-.1-.7-.1-.2-.7-1.7-1-2.3-.3-.6-.6-.5-.8-.5-.2 0-.5 0-.7 0-.2 0-.6.1-.9.4-.3.3-1.2 1.2-1.2 2.9 0 1.7 1.2 3.3 1.4 3.5.2.2 2.3 3.6 5.6 4.9.8.3 1.4.5 1.9.6.8.1 1.5.1 2.1.1.6 0 2-.8 2.3-1.6.3-.8.3-1.5.2-1.6-.1-.1-.3-.2-.7-.4z" fill="#fff"/></svg>
+                        WhatsApp
+                       </a>`
+                    : '-';
+                tbody.innerHTML += `
+                    <tr class="${statusClass}">
+                        <td>#${pedido.id}</td>
+                        <td>
+                            <strong>${pedido.cliente}</strong><br>
+                            <span style="font-size:0.95em;color:#888;">${pedido.email}</span>
+                        </td>
+                        <td>
+                            ${pedido.produtos.map(p => `<span class="badge${pedido.status === "Enviado" ? " enviado" : ""}">${p}</span>`).join(" ")}
+                        </td>
+                        <td>
+                            <span style="font-size:0.98em;color:#444;">${pedido.endereco || '-'}</span>
+                        </td>
+                        <td>
+                            ${whatsappBtn}
+                        </td>
+                        <td>${pedido.data}</td>
+                        <td class="status">${pedido.status}</td>
+                        <td>
+                            ${pedido.status === "Pendente" ? `<button class="btn-enviar" onclick="marcarEnviado(${pedido.id})">Marcar como Enviado</button>` : '<span style="color:#43a047;font-weight:600;">✔ Enviado</span>'}
+                        </td>
+                    </tr>
+                `;
+            });
+            totalPedidos.textContent = pedidos.length;
+            totalEnviados.textContent = enviados;
+            totalPendentes.textContent = pendentes;
+        }
+
+        function marcarEnviado(id) {
+            let pedidos = JSON.parse(localStorage.getItem('pedidos_motos')) || [];
+            pedidos = pedidos.map(p => p.id === id ? { ...p, status: "Enviado" } : p);
+            localStorage.setItem('pedidos_motos', JSON.stringify(pedidos));
+            buscarPedidos();
+        }
+
+        function baixarBackup() {
+            let pedidos = [];
+            try {
+                pedidos = JSON.parse(localStorage.getItem('pedidos_motos')) || [];
+            } catch (e) {
+                pedidos = [];
+            }
+            const blob = new Blob([JSON.stringify(pedidos, null, 2)], { type: "application/json" });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'pedidos-mundo-das-motos.json';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+
+        buscarPedidos();
+        setInterval(buscarPedidos, 10000);
+    </script>
+</body>
+</html>
