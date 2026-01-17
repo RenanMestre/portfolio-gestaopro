@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Mundo das Motos - Loja de Peças</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        :root {
+            --cor-principal: #1976d2;
+            --cor-bg: #f7f7f7;
+            --cor-bg-sec: #fff;
+            --cor-texto: #23272a;
+            --cor-card: #fff;
+            --cor-borda: #1976d2;
+            --cor-nav-bg: #f7f7f7;
+            --cor-footer-bg: #f7f7f7;
+            --cor-footer-texto: #23272a;
+            --cor-banner-bg: linear-gradient(90deg, #1976d2 60%, #fff 100%);
+            --cor-banner-texto: #23272a;
+            --cor-metal: #bbb;
+        }
+        body.dark {
+            --cor-bg: #23272a;
+            --cor-bg-sec: #26292c;
+            --cor-texto: #f5f5f5;
+            --cor-card: #26292c;
+            --cor-borda: #1976d2;
+            --cor-nav-bg: #26292c;
+            --cor-footer-bg: #26292c;
+            --cor-footer-texto: #fff;
+            --cor-banner-bg: linear-gradient(90deg, #1976d2 60%, #23272a 100%);
+            --cor-banner-texto: #fff;
+            --cor-metal: #888;
+        }
+        body, html {
+            background: var(--cor-bg);
+            color: var(--cor-texto);
+            font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+            margin: 0;
+            padding: 0;
+            transition: background 0.3s, color 0.3s;
+        }
+        header {
+            background: linear-gradient(90deg, #fff 80%, var(--cor-principal) 100%);
+            padding: 32px 0 22px 0;
+            text-align: center;
+            border-bottom: 3px solid var(--cor-principal);
+            box-shadow: 0 4px 16px #0003;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            transition: background 0.3s;
+        }
+        body.dark header {
+            background: linear-gradient(90deg, #2c2c2c 80%, var(--cor-principal) 100%);
+        }
+        .top-bar {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--cor-nav-bg);
+            border-bottom: 1px solid var(--cor-borda);
+            padding: 8px 30px;
+            box-sizing: border-box;
+            box-shadow: 0 2px 8px var(--cor-principal)22;
+            transition: background 0.3s;
+        }
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+        }
+        .logo-main {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: var(--cor-card);
+            border: 2px solid var(--cor-borda);
+            box-shadow: 0 0 18px var(--cor-principal)33;
+            object-fit: cover;
+            transition: background 0.3s;
+        }
+        .brand-title {
+            font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+            font-size: 2.3em;
+            font-weight: 800;
+            letter-spacing: 2.5px;
+            color: var(--cor-texto);
+            text-shadow: 1px 1px 6px var(--cor-principal), 0 0 6px #0001;
+            transition: color 0.3s;
+        }
+        .search-cart-area {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+        }
+        .search-box {
+            background: var(--cor-card);
+            border: 1px solid var(--cor-borda);
+            border-radius: 6px;
+            padding: 6px 12px;
+            color: var(--cor-texto);
+            font-size: 1em;
+            outline: none;
+            transition: border 0.2s, background 0.3s, color 0.3s;
+        }
+        .search-box:focus {
+            border: 1.5px solid var(--cor-principal);
+        }
+        .cart-btn {
+            background: var(--cor-principal);
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5em;
+            cursor: pointer;
+            box-shadow: 0 2px 8px var(--cor-principal)22;
+            transition: background 0.2s, color 0.3s;
+            position: relative;
+        }
+        .cart-btn:hover {
+            background: var(--cor-card);
+            color: var(--cor-principal);
+        }
+        .cart-count {
+            position: absolute;
+            top: 2px;
+            right: 2px;
+            background: var(--cor-card);
+            color: var(--cor-principal);
+            border-radius: 50%;
+            font-size: 0.9em;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            border: 1px solid var(--cor-principal);
+            transition: background 0.3s, color 0.3s;
+        }
+        .theme-toggle-btn {
+            background: var(--cor-card);
+            color: var(--cor-texto);
+            border: 1px solid var(--cor-borda);
+            border-radius: 6px;
+            padding: 6px 14px;
+            font-size: 1em;
+            cursor: pointer;
+            margin-left: 18px;
+            transition: background 0.3s, color 0.3s, border 0.3s;
+        }
+        .theme-toggle-btn:hover {
+            background: var(--cor-principal);
+            color: #fff;
+            border: 1px solid var(--cor-principal);
+        }
+        nav {
+            margin-top: 16px;
+        }
+        nav a {
+            color: var(--cor-texto);
+            text-decoration: none;
+            margin: 0 18px;
+            font-size: 1.08em;
+            font-weight: 600;
+            letter-spacing: 1px;
+            padding: 6px 14px;
+            border-radius: 4px;
+            transition: background 0.2s, color 0.3s;
+        }
+        nav a:hover {
+            background: var(--cor-principal);
+            color: #fff;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 28px 18px;
+            background: var(--cor-bg-sec);
+            border-radius: 16px;
+            box-shadow: 0 4px 24px #0002;
+            transition: background 0.3s, color 0.3s;
+        }
+        .promo-banner {
+            background: var(--cor-banner-bg);
+            color: var(--cor-banner-texto);
+            text-align: center;
+            font-size: 1.18em;
+            font-weight: 500;
+            letter-spacing: 1px;
+            padding: 10px 0;
+            margin: 20px 0 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 12px var(--cor-principal)22;
+            font-family: 'Oswald', Arial, sans-serif;
+            text-shadow: none;
+            transition: background 0.3s, color 0.3s;
+        }
+        .produtos {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 32px;
+            justify-content: center;
+        }
+        .produto {
+            background: var(--cor-card);
+            border: 1.5px solid var(--cor-borda);
+            border-radius: 12px;
+            box-shadow: 0 2px 12px var(--cor-principal)22, 0 2px 8px #0002;
+            width: 260px;
+            padding: 20px 14px 16px 14px;
+            min-height: 420px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            text-align: center;
+            transition: transform 0.2s, box-shadow 0.2s, background 0.3s, color 0.3s;
+            position: relative;
+        }
+        .produto:hover {
+            transform: translateY(-6px) scale(1.02);
+            box-shadow: 0 8px 24px var(--cor-principal)33;
+        }
+        .produto .produto-img-area {
+            background: var(--cor-bg-sec);
+            border-radius: 10px;
+            padding: 12px;
+            margin-bottom: 14px;
+            border: 1px solid #e0e0e0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 8px var(--cor-principal)11;
+            transition: background 0.3s;
+        }
+        .produto img {
+            width: 90px;
+            height: 90px;
+            object-fit: contain;
+            margin-bottom: 14px;
+            filter: grayscale(10%) drop-shadow(0 0 6px var(--cor-principal)22);
+        }
+        .produto h2 {
+            font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+            font-size: 1.13em;
+            font-weight: 700;
+            margin: 0 0 8px 0;
+            color: var(--cor-texto);
+            letter-spacing: 1px;
+            transition: color 0.3s;
+        }
+        .produto p {
+            font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+            font-size: 0.97em;
+            font-weight: 400;
+            color: #444;
+            margin-bottom: 10px;
+            transition: color 0.3s;
+        }
+        body.dark .produto p {
+            color: #ccc;
+        }
+        .produto .preco {
+            font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+            font-size: 1.08em;
+            font-weight: 700;
+            color: var(--cor-principal);
+            margin-bottom: 10px;
+            transition: color 0.3s;
+        }
+        .produto .promo {
+            font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+            font-size: 0.92em;
+            font-weight: 600;
+            background: var(--cor-principal);
+            color: #fff;
+            border-radius: 4px;
+            padding: 2px 8px;
+            margin-bottom: 6px;
+            display: inline-block;
+            letter-spacing: 1px;
+            transition: background 0.3s, color 0.3s;
+        }
+        .produto button {
+            font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+            font-size: 1em;
+            font-weight: 600;
+            background: linear-gradient(90deg, var(--cor-principal) 60%, var(--cor-card) 100%);
+            color: var(--cor-texto);
+            border: none;
+            border-radius: 6px;
+            padding: 8px 18px;
+            cursor: pointer;
+            transition: background 0.2s, box-shadow 0.2s, color 0.3s;
+            box-shadow: 0 2px 8px var(--cor-principal)22;
+            margin-top: 8px;
+            letter-spacing: 1px;
+        }
+        .produto button:hover {
+            background: var(--cor-principal);
+            color: #fff;
+            box-shadow: 0 4px 16px var(--cor-principal)33;
+        }
+        .rock-bg {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
+            opacity: 0.03;
+            z-index: 0;
+            pointer-events: none;
+            transition: opacity 0.3s;
+        }
+        body.dark .rock-bg {
+            opacity: 0.06;
+        }
+        footer {
+            background: var(--cor-footer-bg);
+            color: var(--cor-footer-texto);
+            text-align: center;
+            padding: 22px 0 12px 0;
+            font-size: 1em;
+            letter-spacing: 1px;
+            border-top: 2px solid var(--cor-principal);
+            margin-top: 38px;
+            box-shadow: 0 -2px 12px var(--cor-principal)22;
+            transition: background 0.3s, color 0.3s;
+        }
+        .footer-info {
+            margin-top: 10px;
+            font-size: 0.97em;
+            color: #888;
+            transition: color 0.3s;
+        }
+        body.dark .footer-info {
+            color: #bbb;
+        }
+        .footer-social {
+            margin-top: 8px;
+        }
+        .footer-social a {
+            color: var(--cor-principal);
+            margin: 0 8px;
+            font-size: 1.2em;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .footer-social a:hover {
+            color: var(--cor-texto);
+        }
+        .metal-bar {
+            width: 100%;
+            height: 8px;
+            background: linear-gradient(90deg, var(--cor-metal) 0%, #e0e0e0 50%, var(--cor-metal) 100%);
+            box-shadow: 0 2px 8px #0002;
+            margin: 0 0 28px 0;
+            transition: background 0.3s;
+        }
+        .titulo-loja {
+            color: var(--cor-principal);
+            text-align: center;
+            font-size: 2em;
+            margin-bottom: 26px;
+            text-shadow: 1px 1px 6px #fff;
+            transition: color 0.3s, text-shadow 0.3s;
+        }
+        body.dark .titulo-loja {
+            color: #fff;
+            text-shadow: 1px 1px 8px var(--cor-principal), 0 0 10px #000;
+        }
+        /* Modal Carrinho */
+        .modal-carrinho-bg {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            left: 0; top: 0; width: 100vw; height: 100vh;
+            background: rgba(0,0,0,0.45);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-carrinho-bg.aberto {
+            display: flex;
+        }
+        .modal-carrinho {
+            background: var(--cor-bg-sec);
+            color: var(--cor-texto);
+            border-radius: 14px;
+            box-shadow: 0 8px 32px #0007;
+            width: 98vw;
+            max-width: 420px;
+            padding: 32px 24px 24px 24px;
+            position: relative;
+            animation: fadeIn 0.3s;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.95);}
+            to { opacity: 1; transform: scale(1);}
+        }
+        .modal-carrinho h3 {
+            font-size: 1.3em;
+            font-weight: 700;
+            margin-bottom: 18px;
+            text-align: center;
+            color: var(--cor-principal);
+        }
+        .modal-carrinho .fechar-modal {
+            position: absolute;
+            top: 12px; right: 18px;
+            background: none;
+            border: none;
+            font-size: 1.6em;
+            color: var(--cor-principal);
+            cursor: pointer;
+        }
+        .carrinho-lista {
+            margin-bottom: 18px;
+            max-height: 180px;
+            overflow-y: auto;
+        }
+        .carrinho-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid #eee;
+            padding: 8px 0;
+            font-size: 1em;
+        }
+        .carrinho-item-nome {
+            flex: 1;
+            font-weight: 500;
+        }
+        .carrinho-item-preco {
+            color: var(--cor-principal);
+            font-weight: 600;
+            margin-left: 12px;
+        }
+        .carrinho-item-remove {
+            background: none;
+            border: none;
+            color: #888;
+            font-size: 1.1em;
+            cursor: pointer;
+            margin-left: 8px;
+        }
+        .carrinho-total {
+            font-size: 1.1em;
+            font-weight: 700;
+            color: var(--cor-principal);
+            text-align: right;
+            margin-bottom: 18px;
+        }
+        .carrinho-etapas {
+            margin-top: 18px;
+        }
+        .carrinho-btn {
+            background: var(--cor-principal);
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            padding: 10px 0;
+            width: 100%;
+            font-size: 1.08em;
+            font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background 0.2s;
+        }
+        .carrinho-btn:hover {
+            background: #145ea8;
+        }
+        .carrinho-form label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 500;
+        }
+        .carrinho-form input {
+            width: 100%;
+            padding: 7px 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 14px;
+            font-size: 1em;
+            font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+        }
+        .carrinho-confirmacao {
+            text-align: center;
+            color: var(--cor-principal);
+            font-size: 1.15em;
+            font-weight: 700;
+            margin-top: 24px;
+        }
+        @media (max-width: 800px) {
+            .produtos { flex-direction: column; align-items: center; }
+            .produto { width: 95%; }
+            .container { padding: 10px 2px; }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="rock-bg"></div>
+    <header>
+        <div class="top-bar">
+            <div class="logo-area">
+                <img src="img/moto.png" alt="Logo Mundo das Motos" class="logo-main">
+                <span class="brand-title">Mundo das Motos</span>
+            </div>
+            <div class="search-cart-area">
+                <input type="text" class="search-box" placeholder="Buscar peças, acessórios...">
+                <button class="cart-btn" title="Carrinho">
+                    <span>&#128722;</span>
+                    <span class="cart-count" id="cart-count">0</span>
+                </button>
+                <button class="theme-toggle-btn" id="theme-toggle-btn" title="Alternar tema">🌙 Tema Escuro</button>
+            </div>
+        </div>
+        <nav>
+            <a href="#">Início</a>
+            <a href="#">Produtos</a>
+            <a href="#">Contato</a>
+        </nav>
+    </header>
+    <div class="promo-banner">
+        <strong>🔥 FRETE GRÁTIS</strong> para compras acima de R$ 299 | <strong>10% OFF</strong> na primeira compra! 🤘
+    </div>
+    <div class="metal-bar"></div>
+    <div class="container">
+        <section>
+            <h2 class="titulo-loja">Loja de Peças para Motos</h2>
+            <div class="produtos">
+                <div class="produto">
+                    <div class="produto-img-area">
+                        <img src="https://cdn-icons-png.flaticon.com/512/2965/2965567.png" alt="Capacete Rock">
+                    </div>
+                    <span class="promo">Promoção</span>
+                    <h2>Capacete Rock Custom</h2>
+                    <p>Estilo e proteção para quem vive na estrada. Design exclusivo, acabamento fosco e detalhes cromados.</p>
+                    <div class="preco">R$ 449,90 <del style="color:#888;font-size:0.9em;">R$ 499,90</del></div>
+                    <button onclick="addToCart('Capacete Rock Custom')">Adicionar ao Carrinho</button>
+                </div>
+                <div class="produto">
+                    <div class="produto-img-area">
+                        <img src="https://cdn-icons-png.flaticon.com/512/2965/2965571.png" alt="Luva Motoqueiro">
+                    </div>
+                    <h2>Luva Motoqueiro Couro</h2>
+                    <p>Conforto e aderência máxima. Couro legítimo, costura reforçada e visual agressivo.</p>
+                    <div class="preco">R$ 149,90</div>
+                    <button onclick="addToCart('Luva Motoqueiro Couro')">Adicionar ao Carrinho</button>
+                </div>
+                <div class="produto">
+                    <div class="produto-img-area">
+                        <img src="https://cdn-icons-png.flaticon.com/512/2965/2965572.png" alt="Escapamento Esportivo">
+                    </div>
+                    <span class="promo">Oferta</span>
+                    <h2>Escapamento Esportivo</h2>
+                    <p>Som potente e visual cromado. Compatível com diversos modelos de motos custom.</p>
+                    <div class="preco">R$ 799,90 <del style="color:#888;font-size:0.9em;">R$ 899,90</del></div>
+                    <button onclick="addToCart('Escapamento Esportivo')">Adicionar ao Carrinho</button>
+                </div>
+                <div class="produto">
+                    <div class="produto-img-area">
+                        <img src="https://cdn-icons-png.flaticon.com/512/2965/2965570.png" alt="Jaqueta de Couro">
+                    </div>
+                    <h2>Jaqueta de Couro Rocker</h2>
+                    <p>Visual clássico, proteção e atitude. Ideal para quem curte pegar a estrada com estilo.</p>
+                    <div class="preco">R$ 699,90</div>
+                    <button onclick="addToCart('Jaqueta de Couro Rocker')">Adicionar ao Carrinho</button>
+                </div>
+                <div class="produto">
+                    <div class="produto-img-area">
+                        <img src="https://cdn-icons-png.flaticon.com/512/2965/2965569.png" alt="Kit Farol LED">
+                    </div>
+                    <span class="promo">Novo</span>
+                    <h2>Kit Farol LED Ultra</h2>
+                    <p>Iluminação extrema para rodar à noite. Fácil instalação e alta durabilidade.</p>
+                    <div class="preco">R$ 299,90</div>
+                    <button onclick="addToCart('Kit Farol LED Ultra')">Adicionar ao Carrinho</button>
+                </div>
+                <div class="produto">
+                    <div class="produto-img-area">
+                        <img src="https://cdn-icons-png.flaticon.com/512/2965/2965573.png" alt="Bota Motoqueiro">
+                    </div>
+                    <h2>Bota Motoqueiro Skull</h2>
+                    <p>Resistência e conforto para longas viagens. Solado antiderrapante e visual marcante.</p>
+                    <div class="preco">R$ 349,90</div>
+                    <button onclick="addToCart('Bota Motoqueiro Skull')">Adicionar ao Carrinho</button>
+                </div>
+            </div>
+        </section>
+    </div>
+    <!-- Modal Carrinho -->
+    <div class="modal-carrinho-bg" id="modal-carrinho-bg">
+        <div class="modal-carrinho" id="modal-carrinho">
+            <button class="fechar-modal" onclick="fecharCarrinho()" title="Fechar">&times;</button>
+            <div id="carrinho-etapa1">
+                <h3>Seu Carrinho</h3>
+                <div class="carrinho-lista" id="carrinho-lista"></div>
+                <div class="carrinho-total" id="carrinho-total"></div>
+                <button class="carrinho-btn" onclick="avancarEtapaCarrinho()">Avançar para Checkout</button>
+            </div>
+            <div id="carrinho-etapa2" style="display:none;">
+                <h3>Dados para Pagamento</h3>
+                <form class="carrinho-form" id="carrinho-form" onsubmit="return avancarParaPix(event)">
+                    <label for="nome">Nome completo</label>
+                    <input type="text" id="nome" name="nome" required>
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" name="email" required>
+                    <label for="whatsapp">WhatsApp</label>
+                    <input type="text" id="whatsapp" name="whatsapp" required pattern="\d{10,15}" placeholder="Ex: 11999999999">
+                    <label for="endereco">Endereço</label>
+                    <input type="text" id="endereco" name="endereco" required>
+                    <button class="carrinho-btn" type="submit">Avançar para Pagamento PIX</button>
+                </form>
+            </div>
+            <div id="carrinho-etapa-pix" style="display:none;">
+                <h3>Pagamento</h3>
+                <div style="text-align:center;margin-bottom:18px;">
+                    <strong>Escolha a forma de pagamento:</strong>
+                    <div style="margin:18px 0;">
+                        <button class="carrinho-btn" style="width:90%;margin-bottom:10px;" onclick="mostrarPix()">PIX</button>
+                        <button class="carrinho-btn" style="width:90%;" onclick="pagarCartao()">Cartão de Crédito</button>
+                    </div>
+                    <div id="area-pix" style="display:none;">
+                        <strong>Chave PIX:</strong><br>
+                        <span style="font-size:1.1em;color:#1976d2;font-weight:700;">43898572000142</span>
+                        <div style="margin:16px 0;">
+                            <img src="https://api.qrserver.com/v1/create-qr-code/?data=43898572000142&size=150x150" alt="QR Code PIX" style="border-radius:8px;">
+                        </div>
+                        <span style="color:#888;font-size:0.98em;">Escaneie o QR Code ou copie a chave para efetuar o pagamento.</span>
+                        <button class="carrinho-btn" style="margin-top:18px;" onclick="confirmarPagamentoPix()">Já paguei</button>
+                    </div>
+                </div>
+            </div>
+            <div id="carrinho-etapa3" style="display:none;">
+                <h3>Compra Finalizada!</h3>
+                <div class="carrinho-confirmacao">
+                    Obrigado pela compra!<br>
+                    Seu pedido foi recebido e está sendo processado.<br>
+                    <span style="font-size:2em;">&#x1F60A;</span>
+                </div>
+                <button class="carrinho-btn" onclick="fecharCarrinho()">Fechar</button>
+            </div>
+        </div>
+    </div>
+    <footer>
+        &copy; 2024 Mundo das Motos - Loja de Peças | Feito com atitude e paixão por motos 🤘
+        <div class="footer-info">
+            Atendimento: contato@mundodasmotos.com.br | (11) 99999-9999<br>
+            Endereço: Av. das Rodas, 777 - São Paulo/SP
+        </div>
+        <div class="footer-social">
+            Siga-nos:
+            <a href="https://instagram.com" target="_blank" title="Instagram"><span style="font-family:Arial;">&#x1F4F7;</span></a>
+            <a href="https://facebook.com" target="_blank" title="Facebook"><span style="font-family:Arial;">&#x1F426;</span></a>
+            <a href="https://wa.me/5511999999999" target="_blank" title="WhatsApp"><span style="font-family:Arial;">&#x1F4F1;</span></a>
+        </div>
+    </footer>
+    <script>
+        // Simples contador de carrinho
+        let cartCount = 0;
+        let carrinho = [];
+        let dadosCliente = {};
+
+        function addToCart(produto) {
+            const precos = {
+                'Capacete Rock Custom': 449.90,
+                'Luva Motoqueiro Couro': 149.90,
+                'Escapamento Esportivo': 799.90,
+                'Jaqueta de Couro Rocker': 699.90,
+                'Kit Farol LED Ultra': 299.90,
+                'Bota Motoqueiro Skull': 349.90
+            };
+            carrinho.push({
+                nome: produto,
+                preco: precos[produto] || 0
+            });
+            cartCount++;
+            document.getElementById('cart-count').textContent = cartCount;
+        }
+
+        // Abrir/fechar modal do carrinho
+        document.querySelector('.cart-btn').addEventListener('click', abrirCarrinho);
+        function abrirCarrinho() {
+            atualizarCarrinho();
+            document.getElementById('modal-carrinho-bg').classList.add('aberto');
+            mostrarEtapaCarrinho(1);
+        }
+        function fecharCarrinho() {
+            document.getElementById('modal-carrinho-bg').classList.remove('aberto');
+        }
+
+        // Atualiza lista de produtos no carrinho
+        function atualizarCarrinho() {
+            const lista = document.getElementById('carrinho-lista');
+            lista.innerHTML = '';
+            if (carrinho.length === 0) {
+                lista.innerHTML = '<div style="text-align:center;color:#888;">Seu carrinho está vazio.</div>';
+            } else {
+                carrinho.forEach((item, idx) => {
+                    lista.innerHTML += `
+                        <div class="carrinho-item">
+                            <span class="carrinho-item-nome">${item.nome}</span>
+                            <span class="carrinho-item-preco">R$ ${item.preco.toFixed(2)}</span>
+                            <button class="carrinho-item-remove" onclick="removerItemCarrinho(${idx})" title="Remover">&times;</button>
+                        </div>
+                    `;
+                });
+            }
+            // Total
+            const total = carrinho.reduce((acc, item) => acc + item.preco, 0);
+            document.getElementById('carrinho-total').textContent = total > 0 ? `Total: R$ ${total.toFixed(2)}` : '';
+        }
+        function removerItemCarrinho(idx) {
+            carrinho.splice(idx, 1);
+            cartCount = carrinho.length;
+            document.getElementById('cart-count').textContent = cartCount;
+            atualizarCarrinho();
+        }
+
+        // Etapas do checkout
+        function mostrarEtapaCarrinho(etapa) {
+            document.getElementById('carrinho-etapa1').style.display = etapa === 1 ? '' : 'none';
+            document.getElementById('carrinho-etapa2').style.display = etapa === 2 ? '' : 'none';
+            document.getElementById('carrinho-etapa-pix').style.display = etapa === 'pix' ? '' : 'none';
+            document.getElementById('carrinho-etapa3').style.display = etapa === 3 ? '' : 'none';
+            if (etapa !== 'pix') document.getElementById('area-pix').style.display = 'none';
+        }
+        function avancarEtapaCarrinho() {
+            if (carrinho.length === 0) {
+                alert('Adicione produtos ao carrinho antes de avançar.');
+                return;
+            }
+            mostrarEtapaCarrinho(2);
+        }
+        function avancarParaPix(event) {
+            event.preventDefault();
+            dadosCliente = {
+                nome: document.getElementById('nome').value,
+                email: document.getElementById('email').value,
+                whatsapp: document.getElementById('whatsapp').value,
+                endereco: document.getElementById('endereco').value
+            };
+            mostrarEtapaCarrinho('pix');
+            return false;
+        }
+        function mostrarPix() {
+            document.getElementById('area-pix').style.display = '';
+        }
+        function pagarCartao() {
+            const msg = encodeURIComponent(
+                `Olá, quero pagar minha compra no cartão!\n\nNome: ${dadosCliente.nome}\nEmail: ${dadosCliente.email}\nWhatsApp: ${dadosCliente.whatsapp}\nEndereço: ${dadosCliente.endereco}\nProdutos: ${carrinho.map(item => item.nome).join(', ')}`
+            );
+            window.open(`https://wa.me/5511999999999?text=${msg}`, '_blank');
+        }
+        function confirmarPagamentoPix() {
+            let pedidos = [];
+            try {
+                pedidos = JSON.parse(localStorage.getItem('pedidos_motos')) || [];
+            } catch (e) {
+                pedidos = [];
+            }
+            pedidos.push({
+                id: Date.now(),
+                cliente: dadosCliente.nome,
+                email: dadosCliente.email,
+                whatsapp: dadosCliente.whatsapp,
+                endereco: dadosCliente.endereco,
+                produtos: carrinho.map(item => item.nome),
+                data: new Date().toLocaleString(),
+                status: "Pendente"
+            });
+            localStorage.setItem('pedidos_motos', JSON.stringify(pedidos));
+            carrinho = [];
+            cartCount = 0;
+            document.getElementById('cart-count').textContent = cartCount;
+            mostrarEtapaCarrinho(3);
+        }
+
+        // Alternância de tema claro/escuro
+        const themeBtn = document.getElementById('theme-toggle-btn');
+        function setTheme(dark) {
+            document.body.classList.toggle('dark', dark);
+            themeBtn.textContent = dark ? '☀️ Tema Claro' : '🌙 Tema Escuro';
+            themeBtn.title = dark ? 'Alternar para tema claro' : 'Alternar para tema escuro';
+        }
+        themeBtn.addEventListener('click', function() {
+            setTheme(!document.body.classList.contains('dark'));
+        });
+        // Inicia no tema claro
+        setTheme(false);
+    </script>
+</body>
+</html>
