@@ -361,13 +361,32 @@
             position: absolute;
             top: 16px;
             left: 16px;
-            background: var(--cor-btn);
             color: #fff;
             font-size: 0.95em;
             font-weight: 700;
             border-radius: 6px;
             padding: 3px 12px;
             box-shadow: 0 2px 8px #d9042922;
+            /* Cor padrão para outros selos */
+            background: var(--cor-btn);
+            transition: background 0.2s, box-shadow 0.2s;
+        }
+        .card-moto .selo.destaque,
+        .card-moto .selo.oferta {
+            background: linear-gradient(90deg, #fff 60%, #fff 100%);
+            color: #d90429;
+            box-shadow: 0 2px 8px #d9042922;
+            border: 2px solid #d90429;
+            text-shadow: 0 1px 4px #d9042940;
+            letter-spacing: 1px;
+        }
+        .card-moto .selo.premium {
+            background: linear-gradient(90deg, #fff 60%, #fff 100%);
+            color: #d90429;
+            box-shadow: 0 2px 8px #d9042922;
+            border: 2px solid #d90429;
+            text-shadow: 0 1px 4px #d9042940;
+            letter-spacing: 1px;
         }
         /* Rodapé */
         footer {
@@ -378,6 +397,23 @@
             font-size: 1.08em;
             letter-spacing: 1px;
             margin-top: 38px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .footer-copyright {
+            width: 100%;
+            text-align: center;
+            font-weight: 600;
+            margin-bottom: 6px;
+            letter-spacing: 1px;
+        }
+        .footer-info, .footer-social {
+            text-align: center;
+            width: 100%;
+            margin-left: auto;
+            margin-right: auto;
         }
         .footer-info {
             margin-top: 10px;
@@ -785,9 +821,9 @@
     <div class="catalogo" id="catalogo">
         <div class="card-moto">
             <div class="img-area">
-                <img src="img/mudodasmotos/capacete.png" alt="Capacete">
+                <img src="img/mundodasmotos/capacete.png" alt="Capacete">
             </div>
-            <div class="selo">Destaque</div>
+            <div class="selo destaque">Destaque</div>
             <div class="marca">FW3</div>
             <div class="nome">CAPACETE FW3 X OPEN UP 43</div>
             <div class="preco">R$ 309,60</div>
@@ -795,9 +831,9 @@
         </div>
         <div class="card-moto">
             <div class="img-area">
-                <img src="img/mudodasmotos/pneu.png" alt="Pneus">
+                <img src="img/mundodasmotos/pneu.png" alt="Pneus">
             </div>
-            <div class="selo">Oferta</div>
+            <div class="selo oferta">Oferta</div>
             <div class="marca">Maggion Sportissimo</div>
             <div class="nome">Pneu II 110-70-16 52P TL Dianteiro Citycom 300</div>
             <div class="preco">R$  170,05</div>
@@ -805,7 +841,7 @@
         </div>
         <div class="card-moto">
             <div class="img-area">
-                <img src="img/mudodasmotos/oleo.png" alt="Oleo de moto">
+                <img src="img/mundodasmotos/oleo.png" alt="Oleo de moto">
             </div>
             <div class="marca">MOBIL</div>
             <div class="nome">OLEO 4T MX 10W40 SUPER MOTO 100% SINTÉTICO 1L</div>
@@ -814,7 +850,7 @@
         </div>
         <div class="card-moto">
             <div class="img-area">
-                <img src="img/mudodasmotos/honda-cbr600f.png" alt="Honda CBR 600F">
+                <img src="img/mundodasmotos/honda-cbr600f.png" alt="Honda CBR 600F">
             </div>
             <div class="marca">Honda</div>
             <div class="nome">CBR 600F</div>
@@ -823,7 +859,7 @@
         </div>
         <div class="card-moto">
             <div class="img-area">
-                <img src="img/mudodasmotos/ducati-v4s.png" alt="Ducati Panigale V4S">
+                <img src="img/mundodasmotos/ducati-v4s.png" alt="Ducati Panigale V4S">
             </div>
             <div class="selo">Premium</div>
             <div class="marca">Ducati</div>
@@ -928,7 +964,9 @@
 
 
     <footer>
-        &copy; 2026 Mundo das Motos - Catálogo Premium
+        <div class="footer-copyright">
+            &copy; 2026 Mundo das Motos - Catálogo Premium
+        </div>
         <div class="footer-info">
             Atendimento: contato@mundodasmotos.com.br | (11) 99999-9999<br>
             Endereço: Av. das Rodas, 777 - São Paulo/SP
