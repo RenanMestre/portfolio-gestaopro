@@ -854,7 +854,7 @@
                     <input type="text" id="whatsapp" name="whatsapp" required pattern="\d{10,15}" placeholder="Ex: 11999999999">
                     <label for="endereco">Endereço</label>
                     <input type="text" id="endereco" name="endereco" required>
-                    <button class="carrinho-btn" type="submit">Avançar para Pagamento PIX</button>
+                    <button class="carrinho-btn" type="submit">Avançar para Pagamento</button>
                 </form>
             </div>
             <div id="carrinho-etapa-pix" style="display:none;">
@@ -935,6 +935,51 @@
         </div>
         <div class="footer-social">
             <span style="font-weight:600;margin-right:10px;">Siga-nos:</span>
+            <style>
+                .footer-social a {
+                    display: inline-flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 38px;
+                    height: 38px;
+                    margin: 0 6px;
+                    border-radius: 50%;
+                    background: linear-gradient(135deg, #23272a 60%, #18191a 100%);
+                    box-shadow: 0 2px 8px #0003;
+                    border: 2px solid transparent;
+                    transition: border 0.2s, transform 0.2s, box-shadow 0.2s, background 0.2s;
+                    position: relative;
+                    overflow: hidden;
+                }
+                .footer-social a svg {
+                    width: 22px;
+                    height: 22px;
+                    vertical-align: middle;
+                    filter: drop-shadow(0 1px 2px #0005);
+                    transition: filter 0.2s;
+                }
+                .footer-social a[title="Instagram"] {
+                    background: radial-gradient(circle at 70% 30%, #fdc468 0%, #e1306c 60%, #23272a 100%);
+                    border-color: #e1306c;
+                }
+                .footer-social a[title="Facebook"] {
+                    background: linear-gradient(135deg, #1877f3 60%, #23272a 100%);
+                    border-color: #1877f3;
+                }
+                .footer-social a[title="WhatsApp"] {
+                    background: linear-gradient(135deg, #25d366 60%, #23272a 100%);
+                    border-color: #25d366;
+                }
+                .footer-social a:hover {
+                    transform: scale(1.13) rotate(-3deg);
+                    box-shadow: 0 4px 16px #d9042940;
+                    border-color: var(--cor-btn);
+                    background: linear-gradient(135deg, var(--cor-btn) 60%, #23272a 100%);
+                }
+                .footer-social a:hover svg {
+                    filter: drop-shadow(0 2px 6px #d9042940);
+                }
+            </style>
             <a href="https://instagram.com" target="_blank" title="Instagram" style="vertical-align:middle;">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" style="vertical-align:middle;"><rect width="24" height="24" rx="6" fill="#E1306C"/><path d="M12 8.4A3.6 3.6 0 1 0 12 15.6A3.6 3.6 0 1 0 12 8.4Z" stroke="#fff" stroke-width="1.5"/><circle cx="17.2" cy="6.8" r="1.1" fill="#fff"/><rect x="4.5" y="4.5" width="15" height="15" rx="4.5" stroke="#fff" stroke-width="1.5"/></svg>
             </a>
