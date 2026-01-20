@@ -30,6 +30,8 @@
             font-family: 'Jost', Arial, Helvetica, sans-serif;
             margin: 0;
             padding: 0;
+            min-height: 100vh;
+            box-sizing: border-box;
         }
         /* Topo */
         .topo {
@@ -47,11 +49,13 @@
             align-items: center;
             justify-content: space-between;
             padding: 18px 24px;
+            flex-wrap: wrap;
         }
         .logo {
             display: flex;
             align-items: center;
             gap: 14px;
+            min-width: 180px;
         }
         .logo img {
             height: 48px;
@@ -66,6 +70,7 @@
         .menu {
             display: flex;
             gap: 32px;
+            flex-wrap: wrap;
         }
         .menu a {
             color: var(--cor-texto);
@@ -84,6 +89,8 @@
             flex: 1;
             display: flex;
             justify-content: center;
+            min-width: 220px;
+            margin-left: 16px;
         }
         .busca input {
             width: 340px;
@@ -130,6 +137,7 @@
             justify-content: space-between;
             gap: 32px;
             padding: 32px 24px;
+            flex-wrap: wrap;
         }
         .banner-text {
             flex: 1;
@@ -221,6 +229,7 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
             gap: 32px;
+            justify-items: center;
         }
         .card-moto {
             background: linear-gradient(120deg, #23272a 60%, #18191a 100%);
@@ -232,6 +241,8 @@
             padding: 18px 18px 22px 18px;
             position: relative;
             transition: box-shadow 0.2s, transform 0.2s;
+            width: 100%;
+            max-width: 340px;
         }
         .card-moto:hover {
             box-shadow: 0 8px 32px #d9042922;
@@ -627,6 +638,40 @@
                 width: 98vw;
                 max-width: 320px;
             }
+        }
+        /* Responsivo */
+        @media (max-width: 1200px) {
+            .topo-inner, .banner-content, .catalogo {
+                max-width: 98vw;
+            }
+        }
+        @media (max-width: 900px) {
+            .topo-inner, .banner-content, .catalogo {
+                padding-left: 8px;
+                padding-right: 8px;
+            }
+            .banner-content { flex-direction: column; align-items: flex-start; gap: 18px; }
+            .banner-img { justify-content: flex-start; }
+            .catalogo { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; }
+            .card-moto { max-width: 98vw; }
+        }
+        @media (max-width: 700px) {
+            .topo-inner { flex-direction: column; gap: 10px; padding: 10px 4vw; }
+            .menu { gap: 18px; flex-wrap: wrap; }
+            .busca { margin-left: 0; width: 100%; }
+            .banner-content { flex-direction: column; gap: 12px; padding: 18px 4vw; }
+            .banner-img img { max-width: 98vw; }
+            .catalogo { grid-template-columns: 1fr; gap: 14px; }
+            .card-moto { max-width: 98vw; }
+            .filtros-catalogo { flex-direction: column; gap: 12px; padding: 12px 4vw; }
+        }
+        @media (max-width: 500px) {
+            .topo-inner, .banner-content, .catalogo, .filtros-catalogo { padding-left: 2vw; padding-right: 2vw; }
+            .banner-text h1 { font-size: 1.5em; }
+            .banner-text p { font-size: 1em; }
+            .banner-img img { max-width: 95vw; }
+            .card-moto { padding: 10px 6px 14px 6px; }
+            .modal-produto { padding: 10px 2vw 10px 2vw; }
         }
     </style>
 </head>
