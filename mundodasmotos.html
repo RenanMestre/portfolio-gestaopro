@@ -651,7 +651,10 @@
                 padding-right: 8px;
             }
             .banner-content { flex-direction: column; align-items: flex-start; gap: 18px; }
-            .banner-img { justify-content: flex-start; }
+            .banner-img { width: 100%; }
+            .banner-img.mobile-top { order: -1; margin-bottom: 12px; }
+            .banner-img img { max-width: 98vw; }
+            .banner-text { width: 100%; }
             .catalogo { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; }
             .card-moto { max-width: 98vw; }
         }
@@ -660,7 +663,10 @@
             .menu { gap: 18px; flex-wrap: wrap; }
             .busca { margin-left: 0; width: 100%; }
             .banner-content { flex-direction: column; gap: 12px; padding: 18px 4vw; }
-            .banner-img img { max-width: 98vw; }
+            .banner-img { width: 100%; }
+            .banner-img.mobile-top { order: -1; margin-bottom: 12px; }
+            .banner-img img { max-width: 95vw; }
+            .banner-text { width: 100%; }
             .catalogo { grid-template-columns: 1fr; gap: 14px; }
             .card-moto { max-width: 98vw; }
             .filtros-catalogo { flex-direction: column; gap: 12px; padding: 12px 4vw; }
@@ -684,10 +690,10 @@
             </div>
             <span style="margin-right:18px;"></span>
             <nav class="menu">
-                <a href="#">Início</a>
-                <a href="#">Catálogo</a>
-                <a href="#">Ofertas</a>
-                <a href="#">Contato</a>
+                <a href="#"></a>
+                <a href="#"></a>
+                <a href="#"></a>
+                <a href="#"></a>
             </nav>
             <div class="busca">
                 <input type="text" placeholder="Buscar produtos, marcas e muito mais..." />
@@ -696,13 +702,13 @@
     </div>
     <div class="banner">
         <div class="banner-content">
+            <div class="banner-img" id="banner-img">
+                <img src="img/banner.png" alt="Banner Moto">
+            </div>
             <div class="banner-text">
                 <h1>Acelere seu sonho!</h1>
                 <p>As melhores peças e o melhor suporte do Brasil. Confira nosso catálogo e encontre o que precisa.</p>
                 <a href="#catalogo" class="btn">Entrar em contato</a>
-            </div>
-            <div class="banner-img">
-                <img src="img/banner.png" alt="Banner Moto">
             </div>
         </div>
     </div>
@@ -927,7 +933,7 @@
             document.getElementById('cart-count').textContent = cartCount;
         }
 
-        // Botões dos cards
+        // Botões dos card
         // (Removido: não adicionar ao carrinho ao clicar em "Ver Detalhes")
 
         // Abrir/fechar modal do carrinho
@@ -1150,6 +1156,26 @@
                 });
             });
         });
+
+        // Move a imagem do banner acima do texto no mobile
+        function ajustarBannerImgMobile() {
+            const bannerContent = document.querySelector('.banner-content');
+            const bannerImg = document.getElementById('banner-img');
+            if (window.innerWidth <= 900) {
+                bannerImg.classList.add('mobile-top');
+                if (bannerContent.firstElementChild !== bannerImg) {
+                    bannerContent.insertBefore(bannerImg, bannerContent.firstElementChild);
+                }
+            } else {
+                bannerImg.classList.remove('mobile-top');
+                // Garante que a ordem padrão é texto depois imagem
+                if (bannerContent.children[0] !== bannerImg) {
+                    bannerContent.appendChild(bannerImg);
+                }
+            }
+        }
+        window.addEventListener('DOMContentLoaded', ajustarBannerImgMobile);
+        window.addEventListener('resize', ajustarBannerImgMobile);
     </script>
 </body>
 </html>
