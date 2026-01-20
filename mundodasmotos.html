@@ -352,37 +352,280 @@
         .whatsapp-float a:hover {
             background: #128c7e;
         }
-        /* Responsivo */
-        @media (max-width: 900px) {
-            .banner-content {
+        /* Carrinho Modal e Botão Flutuante */
+        .cart-btn-float {
+            position: fixed;
+            bottom: 100px;
+            right: 24px;
+            background: var(--cor-btn);
+            color: var(--cor-btn-text);
+            border: none;
+            border-radius: 50%;
+            width: 62px;
+            height: 62px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.2em;
+            box-shadow: 0 4px 16px #d9042922;
+            cursor: pointer;
+            z-index: 1001;
+            transition: background 0.2s;
+        }
+        .cart-btn-float:hover {
+            background: var(--cor-btn-hover);
+        }
+        .cart-count {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            background: #fff;
+            color: var(--cor-btn);
+            border-radius: 50%;
+            font-size: 0.9em;
+            width: 22px;
+            height: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            border: 2px solid var(--cor-btn);
+        }
+        .modal-carrinho-bg {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            left: 0; top: 0; width: 100vw; height: 100vh;
+            background: rgba(0,0,0,0.45);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-carrinho-bg.aberto {
+            display: flex;
+        }
+        .modal-carrinho {
+            background: var(--cor-card);
+            color: var(--cor-texto);
+            border-radius: 18px;
+            box-shadow: 0 8px 32px #0007;
+            width: 98vw;
+            max-width: 440px;
+            padding: 36px 28px 28px 28px;
+            position: relative;
+            animation: fadeIn 0.3s;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.95);}
+            to { opacity: 1; transform: scale(1);}
+        }
+        .modal-carrinho h3 {
+            font-size: 1.4em;
+            font-weight: 800;
+            margin-bottom: 18px;
+            text-align: center;
+            color: var(--cor-btn);
+        }
+        .modal-carrinho .fechar-modal {
+            position: absolute;
+            top: 12px; right: 18px;
+            background: none;
+            border: none;
+            font-size: 1.7em;
+            color: var(--cor-btn);
+            cursor: pointer;
+        }
+        .carrinho-lista {
+            margin-bottom: 18px;
+            max-height: 180px;
+            overflow-y: auto;
+        }
+        .carrinho-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid #333;
+            padding: 8px 0;
+            font-size: 1em;
+        }
+        .carrinho-item-nome {
+            flex: 1;
+            font-weight: 500;
+        }
+        .carrinho-item-preco {
+            color: var(--cor-btn);
+            font-weight: 700;
+            margin-left: 12px;
+        }
+        .carrinho-item-remove {
+            background: none;
+            border: none;
+            color: #888;
+            font-size: 1.2em;
+            cursor: pointer;
+            margin-left: 8px;
+        }
+        .carrinho-total {
+            font-size: 1.15em;
+            font-weight: 800;
+            color: var(--cor-btn);
+            text-align: right;
+            margin-bottom: 18px;
+        }
+        .carrinho-btn {
+            background: var(--cor-btn);
+            color: var(--cor-btn-text);
+            border: none;
+            border-radius: 24px;
+            padding: 12px 0;
+            width: 100%;
+            font-size: 1.08em;
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background 0.2s;
+        }
+        .carrinho-btn:hover {
+            background: var(--cor-btn-hover);
+        }
+        .carrinho-form input {
+            width: 100%;
+            padding: 8px 10px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            border: 1.5px solid var(--cor-borda);
+            background: #18191a;
+            color: var(--cor-texto);
+            font-size: 1em;
+        }
+        .carrinho-form label {
+            font-size: 1em;
+            color: var(--cor-cinza);
+            font-weight: 600;
+        }
+        .carrinho-confirmacao {
+            text-align: center;
+            margin-bottom: 18px;
+        }
+        /* Modal Produto */
+        .modal-produto-bg {
+            display: none;
+            position: fixed;
+            z-index: 10002;
+            left: 0; top: 0; width: 100vw; height: 100vh;
+            background: rgba(0,0,0,0.55);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-produto-bg.aberto {
+            display: flex;
+        }
+        .modal-produto {
+            background: var(--cor-card);
+            color: var(--cor-texto);
+            border-radius: 18px;
+            box-shadow: 0 8px 32px #0007;
+            width: 98vw;
+            max-width: 700px;
+            padding: 36px 28px 28px 28px;
+            position: relative;
+            animation: fadeIn 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+        .modal-produto .fechar-modal {
+            position: absolute;
+            top: 12px; right: 18px;
+            background: none;
+            border: none;
+            font-size: 1.7em;
+            color: var(--cor-btn);
+            cursor: pointer;
+        }
+        .modal-produto-conteudo {
+            display: flex;
+            gap: 32px;
+            flex-wrap: wrap;
+        }
+        .modal-produto-fotos {
+            flex: 1.2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-width: 220px;
+        }
+        .modal-produto-img {
+            width: 260px;
+            height: 180px;
+            object-fit: contain;
+            border-radius: 10px;
+            background: #222;
+            margin-bottom: 12px;
+            box-shadow: 0 2px 12px #0004;
+        }
+        .modal-produto-thumbs {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+        }
+        .modal-produto-thumb {
+            width: 48px;
+            height: 36px;
+            object-fit: contain;
+            border-radius: 6px;
+            border: 2px solid transparent;
+            cursor: pointer;
+            background: #222;
+            transition: border 0.2s;
+        }
+        .modal-produto-thumb.selected {
+            border: 2px solid var(--cor-btn);
+        }
+        .modal-produto-info {
+            flex: 2;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            gap: 10px;
+            min-width: 220px;
+        }
+        .modal-produto-marca {
+            font-size: 1em;
+            color: var(--cor-cinza);
+            font-weight: 500;
+        }
+        .modal-produto-nome {
+            font-size: 1.3em;
+            font-weight: 700;
+            color: var(--cor-preto);
+        }
+        .modal-produto-preco {
+            font-size: 1.15em;
+            font-weight: 800;
+            color: var(--cor-btn);
+            margin-bottom: 8px;
+        }
+        .modal-produto-desc {
+            font-size: 1em;
+            color: var(--cor-texto);
+            margin-bottom: 10px;
+        }
+        @media (max-width: 700px) {
+            .modal-produto {
+                max-width: 98vw;
+                padding: 18px 6px 12px 6px;
+            }
+            .modal-produto-conteudo {
                 flex-direction: column;
                 gap: 18px;
-                text-align: center;
+                align-items: center;
             }
-            .banner-img {
-                justify-content: center;
-            }
-            .topo-inner {
-                flex-direction: column;
-                gap: 10px;
-            }
-            .busca input {
+            .modal-produto-fotos, .modal-produto-info {
+                min-width: 0;
                 width: 100%;
-                min-width: 180px;
             }
-        }
-        @media (max-width: 600px) {
-            .topo-inner, .banner-content {
-                padding: 10px 4vw;
-            }
-            .catalogo {
-                gap: 14px;
-            }
-            .card-moto {
-                padding: 10px 6px 16px 6px;
-            }
-            .banner-img img {
-                max-width: 98vw;
+            .modal-produto-img {
+                width: 98vw;
+                max-width: 320px;
             }
         }
     </style>
@@ -392,8 +635,9 @@
         <div class="topo-inner">
             <div class="logo">
                 <img src="img/moto.png" alt="Logo Mundo das Motos">
-                <span>Mundo das Motos</span>
+                <span style="font-size:1.5em;">Mundo das Motos</span>
             </div>
+            <span style="margin-right:18px;"></span>
             <nav class="menu">
                 <a href="#">Início</a>
                 <a href="#">Catálogo</a>
@@ -401,7 +645,7 @@
                 <a href="#">Contato</a>
             </nav>
             <div class="busca">
-                <input type="text" placeholder="Qual a sua próxima moto?" />
+                <input type="text" placeholder="Buscar produtos, marcas e muito mais..." />
             </div>
         </div>
     </div>
@@ -409,8 +653,8 @@
         <div class="banner-content">
             <div class="banner-text">
                 <h1>Acelere seu sonho!</h1>
-                <p>As melhores motos esportivas, custom e naked do Brasil. Confira nosso catálogo premium e encontre a moto perfeita para você.</p>
-                <a href="#catalogo" class="btn">Ver Catálogo</a>
+                <p>As melhores peças e o melhor suporte do Brasil. Confira nosso catálogo e encontre o que precisa.</p>
+                <a href="#catalogo" class="btn">Entrar em contato</a>
             </div>
             <div class="banner-img">
                 <img src="img/banner.png" alt="Banner Moto">
@@ -449,31 +693,31 @@
     <div class="catalogo" id="catalogo">
         <div class="card-moto">
             <div class="img-area">
-                <img src="img/mudodasmotos/bmw-s1000rr.png" alt="BMW S1000RR">
+                <img src="img/mudodasmotos/capacete.png" alt="Capacete">
             </div>
             <div class="selo">Destaque</div>
-            <div class="marca">BMW</div>
-            <div class="nome">S1000RR</div>
-            <div class="preco">R$ 131.900,00</div>
+            <div class="marca">FW3</div>
+            <div class="nome">CAPACETE FW3 X OPEN UP 43</div>
+            <div class="preco">R$ 309,60</div>
             <a href="#" class="btn-detalhes">Ver Detalhes</a>
         </div>
         <div class="card-moto">
             <div class="img-area">
-                <img src="img/mudodasmotos/kawasaki-zx10r.png" alt="Kawasaki ZX-10R">
+                <img src="img/mudodasmotos/pneu.png" alt="Pneus">
             </div>
             <div class="selo">Oferta</div>
-            <div class="marca">Kawasaki</div>
-            <div class="nome">Ninja ZX-10R</div>
-            <div class="preco">R$ 95.900,00</div>
+            <div class="marca">Maggion Sportissimo</div>
+            <div class="nome">Pneu II 110-70-16 52P TL Dianteiro Citycom 300</div>
+            <div class="preco">R$  170,05</div>
             <a href="#" class="btn-detalhes">Ver Detalhes</a>
         </div>
         <div class="card-moto">
             <div class="img-area">
-                <img src="img/mudodasmotos/yamaha-r3.png" alt="Yamaha R3">
+                <img src="img/mudodasmotos/oleo.png" alt="Oleo de moto">
             </div>
-            <div class="marca">Yamaha</div>
-            <div class="nome">YZF-R3 GP</div>
-            <div class="preco">R$ 32.900,00</div>
+            <div class="marca">MOBIL</div>
+            <div class="nome">OLEO 4T MX 10W40 SUPER MOTO 100% SINTÉTICO 1L</div>
+            <div class="preco">R$ 50,34</div>
             <a href="#" class="btn-detalhes">Ver Detalhes</a>
         </div>
         <div class="card-moto">
@@ -497,6 +741,88 @@
         </div>
         <!-- Adicione mais motos conforme necessário -->
     </div>
+    <!-- Carrinho Modal -->
+    <div class="modal-carrinho-bg" id="modal-carrinho-bg" style="display:none;">
+        <div class="modal-carrinho" id="modal-carrinho">
+            <button class="fechar-modal" onclick="fecharCarrinho()" title="Fechar">&times;</button>
+            <div id="carrinho-etapa1">
+                <h3>Seu Carrinho</h3>
+                <div class="carrinho-lista" id="carrinho-lista"></div>
+                <div class="carrinho-total" id="carrinho-total"></div>
+                <button class="carrinho-btn" onclick="avancarEtapaCarrinho()">Avançar para Checkout</button>
+            </div>
+            <div id="carrinho-etapa2" style="display:none;">
+                <h3>Dados para Pagamento</h3>
+                <form class="carrinho-form" id="carrinho-form" onsubmit="return avancarParaPix(event)">
+                    <label for="nome">Nome completo</label>
+                    <input type="text" id="nome" name="nome" required>
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" name="email" required>
+                    <label for="whatsapp">WhatsApp</label>
+                    <input type="text" id="whatsapp" name="whatsapp" required pattern="\d{10,15}" placeholder="Ex: 11999999999">
+                    <label for="endereco">Endereço</label>
+                    <input type="text" id="endereco" name="endereco" required>
+                    <button class="carrinho-btn" type="submit">Avançar para Pagamento PIX</button>
+                </form>
+            </div>
+            <div id="carrinho-etapa-pix" style="display:none;">
+                <h3>Pagamento</h3>
+                <div style="text-align:center;margin-bottom:18px;">
+                    <strong>Escolha a forma de pagamento:</strong>
+                    <div style="margin:18px 0;">
+                        <button class="carrinho-btn" style="width:90%;margin-bottom:10px;" onclick="mostrarPix()">PIX</button>
+                        <button class="carrinho-btn" style="width:90%;" onclick="pagarCartao()">Cartão de Crédito</button>
+                    </div>
+                    <div id="area-pix" style="display:none;">
+                        <strong>Chave PIX:</strong><br>
+                        <span style="font-size:1.1em;color:#1976d2;font-weight:700;">43898572000142</span>
+                        <div style="margin:16px 0;">
+                            <img src="https://api.qrserver.com/v1/create-qr-code/?data=43898572000142&size=150x150" alt="QR Code PIX" style="border-radius:8px;">
+                        </div>
+                        <span style="color:#888;font-size:0.98em;">Escaneie o QR Code ou copie a chave para efetuar o pagamento.</span>
+                        <button class="carrinho-btn" style="margin-top:18px;" onclick="confirmarPagamentoPix()">Já paguei</button>
+                    </div>
+                </div>
+            </div>
+            <div id="carrinho-etapa3" style="display:none;">
+                <h3>Compra Finalizada!</h3>
+                <div class="carrinho-confirmacao">
+                    Obrigado pela compra!<br>
+                    Seu pedido foi recebido e está sendo processado.<br>
+                    <span style="font-size:2em;">&#x1F60A;</span>
+                </div>
+                <button class="carrinho-btn" onclick="fecharCarrinho()">Fechar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Detalhes do Produto -->
+    <div class="modal-produto-bg" id="modal-produto-bg" style="display:none;">
+        <div class="modal-produto" id="modal-produto">
+            <button class="fechar-modal" onclick="fecharModalProduto()" title="Fechar">&times;</button>
+            <div class="modal-produto-conteudo">
+                <div class="modal-produto-fotos" id="modal-produto-fotos">
+                    <!-- Fotos do produto (carrossel simples) -->
+                    <img id="modal-produto-img-principal" src="" alt="Foto do produto" class="modal-produto-img">
+                    <div class="modal-produto-thumbs" id="modal-produto-thumbs"></div>
+                </div>
+                <div class="modal-produto-info">
+                    <div class="modal-produto-marca" id="modal-produto-marca"></div>
+                    <div class="modal-produto-nome" id="modal-produto-nome"></div>
+                    <div class="modal-produto-preco" id="modal-produto-preco"></div>
+                    <div class="modal-produto-desc" id="modal-produto-desc"></div>
+                    <button class="carrinho-btn" id="btn-add-carrinho-modal" onclick="">Adicionar ao carrinho</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Botão Carrinho Flutuante -->
+    <button class="cart-btn-float" title="Carrinho" onclick="abrirCarrinho()">
+        <span>&#128722;</span>
+        <span class="cart-count" id="cart-count">0</span>
+    </button>
+
     <div class="whatsapp-float">
         <a href="https://wa.me/5511999999999" target="_blank" title="Fale conosco no WhatsApp">
             <span style="font-family:Arial;">&#x1F4F1;</span>
@@ -515,5 +841,270 @@
             <a href="https://wa.me/5511999999999" target="_blank" title="WhatsApp">&#x1F4F1;</a>
         </div>
     </footer>
+    <script>
+        // Carrinho e integração com dashboard-pedidos
+        let cartCount = 0;
+        let carrinho = [];
+        let dadosCliente = {};
+
+        // Produtos e preços
+        const precos = {
+            'S1000RR': 131900,
+            'Ninja ZX-10R': 95900,
+            'YZF-R3 GP': 32900,
+            'CBR 600F': 40900,
+            'Panigale V4S': 139900
+        };
+
+        // Adicionar ao carrinho (agora com quantidade)
+        function addToCart(nome) {
+            // Busca preço pelo nome no catálogo de detalhes, se não achar, usa o objeto precos
+            let preco = 0;
+            if (produtosDetalhes[nome] && produtosDetalhes[nome].preco) {
+                preco = parseFloat(
+                    produtosDetalhes[nome].preco
+                        .replace('R$', '')
+                        .replace(/\./g, '')
+                        .replace(',', '.')
+                        .trim()
+                );
+            } else if (precos[nome]) {
+                preco = precos[nome];
+            }
+            // Verifica se já existe no carrinho
+            let idx = carrinho.findIndex(item => item.nome === nome);
+            if (idx >= 0) {
+                carrinho[idx].quantidade += 1;
+            } else {
+                carrinho.push({ nome, preco, quantidade: 1 });
+            }
+            cartCount = carrinho.reduce((acc, item) => acc + item.quantidade, 0);
+            document.getElementById('cart-count').textContent = cartCount;
+        }
+
+        // Botões dos cards
+        // (Removido: não adicionar ao carrinho ao clicar em "Ver Detalhes")
+
+        // Abrir/fechar modal do carrinho
+        function abrirCarrinho() {
+            atualizarCarrinho();
+            document.getElementById('modal-carrinho-bg').classList.add('aberto');
+            document.getElementById('modal-carrinho-bg').style.display = 'flex';
+            mostrarEtapaCarrinho(1);
+        }
+        function fecharCarrinho() {
+            document.getElementById('modal-carrinho-bg').classList.remove('aberto');
+            document.getElementById('modal-carrinho-bg').style.display = 'none';
+        }
+
+        // Atualiza lista de produtos no carrinho
+        function atualizarCarrinho() {
+            const lista = document.getElementById('carrinho-lista');
+            lista.innerHTML = '';
+            if (carrinho.length === 0) {
+                lista.innerHTML = '<div style="text-align:center;color:#888;">Seu carrinho está vazio.</div>';
+            } else {
+                carrinho.forEach((item, idx) => {
+                    lista.innerHTML += `
+                        <div class="carrinho-item">
+                            <span class="carrinho-item-nome">${item.nome} <span style="color:#1976d2;">x${item.quantidade}</span></span>
+                            <span class="carrinho-item-preco">R$ ${(item.preco * item.quantidade).toLocaleString('pt-BR', {minimumFractionDigits:2})}</span>
+                            <button class="carrinho-item-remove" onclick="removerItemCarrinho(${idx})" title="Remover">&times;</button>
+                        </div>
+                    `;
+                });
+            }
+            // Total
+            const total = carrinho.reduce((acc, item) => acc + item.preco * item.quantidade, 0);
+            document.getElementById('carrinho-total').textContent = total > 0 ? `Total: R$ ${total.toLocaleString('pt-BR', {minimumFractionDigits:2})}` : '';
+        }
+        function removerItemCarrinho(idx) {
+            carrinho.splice(idx, 1);
+            cartCount = carrinho.reduce((acc, item) => acc + item.quantidade, 0);
+            document.getElementById('cart-count').textContent = cartCount;
+            atualizarCarrinho();
+        }
+
+        // Etapas do checkout
+        function mostrarEtapaCarrinho(etapa) {
+            document.getElementById('carrinho-etapa1').style.display = etapa === 1 ? '' : 'none';
+            document.getElementById('carrinho-etapa2').style.display = etapa === 2 ? '' : 'none';
+            document.getElementById('carrinho-etapa-pix').style.display = etapa === 'pix' ? '' : 'none';
+            document.getElementById('carrinho-etapa3').style.display = etapa === 3 ? '' : 'none';
+            if (etapa !== 'pix') document.getElementById('area-pix').style.display = 'none';
+        }
+        function avancarEtapaCarrinho() {
+            if (carrinho.length === 0) {
+                alert('Adicione produtos ao carrinho antes de avançar.');
+                return;
+            }
+            mostrarEtapaCarrinho(2);
+        }
+        function avancarParaPix(event) {
+            event.preventDefault();
+            dadosCliente = {
+                nome: document.getElementById('nome').value,
+                email: document.getElementById('email').value,
+                whatsapp: document.getElementById('whatsapp').value,
+                endereco: document.getElementById('endereco').value
+            };
+            mostrarEtapaCarrinho('pix');
+            return false;
+        }
+        function mostrarPix() {
+            document.getElementById('area-pix').style.display = '';
+        }
+        function pagarCartao() {
+            const msg = encodeURIComponent(
+                `Olá, quero pagar minha compra no cartão!\n\nNome: ${dadosCliente.nome}\nEmail: ${dadosCliente.email}\nWhatsApp: ${dadosCliente.whatsapp}\nEndereço: ${dadosCliente.endereco}\nProdutos: ${carrinho.map(item => item.nome).join(', ')}`
+            );
+            window.open(`https://wa.me/5511999999999?text=${msg}`, '_blank');
+        }
+        function confirmarPagamentoPix() {
+            // Salva no localStorage para dashboard-pedidos
+            let pedidos = [];
+            try {
+                pedidos = JSON.parse(localStorage.getItem('pedidos_motos')) || [];
+            } catch (e) {
+                pedidos = [];
+            }
+            // Salva produtos detalhados
+            const produtosPedido = carrinho.map(item => ({
+                nome: item.nome,
+                preco: item.preco,
+                quantidade: item.quantidade
+            }));
+            pedidos.push({
+                id: Date.now(),
+                cliente: dadosCliente.nome,
+                email: dadosCliente.email,
+                whatsapp: dadosCliente.whatsapp,
+                endereco: dadosCliente.endereco,
+                produtos: produtosPedido,
+                total: carrinho.reduce((acc, item) => acc + item.preco * item.quantidade, 0),
+                data: new Date().toLocaleString(),
+                status: "Pendente"
+            });
+            localStorage.setItem('pedidos_motos', JSON.stringify(pedidos));
+            carrinho = [];
+            cartCount = 0;
+            document.getElementById('cart-count').textContent = cartCount;
+            mostrarEtapaCarrinho(3);
+        }
+
+        // Dados dos produtos (exemplo, personalize conforme necessário)
+        const produtosDetalhes = {
+            "CAPACETE FW3 X OPEN UP 43": {
+                marca: "FW3",
+                preco: "R$ 309,60",
+                desc: "Capacete FW3 X Open Up 43: conforto, segurança e design moderno para o seu dia a dia.",
+                fotos: [
+                    "img/mudodasmotos/capacete.png",
+                    "img/mudodasmotos/capacete2.png",
+                    "img/mudodasmotos/capacete3.png"
+                ]
+            },
+            "Pneu II 110-70-16 52P TL Dianteiro Citycom 300": {
+                marca: "Maggion Sportissimo",
+                preco: "R$ 170,05",
+                desc: "Pneu dianteiro para Citycom 300, excelente aderência e durabilidade para sua scooter.",
+                fotos: [
+                    "img/mudodasmotos/pneu.png",
+                    "img/mudodasmotos/pneu2.png"
+                ]
+            },
+            "OLEO 4T MX 10W40 SUPER MOTO 100% SINTÉTICO 1L": {
+                marca: "MOBIL",
+                preco: "R$ 50,34",
+                desc: "Óleo Mobil 4T MX 10W40 100% sintético, máxima proteção e desempenho para motores de motos de alta rotação.",
+                fotos: [
+                    "img/mudodasmotos/oleo.png",
+                    "img/mudodasmotos/oleo2.png"
+                ]
+            },
+            "YZF-R3 GP": {
+                marca: "Yamaha",
+                preco: "R$ 32.900,00",
+                desc: "Yamaha YZF-R3 GP: esportividade, leveza e performance para quem busca emoção sobre duas rodas.",
+                fotos: [
+                    "img/mudodasmotos/yamaha-r3.png",
+                    "img/mudodasmotos/yamaha-r3-2.png"
+                ]
+            },
+            "CBR 600F": {
+                marca: "Honda",
+                preco: "R$ 40.900,00",
+                desc: "Honda CBR 600F: tradição, potência e conforto em uma das esportivas mais desejadas do Brasil.",
+                fotos: [
+                    "img/mudodasmotos/honda-cbr600f.png"
+                ]
+            },
+            "Panigale V4S": {
+                marca: "Ducati",
+                preco: "R$ 139.900,00",
+                desc: "Ducati Panigale V4S: tecnologia de ponta, design italiano e desempenho de pista para as ruas.",
+                fotos: [
+                    "img/mudodasmotos/ducati-v4s.png",
+                    "img/mudodasmotos/ducati-v4s-2.png"
+                ]
+            }
+        };
+
+        // Abrir modal de detalhes do produto
+        function abrirModalProduto(nome) {
+            const prod = produtosDetalhes[nome];
+            if (!prod) return;
+            document.getElementById('modal-produto-marca').textContent = prod.marca;
+            document.getElementById('modal-produto-nome').textContent = nome;
+            document.getElementById('modal-produto-preco').textContent = prod.preco;
+            document.getElementById('modal-produto-desc').textContent = prod.desc;
+            // Fotos
+            const fotos = prod.fotos || [];
+            const imgPrincipal = document.getElementById('modal-produto-img-principal');
+            const thumbs = document.getElementById('modal-produto-thumbs');
+            if (fotos.length > 0) {
+                imgPrincipal.src = fotos[0];
+                imgPrincipal.setAttribute('data-idx', 0);
+                thumbs.innerHTML = '';
+                fotos.forEach((foto, idx) => {
+                    const thumb = document.createElement('img');
+                    thumb.src = foto;
+                    thumb.className = 'modal-produto-thumb' + (idx === 0 ? ' selected' : '');
+                    thumb.onclick = function() {
+                        imgPrincipal.src = foto;
+                        document.querySelectorAll('.modal-produto-thumb').forEach(t => t.classList.remove('selected'));
+                        thumb.classList.add('selected');
+                    };
+                    thumbs.appendChild(thumb);
+                });
+            } else {
+                imgPrincipal.src = '';
+                thumbs.innerHTML = '';
+            }
+            // Botão adicionar ao carrinho
+            const btnAdd = document.getElementById('btn-add-carrinho-modal');
+            btnAdd.onclick = function() {
+                addToCart(nome);
+                fecharModalProduto();
+            };
+            document.getElementById('modal-produto-bg').classList.add('aberto');
+            document.getElementById('modal-produto-bg').style.display = 'flex';
+        }
+        function fecharModalProduto() {
+            document.getElementById('modal-produto-bg').classList.remove('aberto');
+            document.getElementById('modal-produto-bg').style.display = 'none';
+        }
+
+        // Substituir ação dos botões "Ver Detalhes" para abrir modal (NÃO adiciona ao carrinho)
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.btn-detalhes').forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const nome = this.parentElement.querySelector('.nome').textContent.trim();
+                    abrirModalProduto(nome);
+                });
+            });
+        });
+    </script>
 </body>
 </html>

@@ -2,43 +2,104 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>Dashboard de Pedidos - Mundo das Motos</title>
+    <title>Mundo das Motos - Dashboard de Pedidos</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600,700&display=swap" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Jost:400,500,700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --cor-principal: #23272a;
+            --cor-bg: #18191a;
+            --cor-card: #23272a;
+            --cor-texto: #f5f5f5;
+            --cor-preto: #fff;
+            --cor-cinza: #bbb;
+            --cor-borda: #333;
+            --cor-btn: #d90429;
+            --cor-btn-hover: #a0031f;
+            --cor-btn-text: #fff;
+            --cor-footer-bg: #101113;
+            --cor-footer-texto: #fff;
+            --cor-degrade1: #23272a;
+            --cor-degrade2: #18191a;
+            --cor-degrade3: #35363a;
+        }
+        html, body {
+            height: 100%;
+        }
         body {
-            background: #f4f7fb;
-            font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--cor-degrade1) 0%, var(--cor-degrade2) 60%, var(--cor-degrade3) 100%);
+            color: var(--cor-texto);
+            font-family: 'Jost', Arial, Helvetica, sans-serif;
             margin: 0;
-            color: #23272a;
+            padding: 0;
+            box-sizing: border-box;
         }
-        header {
-            background: linear-gradient(90deg, #1976d2 60%, #fff 100%);
-            color: #fff;
-            padding: 32px 0 18px 0;
-            text-align: center;
-            font-size: 2.2em;
-            font-weight: 800;
-            letter-spacing: 2px;
-            box-shadow: 0 4px 16px #0002;
-            border-bottom: 4px solid #1976d2;
+        .topo {
+            background: linear-gradient(90deg, #23272a 60%, #18191a 100%);
+            box-shadow: 0 2px 12px #0002;
+            padding: 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
-        .container {
+        .topo-inner {
             max-width: 1200px;
-            margin: 38px auto;
-            background: #fff;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 18px 24px;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+        .logo img {
+            height: 48px;
+            width: auto;
+        }
+        .logo span {
+            font-size: 1.5em;
+            font-weight: 700;
+            color: var(--cor-btn);
+            letter-spacing: 2px;
+        }
+        .menu {
+            display: flex;
+            gap: 32px;
+        }
+        .menu a {
+            color: var(--cor-texto);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1em;
+            padding: 8px 0;
+            border-bottom: 2px solid transparent;
+            transition: border 0.2s, color 0.2s;
+        }
+        .menu a:hover, .menu a.active {
+            color: var(--cor-btn);
+            border-bottom: 2px solid var(--cor-btn);
+        }
+        .dashboard-container {
+            max-width: 1200px;
+            margin: 38px auto 0 auto;
+            background: linear-gradient(120deg, #23272a 60%, #18191a 100%);
             border-radius: 18px;
-            box-shadow: 0 4px 24px #1976d233;
-            padding: 38px 32px;
+            box-shadow: 0 4px 24px #0007;
+            padding: 32px 12px;
             display: flex;
             flex-direction: column;
             align-items: stretch;
         }
         h2 {
-            font-size: 1.5em;
-            color: #1976d2;
+            font-size: 2em;
+            color: var(--cor-btn);
             margin-bottom: 28px;
-            font-weight: 700;
+            font-weight: 800;
             letter-spacing: 1px;
             text-align: left;
         }
@@ -46,13 +107,14 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: #e3eaf6;
+            background: linear-gradient(90deg, #23272a 60%, #18191a 100%);
             border-radius: 8px;
             padding: 14px 22px;
             margin-bottom: 22px;
             font-size: 1.08em;
-            color: #1976d2;
+            color: var(--cor-cinza);
             font-weight: 600;
+            box-shadow: 0 2px 12px #0002;
         }
         .info-bar span {
             display: flex;
@@ -67,37 +129,63 @@
         }
         table {
             width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 18px;
-            background: #fff;
-            min-width: 900px;
+            max-width: 1150px;
+            min-width: 800px;
+            margin: 0 auto 18px auto;
+            border-collapse: separate;
+            border-spacing: 0;
+            background: var(--cor-card);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 2px 12px #0004;
+            font-size: 0.93em;
+            table-layout: fixed;
         }
         th, td {
-            padding: 14px 10px;
+            padding: 10px 5px;
             text-align: center;
             vertical-align: middle;
+            word-break: break-word;
+            font-size: 0.93em;
         }
         th {
-            background: #1976d2;
+            background: var(--cor-btn);
             color: #fff;
             font-weight: 700;
-            font-size: 1em;
-            border-bottom: 2px solid #e3eaf6;
+            font-size: 0.95em;
+            border-bottom: 2px solid #23272a;
+            position: sticky;
+            top: 0;
+            z-index: 2;
+            text-align: center;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
         }
+        /* Ajuste de largura para cada coluna */
+        th:nth-child(1), td:nth-child(1) { width: 7%; min-width: 60px; }
+        th:nth-child(2), td:nth-child(2) { width: 13%; min-width: 110px; }
+        th:nth-child(3), td:nth-child(3) { width: 15%; min-width: 120px; }
+        th:nth-child(4), td:nth-child(4) { width: 8%; min-width: 70px; }
+        th:nth-child(5), td:nth-child(5) { width: 10%; min-width: 90px; }
+        th:nth-child(6), td:nth-child(6) { width: 15%; min-width: 120px; }
+        th:nth-child(7), td:nth-child(7) { width: 10%; min-width: 90px; }
+        th:nth-child(8), td:nth-child(8) { width: 10%; min-width: 90px; }
+        th:nth-child(9), td:nth-child(9) { width: 7%; min-width: 60px; }
+        th:nth-child(10), td:nth-child(10) { width: 8%; min-width: 70px; }
         tr {
-            background: #f7f7f7;
+            background: #23272a;
             transition: background 0.2s;
         }
         tr:nth-child(even) {
-            background: #e3eaf6;
+            background: #18191a;
         }
         tr.pendente {
             border-left: 4px solid #ffd600;
-            background: #fffde7;
+            background: #2a2a1a;
         }
         tr.enviado {
             border-left: 4px solid #43a047;
-            background: #eaf6ea;
+            background: #1e2a1e;
         }
         td.status {
             font-weight: 700;
@@ -107,10 +195,10 @@
             background: #43a047;
             color: #fff;
             border: none;
-            border-radius: 6px;
-            padding: 8px 18px;
-            font-size: 1em;
-            font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+            border-radius: 8px;
+            padding: 10px 24px;
+            font-size: 1.08em;
+            font-family: 'Jost', Arial, Helvetica, sans-serif;
             cursor: pointer;
             font-weight: 700;
             transition: background 0.2s;
@@ -126,9 +214,10 @@
             font-size: 0.98em;
             font-weight: 600;
             color: #fff;
-            background: #1976d2;
+            background: var(--cor-btn);
             margin-right: 6px;
             margin-bottom: 2px;
+            box-shadow: 0 2px 8px #d9042922;
         }
         .badge.enviado {
             background: #43a047;
@@ -142,7 +231,7 @@
             border-radius: 6px;
             font-weight: 700;
             text-decoration: none;
-            font-size: 1em;
+            font-size: 0.92em;
             box-shadow: 0 2px 8px #25d36633;
             transition: background 0.2s;
             border: none;
@@ -156,10 +245,12 @@
         }
         .footer {
             text-align: center;
-            color: #888;
-            font-size: 1em;
+            color: #bbb;
+            font-size: 0.97em;
             margin-top: 38px;
             padding-bottom: 18px;
+            background: var(--cor-footer-bg);
+            border-radius: 0 0 18px 18px;
         }
         .menu-bar {
             display: flex;
@@ -177,16 +268,16 @@
         }
         .menu-btn {
             background: #fff;
-            color: #1976d2;
+            color: var(--cor-btn);
             border: 1px solid #e3eaf6;
             border-radius: 50%;
             padding: 8px;
             font-size: 1.15em;
-            font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+            font-family: 'Jost', Arial, Helvetica, sans-serif;
             font-weight: 700;
             cursor: pointer;
             transition: background 0.2s, color 0.2s, border 0.2s;
-            box-shadow: 0 2px 8px #1976d211;
+            box-shadow: 0 2px 8px #d9042911;
             width: 40px;
             height: 40px;
             display: flex;
@@ -205,7 +296,7 @@
             border-radius: 6px;
             padding: 6px 14px;
             font-size: 0.95em;
-            font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+            font-family: 'Jost', Arial, Helvetica, sans-serif;
             font-weight: 500;
             box-shadow: 0 2px 8px #d32f2f22;
             z-index: 100;
@@ -222,45 +313,32 @@
             from { opacity: 0; transform: translateY(-6px);}
             to { opacity: 1; transform: translateY(0);}
         }
-        .logo-dashboard {
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            object-fit: cover;
-            box-shadow: 0 2px 12px #1976d233;
-            border: 2px solid #1976d2;
-            background: #fff;
-            margin-right: 18px;
-            vertical-align: middle;
-        }
-        .header-content {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 18px;
-        }
+        /* Responsivo */
         @media (max-width: 1200px) {
-            .container { padding: 18px 2vw; }
+            .dashboard-container { padding: 18px 2vw; }
             .table-wrapper { min-width: 0; }
+            table { max-width: 98vw; min-width: 600px; }
+            th, td { font-size: 0.97em; }
         }
         @media (max-width: 900px) {
-            .container { padding: 12px 2vw; }
-            th, td { padding: 8px 4px; }
-            table { min-width: 700px; }
+            .dashboard-container { padding: 8px 2vw; }
+            th, td { padding: 6px 2px; font-size: 0.90em; }
+            table { min-width: 520px; max-width: 98vw; }
         }
         @media (max-width: 700px) {
-            .container { padding: 6px 0; }
+            .dashboard-container { padding: 4px 0; }
             .table-wrapper { padding: 0; }
-            table { min-width: 500px; }
+            table { min-width: 420px; max-width: 99vw; }
             .info-bar { flex-direction: column; gap: 8px; align-items: flex-start; }
+            th, td { font-size: 0.89em; }
         }
         @media (max-width: 600px) {
-            .container { padding: 4px 0; }
+            .dashboard-container { padding: 2px 0; }
             .table-wrapper { padding: 0; }
             table, thead, tbody, th, td, tr { display: block; }
             th { position: absolute; left: -9999px; }
-            tr { margin-bottom: 18px; border-radius: 8px; box-shadow: 0 2px 8px #1976d211; }
-            td { border: none; position: relative; padding-left: 50%; min-height: 32px; text-align: left; }
+            tr { margin-bottom: 18px; border-radius: 8px; box-shadow: 0 2px 8px #d9042911; }
+            td { border: none; position: relative; padding-left: 50%; min-height: 32px; text-align: left; font-size: 0.92em; }
             td:before {
                 position: absolute;
                 left: 12px;
@@ -268,33 +346,47 @@
                 width: 45%;
                 white-space: nowrap;
                 font-weight: 700;
-                color: #1976d2;
+                color: var(--cor-btn);
             }
             td:nth-of-type(1):before { content: "Pedido"; }
             td:nth-of-type(2):before { content: "Cliente"; }
             td:nth-of-type(3):before { content: "Produtos"; }
-            td:nth-of-type(4):before { content: "Endereço"; }
-            td:nth-of-type(5):before { content: "WhatsApp"; }
-            td:nth-of-type(6):before { content: "Data"; }
-            td:nth-of-type(7):before { content: "Status"; }
-            td:nth-of-type(8):before { content: "Ações"; }
+            td:nth-of-type(4):before { content: "Quantidade"; }
+            td:nth-of-type(5):before { content: "Valor"; }
+            td:nth-of-type(6):before { content: "Endereço"; }
+            td:nth-of-type(7):before { content: "WhatsApp"; }
+            td:nth-of-type(8):before { content: "Data"; }
+            td:nth-of-type(9):before { content: "Status"; }
+            td:nth-of-type(10):before { content: "Ações"; }
             .info-bar { flex-direction: column; gap: 6px; align-items: flex-start; padding: 10px 8px; font-size: 0.98em; }
             .footer { font-size: 0.95em; }
         }
         @media (max-width: 400px) {
-            .container { padding: 2px 0; }
+            .dashboard-container { padding: 1px 0; }
             .info-bar { font-size: 0.92em; }
             .footer { font-size: 0.9em; }
         }
     </style>
 </head>
 <body>
-    <header style="position:relative;">
+    <div class="topo">
+        <div class="topo-inner">
+            <div class="logo">
+                <img src="img/moto.png" alt="Logo Mundo das Motos">
+                <span>Mundo das Motos</span>
+            </div>
+            <nav class="menu">
+                <a href="mundodasmotos.html">Catálogo</a>
+                <a href="dashboard-pedidos.html" class="active">Pedidos</a>
+            </nav>
+        </div>
+    </div>
+    <div class="dashboard-container">
         <div class="menu-bar">
             <button class="menu-btn" onclick="baixarBackup()" title="Baixar backup JSON" tabindex="0">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-                    <rect x="4" y="4" width="16" height="16" rx="4" stroke="#1976d2" stroke-width="2" fill="#fff"/>
-                    <path d="M12 8v5m0 0l-2-2m2 2l2-2m-6 5h8" stroke="#1976d2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <rect x="4" y="4" width="16" height="16" rx="4" stroke="#d90429" stroke-width="2" fill="#fff"/>
+                    <path d="M12 8v5m0 0l-2-2m2 2l2-2m-6 5h8" stroke="#d90429" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
             </button>
             <div class="menu-tooltip">
@@ -302,11 +394,7 @@
                 Clique para baixar o arquivo JSON.
             </div>
         </div>
-        <div class="header-content">
-        </div>
-    </header>
-    <div class="container">
-        <h2>Pedidos Recebidos</h2>
+        <h2>Dashboard de Pedidos</h2>
         <div class="info-bar">
             <span>📦 <b>Total de Pedidos:</b> <span id="total-pedidos">0</span></span>
             <span>🟢 <b>Enviados:</b> <span id="total-enviados">0</span></span>
@@ -319,6 +407,8 @@
                         <th>Pedido</th>
                         <th>Cliente</th>
                         <th>Produtos</th>
+                        <th>Quantidade</th>
+                        <th>Valor</th>
                         <th>Endereço</th>
                         <th>WhatsApp</th>
                         <th>Data</th>
@@ -343,7 +433,6 @@
             } catch (e) {
                 pedidos = [];
             }
-            // Inverte a ordem para mostrar os mais recentes no topo
             renderPedidos(pedidos.slice().reverse());
         }
 
@@ -355,7 +444,7 @@
             tbody.innerHTML = "";
             let enviados = 0, pendentes = 0;
             if (!pedidos || pedidos.length === 0) {
-                tbody.innerHTML = `<tr><td colspan="8" style="text-align:center;color:#888;">Nenhum pedido recebido.</td></tr>`;
+                tbody.innerHTML = `<tr><td colspan="10" style="text-align:center;color:#888;">Nenhum pedido recebido.</td></tr>`;
                 totalPedidos.textContent = "0";
                 totalEnviados.textContent = "0";
                 totalPendentes.textContent = "0";
@@ -370,18 +459,42 @@
                         WhatsApp
                        </a>`
                     : '-';
+
+                // Produtos, quantidades e preços em colunas separadas
+                let produtosHtml = '', quantidadesHtml = '', precosHtml = '';
+                if (pedido.produtos && Array.isArray(pedido.produtos) && pedido.produtos.length > 0) {
+                    if (typeof pedido.produtos[0] === 'object') {
+                        produtosHtml = pedido.produtos.map(p =>
+                            `<span class="badge${pedido.status === "Enviado" ? " enviado" : ""}">${p.nome}</span>`
+                        ).join("<br>");
+                        quantidadesHtml = pedido.produtos.map(p =>
+                            `<span style="color:#1976d2;font-weight:600;">${p.quantidade || 1}</span>`
+                        ).join("<br>");
+                        precosHtml = pedido.produtos.map(p =>
+                            `<span style="color:#bbb;font-size:0.98em;">R$ ${(Number(p.preco) * (p.quantidade || 1)).toLocaleString('pt-BR', {minimumFractionDigits:2})}</span>`
+                        ).join("<br>");
+                    } else {
+                        // Suporte legado: só nome
+                        produtosHtml = pedido.produtos.map(p =>
+                            `<span class="badge${pedido.status === "Enviado" ? " enviado" : ""}">${p}</span>`
+                        ).join("<br>");
+                        quantidadesHtml = '-';
+                        precosHtml = '-';
+                    }
+                }
+
                 tbody.innerHTML += `
                     <tr class="${statusClass}">
                         <td>#${pedido.id}</td>
                         <td>
                             <strong>${pedido.cliente}</strong><br>
-                            <span style="font-size:0.95em;color:#888;">${pedido.email}</span>
+                            <span style="font-size:0.95em;color:#bbb;">${pedido.email}</span>
                         </td>
+                        <td>${produtosHtml}</td>
+                        <td>${quantidadesHtml}</td>
+                        <td>${precosHtml}</td>
                         <td>
-                            ${pedido.produtos.map(p => `<span class="badge${pedido.status === "Enviado" ? " enviado" : ""}">${p}</span>`).join(" ")}
-                        </td>
-                        <td>
-                            <span style="font-size:0.98em;color:#444;">${pedido.endereco || '-'}</span>
+                            <span style="font-size:0.98em;color:#bbb;">${pedido.endereco || '-'}</span>
                         </td>
                         <td>
                             ${whatsappBtn}
