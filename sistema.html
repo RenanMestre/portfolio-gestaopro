@@ -843,7 +843,7 @@
             <div class="marca">KMP</div>
             <div class="nome">JUNTA CABEÇOTE BIZ 125/2006</div>
             <div class="preco">R$ 6.00</div>
-            <a href="https://ev.braip.com/checkout/pla89vz2/chejx549" class="btn-detalhes" target="_blank" rel="noopener">Comprar</a>
+            <a href="https://ev.braip.com/checkout/pla89vz2/chejx549" class="btn-detalhes" target="_blank" rel="noopener" onclick="event.stopPropagation();">Comprar</a>
         </div>
         
 
@@ -1191,14 +1191,19 @@
             document.getElementById('modal-produto-bg').style.display = 'none';
         }
 
-        // Substituir ação dos botões "Ver Detalhes" para abrir modal (NÃO adiciona ao carrinho)
+        // Substituir ação dos botões "Comprar" para NÃO impedir o link externo
         document.addEventListener('DOMContentLoaded', function() {
             document.querySelectorAll('.btn-detalhes').forEach(btn => {
-                btn.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const nome = this.parentElement.querySelector('.nome').textContent.trim();
-                    abrirModalProduto(nome);
-                });
+                // Remove qualquer listener antigo que previna o default
+                btn.onclick = function(e) {
+                    // Só previne se NÃO for um link externo (com href)
+                    if (!btn.hasAttribute('href') || btn.getAttribute('href') === '#') {
+                        e.preventDefault();
+                        const nome = this.parentElement.querySelector('.nome').textContent.trim();
+                        if (typeof abrirModalProduto === 'function') abrirModalProduto(nome);
+                    }
+                    // Se for link externo, deixa o comportamento padrão
+                };
             });
         });
 
