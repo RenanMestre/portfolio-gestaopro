@@ -807,7 +807,7 @@
                 <a href="#"></a>
             </nav>
             <div class="busca">
-                <input type="text" placeholder="Buscar produtos, marcas e mais..." />
+                <input type="text" id="input-busca" placeholder="Buscar produtos, marcas e mais..." oninput="buscarProdutos()" autocomplete="off" />
             </div>
         </div>
     </div>
@@ -829,50 +829,85 @@
         <span class="categorias-menu-title">Categorias:</span>
         <div class="categorias-lista">
             <button class="categoria-btn active" onclick="filtrarCategoria('todas')">Todas</button>
-            <button class="categoria-btn" onclick="filtrarCategoria('capacetes')">Capacetes</button>
-            <button class="categoria-btn" onclick="filtrarCategoria('pneus')">Pneus</button>
-            <button class="categoria-btn" onclick="filtrarCategoria('oleos')">Óleos</button>
-            <button class="categoria-btn" onclick="filtrarCategoria('jaqueta')">Jaquetas</button>
+            <button class="categoria-btn" onclick="filtrarCategoria('capacetes')">Peças</button>
+            <button class="categoria-btn" onclick="filtrarCategoria('pneus')">Acessórios</button>
             <!-- Adicione mais categorias se desejar -->
         </div>
     </div>
 
     <div class="catalogo" id="catalogo">
+        <!-- Os cards de produto abaixo foram invertidos para mostrar os últimos cadastrados no topo -->
         <div class="card-moto">
             <div class="img-area">
-                <img src="img/mundodasmotos/junta.png" alt="Junta Cabeçote">
+                <img src="img/mundodasmotos/PNEUPIRELLI60100ARO17SUPERCITYTT33LBIZ100POP110.png" alt="Pneu 60/100 Aro 17 Super City TT33 LBIZ 100 POP 110">
             </div>
+            <div class="marca">PIRELLI</div>
             <div class="selo destaque">Destaque</div>
-            <div class="marca">KMP</div>
-            <div class="nome">JUNTA CABEÇOTE BIZ 125/2006</div>
-            <div class="preco">R$ 6.00</div>
+            <div class="nome">PNEU 60/100 ARO 17 SUPER CITY TT33 L BIZ 100 POP110</div>
+            <div class="preco">R$ 200,00</div>
             <a href="#" class="btn-detalhes">Ver Detalhes</a>
         </div>
         <div class="card-moto">
             <div class="img-area">
-                <img src="img/mundodasmotos/junta1502.png" alt="Junta Cabeçote CG 150">
+                <img src="img/mundodasmotos/CAMARADEARKB509090ARO19DIANTEIRAHONDABROS3.png" alt="Camera de Ar 90/90 Aro 19 Dianteira Honda Bros 125/150/160 XRE 190 CB 400/450 CRF 230 CRF 250 FXR 250 NX4 Falcon Yamaha XTZ 150 Crosser XT600/660 TTR230 Lander XTZ 250 DT180/200 YZF125/250/450 Outras NH190 CRF250RX CRF450RX CR125/250 KXF250/450 RMZ250/450">
             </div>
+            <div class="marca">KB 50</div>
             <div class="selo destaque">Destaque</div>
-            <div class="marca">KMP</div>
-            <div class="nome">JUNTA CABEÇOTE KMP CG 150 /2004/2015</div>
-            <div class="preco">R$ 8,00</div>
+            <div class="nome">CAMARA DE AR 90/90 ARO 19 DIANTEIRA</div>
+            <div class="preco">R$ 20,00</div>
             <a href="#" class="btn-detalhes">Ver Detalhes</a>
         </div>
         <div class="card-moto">
             <div class="img-area">
-                <img src="img/mundodasmotos/kitreparopneu.png" alt="kit Reparo Pneu">
+                <img src="img/mundodasmotos/CAMARADEARKB50275300ARO14DIANTEIRAETRASEIRABIZ100125.png" alt="Camera de Ar KB 50/275/300 Aro 14 Dianteira e Traseira BIZ 100/125">
             </div>
-            <div class="marca">BOMVINK</div>
-            <div class="nome">KIT REMENDO PNEU</div>
-            <div class="preco">R$ 12,00</div>
+            <div class="marca">KB 50</div>
+            <div class="nome">CAMARA DE AR 275/300 ARO 14 DIANTEIRA E TRASEIRA BIZ 100/125</div>
+            <div class="preco">R$ 20,00</div>
             <a href="#" class="btn-detalhes">Ver Detalhes</a>
         </div>
         <div class="card-moto">
             <div class="img-area">
-                <img src="img/mundodasmotos/CABOACELERADORC100BIZ2.png" alt="Cabo Acelerador C100 BIZ">
+                <img src="img/mundodasmotos/CABODEVELOCIMETROPOP100200720152.png" alt="Cabo Velocímetro POP 100">
             </div>
             <div class="marca">K-CABOS</div>
-            <div class="nome">CABO ACELERADOR C100 BIZ</div>
+            <div class="nome">CABO VELOCÍMETRO POP 100</div>
+            <div class="preco">R$ 10,00</div>
+            <a href="#" class="btn-detalhes">Ver Detalhes</a>
+        </div>
+        <div class="card-moto">
+            <div class="img-area">
+                <img src="img/mundodasmotos/CABOACELERADORBIZ125200520082.png" alt="Cabo Acelerador BIZ 125">
+            </div>
+            <div class="marca">K-CABOS</div>
+            <div class="nome">CABO ACELERADOR BIZ 125</div>
+            <div class="preco">R$ 10,00</div>
+            <a href="#" class="btn-detalhes">Ver Detalhes</a>
+        </div>
+        <div class="card-moto">
+            <div class="img-area">
+                <img src="img/mundodasmotos/CABOAFOGADORBIZ1252.png" alt="Cabo Afogador BIZ 125">
+            </div>
+            <div class="marca">K-CABOS</div>
+            <div class="nome">CABO AFOGADOR BIZ 125</div>
+            <div class="preco">R$ 10,00</div>
+            <a href="#" class="btn-detalhes">Ver Detalhes</a>
+        </div>
+        <div class="card-moto">
+            <div class="img-area">
+                <img src="img/mundodasmotos/CABOACELERADORBROS1602.png" alt="Cabo Acelerador BROS 160">
+            </div>
+            <div class="marca">K-CABOS</div>
+            <div class="nome">CABO ACELERADOR BROS 160</div>
+            <div class="preco">R$ 11,00</div>
+            <a href="#" class="btn-detalhes">Ver Detalhes</a>
+        </div>
+        <div class="card-moto">
+            <div class="img-area">
+                <img src="img/mundodasmotos/CABOACELERADORCG1602.png" alt="Cabo Acelerador CG 160">
+            </div>
+            <div class="marca">K-CABOS</div>
+            <div class="nome">CABO ACELERADOR CG 160</div>
             <div class="preco">R$ 10,00</div>
             <a href="#" class="btn-detalhes">Ver Detalhes</a>
         </div>
@@ -887,23 +922,41 @@
         </div>
         <div class="card-moto">
             <div class="img-area">
-                <img src="img/mundodasmotos/CABOACELERADORCG1602.png" alt="Cabo Acelerador CG 160">
+                <img src="img/mundodasmotos/CABOACELERADORC100BIZ2.png" alt="Cabo Acelerador C100 BIZ">
             </div>
             <div class="marca">K-CABOS</div>
-            <div class="nome">CABO ACELERADOR CG 160</div>
+            <div class="nome">CABO ACELERADOR C100 BIZ</div>
             <div class="preco">R$ 10,00</div>
             <a href="#" class="btn-detalhes">Ver Detalhes</a>
         </div>
         <div class="card-moto">
             <div class="img-area">
-                <img src="img/mundodasmotos/CABOACELERADORBROS1602.png" alt="Cabo Acelerador BROS 160">
+                <img src="img/mundodasmotos/kitreparopneu.png" alt="kit Reparo Pneu">
             </div>
-            <div class="marca">K-CABOS</div>
-            <div class="nome">CABO ACELERADOR BROS 160</div>
-            <div class="preco">R$ 11,00</div>
+            <div class="marca">BOMVINK</div>
+            <div class="nome">KIT REMENDO PNEU</div>
+            <div class="preco">R$ 12,00</div>
             <a href="#" class="btn-detalhes">Ver Detalhes</a>
         </div>
-        <!-- Adicione mais motos conforme necessário -->
+        <div class="card-moto">
+            <div class="img-area">
+                <img src="img/mundodasmotos/junta1502.png" alt="Junta Cabeçote CG 150">
+            </div>
+            <div class="marca">KMP</div>
+            <div class="nome">JUNTA CABEÇOTE KMP CG 150 /2004/2015</div>
+            <div class="preco">R$ 8,00</div>
+            <a href="#" class="btn-detalhes">Ver Detalhes</a>
+        </div>
+        <div class="card-moto">
+            <div class="img-area">
+                <img src="img/mundodasmotos/junta.png" alt="Junta Cabeçote">
+            </div>
+            <div class="marca">KMP</div>
+            <div class="nome">JUNTA CABEÇOTE BIZ 125/2006</div>
+            <div class="preco">R$ 6.00</div>
+            <a href="#" class="btn-detalhes">Ver Detalhes</a>
+        </div>
+        <!-- ...existing code... -->
     </div>
     <!-- Carrinho Modal -->
     <div class="modal-carrinho-bg" id="modal-carrinho-bg" style="display:none;">
@@ -1242,7 +1295,8 @@
                 fotos: [
                     "img/mundodasmotos/junta3.png",
                     "img/mundodasmotos/junta2.png",
-                    "img/mundodasmotos/junta.png"
+                    "img/mundodasmotos/junta.png",
+                    "img/mundodasmotos/JUNTACABEÇOTEBIZ12520063.jpeg"
                 ]
             },
             "JUNTA CABEÇOTE KMP CG 150 /2004/2015": {
@@ -1251,7 +1305,8 @@
                 desc: "Junta do cabeçote KMP para CG 150 (2004/2015) e Bros 150 (2006/2015): fabricada com materiais de alta resistência, proporciona vedação perfeita e longa durabilidade. Ideal para manutenção preventiva e corretiva, garantindo o funcionamento seguro do motor.",
                 fotos: [
                     "img/mundodasmotos/junta150.png",
-                    "img/mundodasmotos/junta1502.png"
+                    "img/mundodasmotos/junta1502.png",
+                    "img/mundodasmotos/JUNTACABEÇOTECG15020042015.jpeg"
                 ]
             },
             "KIT REMENDO PNEU": {
@@ -1260,7 +1315,8 @@
                 desc: "Kit Remendo de Pneu BOMVINK: prático e eficiente para reparos emergenciais em pneus sem câmara. Inclui ferramentas e tiras de borracha de alta qualidade para vedação rápida e segura, ideal para motociclistas que buscam autonomia e segurança na estrada.",
                 fotos: [
                     "img/mundodasmotos/kitreparopneu.png",
-                    "img/mundodasmotos/kitreparopneu2.png"
+                    "img/mundodasmotos/kitreparopneu2.png",
+                    "img/mundodasmotos/KITREMENDOPNEU.jpeg"
                 ]
             },
             "CABO ACELERADOR C100 BIZ": {
@@ -1297,6 +1353,63 @@
                 fotos: [
                     "img/mundodasmotos/CABOACELERADORBROS1602.png",
                     "img/mundodasmotos/CABOACELERADORBROS160.png"
+                ]
+            },
+            "CABO AFOGADOR BIZ 125": {
+                marca: "K-CABOS",
+                preco: "R$ 10,00",
+                desc: "Cabo do afogador K-CABOS para Biz 125: flexível, resistente e com encaixe preciso. Facilita o acionamento do afogador, garantindo funcionamento eficiente e partida facilitada em dias frios. Produto ideal para reposição com padrão original.",
+                fotos: [
+                    "img/mundodasmotos/CABOAFOGADORBIZ1252.png",
+                    "img/mundodasmotos/CABOAFOGADORBIZ125.png"
+                ]
+                },
+            "CABO ACELERADOR BIZ 125": {
+                marca: "K-CABOS",
+                preco: "R$ 10,00",
+                desc: "Cabo do acelerador K-CABOS para Biz 125: flexível, resistente e com encaixe perfeito. Proporciona aceleração suave, maior durabilidade e segurança para sua moto. Ideal para reposição com padrão original.",
+                fotos: [
+                    "img/mundodasmotos/CABOACELERADORBIZ12520052008.png",
+                    "img/mundodasmotos/CABOACELERADORBIZ125200520082.png"
+                ]
+            },
+            "CABO VELOCÍMETRO POP 100": {
+                marca: "K-CABOS",
+                preco: "R$ 10,00",
+                desc: "Cabo do velocímetro K-CABOS para POP 100 (2007 a 2015): precisão na leitura, flexibilidade e alta durabilidade. Produto com encaixe perfeito, ideal para reposição e manutenção do painel da sua moto.",
+                fotos: [
+                    "img/mundodasmotos/CABODEVELOCIMETROPOP10020072015.png",
+                    "img/mundodasmotos/CABODEVELOCIMETROPOP100200720152.png"
+                ]
+            },
+            "CAMARA DE AR 275/300 ARO 14 DIANTEIRA E TRASEIRA BIZ 100/125": {
+                marca: "KB 50",
+                preco: "R$ 20,00",
+                desc: "Câmara de ar KB 50 para pneus 2.75/3.00 aro 14, dianteira e traseira da Biz 100/125. Fabricada em borracha de alta qualidade, oferece excelente vedação, resistência e durabilidade para o uso diário. Ideal para reposição segura e confiável.",
+                fotos: [
+                    "img/mundodasmotos/CAMARADEARKB50275300ARO14DIANTEIRAETRASEIRABIZ100125.png",
+                    "img/mundodasmotos/CAMARADEARKB50275300ARO14DIANTEIRAETRASEIRABIZ1001252.png",
+                    "img/mundodasmotos/CAMARADEARKB50275300ARO14DIANTEIRAETRASEIRABIZ1001253.png",
+                    "img/mundodasmotos/CAMARADEARKB50275300ARO14DIANTEIRAETRASEIRABIZ100125.jpeg"
+                ]
+            },
+            "CAMARA DE AR 90/90 ARO 19 DIANTEIRA": {
+                marca: "KB 50",
+                preco: "R$ 20,00",
+                desc: "Câmara de ar KB 50 90/90 aro 19 dianteira: compatível com Honda Bros 125/150/160, XRE 190, CB 400/450, CRF 230, CRF 250F, XR 250, NX4 Falcon, Yamaha XTZ 150 Crosser, XT600/660, TTR230, Lander XTZ250, DT180/200, YZF125/250/450, NH190, CRF250RX, CRF450RX, CR125/250, KXF250/450, RMZ250/450 e outras. Borracha de alta qualidade, excelente vedação e durabilidade para uso intenso.",
+                fotos: [
+                    "img/mundodasmotos/CAMARADEARKB509090ARO19DIANTEIRAHONDABROS.png",
+                    "img/mundodasmotos/CAMARADEARKB509090ARO19DIANTEIRAHONDABROS2.png",
+                    "img/mundodasmotos/CAMERADEAR9090ARO19DIANTEIRA.jpeg",
+                ]
+            },
+            "PNEU 60/100 ARO 17 SUPER CITY TT33 L BIZ 100 POP110": {
+                marca: "PIRELLI",
+                preco: "R$ 200,00",
+                desc: "Pneu Pirelli 60/100 - Aro 17 Super City TT 33L: ideal para Biz 100 e Pop 110. Oferece excelente aderência, durabilidade e segurança em diferentes condições de uso urbano. Desenho otimizado para maior estabilidade e conforto na pilotagem.",
+                fotos: [
+                    "img/mundodasmotos/PNEUPIRELLI60100ARO17SUPERCITYTT33LBIZ100POP110.png",
+                    "img/mundodasmotos/PNEUPIRELLI60100ARO17SUPERCITYTT33LBIZ100POP1102.jpeg"
                 ]
             }
         };
@@ -1406,11 +1519,48 @@
                 }
             });
         }
-
         // Inicialização: sempre mostrar todas as categorias ao carregar
         document.addEventListener('DOMContentLoaded', function() {
             filtrarCategoria('todas');
         });
+
+        // Função de busca inteligente
+    function buscarProdutos() {
+        const termo = document.getElementById('input-busca').value.trim().toLowerCase();
+        const cards = document.querySelectorAll('.card-moto');
+        if (!termo) {
+            // Se vazio, mostra todos
+            cards.forEach(card => card.style.display = '');
+            return;
+        }
+        cards.forEach(card => {
+            const nome = card.querySelector('.nome').textContent.toLowerCase();
+            const marca = card.querySelector('.marca') ? card.querySelector('.marca').textContent.toLowerCase() : '';
+            // Busca também na descrição se disponível
+            let descricao = '';
+            if (window.produtosDetalhes && produtosDetalhes[nome.toUpperCase()]) {
+                descricao = produtosDetalhes[nome.toUpperCase()].desc.toLowerCase();
+            }
+            // Mostra se encontrar termo no nome, marca ou descrição
+            if (nome.includes(termo) || marca.includes(termo) || descricao.includes(termo)) {
+                card.style.display = '';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    }
+
+    // Permite buscar ao pressionar Enter
+    document.addEventListener('DOMContentLoaded', function() {
+        const inputBusca = document.getElementById('input-busca');
+        if (inputBusca) {
+            inputBusca.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter') {
+                    buscarProdutos();
+                }
+            });
+        }
+    });
     </script>
 </body>
 </html>
