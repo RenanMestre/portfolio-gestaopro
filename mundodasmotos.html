@@ -1126,6 +1126,11 @@
         </div>
     </div>
     <script>
+        // Evita erros caso elementos não existam
+        function safeGet(id) {
+            return document.getElementById(id) || { style: {}, innerHTML: '', textContent: '', value: '' };
+        }
+
         // Carrinho e integração com dashboard-pedidos
         let cartCount = 0;
         let carrinho = [];
@@ -1140,9 +1145,7 @@
             'Panigale V4S': 139900
         };
 
-        // Adicionar ao carrinho (agora com quantidade)
         function addToCart(nome) {
-            // Busca preço pelo nome no catálogo de detalhes, se não achar, usa o objeto precos
             let preco = 0;
             if (produtosDetalhes[nome] && produtosDetalhes[nome].preco) {
                 preco = parseFloat(
@@ -1155,7 +1158,6 @@
             } else if (precos[nome]) {
                 preco = precos[nome];
             }
-            // Verifica se já existe no carrinho
             let idx = carrinho.findIndex(item => item.nome === nome);
             if (idx >= 0) {
                 carrinho[idx].quantidade += 1;
@@ -1163,27 +1165,22 @@
                 carrinho.push({ nome, preco, quantidade: 1 });
             }
             cartCount = carrinho.reduce((acc, item) => acc + item.quantidade, 0);
-            document.getElementById('cart-count').textContent = cartCount;
+            safeGet('cart-count').textContent = cartCount;
         }
 
-        // Botões dos card
-        // (Removido: não adicionar ao carrinho ao clicar em "Ver Detalhes")
-
-        // Abrir/fechar modal do carrinho
         function abrirCarrinho() {
             atualizarCarrinho();
-            document.getElementById('modal-carrinho-bg').classList.add('aberto');
-            document.getElementById('modal-carrinho-bg').style.display = 'flex';
+            safeGet('modal-carrinho-bg').classList.add('aberto');
+            safeGet('modal-carrinho-bg').style.display = 'flex';
             mostrarEtapaCarrinho(1);
         }
         function fecharCarrinho() {
-            document.getElementById('modal-carrinho-bg').classList.remove('aberto');
-            document.getElementById('modal-carrinho-bg').style.display = 'none';
+            safeGet('modal-carrinho-bg').classList.remove('aberto');
+            safeGet('modal-carrinho-bg').style.display = 'none';
         }
 
-        // Atualiza lista de produtos no carrinho
         function atualizarCarrinho() {
-            const lista = document.getElementById('carrinho-lista');
+            const lista = safeGet('carrinho-lista');
             lista.innerHTML = '';
             if (carrinho.length === 0) {
                 lista.innerHTML = '<div style="text-align:center;color:#888;">Seu carrinho está vazio.</div>';
@@ -1200,22 +1197,21 @@
             }
             // Total
             const total = carrinho.reduce((acc, item) => acc + item.preco * item.quantidade, 0);
-            document.getElementById('carrinho-total').textContent = total > 0 ? `Total: R$ ${total.toLocaleString('pt-BR', {minimumFractionDigits:2})}` : '';
+            safeGet('carrinho-total').textContent = total > 0 ? `Total: R$ ${total.toLocaleString('pt-BR', {minimumFractionDigits:2})}` : '';
         }
         function removerItemCarrinho(idx) {
             carrinho.splice(idx, 1);
             cartCount = carrinho.reduce((acc, item) => acc + item.quantidade, 0);
-            document.getElementById('cart-count').textContent = cartCount;
+            safeGet('cart-count').textContent = cartCount;
             atualizarCarrinho();
         }
 
-        // Etapas do checkout
         function mostrarEtapaCarrinho(etapa) {
-            document.getElementById('carrinho-etapa1').style.display = etapa === 1 ? '' : 'none';
-            document.getElementById('carrinho-etapa2').style.display = etapa === 2 ? '' : 'none';
-            document.getElementById('carrinho-etapa-pix').style.display = etapa === 'pix' ? '' : 'none';
-            document.getElementById('carrinho-etapa3').style.display = etapa === 3 ? '' : 'none';
-            if (etapa !== 'pix') document.getElementById('area-pix').style.display = 'none';
+            safeGet('carrinho-etapa1').style.display = etapa === 1 ? '' : 'none';
+            safeGet('carrinho-etapa2').style.display = etapa === 2 ? '' : 'none';
+            safeGet('carrinho-etapa-pix').style.display = etapa === 'pix' ? '' : 'none';
+            safeGet('carrinho-etapa3').style.display = etapa === 3 ? '' : 'none';
+            if (etapa !== 'pix') safeGet('area-pix').style.display = 'none';
         }
         function avancarEtapaCarrinho() {
             if (carrinho.length === 0) {
@@ -1227,16 +1223,16 @@
         function avancarParaPix(event) {
             event.preventDefault();
             dadosCliente = {
-                nome: document.getElementById('nome').value,
-                email: document.getElementById('email').value,
-                whatsapp: document.getElementById('whatsapp').value,
-                endereco: document.getElementById('endereco').value
+                nome: safeGet('nome').value,
+                email: safeGet('email').value,
+                whatsapp: safeGet('whatsapp').value,
+                endereco: safeGet('endereco').value
             };
             mostrarEtapaCarrinho('pix');
             return false;
         }
         function mostrarPix() {
-            document.getElementById('area-pix').style.display = '';
+            safeGet('area-pix').style.display = '';
         }
         function pagarCartao() {
             const msg = encodeURIComponent(
@@ -1245,14 +1241,12 @@
             window.open(`https://wa.me/556295277435?text=${msg}`, '_blank');
         }
         function confirmarPagamentoPix() {
-            // Salva no localStorage para dashboard-pedidos
             let pedidos = [];
             try {
                 pedidos = JSON.parse(localStorage.getItem('pedidos_motos')) || [];
             } catch (e) {
                 pedidos = [];
             }
-            // Salva produtos detalhados
             const produtosPedido = carrinho.map(item => ({
                 nome: item.nome,
                 preco: item.preco,
@@ -1272,7 +1266,7 @@
             localStorage.setItem('pedidos_motos', JSON.stringify(pedidos));
             carrinho = [];
             cartCount = 0;
-            document.getElementById('cart-count').textContent = cartCount;
+            safeGet('cart-count').textContent = cartCount;
             mostrarEtapaCarrinho(3);
         }
 
@@ -1418,14 +1412,13 @@
         function abrirModalProduto(nome) {
             const prod = produtosDetalhes[nome];
             if (!prod) return;
-            document.getElementById('modal-produto-marca').textContent = prod.marca;
-            document.getElementById('modal-produto-nome').textContent = nome;
-            document.getElementById('modal-produto-preco').textContent = prod.preco;
-            document.getElementById('modal-produto-desc').textContent = prod.desc;
-            // Fotos
+            safeGet('modal-produto-marca').textContent = prod.marca;
+            safeGet('modal-produto-nome').textContent = nome;
+            safeGet('modal-produto-preco').textContent = prod.preco;
+            safeGet('modal-produto-desc').textContent = prod.desc;
             const fotos = prod.fotos || [];
-            const imgPrincipal = document.getElementById('modal-produto-img-principal');
-            const thumbs = document.getElementById('modal-produto-thumbs');
+            const imgPrincipal = safeGet('modal-produto-img-principal');
+            const thumbs = safeGet('modal-produto-thumbs');
             if (fotos.length > 0) {
                 imgPrincipal.src = fotos[0];
                 imgPrincipal.setAttribute('data-idx', 0);
@@ -1445,18 +1438,17 @@
                 imgPrincipal.src = '';
                 thumbs.innerHTML = '';
             }
-            // Botão adicionar ao carrinho
-            const btnAdd = document.getElementById('btn-add-carrinho-modal');
+            const btnAdd = safeGet('btn-add-carrinho-modal');
             btnAdd.onclick = function() {
                 addToCart(nome);
                 fecharModalProduto();
             };
-            document.getElementById('modal-produto-bg').classList.add('aberto');
-            document.getElementById('modal-produto-bg').style.display = 'flex';
+            safeGet('modal-produto-bg').classList.add('aberto');
+            safeGet('modal-produto-bg').style.display = 'flex';
         }
         function fecharModalProduto() {
-            document.getElementById('modal-produto-bg').classList.remove('aberto');
-            document.getElementById('modal-produto-bg').style.display = 'none';
+            safeGet('modal-produto-bg').classList.remove('aberto');
+            safeGet('modal-produto-bg').style.display = 'none';
         }
 
         // Substituir ação dos botões "Ver Detalhes" para abrir modal (NÃO adiciona ao carrinho)
@@ -1468,12 +1460,22 @@
                     abrirModalProduto(nome);
                 });
             });
+            filtrarCategoria('todas');
+            ajustarBannerImgMobile();
+            // Busca inteligente ao pressionar Enter
+            const inputBusca = safeGet('input-busca');
+            if (inputBusca && inputBusca.addEventListener) {
+                inputBusca.addEventListener('keydown', function(e) {
+                    if (e.key === 'Enter') buscarProdutos();
+                });
+            }
         });
 
-        // Move a imagem do banner acima do texto no mobile
+        // Banner responsivo
         function ajustarBannerImgMobile() {
             const bannerContent = document.querySelector('.banner-content');
-            const bannerImg = document.getElementById('banner-img');
+            const bannerImg = safeGet('banner-img');
+            if (!bannerContent || !bannerImg) return;
             if (window.innerWidth <= 900) {
                 bannerImg.classList.add('mobile-top');
                 if (bannerContent.firstElementChild !== bannerImg) {
@@ -1481,34 +1483,17 @@
                 }
             } else {
                 bannerImg.classList.remove('mobile-top');
-                // Garante que a ordem padrão é texto depois imagem
                 if (bannerContent.children[0] !== bannerImg) {
                     bannerContent.appendChild(bannerImg);
                 }
             }
         }
-        window.addEventListener('DOMContentLoaded', ajustarBannerImgMobile);
         window.addEventListener('resize', ajustarBannerImgMobile);
 
-        // Mapeamento de categorias para os produtos
-        const categoriasProdutos = {
-            "CAPACETE FW3 X OPEN UP 43": ["capacetes", "destaque"],
-            "Pneu II 110-70-16 52P TL Dianteiro Citycom 300": ["pneus", "oferta"],
-            "OLEO 4T MX 10W40 SUPER MOTO 100% SINTÉTICO 1L": ["oleos"],
-            "Jaqueta Casual Resistente À água": ["jaqueta"],
-            "CBR 600F": ["motos"],
-            "Panigale V4S": ["motos", "premium"],
-            "Bateria Route YTX9BS Selada": [],
-            // Adicione mais produtos/categorias conforme necessário
-        };
-
         function filtrarCategoria(cat) {
-            // Troca botão ativo
             document.querySelectorAll('.categoria-btn').forEach(btn => btn.classList.remove('active'));
             const btn = Array.from(document.querySelectorAll('.categoria-btn')).find(b => b.textContent.trim().toLowerCase() === (cat === 'todas' ? 'todas' : cat.charAt(0).toUpperCase() + cat.slice(1)));
             if (btn) btn.classList.add('active');
-
-            // Mostra/oculta cards
             document.querySelectorAll('.card-moto').forEach(card => {
                 const nome = card.querySelector('.nome').textContent.trim();
                 if (cat === 'todas') {
@@ -1519,48 +1504,28 @@
                 }
             });
         }
-        // Inicialização: sempre mostrar todas as categorias ao carregar
-        document.addEventListener('DOMContentLoaded', function() {
-            filtrarCategoria('todas');
-        });
 
-        // Função de busca inteligente
-    function buscarProdutos() {
-        const termo = document.getElementById('input-busca').value.trim().toLowerCase();
-        const cards = document.querySelectorAll('.card-moto');
-        if (!termo) {
-            // Se vazio, mostra todos
-            cards.forEach(card => card.style.display = '');
-            return;
-        }
-        cards.forEach(card => {
-            const nome = card.querySelector('.nome').textContent.toLowerCase();
-            const marca = card.querySelector('.marca') ? card.querySelector('.marca').textContent.toLowerCase() : '';
-            // Busca também na descrição se disponível
-            let descricao = '';
-            if (window.produtosDetalhes && produtosDetalhes[nome.toUpperCase()]) {
-                descricao = produtosDetalhes[nome.toUpperCase()].desc.toLowerCase();
+        function buscarProdutos() {
+            const termo = (safeGet('input-busca').value || '').trim().toLowerCase();
+            const cards = document.querySelectorAll('.card-moto');
+            if (!termo) {
+                cards.forEach(card => card.style.display = '');
+                return;
             }
-            // Mostra se encontrar termo no nome, marca ou descrição
-            if (nome.includes(termo) || marca.includes(termo) || descricao.includes(termo)) {
-                card.style.display = '';
-            } else {
-                card.style.display = 'none';
-            }
-        });
-    }
-
-    // Permite buscar ao pressionar Enter
-    document.addEventListener('DOMContentLoaded', function() {
-        const inputBusca = document.getElementById('input-busca');
-        if (inputBusca) {
-            inputBusca.addEventListener('keydown', function(e) {
-                if (e.key === 'Enter') {
-                    buscarProdutos();
+            cards.forEach(card => {
+                const nome = card.querySelector('.nome').textContent.toLowerCase();
+                const marca = card.querySelector('.marca') ? card.querySelector('.marca').textContent.toLowerCase() : '';
+                let descricao = '';
+                if (window.produtosDetalhes && produtosDetalhes[nome.toUpperCase()]) {
+                    descricao = produtosDetalhes[nome.toUpperCase()].desc.toLowerCase();
+                }
+                if (nome.includes(termo) || marca.includes(termo) || descricao.includes(termo)) {
+                    card.style.display = '';
+                } else {
+                    card.style.display = 'none';
                 }
             });
         }
-    });
     </script>
 </body>
 </html>
