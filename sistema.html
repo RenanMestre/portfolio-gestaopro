@@ -396,10 +396,97 @@
                 border-radius: 6px;
             }
         }
+        /* Tema escuro */
+        body.dark-mode {
+            background: linear-gradient(135deg, #181c24 0%, #232a36 100%);
+            color: #e0e6ef;
+        }
+        body.dark-mode .main-content,
+        body.dark-mode .dashboard-section,
+        body.dark-mode .app-guide,
+        body.dark-mode header,
+        body.dark-mode .dashboard-chart {
+            background: #232a36 !important;
+            color: #e0e6ef !important;
+            box-shadow: 0 2px 12px #0008 !important;
+        }
+        body.dark-mode .period-card {
+            background: #232a36 !important;
+            color: #e0e6ef !important;
+            border-color: #232a36 !important;
+        }
+        body.dark-mode .period-card.active {
+            background: #4f8cff !important;
+            color: #fff !important;
+            border-color: #43cea2 !important;
+        }
+        body.dark-mode .moment-card {
+            background: #1e2a2f !important;
+            color: #43cea2 !important;
+        }
+        body.dark-mode .moment-card.saida {
+            background: #2a1e1e !important;
+            color: #ff7e5f !important;
+        }
+        body.dark-mode .saldo-card {
+            background: #1e2330 !important;
+            color: #e0e6ef !important;
+        }
+        body.dark-mode .dashboard-report-btn {
+            background: #232a36 !important;
+            color: #43cea2 !important;
+        }
+        body.dark-mode .dashboard-report-btn:hover {
+            background: #43cea2 !important;
+            color: #fff !important;
+        }
+        body.dark-mode table {
+            background: #232a36 !important;
+            color: #e0e6ef !important;
+        }
+        body.dark-mode th, body.dark-mode td {
+            background: #232a36 !important;
+            color: #e0e6ef !important;
+        }
+        body.dark-mode input, body.dark-mode select, body.dark-mode textarea {
+            background: #181c24 !important;
+            color: #e0e6ef !important;
+            border: 1px solid #4f8cff !important;
+        }
+        body.dark-mode button {
+            background: #232a36;
+            color: #43cea2;
+        }
+        body.dark-mode #btnAbrirModalReceita,
+        body.dark-mode #btnNovaReceita {
+            background: #43cea2 !important;
+            color: #232a36 !important;
+        }
+        body.dark-mode #btnAbrirModalDespesa,
+        body.dark-mode #btnNovaDespesa {
+            background: #ff7e5f !important;
+            color: #232a36 !important;
+        }
+        body.dark-mode #btnAbrirModalReceita:hover,
+        body.dark-mode #btnNovaReceita:hover {
+            background: #2ec4a6 !important;
+        }
+        body.dark-mode #btnAbrirModalDespesa:hover,
+        body.dark-mode #btnNovaDespesa:hover {
+            background: #e94e3c !important;
+        }
+        body.dark-mode .dashboard-chart canvas {
+            background: #232a36 !important;
+        }
         /* ...existing code... */
     </style>
 </head>
 <body>
+    <!-- Botão de alternância de tema -->
+    <button id="btnToggleTheme" title="Alternar tema claro/escuro"
+        style="position:fixed;top:18px;right:18px;z-index:2000;background:#fff;color:#222;border:none;border-radius:50%;width:48px;height:48px;box-shadow:0 2px 12px #0002;display:flex;align-items:center;justify-content:center;font-size:1.6rem;cursor:pointer;transition:background .2s;">
+        &#9788;
+    </button>
     <div class="main-content">
         <!-- Guia do App -->
         <div class="app-guide">
@@ -443,8 +530,25 @@
                         <span class="desc">Despesas</span>
                         <span class="value" id="valorSaiu">R$ 0,00</span>
                     </div>
-                
-
+                    <div class="saldo-card" style="flex:1;">
+                        <span class="label" style="color:#4f8cff;">&#61; Sobrou</span>
+                        <span class="desc">Saldo</span>
+                        <span class="value" id="valorSobrou">R$ 0,00</span>
+                    </div>
+                </div>
+                <div class="dashboard-charts-row">
+                    <div class="dashboard-chart">
+                        <canvas id="chartResumo"></canvas>
+                    </div>
+                    <div class="dashboard-chart">
+                        <canvas id="chartCategorias"></canvas>
+                    </div>
+                    <div class="dashboard-chart">
+                        <canvas id="chartEvolucao"></canvas>
+                    </div>
+                </div>
+                <button class="dashboard-report-btn" id="btnExportarPDF" title="Exportar PDF">&#128462; Exportar PDF</button>
+            </div>
         </section>
         <!-- Receitas -->
         <section id="receitas">
@@ -1263,6 +1367,7 @@
             const contas = dados.filter(d => d.tipo === 'despesa');
             let total = contas.length;
             let soma = contas.reduce((acc, c) => acc + (c.valor || 0), 0);
+           
             let media = total > 0 ? soma / total : 0;
 
             document.getElementById('contasTotal2').textContent = total;
@@ -1281,6 +1386,7 @@
                 } else {
                     tbody.innerHTML = contas.map(c => `
                         <tr>
+
                             <td>${c.data || ''}</td>
                             <td>${c.empresa || ''}</td>
                             <td>${c.banco || ''}</td>
@@ -1397,306 +1503,132 @@
             });
         }
 
-        // Função para atualizar as tabelas secundárias e gráficos gerais
-        function renderizarPaginasSecundarias() {
-            renderizarRecebimentosPagina();
-            renderizarContasAPagarPagina();
-            renderizarGraficosGerais();
+        // Função para gráfico de comparação customizado
+        function renderizarComparacaoCustom() {
+            // Dados de exemplo
+            const periodos = gerarPeriodos();
+            const idx = window.periodoAtivo || 0;
+            const periodoAtual = periodos[idx];
+            const periodoAnterior = periodos[idx+1] || periodos[idx];
+
+            function resumo(p, tipo) {
+                let total = 0;
+                dados.forEach(d => {
+                    if (getMesAno(d.data) === p && d.tipo === tipo) total += d.valor;
+                });
+                return total;
+            }
+
+            const entrouAtual = resumo(periodoAtual, 'receita');
+            const saiuAtual = resumo(periodoAtual, 'despesa');
+            const entrouAnt = resumo(periodoAnterior, 'receita');
+            const saiuAnt = resumo(periodoAnterior, 'despesa');
+
+            const ctx = document.getElementById('chartComparacaoCustom').getContext('2d');
+            if (window.chartComparacaoCustom) window.chartComparacaoCustom.destroy();
+            window.chartComparacaoCustom = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: [periodoAnterior, periodoAtual],
+                    datasets: [
+                        {
+                            label: 'Entrou',
+                            data: [entrouAnt, entrouAtual],
+                            backgroundColor: '#43cea2'
+                        },
+                        {
+                            label: 'Saiu',
+                            data: [saiuAnt, saiuAtual],
+                            backgroundColor: '#ff7e5f'
+                        }
+                    ]
+                },
+                options: {
+                    plugins: {
+                        legend: { display: false }
+                    },
+                    scales: {
+                        x: { grid: { color: '#eee' }, ticks: { color: '#222' } },
+                        y: { grid: { color: '#eee' }, ticks: { color: '#222' }, beginAtZero: true }
+                    }
+                }
+            });
         }
 
-        // Botões do dashboard abrem os modais para lançar entradas e saídas
-        document.getElementById('btnAbrirModalReceita').onclick = function() {
-            document.getElementById('modalReceita').style.display = 'flex';
-        };
-        document.getElementById('btnAbrirModalDespesa').onclick = function() {
-            document.getElementById('modalDespesa').style.display = 'flex';
-        };
-        document.getElementById('btnDashboardEntrada').onclick = function() {
-            document.getElementById('modalReceita').style.display = 'flex';
-        };
-        document.getElementById('btnDashboardSaida').onclick = function() {
-            document.getElementById('modalDespesa').style.display = 'flex';
-        };
-
-        // Fechar modais
-        document.getElementById('btnFecharModalReceita').onclick = function() {
-            document.getElementById('modalReceita').style.display = 'none';
-        };
-        document.getElementById('btnFecharModalDespesa').onclick = function() {
-            document.getElementById('modalDespesa').style.display = 'none';
-        };
-        document.getElementById('modalReceita').onclick = function(e) {
-            if (e.target === this) this.style.display = 'none';
-        };
-        document.getElementById('modalDespesa').onclick = function(e) {
-            if (e.target === this) this.style.display = 'none';
-        };
-
-        // Salvar nova receita
-        document.getElementById('formNovaReceita').onsubmit = function(e) {
-            e.preventDefault();
-            const cliente = document.getElementById('receitaCliente').value.trim();
-            const categoria = document.getElementById('receitaCategoria').value.trim();
-            const detalhes = document.getElementById('receitaDetalhes').value.trim();
-            const formaRecebimento = document.getElementById('receitaForma').value.trim();
-            const valor = parseFloat(document.getElementById('receitaValor').value);
-            const data = document.getElementById('receitaData').value;
-            if (!cliente || !categoria || !valor || !data) return;
-            dados.push({
-                tipo: 'receita',
-                cliente,
-                categoria,
-                detalhes,
-                formaRecebimento,
-                valor,
-                data
+        // Função para "Para acontecer"
+        function renderizarParaAcontecer() {
+            // Filtra receitas/despesas futuras (data > hoje)
+            const hoje = new Date().toISOString().slice(0,10);
+            const futuros = dados.filter(d => d.data > hoje).slice(0,25);
+            let saldo = 0;
+            futuros.forEach(d => {
+                saldo += d.tipo === 'receita' ? d.valor : -d.valor;
             });
-            document.getElementById('modalReceita').style.display = 'none';
-            this.reset();
-            renderizarDashboard();
-            renderizarPaginasSecundarias();
-        };
-
-        // Salvar nova despesa
-        document.getElementById('formNovaDespesa').onsubmit = function(e) {
-            e.preventDefault();
-            const empresa = document.getElementById('despesaEmpresa').value.trim();
-            const banco = document.getElementById('despesaBanco').value.trim();
-            const categoria = document.getElementById('despesaCategoria').value.trim();
-            const detalhes = document.getElementById('despesaDetalhes').value.trim();
-            const fornecedor = document.getElementById('despesaFornecedor').value.trim();
-            const formaPagamento = document.getElementById('despesaForma').value.trim();
-            const parcelas = document.getElementById('despesaParcelas').value.trim();
-            const valor = parseFloat(document.getElementById('despesaValor').value);
-            const data = document.getElementById('despesaData').value;
-            const centroCusto = document.getElementById('despesaCentroCusto').value.trim();
-            if (!empresa || !categoria || !valor || !data) return;
-            dados.push({
-                tipo: 'despesa',
-                empresa,
-                banco,
-                categoria,
-                detalhes,
-                fornecedor,
-                formaPagamento,
-                parcelas,
-                valor,
-                data,
-                centroCusto
-            });
-            document.getElementById('modalDespesa').style.display = 'none';
-            this.reset();
-            renderizarDashboard();
-            renderizarPaginasSecundarias();
-        };
-
-        // Substitui o comportamento dos botões para abrir os novos popups modernos
-        document.addEventListener('DOMContentLoaded', function() {
-            document.getElementById('btnAbrirModalReceita').onclick = function() {
-                document.getElementById('modalNovaEntrada').style.display = 'flex';
-            };
-            document.getElementById('btnDashboardEntrada').onclick = function() {
-                document.getElementById('modalNovaEntrada').style.display = 'flex';
-            };
-            document.getElementById('btnAbrirModalDespesa').onclick = function() {
-                document.getElementById('modalNovaSaida').style.display = 'flex';
-            };
-            document.getElementById('btnDashboardSaida').onclick = function() {
-                document.getElementById('modalNovaSaida').style.display = 'flex';
-            };
-        });
-
-        // Fechar popups modernos
-        document.getElementById('btnFecharModalNovaEntrada').onclick = function() {
-            document.getElementById('modalNovaEntrada').style.display = 'none';
-        };
-        document.getElementById('modalNovaEntrada').onclick = function(e) {
-            if (e.target === this) this.style.display = 'none';
-        };
-        document.getElementById('btnFecharModalNovaSaida').onclick = function() {
-            document.getElementById('modalNovaSaida').style.display = 'none';
-        };
-        document.getElementById('modalNovaSaida').onclick = function(e) {
-            if (e.target === this) this.style.display = 'none';
-        };
-
-        // Salvar nova entrada (receita)
-        document.getElementById('formNovaEntrada').onsubmit = function(e) {
-            e.preventDefault();
-            const cliente = document.getElementById('entradaCliente').value.trim();
-            const categoria = document.getElementById('entradaCategoria').value.trim();
-            const detalhes = document.getElementById('entradaDetalhes').value.trim();
-            const formaRecebimento = document.getElementById('entradaForma').value.trim();
-            const valor = parseFloat(document.getElementById('entradaValor').value);
-            const data = document.getElementById('entradaData').value;
-            if (!cliente || !categoria || !valor || !data) return;
-            dados.push({
-                tipo: 'receita',
-                cliente,
-                categoria,
-                detalhes,
-                formaRecebimento,
-                valor,
-                data
-            });
-            document.getElementById('modalNovaEntrada').style.display = 'none';
-            this.reset();
-            renderizarDashboard();
-            renderizarPaginasSecundarias();
-        };
-
-        // Salvar nova saída (despesa)
-        document.getElementById('formNovaSaida').onsubmit = function(e) {
-            e.preventDefault();
-            const empresa = document.getElementById('saidaEmpresa').value.trim();
-            const categoria = document.getElementById('saidaCategoria').value.trim();
-            const detalhes = document.getElementById('saidaDetalhes').value.trim();
-            const fornecedor = document.getElementById('saidaFornecedor').value.trim();
-            const formaPagamento = document.getElementById('saidaForma').value.trim();
-            const valor = parseFloat(document.getElementById('saidaValor').value);
-            const data = document.getElementById('saidaData').value;
-            if (!empresa || !categoria || !valor || !data) return;
-            dados.push({
-                tipo: 'despesa',
-                empresa,
-                categoria,
-                detalhes,
-                fornecedor,
-                formaPagamento,
-                valor,
-                data
-            });
-            document.getElementById('modalNovaSaida').style.display = 'none';
-            this.reset();
-            renderizarDashboard();
-            renderizarPaginasSecundarias();
-        };
-
-        // Funções de edição e remoção
-        function removerReceita(idx) {
-            if (confirm('Deseja remover esta receita?')) {
-                dados.splice(idx, 1);
-                renderizarDashboard();
-                renderizarPaginasSecundarias();
+            document.getElementById('paraAcontecerSaldo').textContent = formatarValor(saldo);
+            const lista = document.getElementById('paraAcontecerLista');
+            if (futuros.length === 0) {
+                lista.innerHTML = 'Nada por aqui...';
+            } else {
+                lista.innerHTML = '<ul style="width:100%;padding-left:1.2rem;">' + futuros.map(d =>
+                    `<li style="margin-bottom:.5rem;color:#222;">
+                        <b>${d.tipo === 'receita' ? 'Receita' : 'Despesa'}:</b> ${d.categoria || ''} - ${formatarValor(d.valor)} em ${d.data}
+                    </li>`
+                ).join('') + '</ul>';
             }
         }
-        function removerDespesa(idx) {
-            if (confirm('Deseja remover esta despesa?')) {
-                dados.splice(idx, 1);
-                renderizarDashboard();
-                renderizarPaginasSecundarias();
+
+        // Função para "Pendentes"
+        function renderizarPendentes() {
+            // Filtra receitas/despesas atrasadas (data < hoje)
+            const hoje = new Date().toISOString().slice(0,10);
+            const atrasados = dados.filter(d => d.data < hoje).slice(0,25);
+            let saldo = 0;
+            atrasados.forEach(d => {
+                saldo += d.tipo === 'receita' ? d.valor : -d.valor;
+            });
+            document.getElementById('pendentesSaldo').textContent = formatarValor(saldo);
+            const lista = document.getElementById('pendentesLista');
+            if (atrasados.length === 0) {
+                lista.innerHTML = 'Nada por aqui...';
+            } else {
+                lista.innerHTML = '<ul style="width:100%;padding-left:1.2rem;">' + atrasados.map(d =>
+                    `<li style="margin-bottom:.5rem;color:#222;">
+                        <b>${d.tipo === 'receita' ? 'Receita' : 'Despesa'}:</b> ${d.categoria || ''} - ${formatarValor(d.valor)} em ${d.data}
+                    </li>`
+                ).join('') + '</ul>';
             }
         }
-        function editarReceita(idx) {
-            const r = dados[idx];
-            if (!r) return;
-            document.querySelector('#modalReceita').style.display = 'flex';
-            document.getElementById('receitaCliente').value = r.cliente || '';
-            document.getElementById('receitaCategoria').value = r.categoria || '';
-            document.getElementById('receitaDetalhes').value = r.detalhes || '';
-            document.getElementById('receitaForma').value = r.formaRecebimento || '';
-            document.getElementById('receitaValor').value = r.valor || '';
-            document.getElementById('receitaData').value = r.data || '';
-            document.getElementById('formNovaReceita').onsubmit = function(e) {
-                e.preventDefault();
-                dados.splice(idx, 1);
-                const cliente = document.getElementById('receitaCliente').value.trim();
-                const categoria = document.getElementById('receitaCategoria').value.trim();
-                const detalhes = document.getElementById('receitaDetalhes').value.trim();
-                const formaRecebimento = document.getElementById('receitaForma').value.trim();
-                const valor = parseFloat(document.getElementById('receitaValor').value);
-                const data = document.getElementById('receitaData').value;
-                if (!cliente || !categoria || !valor || !data) return;
-                dados.push({
-                    tipo: 'receita',
-                    cliente,
-                    categoria,
-                    detalhes,
-                    formaRecebimento,
-                    valor,
-                    data
-                });
-                document.getElementById('modalReceita').style.display = 'none';
-                this.reset();
-                renderizarDashboard();
-                renderizarPaginasSecundarias();
-                document.getElementById('formNovaReceita').onsubmit = receitaSubmitOriginal;
-            };
-        }
-        function editarDespesa(idx) {
-            const c = dados[idx];
-            if (!c) return;
-            document.querySelector('#modalDespesa').style.display = 'flex';
-            document.getElementById('despesaEmpresa').value = c.empresa || '';
-            document.getElementById('despesaBanco').value = c.banco || '';
-            document.getElementById('despesaCategoria').value = c.categoria || '';
-            document.getElementById('despesaDetalhes').value = c.detalhes || '';
-            document.getElementById('despesaFornecedor').value = c.fornecedor || '';
-            document.getElementById('despesaForma').value = c.formaPagamento || '';
-            document.getElementById('despesaParcelas').value = c.parcelas || '';
-            document.getElementById('despesaValor').value = c.valor || '';
-            document.getElementById('despesaData').value = c.data || '';
-            document.getElementById('despesaCentroCusto').value = c.centroCusto || '';
-            document.getElementById('formNovaDespesa').onsubmit = function(e) {
-                e.preventDefault();
-                dados.splice(idx, 1);
-                const empresa = document.getElementById('despesaEmpresa').value.trim();
-                const banco = document.getElementById('despesaBanco').value.trim();
-                const categoria = document.getElementById('despesaCategoria').value.trim();
-                const detalhes = document.getElementById('despesaDetalhes').value.trim();
-                const fornecedor = document.getElementById('despesaFornecedor').value.trim();
-                const formaPagamento = document.getElementById('despesaForma').value.trim();
-                const parcelas = document.getElementById('despesaParcelas').value.trim();
-                const valor = parseFloat(document.getElementById('despesaValor').value);
-                const data = document.getElementById('despesaData').value;
-                const centroCusto = document.getElementById('despesaCentroCusto').value.trim();
-                if (!empresa || !categoria || !valor || !data) return;
-                dados.push({
-                    tipo: 'despesa',
-                    empresa,
-                    banco,
-                    categoria,
-                    detalhes,
-                    fornecedor,
-                    formaPagamento,
-                    parcelas,
-                    valor,
-                    data,
-                    centroCusto
-                });
-                document.getElementById('modalDespesa').style.display = 'none';
-                this.reset();
-                renderizarDashboard();
-                renderizarPaginasSecundarias();
-                document.getElementById('formNovaDespesa').onsubmit = despesaSubmitOriginal;
-            };
-        }
 
-        // Guardar submit original para restaurar após edição
-        const receitaSubmitOriginal = document.getElementById('formNovaReceita').onsubmit;
-        const despesaSubmitOriginal = document.getElementById('formNovaDespesa').onsubmit;
+        // Alternância de tema claro/escuro
+        (function() {
+            const btn = document.getElementById('btnToggleTheme');
+            const body = document.body;
+            // Salva preferência no localStorage
+            function setTheme(dark) {
+                if (dark) {
+                    body.classList.add('dark-mode');
+                    btn.innerHTML = '&#9790;'; // lua
+                    btn.title = 'Alternar para tema claro';
+                    btn.style.background = '#232a36';
+                    btn.style.color = '#43cea2';
+                } else {
+                    body.classList.remove('dark-mode');
+                    btn.innerHTML = '&#9788;'; // sol
+                    btn.title = 'Alternar para tema escuro';
+                    btn.style.background = '#fff';
+                    btn.style.color = '#222';
+                }
+                localStorage.setItem('gestaopro_theme', dark ? 'dark' : 'light');
+            }
+            // Detecta preferência inicial
+            const preferDark = localStorage.getItem('gestaopro_theme') === 'dark'
+                || (localStorage.getItem('gestaopro_theme') === null && window.matchMedia('(prefers-color-scheme: dark)').matches);
+            setTheme(preferDark);
 
-        // Inicialização
-        window.periodoAtivo = 0;
-        renderizarPeriodos();
-        renderizarDashboard();
-        renderizarPaginasSecundarias();
-
-        // Corrige: garantir que os botões do dashboard abrem os modais corretamente
-        document.addEventListener('DOMContentLoaded', function() {
-            document.getElementById('btnAbrirModalReceita').onclick = function() {
-                document.getElementById('modalReceita').style.display = 'flex';
+            btn.onclick = function() {
+                setTheme(!body.classList.contains('dark-mode'));
             };
-            document.getElementById('btnAbrirModalDespesa').onclick = function() {
-                document.getElementById('modalDespesa').style.display = 'flex';
-            };
-            document.getElementById('btnDashboardEntrada').onclick = function() {
-                document.getElementById('modalReceita').style.display = 'flex';
-            };
-            document.getElementById('btnDashboardSaida').onclick = function() {
-                document.getElementById('modalDespesa').style.display = 'flex';
-            };
-        });
+        })();
     </script>
 </body>
 </html>
