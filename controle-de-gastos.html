@@ -443,68 +443,95 @@
         body.dark-mode table {
             background: #232a36 !important;
             color: #e0e6ef !important;
+            border-radius: 8px;
+            border-collapse: separate;
+            border-spacing: 0;
+            box-shadow: 0 2px 12px #0008 !important;
         }
-        body.dark-mode th, body.dark-mode td {
-            background: #232a36 !important;
-            color: #e0e6ef !important;
+        body.dark-mode th {
+            background: #293042 !important;
+            color: #43cea2 !important;
+            border-bottom: 2px solid #43cea2 !important;
+            font-weight: bold;
+            font-size: 1.05em;
+            padding: .7rem .5rem !important;
+            /* Adiciona contraste para texto apagado */
+            text-shadow: 0 1px 2px #181c24;
         }
-        body.dark-mode input, body.dark-mode select, body.dark-mode textarea {
-            background: #181c24 !important;
-            color: #e0e6ef !important;
-            border: 1px solid #4f8cff !important;
-        }
-        body.dark-mode button {
-            background: #232a36;
-            color: #43cea2;
-        }
-        body.dark-mode #btnAbrirModalReceita,
-        body.dark-mode #btnNovaReceita {
-            background: #43cea2 !important;
-            color: #232a36 !important;
-        }
-        body.dark-mode #btnAbrirModalDespesa,
-        body.dark-mode #btnNovaDespesa {
-            background: #ff7e5f !important;
-            color: #232a36 !important;
-        }
-        body.dark-mode #btnAbrirModalReceita:hover,
-        body.dark-mode #btnNovaReceita:hover {
-            background: #2ec4a6 !important;
-        }
-        body.dark-mode #btnAbrirModalDespesa:hover,
-        body.dark-mode #btnNovaDespesa:hover {
-            background: #e94e3c !important;
-        }
-        body.dark-mode .dashboard-chart canvas {
-            background: #232a36 !important;
-        }
-        /* Ajustes para gráficos Chart.js no tema escuro */
-        body.dark-mode .dashboard-chart,
-        body.dark-mode .dashboard-chart canvas {
-            background: #232a36 !important;
-        }
-        /* Ajuste para títulos, textos e legendas no tema escuro */
-        body.dark-mode .dashboard-title,
-        body.dark-mode .dashboard-section,
-        body.dark-mode .dashboard-section *,
-        body.dark-mode .dashboard-chart,
-        body.dark-mode .dashboard-chart *,
-        body.dark-mode .app-guide,
-        body.dark-mode .app-guide *,
-        body.dark-mode header,
-        body.dark-mode header *,
-        body.dark-mode .saldo-card,
-        body.dark-mode .saldo-card *,
-        body.dark-mode .moment-card,
-        body.dark-mode .moment-card *,
-        body.dark-mode .period-card,
-        body.dark-mode .period-card *,
-        body.dark-mode .dashboard-report-btn,
-        body.dark-mode .dashboard-report-btn *,
-        body.dark-mode th,
         body.dark-mode td {
+            background: #232a36 !important;
             color: #e0e6ef !important;
-            border-color: #232a36 !important;
+            border-bottom: 1px solid #293042 !important;
+            padding: .7rem .5rem !important;
+            /* Adiciona contraste para texto apagado */
+            text-shadow: 0 1px 2px #181c24;
+        }
+        body.dark-mode tr {
+            transition: background 0.2s;
+        }
+        body.dark-mode tr:hover td {
+            background: #293042 !important;
+            color: #43cea2 !important;
+        }
+        body.dark-mode tbody tr:last-child td {
+            border-bottom: none !important;
+        }
+        body.dark-mode .dashboard-section {
+            box-shadow: 0 2px 12px #0008 !important;
+        }
+        body.dark-mode .dashboard-section table {
+            box-shadow: 0 2px 12px #0008 !important;
+        }
+        body.dark-mode .dashboard-section th,
+        body.dark-mode .dashboard-section td {
+            border-radius: 0 !important;
+        }
+        body.dark-mode .dashboard-section th:first-child,
+        body.dark-mode .dashboard-section td:first-child {
+            border-radius: 8px 0 0 8px !important;
+        }
+        body.dark-mode .dashboard-section th:last-child,
+        body.dark-mode .dashboard-section td:last-child {
+            border-radius: 0 8px 8px 0 !important;
+        }
+        body.dark-mode .dashboard-section tr {
+            border-radius: 8px !important;
+        }
+        /* Corrige fundo de inputs/selects/textareas no tema escuro */
+        body.dark-mode input,
+        body.dark-mode select,
+        body.dark-mode textarea {
+            background: #293042 !important;
+            color: #e0e6ef !important;
+            border: 1px solid #43cea2 !important;
+            box-shadow: 0 1px 4px #181c24;
+        }
+        /* Corrige fundo de modais no tema escuro */
+        body.dark-mode #modalNovaEntrada > div,
+        body.dark-mode #modalNovaSaida > div,
+        body.dark-mode #modalDespesa > div,
+        body.dark-mode #modalReceita > div,
+        body.dark-mode #modalGasto > div {
+            background: #232a36 !important;
+            color: #e0e6ef !important;
+            box-shadow: 0 4px 24px #0008 !important;
+        }
+        /* Corrige fundo de dashboard-section */
+        body.dark-mode .dashboard-section {
+            background: #232a36 !important;
+            color: #e0e6ef !important;
+        }
+        /* Corrige fundo de cards de resumo */
+        body.dark-mode .moment-card,
+        body.dark-mode .saldo-card {
+            background: #293042 !important;
+            color: #e0e6ef !important;
+        }
+        /* Corrige fundo de dashboard-chart */
+        body.dark-mode .dashboard-chart {
+            background: #232a36 !important;
+            color: #e0e6ef !important;
+            box-shadow: 0 2px 12px #0008 !important;
         }
         body.dark-mode .moment-card .label { color: #43cea2 !important; }
         body.dark-mode .moment-card.saida .label { color: #ff7e5f !important; }
@@ -525,7 +552,54 @@
         body.dark-mode .dashboard-section .value { color: #fff !important; }
         body.dark-mode .dashboard-section .label { color: #43cea2 !important; }
         body.dark-mode .dashboard-section .moment-card.saida .label { color: #ff7e5f !important; }
-        /* ...existing code... */
+        /* CORREÇÃO VISUAL PARA TÍTULOS E DESCRIÇÕES EM HEADERS NO TEMA ESCURO */
+body.dark-mode header h1,
+body.dark-mode header h2,
+body.dark-mode header h3,
+body.dark-mode header .section-title {
+    color: #43cea2 !important;
+    text-shadow: 0 1px 2px #181c24;
+}
+
+body.dark-mode header p,
+body.dark-mode .section-desc,
+body.dark-mode header .section-desc {
+    color: #b0e6d2 !important;
+    opacity: 1 !important;
+    text-shadow: 0 1px 2px #181c24;
+}
+
+/* CORRIGE TÍTULOS DE SEÇÕES */
+body.dark-mode .dashboard-section h1,
+body.dark-mode .dashboard-section h2,
+body.dark-mode .dashboard-section h3 {
+    color: #43cea2 !important;
+    text-shadow: 0 1px 2px #181c24;
+}
+
+/* CORRIGE DESCRIÇÕES DE SEÇÕES */
+body.dark-mode .dashboard-section p,
+body.dark-mode .dashboard-section .section-desc {
+    color: #b0e6d2 !important;
+    opacity: 1 !important;
+    text-shadow: 0 1px 2px #181c24;
+}
+
+/* CORRIGE TÍTULOS DE TABELAS */
+body.dark-mode .dashboard-section th {
+    color: #43cea2 !important;
+    background: #293042 !important;
+    text-shadow: 0 1px 2px #181c24;
+}
+
+/* CORRIGE TEXTO DE TABELAS */
+body.dark-mode .dashboard-section td {
+    color: #e0e6ef !important;
+    background: #232a36 !important;
+    text-shadow: 0 1px 2px #181c24;
+}
+
+/* ...existing code... */
     </style>
 </head>
 <body>
@@ -582,20 +656,6 @@
                         <span class="desc">Saldo</span>
                         <span class="value" id="valorSobrou">R$ 0,00</span>
                     </div>
-                </div>
-                <div class="dashboard-charts-row">
-                    <div class="dashboard-chart">
-                        <canvas id="chartResumo"></canvas>
-                    </div>
-                    <div class="dashboard-chart">
-                        <canvas id="chartCategorias"></canvas>
-                    </div>
-                    <div class="dashboard-chart">
-                        <canvas id="chartEvolucao"></canvas>
-                    </div>
-                </div>
-                <button class="dashboard-report-btn" id="btnExportarPDF" title="Exportar PDF">&#128462; Exportar PDF</button>
-            </div>
         </section>
         <!-- Receitas -->
         <section id="receitas">
@@ -635,7 +695,7 @@
                         </div>
                     </div>
                     <div style="background:#f4f6fb;border-radius:10px;padding:1.2rem 1rem;box-shadow:0 1px 6px #0001;">
-                        <div style="font-size:1.1rem;font-weight:600;margin-bottom:.7rem;">Recebimentos</div>
+                        <div style="font-size:1.1rem;font-weight:600;margin-bottom:.7rem;">Detalhes</div>
                         <div style="font-size:.98rem;color:#888;margin-bottom:.7rem;">
                             Lista de todos os recebimentos realizados no período selecionado.
                         </div>
@@ -648,6 +708,7 @@
                                         <th style="padding:.7rem .5rem;">Categoria</th>
                                         <th style="padding:.7rem .5rem;">Detalhes</th>
                                         <th style="padding:.7rem .5rem;">Forma de Recebimento</th>
+                                        <th style="padding:.7rem .5rem;">Parcelas</th>
                                         <th style="padding:.7rem .5rem;">Valor</th>
                                         <th style="padding:.7rem .5rem;">Ações</th>
                                     </tr>
@@ -693,7 +754,7 @@
             <div class="dashboard-section">
                 <div class="dashboard-chart" style="max-width:100%;">
                     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.7rem;">
-                        <h3 style="font-size:1.3rem;margin:0;">Contas a Pagar</h3>
+                        <h3 style="font-size:1.3rem;margin:0;">Pagamentos</h3>
                         <button id="btnNovaDespesa" style="background:#ff7e5f;color:#fff;border:none;border-radius:6px;padding:.7rem 1.5rem;font-weight:600;cursor:pointer;font-size:1rem;box-shadow:0 1px 6px #0001;">
                             <span style="font-size:1.3rem;">&#43;</span> Nova Despesa
                         </button>
@@ -722,24 +783,21 @@
                         </div>
                     </div>
                     <div style="background:#f4f6fb;border-radius:10px;padding:1.2rem 1rem;box-shadow:0 1px 6px #0001;">
-                        <div style="font-size:1.1rem;font-weight:600;margin-bottom:.7rem;">Contas a Pagar</div>
+                        <div style="font-size:1.1rem;font-weight:600;margin-bottom:.7rem;">Detalhes</div>
                         <div style="font-size:.98rem;color:#888;margin-bottom:.7rem;">
-                            Uma lista com todos os Lançamentos de Gastos cadastrados com a data de vencimento posterior a data atual.
+                            Lista de todos os pagamentos realizados no período selecionado.
                         </div>
                         <div style="overflow-x:auto;">
                             <table style="width:100%;border-collapse:collapse;background:#fff;">
                                 <thead>
                                     <tr style="background:#f4f6fb;">
                                         <th style="padding:.7rem .5rem;">Data</th>
-                                        <th style="padding:.7rem .5rem;">Empresa</th>
-                                        <th style="padding:.7rem .5rem;">Banco</th>
+                                        <th style="padding:.7rem .5rem;">Recebedor</th>
                                         <th style="padding:.7rem .5rem;">Categoria</th>
                                         <th style="padding:.7rem .5rem;">Detalhes</th>
-                                        <th style="padding:.7rem .5rem;">Fornecedor</th>
                                         <th style="padding:.7rem .5rem;">Forma de Pagamento</th>
                                         <th style="padding:.7rem .5rem;">Parcelas</th>
                                         <th style="padding:.7rem .5rem;">Valor</th>
-                                        <th style="padding:.7rem .5rem;">Centro de Custo</th>
                                         <th style="padding:.7rem .5rem;">Ações</th>
                                     </tr>
                                 </thead>
@@ -779,32 +837,11 @@
                 </div>
             </div>
         </section>
-        <!-- GRÁFICOS -->
-        <section id="graficos">
-            <header>
-                <h1>Gráficos</h1>
-                <p>Visualize os principais gráficos financeiros da empresa.</p>
-            </header>
-            <div class="dashboard-section">
-                <!-- Reaproveite os gráficos principais do dashboard -->
-                <div class="dashboard-charts-row">
-                    <div class="dashboard-chart">
-                        <canvas id="chartResumoGeral"></canvas>
-                    </div>
-                    <div class="dashboard-chart">
-                        <canvas id="chartCategoriasGeral"></canvas>
-                    </div>
-                    <div class="dashboard-chart">
-                        <canvas id="chartEvolucaoGeral"></canvas>
-                    </div>
-                </div>
-            </div>
-        </section>
         <!-- RELATÓRIOS -->
         <section id="relatorios">
             <header>
                 <h1>Relatórios</h1>
-                <p>Gere relatórios detalhados das movimentações financeiras.</p>
+                <p>Relatórios detalhados das movimentações financeiras.</p>
             </header>
             <div class="dashboard-section">
                 <button class="dashboard-report-btn" id="btnExportarPDF2" title="Exportar PDF">&#128462; Exportar PDF</button>
@@ -868,8 +905,8 @@
         </div>
 
         <!-- MODAL NOVA ENTRADA (RECEITA) MODERNO -->
-        <div id="modalNovaEntrada" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:#0007;z-index:1002;align-items:center;justify-content:center;">
-            <div style="background:#fff;border-radius:18px;max-width:400px;width:95vw;padding:2.2rem 1.5rem;box-shadow:0 8px 32px #0004;position:relative;display:flex;flex-direction:column;gap:1.2rem;">
+        <div id="modalNovaEntrada" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.55);z-index:3000;align-items:center;justify-content:center;">
+            <div style="background:#fff;border-radius:18px;max-width:410px;width:95vw;padding:2.2rem 1.5rem;box-shadow:0 8px 32px #0004;position:relative;display:flex;flex-direction:column;gap:1.2rem;">
                 <button id="btnFecharModalNovaEntrada" style="position:absolute;top:1rem;right:1rem;background:none;border:none;font-size:2rem;color:#888;cursor:pointer;">&times;</button>
                 <div style="display:flex;align-items:center;gap:.7rem;">
                     <span style="font-size:2.1rem;color:#43cea2;">&#43;</span>
@@ -888,8 +925,8 @@
         </div>
 
         <!-- MODAL NOVA SAÍDA (DESPESA) MODERNO -->
-        <div id="modalNovaSaida" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:#0007;z-index:1002;align-items:center;justify-content:center;">
-            <div style="background:#fff;border-radius:18px;max-width:400px;width:95vw;padding:2.2rem 1.5rem;box-shadow:0 8px 32px #0004;position:relative;display:flex;flex-direction:column;gap:1.2rem;">
+        <div id="modalNovaSaida" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.55);z-index:3000;align-items:center;justify-content:center;">
+            <div style="background:#fff;border-radius:18px;max-width:410px;width:95vw;padding:2.2rem 1.5rem;box-shadow:0 8px 32px #0004;position:relative;display:flex;flex-direction:column;gap:1.2rem;">
                 <button id="btnFecharModalNovaSaida" style="position:absolute;top:1rem;right:1rem;background:none;border:none;font-size:2rem;color:#888;cursor:pointer;">&times;</button>
                 <div style="display:flex;align-items:center;gap:.7rem;">
                     <span style="font-size:2.1rem;color:#ff7e5f;">&#43;</span>
@@ -1036,7 +1073,17 @@
         // Dashboard principal
         function renderizarDashboard() {
             const periodos = gerarPeriodos();
-            if (!periodos.length) return;
+            if (!periodos.length) {
+                // Limpa gráficos e valores se não houver dados
+                document.getElementById('dashboardTitle').textContent = 'Até o momento';
+                document.getElementById('valorEntrou').textContent = formatarValor(0);
+                document.getElementById('valorSaiu').textContent = formatarValor(0);
+                document.getElementById('valorSobrou').textContent = formatarValor(0);
+                if (window.chartResumo) window.chartResumo.destroy();
+                if (window.chartCategorias) window.chartCategorias.destroy();
+                if (window.chartEvolucao) window.chartEvolucao.destroy();
+                return;
+            }
             const periodo = periodos[window.periodoAtivo || 0];
             document.getElementById('dashboardTitle').textContent = 'Até o momento - ' + periodo;
             // Resumo receitas/despesas
@@ -1146,15 +1193,106 @@
                 }, document.body.classList.contains('dark-mode') ? chartDarkOptions() : {})
             });
 
+            // Gráficos gerais (aba "Gráficos")
+            renderizarGraficosGerais();
+
             // Gráfico de comparação com período anterior
             renderizarComparacao();
+        }
 
-            // Funções para "Para acontecer" e "Pendentes"
-            // (Essas funções não estão implementadas, mas não causam erro se não existirem)
-            if (typeof renderizarFuturoPendentes === 'function') renderizarFuturoPendentes();
-            if (typeof renderizarFaturamento === 'function') renderizarFaturamento();
-            if (typeof renderizarContasAPagar === 'function') renderizarContasAPagar();
-            if (typeof renderizarRecebimentos === 'function') renderizarRecebimentos();
+        // Gráficos gerais (aba "Gráficos")
+        function renderizarGraficosGerais() {
+            // Gráfico pizza geral
+            const receitas = dados.filter(d => d.tipo === 'receita').reduce((acc, r) => acc + (r.valor || 0), 0);
+            const despesas = dados.filter(d => d.tipo === 'despesa').reduce((acc, r) => acc + (r.valor || 0), 0);
+
+            const ctxResumoGeral = document.getElementById('chartResumoGeral').getContext('2d');
+            if (window.chartResumoGeral) window.chartResumoGeral.destroy();
+            window.chartResumoGeral = new Chart(ctxResumoGeral, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Receitas', 'Despesas'],
+                    datasets: [{
+                        data: [receitas, despesas],
+                        backgroundColor: ['#43cea2', '#ff7e5f'],
+                        borderColor: ['#fff', '#fff'],
+                        borderWidth: 2
+                    }]
+                },
+                options: Object.assign({
+                    plugins: { legend: { display: true, position: 'bottom' } }
+                }, document.body.classList.contains('dark-mode') ? chartDarkOptions() : {})
+            });
+
+            // Gráfico barras categorias geral
+            const catMap = {};
+            dados.filter(d => d.tipo === 'despesa').forEach(d => {
+                catMap[d.categoria] = (catMap[d.categoria] || 0) + (d.valor || 0);
+            });
+            const catLabels = Object.keys(catMap);
+            const catValores = catLabels.map(k => catMap[k]);
+            const ctxCategoriasGeral = document.getElementById('chartCategoriasGeral').getContext('2d');
+            if (window.chartCategoriasGeral) window.chartCategoriasGeral.destroy();
+            window.chartCategoriasGeral = new Chart(ctxCategoriasGeral, {
+                type: 'bar',
+                data: {
+                    labels: catLabels,
+                    datasets: [{
+                        label: 'Despesas por Categoria',
+                        data: catValores,
+                        backgroundColor: '#ff7e5f',
+                        borderRadius: 8,
+                        maxBarThickness: 40
+                    }]
+                },
+                options: Object.assign({
+                    plugins: { legend: { display: false } },
+                    scales: {
+                        x: { grid: { color: '#eee' }, ticks: { color: '#222' } },
+                        y: { grid: { color: '#eee' }, ticks: { color: '#222' }, beginAtZero: true }
+                    }
+                }, document.body.classList.contains('dark-mode') ? chartDarkOptions() : {})
+            });
+
+            // Gráfico evolução geral
+            const periodos = gerarPeriodos();
+            let saldoAcumulado = 0;
+            const evolValores = periodos.map(p => {
+                let entrou = 0, saiu = 0;
+                dados.forEach(d => {
+                    if (getMesAno(d.data) === p) {
+                        if (d.tipo === 'receita') entrou += d.valor;
+                        else saiu += d.valor;
+                    }
+                });
+                saldoAcumulado += entrou - saiu;
+                return saldoAcumulado;
+            });
+            const ctxEvolucaoGeral = document.getElementById('chartEvolucaoGeral').getContext('2d');
+            if (window.chartEvolucaoGeral) window.chartEvolucaoGeral.destroy();
+            window.chartEvolucaoGeral = new Chart(ctxEvolucaoGeral, {
+                type: 'line',
+                data: {
+                    labels: periodos,
+                    datasets: [{
+                        label: 'Saldo Acumulado',
+                        data: evolValores,
+                        borderColor: '#4f8cff',
+                        backgroundColor: 'rgba(79,140,255,0.08)',
+                        tension: 0.3,
+                        fill: true,
+                        pointRadius: 4,
+                        pointBackgroundColor: '#4f8cff'
+                    }]
+                },
+                options: Object.assign({
+                    plugins: { legend: { display: true, position: 'bottom' } },
+                    scales: {
+                        x: { grid: { color: '#eee' }, ticks: { color: '#222' } },
+                        y: { grid: { color: '#eee' }, ticks: { color: '#222' }, beginAtZero: true }
+                    }
+                }, document.body.classList.contains('dark-mode') ? chartDarkOptions() : {})
+            });
         }
 
         // Gráfico de comparação com período anterior
@@ -1240,13 +1378,13 @@
                 btn.style.color = '#222';
             }
             localStorage.setItem('gestaopro_theme', dark ? 'dark' : 'light');
-            // Atualiza gráficos para o tema
             renderizarDashboard();
         };
 
         // Aplica tema salvo ao carregar
         (function() {
             const body = document.body;
+
             const btn = document.getElementById('btnToggleTheme');
             const preferDark = localStorage.getItem('gestaopro_theme') === 'dark'
                 || (localStorage.getItem('gestaopro_theme') === null && window.matchMedia('(prefers-color-scheme: dark)').matches);
@@ -1271,6 +1409,277 @@
             renderizarPeriodos();
             renderizarDashboard();
         });
+
+        // Modal Nova Entrada (Receita)
+        function abrirModalNovaEntrada() {
+            document.getElementById('modalNovaEntrada').style.display = 'flex';
+        }
+        function fecharModalNovaEntrada() {
+            document.getElementById('modalNovaEntrada').style.display = 'none';
+        }
+        document.getElementById('btnAbrirModalReceita').onclick = abrirModalNovaEntrada;
+        document.getElementById('btnFecharModalNovaEntrada').onclick = fecharModalNovaEntrada;
+        document.getElementById('modalNovaEntrada').onclick = function(e) {
+            if (e.target === this) fecharModalNovaEntrada();
+        };
+        document.getElementById('formNovaEntrada').onsubmit = function(e) {
+            e.preventDefault();
+            const cliente = document.getElementById('entradaCliente').value.trim();
+            const categoria = document.getElementById('entradaCategoria').value.trim();
+            const detalhes = document.getElementById('entradaDetalhes').value.trim();
+            const formaRecebimento = document.getElementById('entradaForma').value.trim();
+            const valor = parseFloat(document.getElementById('entradaValor').value);
+            const data = document.getElementById('entradaData').value;
+
+            if (!cliente || !categoria || isNaN(valor) || valor <= 0 || !data) {
+                alert('Preencha todos os campos obrigatórios corretamente.');
+                return;
+            }
+
+            dados.push({
+                tipo: 'receita',
+                cliente,
+                categoria,
+                detalhes,
+                formaRecebimento,
+                valor,
+                data
+            });
+
+            fecharModalNovaEntrada();
+            this.reset();
+            renderizarPeriodos();
+            renderizarDashboard();
+        };
+
+        // Modal Nova Saída (Despesa)
+        function abrirModalNovaSaida() {
+            document.getElementById('modalNovaSaida').style.display = 'flex';
+        }
+        function fecharModalNovaSaida() {
+            document.getElementById('modalNovaSaida').style.display = 'none';
+        }
+        document.getElementById('btnAbrirModalDespesa').onclick = abrirModalNovaSaida;
+        document.getElementById('btnFecharModalNovaSaida').onclick = fecharModalNovaSaida;
+        document.getElementById('modalNovaSaida').onclick = function(e) {
+            if (e.target === this) fecharModalNovaSaida();
+        };
+        document.getElementById('formNovaSaida').onsubmit = function(e) {
+            e.preventDefault();
+            const empresa = document.getElementById('saidaEmpresa').value.trim();
+            const categoria = document.getElementById('saidaCategoria').value.trim();
+            const detalhes = document.getElementById('saidaDetalhes').value.trim();
+            const fornecedor = document.getElementById('saidaFornecedor').value.trim();
+            const formaPagamento = document.getElementById('saidaForma').value.trim();
+            const valor = parseFloat(document.getElementById('saidaValor').value);
+            const data = document.getElementById('saidaData').value;
+
+            if (!empresa || !categoria || isNaN(valor) || valor <= 0 || !data) {
+                alert('Preencha todos os campos obrigatórios corretamente.');
+                return;
+            }
+
+            dados.push({
+                tipo: 'despesa',
+                empresa,
+                categoria,
+                detalhes,
+                fornecedor,
+                formaPagamento,
+                valor,
+                data
+            });
+
+            fecharModalNovaSaida();
+            this.reset();
+            renderizarPeriodos();
+            renderizarDashboard();
+        };
+
+        // Botão Nova Receita (aba Receitas)
+        document.getElementById('btnNovaReceita').onclick = abrirModalNovaEntrada;
+
+        // Botão Nova Despesa (aba Despesas)
+        document.getElementById('btnNovaDespesa').onclick = abrirModalNovaSaida;
+
+        // Atualização automática dos dados nas abas Receitas e Despesas
+        function atualizarReceitasTabela() {
+            const recebimentos = dados.filter(d => d.tipo === 'receita');
+            let total = recebimentos.length;
+            let soma = recebimentos.reduce((acc, r) => acc + (Number(r.valor) || 0), 0);
+            let media = total > 0 ? soma / total : 0;
+
+            document.getElementById('recebimentosTotal2').textContent = total;
+            document.getElementById('recebimentosValorTotal2').textContent = formatarValor(soma);
+            document.getElementById('recebimentosMedia2').textContent = formatarValor(media);
+
+            const tbody = document.getElementById('recebimentosTable2');
+            if (tbody) {
+                if (recebimentos.length === 0) {
+                    tbody.innerHTML = `<tr>
+                        <td colspan="7" style="text-align:center;color:#bbb;padding:2.5rem 0;">
+                            <span style="font-size:2.2rem;">&#128166;</span><br>
+                            Nada por aqui...
+                        </td>
+                    </tr>`;
+                } else {
+                    tbody.innerHTML = recebimentos.map(r => `
+                        <tr>
+                            <td>${r.data || ''}</td>
+                            <td>${r.cliente || ''}</td>
+                            <td>${r.categoria || ''}</td>
+                            <td>${r.detalhes || ''}</td>
+                            <td>${r.formaRecebimento || ''}</td>
+                            <td>${formatarValor(r.valor || 0)}</td>
+                            <td></td>
+                        </tr>
+                    `).join('');
+                }
+            }
+        }
+
+        function atualizarDespesasTabela() {
+            const contas = dados.filter(d => d.tipo === 'despesa');
+            let total = contas.length;
+            let soma = contas.reduce((acc, c) => acc + (Number(c.valor) || 0), 0);
+            let media = total > 0 ? soma / total : 0;
+
+            document.getElementById('contasTotal2').textContent = total;
+            document.getElementById('contasValorTotal2').textContent = formatarValor(soma);
+            document.getElementById('contasMedia2').textContent = formatarValor(media);
+
+            const tbody = document.getElementById('contasPagarTable2');
+            if (tbody) {
+                if (contas.length === 0) {
+                    tbody.innerHTML = `<tr>
+                        <td colspan="11" style="text-align:center;color:#bbb;padding:2.5rem 0;">
+                            <span style="font-size:2.2rem;">&#128166;</span><br>
+                            Nada por aqui...
+                        </td>
+                    </tr>`;
+                } else {
+                    tbody.innerHTML = contas.map(c => `
+                        <tr>
+                            <td>${c.data || ''}</td>
+                            <td>${c.empresa || ''}</td>
+                            <td></td>
+                            <td>${c.categoria || ''}</td>
+                            <td>${c.detalhes || ''}</td>
+                            <td>${c.fornecedor || ''}</td>
+                            <td>${c.formaPagamento || ''}</td>
+                            <td></td>
+                            <td>${formatarValor(c.valor || 0)}</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    `).join('');
+                }
+            }
+        }
+
+        // Atualiza tudo em tempo real após cada lançamento
+        function atualizarTudo() {
+            renderizarPeriodos();
+            renderizarDashboard();
+            atualizarReceitasTabela();
+            atualizarDespesasTabela();
+        }
+
+        // Corrige handlers duplicados e garante atualização correta dos gráficos e tabelas
+        document.getElementById('formNovaEntrada').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const cliente = document.getElementById('entradaCliente').value.trim();
+            const categoria = document.getElementById('entradaCategoria').value.trim();
+            const detalhes = document.getElementById('entradaDetalhes').value.trim();
+            const formaRecebimento = document.getElementById('entradaForma').value.trim();
+            const valor = parseFloat(document.getElementById('entradaValor').value);
+            const data = document.getElementById('entradaData').value;
+
+            if (!cliente || !categoria || isNaN(valor) || valor <= 0 || !data) {
+                alert('Preencha todos os campos obrigatórios corretamente.');
+                return;
+            }
+
+            dados.push({
+                tipo: 'receita',
+                cliente,
+                categoria,
+                detalhes,
+                formaRecebimento,
+                valor,
+                data
+            });
+
+            fecharModalNovaEntrada();
+            this.reset();
+            atualizarTudo();
+        });
+
+        document.getElementById('formNovaSaida').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const empresa = document.getElementById('saidaEmpresa').value.trim();
+            const categoria = document.getElementById('saidaCategoria').value.trim();
+            const detalhes = document.getElementById('saidaDetalhes').value.trim();
+            const fornecedor = document.getElementById('saidaFornecedor').value.trim();
+            const formaPagamento = document.getElementById('saidaForma').value.trim();
+            const valor = parseFloat(document.getElementById('saidaValor').value);
+            const data = document.getElementById('saidaData').value;
+
+            if (!empresa || !categoria || isNaN(valor) || valor <= 0 || !data) {
+                alert('Preencha todos os campos obrigatórios corretamente.');
+                return;
+            }
+
+            dados.push({
+                tipo: 'despesa',
+                empresa,
+                categoria,
+                detalhes,
+                fornecedor,
+                formaPagamento,
+                valor,
+                data
+            });
+
+            fecharModalNovaSaida();
+            this.reset();
+            atualizarTudo();
+        });
+
+        // Botões de nova receita/despesa também atualizam tabelas ao abrir modal
+        document.getElementById('btnNovaReceita').onclick = function() {
+            abrirModalNovaEntrada();
+            atualizarReceitasTabela();
+        };
+        document.getElementById('btnNovaDespesa').onclick = function() {
+            abrirModalNovaSaida();
+            atualizarDespesasTabela();
+        };
+
+        // Botões principais do dashboard também abrem os modais corretos
+        document.getElementById('btnAbrirModalReceita').onclick = function() {
+            abrirModalNovaEntrada();
+            atualizarReceitasTabela();
+        };
+        document.getElementById('btnAbrirModalDespesa').onclick = function() {
+            abrirModalNovaSaida();
+            atualizarDespesasTabela();
+        };
+
+        // Atualiza ao abrir página
+        document.addEventListener('DOMContentLoaded', atualizarTudo);
+
+        // Exportar PDF (simples, imprime a página)
+        document.getElementById('btnExportarPDF').onclick = function() {
+            window.print();
+        };
+        document.getElementById('btnExportarPDF2').onclick = function() {
+            window.print();
+        };
+
+        // Garante atualização dos gráficos e tabelas após cada lançamento
+        document.getElementById('formNovaEntrada').addEventListener('submit', atualizarTudo);
+        document.getElementById('formNovaSaida').addEventListener('submit', atualizarTudo);
     </script>
 </body>
 </html>
