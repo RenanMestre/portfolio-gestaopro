@@ -1368,6 +1368,7 @@
             let total = contas.length;
             let soma = contas.reduce((acc, c) => acc + (c.valor || 0), 0);
            
+
             let media = total > 0 ? soma / total : 0;
 
             document.getElementById('contasTotal2').textContent = total;
