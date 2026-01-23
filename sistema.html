@@ -2,1277 +2,1700 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>Mundo das Motos - Catálogo Premium</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Jost:400,500,700&display=swap" rel="stylesheet">
+    <title>Gestão de Gastos - Dashboard Empresarial</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
-        :root {
-            --cor-principal: #23272a;
-            --cor-bg: #18191a;
-            --cor-card: #23272a;
-            --cor-texto: #f5f5f5;
-            --cor-preto: #fff;
-            --cor-cinza: #bbb;
-            --cor-borda: #333;
-            --cor-btn: #d90429;
-            --cor-btn-hover: #a0031f;
-            --cor-btn-text: #fff;
-            --cor-footer-bg: #101113;
-            --cor-footer-texto: #fff;
-            --cor-degrade1: #23272a;
-            --cor-degrade2: #18191a;
-            --cor-degrade3: #35363a;
-        }
+        /* Reset e base */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
-            background: linear-gradient(135deg, var(--cor-degrade1) 0%, var(--cor-degrade2) 60%, var(--cor-degrade3) 100%);
-            color: var(--cor-texto);
-            font-family: 'Jost', Arial, Helvetica, sans-serif;
-            margin: 0;
-            padding: 0;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(135deg, #eaf6ff 0%, #f4f6fb 100%);
+            color: #222;
             min-height: 100vh;
-            box-sizing: border-box;
-        }
-        /* Topo */
-        .topo {
-            background: linear-gradient(90deg, #23272a 60%, #18191a 100%);
-            box-shadow: 0 2px 12px #0002;
-            padding: 0 0;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-        .topo-inner {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 18px 24px;
-            flex-wrap: wrap;
-        }
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            min-width: 180px;
-        }
-        .logo img {
-            height: 48px;
-            width: auto;
-        }
-        .logo span {
-            font-size: 2.1em;
-            font-weight: 700;
-            color: var(--cor-btn);
-            letter-spacing: 2px;
-        }
-        .menu {
-            display: flex;
-            gap: 32px;
-            flex-wrap: wrap;
-        }
-        .menu a {
-            color: var(--cor-texto);
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 1.1em;
-            padding: 8px 0;
-            border-bottom: 2px solid transparent;
-            transition: border 0.2s, color 0.2s;
-        }
-        .menu a:hover {
-            color: var(--cor-btn);
-            border-bottom: 2px solid var(--cor-btn);
-        }
-        .busca {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-            min-width: 220px;
-            margin-left: 16px;
-        }
-        .busca input {
-            width: 340px;
-            padding: 10px 18px;
-            border: 1.5px solid var(--cor-borda);
-            border-radius: 24px;
-            font-size: 1.1em;
-            outline: none;
-            background: #18191a;
-            color: var(--cor-texto);
-            transition: border 0.2s;
-        }
-        .busca input:focus {
-            border: 1.5px solid var(--cor-btn);
-        }
-        /* Banner */
-        .banner {
-            width: 100%;
-            background: linear-gradient(120deg, #23272a 0%, #23272a 40%, #18191a 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 320px;
-            margin-bottom: 32px;
-            box-shadow: 0 4px 32px #0004;
-            position: relative;
-            overflow: hidden;
-        }
-        .banner::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(circle at 80% 30%, #d9042933 0%, transparent 60%);
-            z-index: 0;
-            pointer-events: none;
-        }
-        .banner-content {
-            position: relative;
-            z-index: 1;
-            max-width: 1200px;
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 32px;
-            padding: 32px 24px;
-            flex-wrap: wrap;
-        }
-        .banner-text {
-            flex: 1;
-        }
-        .banner-text h1 {
-            font-size: 2.7em;
-            color: var(--cor-btn);
-            font-weight: 800;
-            margin: 0 0 18px 0;
-            letter-spacing: 1.5px;
-        }
-        .banner-text p {
-            font-size: 1.25em;
-            color: var(--cor-cinza);
-            margin-bottom: 24px;
-        }
-        .banner-text .btn {
-            background: var(--cor-btn);
-            color: var(--cor-btn-text);
-            border: none;
-            border-radius: 24px;
-            padding: 14px 38px;
-            font-size: 1.15em;
-            font-weight: 700;
-            cursor: pointer;
-            box-shadow: 0 2px 12px #d9042922;
-            transition: background 0.2s;
-            text-decoration: none;
-        }
-        .banner-text .btn:hover {
-            background: var(--cor-btn-hover);
-        }
-        .banner-img {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-        }
-        .banner-img img {
-            max-width: 420px;
-            width: 100%;
-            border-radius: 18px;
-            box-shadow: 0 8px 32px #0004, 0 0 0 8px #23272a55;
-            background: linear-gradient(120deg, #23272a 60%, #18191a 100%);
-        }
-        /* Categorias */
-        .categorias-menu {
-            background: linear-gradient(90deg, #23272a 60%, #18191a 100%);
-            border-radius: 12px;
-            box-shadow: 0 2px 12px #0002;
-            padding: 22px 18px;
-            margin-bottom: 28px;
-            display: flex;
-            gap: 24px;
-            align-items: center;
-            flex-wrap: wrap;
-            justify-content: flex-start;
-            margin-left: auto;
-            margin-right: auto;
-            max-width: 1200px;
-        }
-        .categorias-menu-title {
-            font-weight: 700;
-            color: var(--cor-cinza);
-            font-size: 1.13em;
-            margin-right: 12px;
-            letter-spacing: 1px;
-        }
-        .categorias-lista {
-            display: flex;
-            gap: 18px;
-            flex-wrap: wrap;
-        }
-        .categoria-btn {
-            background: var(--cor-btn);
-            color: #fff;
-            border: none;
-            border-radius: 8px;
-            padding: 10px 22px;
-            font-weight: 700;
-            font-size: 1.03em;
-            cursor: pointer;
-            transition: background 0.2s, color 0.2s, box-shadow 0.2s;
-            box-shadow: 0 2px 8px #d9042922;
-            outline: none;
-            border-bottom: 2px solid transparent;
-        }
-        .categoria-btn.active,
-        .categoria-btn:hover {
-            background: var(--cor-btn-hover);
-            color: #fff;
-            border-bottom: 2px solid #fff;
-        }
-        @media (max-width: 1200px) {
-            .categorias-menu {
-                max-width: 98vw;
-            }
-        }
-        @media (max-width: 900px) {
-            .categorias-menu {
-                max-width: 98vw;
-                padding: 14px 8px;
-                gap: 10px;
-            }
-        }
-        @media (max-width: 700px) {
-            .categorias-menu {
-                max-width: 98vw;
-                flex-direction: column;
-                gap: 10px;
-                align-items: flex-start;
-                padding: 10px 4vw;
-            }
-        }
-        @media (max-width: 500px) {
-            .categorias-menu {
-                max-width: 98vw;
-                padding: 8px 2vw;
-            }
-        }
-        /* Filtros */
-        .filtros-catalogo {
-            background: linear-gradient(90deg, #23272a 60%, #18191a 100%);
-            border-radius: 12px;
-            box-shadow: 0 2px 12px #0002;
-            padding: 22px 18px;
-            margin-bottom: 28px;
-            display: flex;
-            gap: 32px;
-            align-items: flex-end;
-            flex-wrap: wrap;
-        }
-        .filtros-catalogo label {
-            font-weight: 600;
-            color: var(--cor-cinza);
-            margin-bottom: 4px;
+            margin: 0;
             display: block;
         }
-        .filtros-catalogo select, .filtros-catalogo input[type="range"] {
-            padding: 7px 12px;
-            border: 1.5px solid var(--cor-borda);
-            border-radius: 8px;
-            font-size: 1em;
-            margin-right: 12px;
-            background: #18191a;
-            color: var(--cor-texto);
-        }
-        .filtros-catalogo .btn-filtrar {
-            background: var(--cor-btn);
-            color: #fff;
-            border: none;
-            border-radius: 8px;
-            padding: 10px 24px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: background 0.2s;
-        }
-        .filtros-catalogo .btn-filtrar:hover {
-            background: var(--cor-btn-hover);
-        }
-        /* Catálogo */
-        .catalogo {
+        /* Top Navigation removido */
+        /* .topnav {...} */
+
+        .main-content {
             max-width: 1200px;
-            margin: 0 auto 40px auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
-            gap: 32px;
-            justify-items: center;
-        }
-        .card-moto {
-            background: linear-gradient(120deg, #23272a 60%, #18191a 100%);
-            border-radius: 14px;
-            box-shadow: 0 2px 16px #0002;
+            margin: 2.5rem auto 0 auto;
+            padding: 0 1rem 2rem 1rem;
+            min-width: 0;
             display: flex;
             flex-direction: column;
-            align-items: center;
-            padding: 18px 18px 22px 18px;
-            position: relative;
-            transition: box-shadow 0.2s, transform 0.2s;
-            width: 100%;
-            max-width: 340px;
         }
-        .card-moto:hover {
-            box-shadow: 0 8px 32px #d9042922;
-            transform: translateY(-4px) scale(1.02);
-        }
-        .card-moto .img-area {
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 160px;
-            margin-bottom: 12px;
-        }
-        .card-moto img {
-            max-width: 220px;
-            max-height: 140px;
-            width: 100%;
-            object-fit: contain;
-            border-radius: 10px;
-            background: linear-gradient(120deg, #23272a 60%, #18191a 100%);
-        }
-        .card-moto .marca {
-            font-size: 1em;
-            color: var(--cor-cinza);
-            font-weight: 500;
-            margin-bottom: 2px;
-        }
-        .card-moto .nome {
-            font-size: 1.25em;
-            font-weight: 700;
-            color: var(--cor-preto);
-            margin-bottom: 8px;
-            text-align: center;
-        }
-        .card-moto .preco {
-            font-size: 1.18em;
-            font-weight: 800;
-            color: var(--cor-btn);
-            margin-bottom: 10px;
-        }
-        .card-moto .btn-detalhes {
-            background: var(--cor-btn);
-            color: var(--cor-btn-text);
-            border: none;
-            border-radius: 8px;
-            padding: 10px 28px;
-            font-size: 1.08em;
-            font-weight: 700;
-            cursor: pointer;
-            margin-top: 8px;
-            transition: background 0.2s;
-            text-decoration: none;
-        }
-        .card-moto .btn-detalhes:hover {
-            background: var(--cor-btn-hover);
-        }
-        .card-moto .selo {
-            position: absolute;
-            top: 16px;
-            left: 16px;
-            color: #fff;
-            font-size: 0.95em;
-            font-weight: 700;
-            border-radius: 6px;
-            padding: 3px 12px;
-            box-shadow: 0 2px 8px #d9042922;
-            /* Cor padrão para outros selos */
-            background: var(--cor-btn);
-            transition: background 0.2s, box-shadow 0.2s;
-        }
-        .card-moto .selo.destaque,
-        .card-moto .selo.oferta {
-            background: linear-gradient(90deg, #fff 60%, #fff 100%);
-            color: #d90429;
-            box-shadow: 0 2px 8px #d9042922;
-            border: 2px solid #d90429;
-            text-shadow: 0 1px 4px #d9042940;
-            letter-spacing: 1px;
-        }
-        .card-moto .selo.premium {
-            background: linear-gradient(90deg, #fff 60%, #fff 100%);
-            color: #d90429;
-            box-shadow: 0 2px 8px #d9042922;
-            border: 2px solid #d90429;
-            text-shadow: 0 1px 4px #d9042940;
-            letter-spacing: 1px;
-        }
-        /* Rodapé */
-        footer {
-            background: linear-gradient(90deg, #18191a 60%, #23272a 100%);
-            color: var(--cor-footer-texto);
-            text-align: center;
-            padding: 38px 0 18px 0;
-            font-size: 1.08em;
-            letter-spacing: 1px;
-            margin-top: 38px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-        .footer-copyright {
-            width: 100%;
-            text-align: center;
-            font-weight: 600;
-            margin-bottom: 6px;
-            letter-spacing: 1px;
-        }
-        .footer-info, .footer-social {
-            text-align: center;
-            width: 100%;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        .footer-info {
-            margin-top: 10px;
-            font-size: 0.97em;
-            color: #bbb;
-        }
-        .footer-social {
-            margin-top: 8px;
-        }
-        .footer-social a {
-            color: #fff;
-            margin: 0 8px;
-            font-size: 1.3em;
-            text-decoration: none;
-            transition: color 0.2s;
-        }
-        .footer-social a:hover {
-            color: var(--cor-btn);
-        }
-        /* WhatsApp Button */
-        .whatsapp-float {
-            position: fixed;
-            bottom: 24px;
-            right: 24px;
-            z-index: 999;
-        }
-        .whatsapp-float a {
-            background: #25d366;
-            color: #fff;
-            border-radius: 50%;
-            width: 62px;
-            height: 62px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2.2em;
-            box-shadow: 0 4px 16px #25d36655;
-            text-decoration: none;
-            transition: background 0.2s;
-        }
-        .whatsapp-float a:hover {
-            background: #128c7e;
-        }
-        /* Carrinho Modal e Botão Flutuante */
-        .cart-btn-float {
-            position: fixed;
-            bottom: 100px;
-            right: 24px;
-            background: var(--cor-btn);
-            color: var(--cor-btn-text);
-            border: none;
-            border-radius: 50%;
-            width: 62px;
-            height: 62px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2.2em;
-            box-shadow: 0 4px 16px #d9042922;
-            cursor: pointer;
-            z-index: 1001;
-            transition: background 0.2s;
-        }
-        .cart-btn-float:hover {
-            background: var(--cor-btn-hover);
-        }
-        .cart-count {
-            position: absolute;
-            top: 8px;
-            right: 8px;
+        .app-guide {
             background: #fff;
-            color: var(--cor-btn);
-            border-radius: 50%;
-            font-size: 0.9em;
-            width: 22px;
-            height: 22px;
+            border-left: 5px solid #4f8cff;
+            border-radius: 12px;
+            padding: 1.5rem 2rem;
+            margin: 2rem 0 2.5rem 0;
+            color: #162d3a;
+            font-size: 1.08rem;
+            box-shadow: 0 2px 12px #0001;
+        }
+        .app-guide h2 {
+            font-size: 1.35rem;
+            margin-bottom: .7rem;
+            color: #4f8cff;
+        }
+        .app-guide ul {
+            margin: .7rem 0 0 1.2rem;
+            padding: 0;
+            list-style: disc;
+        }
+        .app-guide li {
+            margin-bottom: .5rem;
+        }
+        .section-title {
+            font-size: 1.5rem;
+            color: #4f8cff;
+            margin-bottom: .7rem;
+            font-weight: 700;
+        }
+        .section-desc {
+            color: #555;
+            font-size: 1.08rem;
+            margin-bottom: 1.5rem;
+        }
+        header {
+            background: #fff;
+            padding: 2rem 2rem 1rem 2rem;
+            box-shadow: 0 2px 8px #0001;
+            border-radius: 12px 12px 0 0;
+        }
+        header h1 {
+            font-size: 2.1rem;
+            color: #162d3a;
+            font-weight: 700;
+        }
+        header p {
+            font-size: 1.1rem;
+            color: #222;
+            opacity: .7;
+            margin-top: .3rem;
+        }
+        .period-selector {
             display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            border: 2px solid var(--cor-btn);
-        }
-        .modal-carrinho-bg {
-            display: none;
-            position: fixed;
-            z-index: 9999;
-            left: 0; top: 0; width: 100vw; height: 100vh;
-            background: rgba(0,0,0,0.45);
-            justify-content: center;
+            gap: 1.2rem;
+            margin: 2rem 0 1.2rem 0;
             align-items: center;
         }
-        .modal-carrinho-bg.aberto {
-            display: flex;
-        }
-        .modal-carrinho {
-            background: var(--cor-card);
-            color: var(--cor-texto);
-            border-radius: 18px;
-            box-shadow: 0 8px 32px #0007;
-            width: 98vw;
-            max-width: 440px;
-            padding: 36px 28px 28px 28px;
-            position: relative;
-            animation: fadeIn 0.3s;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: scale(0.95);}
-            to { opacity: 1; transform: scale(1);}
-        }
-        .modal-carrinho h3 {
-            font-size: 1.4em;
-            font-weight: 800;
-            margin-bottom: 18px;
+        .period-card {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px #0001;
+            padding: 1rem 2.2rem;
             text-align: center;
-            color: var(--cor-btn);
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: #162d3a;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: border .2s, background .2s;
+            min-width: 110px;
+            position: relative;
         }
-        .modal-carrinho .fechar-modal {
-            position: absolute;
-            top: 12px; right: 18px;
+        .period-card.active {
+            background: #162d3a;
+            color: #fff;
+            border: 2px solid #4f8cff;
+        }
+        .period-card .trend {
+            font-size: .95rem;
+            margin-top: .5rem;
+            display: flex;
+            justify-content: center;
+            gap: .7rem;
+        }
+        .period-card .trend .up { color: #43cea2; }
+        .period-card .trend .down { color: #ff7e5f; }
+        .period-arrow {
             background: none;
             border: none;
-            font-size: 1.7em;
-            color: var(--cor-btn);
+            font-size: 1.5rem;
+            color: #4f8cff;
             cursor: pointer;
+            margin: 0 .5rem;
         }
-        .carrinho-lista {
-            margin-bottom: 18px;
-            max-height: 180px;
-            overflow-y: auto;
+        .dashboard-section {
+            background: #fff;
+            border-radius: 0 0 14px 14px;
+            box-shadow: 0 2px 12px #0001;
+            padding: 2rem;
+            margin: 0 0 2rem 0;
         }
-        .carrinho-item {
+        .dashboard-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #162d3a;
+            margin-bottom: 1rem;
+        }
+        .moment-summary {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        .moment-card {
+            flex: 1;
+            background: #eafaf1;
+            border-radius: 10px;
+            padding: 1.2rem 1.5rem;
+            color: #162d3a;
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            border-bottom: 1px solid #333;
-            padding: 8px 0;
-            font-size: 1em;
+            gap: 1rem;
+            font-size: 1.1rem;
+            box-shadow: 0 1px 6px #0001;
+            transition: box-shadow .2s, transform .2s;
         }
-        .carrinho-item-nome {
-            flex: 1;
-            font-weight: 500;
+        .moment-card.saida {
+            background: #faeaea;
+            color: #b71c1c;
         }
-        .carrinho-item-preco {
-            color: var(--cor-btn);
-            font-weight: 700;
-            margin-left: 12px;
+        .moment-card:hover {
+            box-shadow: 0 4px 16px #4f8cff22;
+            transform: translateY(-2px) scale(1.03);
         }
-        .carrinho-item-remove {
-            background: none;
-            border: none;
-            color: #888;
-            font-size: 1.2em;
-            cursor: pointer;
-            margin-left: 8px;
-        }
-        .carrinho-total {
-            font-size: 1.15em;
-            font-weight: 800;
-            color: var(--cor-btn);
-            text-align: right;
-            margin-bottom: 18px;
-        }
-        .carrinho-btn {
-            background: var(--cor-btn);
-            color: var(--cor-btn-text);
-            border: none;
-            border-radius: 24px;
-            padding: 12px 0;
-            width: 100%;
-            font-size: 1.08em;
-            font-weight: 700;
-            cursor: pointer;
-            margin-top: 10px;
-            transition: background 0.2s;
-        }
-        .carrinho-btn:hover {
-            background: var(--cor-btn-hover);
-        }
-        .carrinho-form input {
-            width: 100%;
-            padding: 8px 10px;
-            margin-bottom: 10px;
-            border-radius: 8px;
-            border: 1.5px solid var(--cor-borda);
-            background: #18191a;
-            color: var(--cor-texto);
-            font-size: 1em;
-        }
-        .carrinho-form label {
-            font-size: 1em;
-            color: var(--cor-cinza);
+        .moment-card .label {
             font-weight: 600;
         }
-        .carrinho-confirmacao {
-            text-align: center;
-            margin-bottom: 18px;
+        .moment-card .value {
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-left: auto;
         }
-        /* Modal Produto */
-        .modal-produto-bg {
-            display: none;
-            position: fixed;
-            z-index: 10002;
-            left: 0; top: 0; width: 100vw; height: 100vh;
-            background: rgba(0,0,0,0.55);
-            justify-content: center;
+        .saldo-card {
+            background: #f4f6fb;
+            border-radius: 10px;
+            padding: 1.2rem 1.5rem;
+            color: #162d3a;
+            display: flex;
             align-items: center;
+            gap: 1rem;
+            font-size: 1.1rem;
+            box-shadow: 0 1px 6px #0001;
+            margin-bottom: 1rem;
         }
-        .modal-produto-bg.aberto {
+        .saldo-card .label {
+            font-weight: 600;
+        }
+        .saldo-card .value {
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-left: auto;
+        }
+        .info-text {
+            font-size: .95rem;
+            color: #162d3a;
+            opacity: .7;
+            margin-top: 1.2rem;
+        }
+        .dashboard-charts-row {
             display: flex;
-        }
-        .modal-produto {
-            background: var(--cor-card);
-            color: var(--cor-texto);
-            border-radius: 18px;
-            box-shadow: 0 8px 32px #0007;
-            width: 98vw;
-            max-width: 700px;
-            padding: 36px 28px 28px 28px;
-            position: relative;
-            animation: fadeIn 0.3s;
-            display: flex;
-            flex-direction: column;
-        }
-        .modal-produto .fechar-modal {
-            position: absolute;
-            top: 12px; right: 18px;
-            background: none;
-            border: none;
-            font-size: 1.7em;
-            color: var(--cor-btn);
-            cursor: pointer;
-        }
-        .modal-produto-conteudo {
-            display: flex;
-            gap: 32px;
+            gap: 2rem;
+            margin-top: 2rem;
             flex-wrap: wrap;
         }
-        .modal-produto-fotos {
-            flex: 1.2;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-width: 220px;
+        .dashboard-chart {
+            background: #fff;
+            border-radius: 14px;
+            box-shadow: 0 2px 12px #0001;
+            padding: 1.2rem;
+            flex: 1 1 320px;
+            min-width: 320px;
+            max-width: 480px;
         }
-        .modal-produto-img {
-            width: 260px;
-            height: 180px;
-            object-fit: contain;
-            border-radius: 10px;
-            background: #222;
-            margin-bottom: 12px;
-            box-shadow: 0 2px 12px #0004;
+        .dashboard-chart canvas {
+            width: 100% !important;
+            height: 260px !important;
         }
-        .modal-produto-thumbs {
-            display: flex;
-            gap: 8px;
-            justify-content: center;
-        }
-        .modal-produto-thumb {
-            width: 48px;
-            height: 36px;
-            object-fit: contain;
-            border-radius: 6px;
-            border: 2px solid transparent;
+        .dashboard-report-btn {
+            background: #4f8cff;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            padding: .7rem 1.3rem;
+            font-size: 1rem;
+            font-weight: 600;
             cursor: pointer;
-            background: #222;
-            transition: border 0.2s;
+            margin-top: 1.2rem;
+            transition: background .2s;
+            float: right;
         }
-        .modal-produto-thumb.selected {
-            border: 2px solid var(--cor-btn);
+        .dashboard-report-btn:hover {
+            background: #43cea2;
         }
-        .modal-produto-info {
-            flex: 2;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            gap: 10px;
-            min-width: 220px;
+        /* Visual extra para botões principais */
+        #btnAbrirModalReceita, #btnAbrirModalDespesa {
+            box-shadow: 0 2px 12px #4f8cff22;
+            font-size: 1.13rem;
+            letter-spacing: .01em;
         }
-        .modal-produto-marca {
-            font-size: 1em;
-            color: var(--cor-cinza);
-            font-weight: 500;
+        #btnAbrirModalReceita:hover {
+            background: #2ec4a6;
         }
-        .modal-produto-nome {
-            font-size: 1.3em;
-            font-weight: 700;
-            color: var(--cor-preto);
-        }
-        .modal-produto-preco {
-            font-size: 1.15em;
-            font-weight: 800;
-            color: var(--cor-btn);
-            margin-bottom: 8px;
-        }
-        .modal-produto-desc {
-            font-size: 1em;
-            color: var(--cor-texto);
-            margin-bottom: 10px;
-        }
-        @media (max-width: 700px) {
-            .modal-produto {
-                max-width: 98vw;
-                padding: 18px 6px 12px 6px;
-            }
-            .modal-produto-conteudo {
-                flex-direction: column;
-                gap: 18px;
-                align-items: center;
-            }
-            .modal-produto-fotos, .modal-produto-info {
-                min-width: 0;
-                width: 100%;
-            }
-            .modal-produto-img {
-                width: 98vw;
-                max-width: 320px;
-            }
-        }
-        /* Responsivo */
-        @media (max-width: 1200px) {
-            .topo-inner, .banner-content, .catalogo {
-                max-width: 98vw;
-            }
+        #btnAbrirModalDespesa:hover {
+            background: #e94e3c;
         }
         @media (max-width: 900px) {
-            .topo-inner, .banner-content, .catalogo {
-                padding-left: 8px;
-                padding-right: 8px;
-            }
-            .banner-content { flex-direction: column; align-items: flex-start; gap: 18px; }
-            .banner-img { width: 100%; }
-            .banner-img.mobile-top { order: -1; margin-bottom: 12px; }
-            .banner-img img { max-width: 98vw; }
-            .banner-text { width: 100%; }
-            .catalogo { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; }
-            .card-moto { max-width: 98vw; }
+            .main-content { padding: 0; }
+            .dashboard-section { margin: 0 0 1.2rem 0; padding: 1rem; }
+            .dashboard-charts-row { flex-direction: column; gap: 1.2rem; }
+            .dashboard-chart { min-width: 0; max-width: 100%; }
+            .moment-summary { flex-direction: column; gap: 1rem; }
         }
         @media (max-width: 700px) {
-            .topo-inner { flex-direction: column; gap: 10px; padding: 10px 4vw; }
-            .menu { gap: 18px; flex-wrap: wrap; }
-            .busca { margin-left: 0; width: 100%; }
-            .banner-content { flex-direction: column; gap: 12px; padding: 18px 4vw; }
-            .banner-img { width: 100%; }
-            .banner-img.mobile-top { order: -1; margin-bottom: 12px; }
-            .banner-img img { max-width: 95vw; }
-            .banner-text { width: 100%; }
-            .catalogo { grid-template-columns: 1fr; gap: 14px; }
-            .card-moto { max-width: 98vw; }
-            .filtros-catalogo { flex-direction: column; gap: 12px; padding: 12px 4vw; }
+            body {
+                font-size: 0.97rem;
+            }
+            .main-content {
+                padding: 0 0.2rem 1rem 0.2rem;
+                margin: 1rem auto 0 auto;
+            }
+            .main-title {
+                font-size: 1.3rem;
+                gap: 0.5rem;
+                margin-bottom: 0.3rem;
+                justify-content: center;
+            }
+            .main-user {
+                font-size: 0.98rem;
+                margin-bottom: 1rem;
+                text-align: center;
+            }
+            .app-guide {
+                padding: 1rem 0.7rem;
+                margin: 1rem 0 1.2rem 0;
+                font-size: 0.97rem;
+                border-radius: 8px;
+            }
+            header {
+                padding: 1rem 0.5rem 0.7rem 0.5rem;
+                border-radius: 8px 8px 0 0;
+            }
+            header h1 {
+                font-size: 1.3rem;
+                text-align: center;
+            }
+            header p {
+                font-size: 0.98rem;
+                text-align: center;
+            }
+            .period-selector {
+                gap: 0.3rem;
+                margin: 1rem 0 0.7rem 0;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .period-card {
+                padding: 0.5rem 0.7rem;
+                font-size: 0.93rem;
+                min-width: 70px;
+                border-radius: 7px;
+            }
+            .dashboard-section {
+                padding: 0.7rem;
+                margin: 0 0 1rem 0;
+                border-radius: 0 0 8px 8px;
+            }
+            .dashboard-title {
+                font-size: 1.05rem;
+                margin-bottom: 0.7rem;
+                text-align: center;
+            }
+            .moment-summary {
+                flex-direction: column;
+                gap: 0.7rem;
+                margin-bottom: 1.2rem;
+            }
+            .moment-card {
+                padding: 0.8rem 1rem;
+                font-size: 0.98rem;
+                border-radius: 7px;
+            }
+            .saldo-card {
+                padding: 0.8rem 1rem;
+                font-size: 0.98rem;
+                border-radius: 7px;
+            }
+            .dashboard-charts-row {
+                flex-direction: column;
+                gap: 0.7rem;
+                margin-top: 1rem;
+            }
+            .dashboard-chart {
+                min-width: 0;
+                max-width: 100%;
+                padding: 0.7rem;
+                border-radius: 7px;
+            }
+            .dashboard-chart canvas {
+                height: 180px !important;
+            }
+            #btnAbrirModalReceita, #btnAbrirModalDespesa {
+                padding: 0.7rem 1rem;
+                font-size: 1rem;
+                border-radius: 7px;
+            }
+            .info-text {
+                font-size: 0.9rem;
+                margin-top: 0.7rem;
+                text-align: center;
+            }
+            table {
+                font-size: 0.93rem;
+            }
+            th, td {
+                padding: 0.5rem 0.3rem !important;
+            }
+            .dashboard-report-btn {
+                padding: 0.5rem 1rem;
+                font-size: 0.95rem;
+                border-radius: 7px;
+                float: none;
+                display: block;
+                margin: 1rem auto 0 auto;
+            }
+            /* Modais */
+            #modalReceita > div,
+            #modalDespesa > div,
+            #modalGasto > div {
+                max-width: 98vw;
+                padding: 1rem 0.7rem;
+                border-radius: 8px;
+            }
+            #modalReceita h2,
+            #modalDespesa h2,
+            #modalGasto h2 {
+                font-size: 1.05rem;
+            }
+            #modalReceita form > div,
+            #modalDespesa form > div,
+            #modalGasto form > div {
+                gap: 0.5rem;
+            }
+            #modalReceita input,
+            #modalDespesa input,
+            #modalGasto input,
+            #modalReceita select,
+            #modalDespesa select,
+            #modalGasto select {
+                font-size: 0.97rem;
+                padding: 0.5rem;
+                border-radius: 6px;
+            }
+            #modalReceita button,
+            #modalDespesa button,
+            #modalGasto button {
+                font-size: 1rem;
+                padding: 0.7rem 0;
+                border-radius: 6px;
+            }
         }
-        @media (max-width: 500px) {
-            .topo-inner, .banner-content, .catalogo, .filtros-catalogo { padding-left: 2vw; padding-right: 2vw; }
-            .banner-text h1 { font-size: 1.5em; }
-            .banner-text p { font-size: 1em; }
-            .banner-img img { max-width: 95vw; }
-            .card-moto { padding: 10px 6px 14px 6px; }
-            .modal-produto { padding: 10px 2vw 10px 2vw; }
-        }
+        /* ...existing code... */
     </style>
 </head>
 <body>
-    <div class="topo">
-        <div class="topo-inner">
-            <div class="logo">
-                <img src="img/moto.png" alt="Logo Mundo das Motos" style="height:64px;max-width:90px;width:auto;">
-                <span style="font-size:1.5em;">Mundo das Motos</span>
-            </div>
-            <span style="margin-right:18px;"></span>
-            <nav class="menu">
-                <a href="#"></a>
-                <a href="#"></a>
-                <a href="#"></a>
-                <a href="#"></a>
-            </nav>
-            <div class="busca">
-                <input type="text" placeholder="Buscar produtos, marcas e mais..." />
-            </div>
+    <div class="main-content">
+        <!-- Guia do App -->
+        <div class="app-guide">
+            <h2>Bem-vindo ao GestãoPRO!</h2>
+            <p>Este sistema foi criado para facilitar o controle financeiro da sua empresa. Siga os passos abaixo para usar cada função:</p>
+            <ul>
+                <li><b>Receitas:</b> Cadastre e visualize todos os recebimentos. Clique em <b>Nova Receita</b> para adicionar um novo lançamento.</li>
+                <li><b>Despesas:</b> Cadastre e acompanhe todos os gastos. Clique em <b>Nova Despesa</b> para registrar um novo gasto.</li>
+                <li><b>Gráficos:</b> Analise visualmente a evolução financeira, categorias de gastos e receitas.</li>
+                <li><b>Relatórios:</b> Gere relatórios detalhados e exporte para PDF.</li>
+            </ul>
+            <p style="margin-top:1.2rem;color:#4f8cff;"><b>Dica:</b> Use os botões de <span style="color:#43cea2;">Nova Receita</span> e <span style="color:#ff7e5f;">Nova Despesa</span> para registrar movimentações rapidamente!</p>
         </div>
-    </div>
-    <div class="banner">
-        <div class="banner-content">
-            <div class="banner-img" id="banner-img">
-                <img src="img/banner.png" alt="Banner Moto">
-            </div>
-            <div class="banner-text">
-                <h1>Acelere seu sonho!</h1>
-                <p>As melhores peças e o melhor suporte do Brasil. Confira nosso catálogo e encontre o que precisa.</p>
-                <div style="display:flex;align-items:center;gap:18px;">
-                    </a>
+        <!-- Dashboard -->
+        <section id="dashboard" class="active">
+            <header>
+                <h1>Olá, Webtec</h1>
+                <p>Aqui está uma visão geral da Nenhuma empresa selecionada:</p>
+                <div class="period-selector" id="periodSelector">
+                    <!-- Cards de período serão inseridos via JS -->
+                </div>
+            </header>
+            <div class="dashboard-section">
+                <div style="display:flex;gap:1.2rem;margin-bottom:2rem;">
+                    <button id="btnAbrirModalReceita" style="background:#43cea2;color:#fff;border:none;border-radius:8px;padding:.9rem 2rem;font-size:1.1rem;font-weight:600;cursor:pointer;box-shadow:0 1px 6px #0001;display:flex;align-items:center;gap:.7rem;">
+                        <span style="font-size:1.3rem;">&#43;</span> Nova Entrada (Receita)
+                    </button>
+                    <button id="btnAbrirModalDespesa" style="background:#ff7e5f;color:#fff;border:none;border-radius:8px;padding:.9rem 2rem;font-size:1.1rem;font-weight:600;cursor:pointer;box-shadow:0 1px 6px #0001;display:flex;align-items:center;gap:.7rem;">
+                        <span style="font-size:1.3rem;">&#43;</span> Nova Saída (Despesa)
+                    </button>
+                </div>
+                <div class="dashboard-title" id="dashboardTitle">Até o momento</div>
+                <div class="moment-summary">
+                    <div class="moment-card entrada" id="btnDashboardEntrada" style="cursor:pointer;">
+                        <span class="label" style="color:#43cea2;">&#8593; Entrou</span>
+                        <span class="desc">Receitas</span>
+                        <span class="value" id="valorEntrou">R$ 0,00</span>
+                    </div>
+                    <div class="moment-card saida" id="btnDashboardSaida" style="cursor:pointer;">
+                        <span class="label" style="color:#ff7e5f;">&#8595; Saiu</span>
+                        <span class="desc">Despesas</span>
+                        <span class="value" id="valorSaiu">R$ 0,00</span>
+                    </div>
+                
+
+        </section>
+        <!-- Receitas -->
+        <section id="receitas">
+            <header>
+                <h1>Receitas</h1>
+                <p>Visualize e gerencie todas as receitas da empresa.</p>
+            </header>
+            <div class="dashboard-section">
+                <div class="dashboard-chart" style="max-width:100%;">
+                    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.7rem;">
+                        <h3 style="font-size:1.3rem;margin:0;">Recebimentos</h3>
+                        <button id="btnNovaReceita" style="background:#43cea2;color:#fff;border:none;border-radius:6px;padding:.7rem 1.5rem;font-weight:600;cursor:pointer;font-size:1rem;box-shadow:0 1px 6px #0001;">
+                            <span style="font-size:1.3rem;">&#43;</span> Nova Receita
+                        </button>
+                    </div>
+                    <div style="display:flex;gap:2rem;flex-wrap:wrap;margin-bottom:1.2rem;">
+                        <div style="flex:1;min-width:180px;background:#f4f6fb;border-radius:10px;padding:1.2rem 1.5rem;display:flex;align-items:center;gap:1rem;box-shadow:0 1px 6px #0001;">
+                            <span style="font-size:2rem;color:#43cea2;">&#128176;</span>
+                            <div>
+                                <div style="font-size:.98rem;color:#888;">Média Recebida</div>
+                                <div style="font-size:1.2rem;font-weight:600;" id="recebimentosMedia2">R$ 0,00</div>
+                            </div>
+                        </div>
+                        <div style="flex:1;min-width:180px;background:#f4f6fb;border-radius:10px;padding:1.2rem 1.5rem;display:flex;align-items:center;gap:1rem;box-shadow:0 1px 6px #0001;">
+                            <span style="font-size:2rem;color:#4f8cff;">&#9776;</span>
+                            <div>
+                                <div style="font-size:.98rem;color:#888;">Total de Recebimentos</div>
+                                <div style="font-size:1.2rem;font-weight:600;" id="recebimentosTotal2">0</div>
+                            </div>
+                        </div>
+                        <div style="flex:1;min-width:180px;background:#f4f6fb;border-radius:10px;padding:1.2rem 1.5rem;display:flex;align-items:center;gap:1rem;box-shadow:0 1px 6px #0001;">
+                            <span style="font-size:2rem;color:#43cea2;">&#128200;</span>
+                            <div>
+                                <div style="font-size:.98rem;color:#888;">Valor Total Recebido</div>
+                                <div style="font-size:1.2rem;font-weight:600;" id="recebimentosValorTotal2">R$ 0,00</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="background:#f4f6fb;border-radius:10px;padding:1.2rem 1rem;box-shadow:0 1px 6px #0001;">
+                        <div style="font-size:1.1rem;font-weight:600;margin-bottom:.7rem;">Recebimentos</div>
+                        <div style="font-size:.98rem;color:#888;margin-bottom:.7rem;">
+                            Lista de todos os recebimentos realizados no período selecionado.
+                        </div>
+                        <div style="overflow-x:auto;">
+                            <table style="width:100%;border-collapse:collapse;background:#fff;">
+                                <thead>
+                                    <tr style="background:#f4f6fb;">
+                                        <th style="padding:.7rem .5rem;">Data</th>
+                                        <th style="padding:.7rem .5rem;">Cliente</th>
+                                        <th style="padding:.7rem .5rem;">Categoria</th>
+                                        <th style="padding:.7rem .5rem;">Detalhes</th>
+                                        <th style="padding:.7rem .5rem;">Forma de Recebimento</th>
+                                        <th style="padding:.7rem .5rem;">Valor</th>
+                                        <th style="padding:.7rem .5rem;">Ações</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="recebimentosTable2">
+                                    <tr>
+                                        <td colspan="7" style="text-align:center;color:#bbb;padding:2.5rem 0;">
+                                            <span style="font-size:2.2rem;">&#128166;</span><br>
+                                            Nada por aqui...
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
-
-    <!-- Banner Correios -->
-<div style="width:100%;background:linear-gradient(90deg,#ffd600 0%,#fffde7 100%);box-shadow:0 2px 12px #0002;margin-bottom:28px;display:flex;align-items:center;justify-content:center;padding:18px 0 14px 0;gap:18px;">
-	<img src="img/mundodasmotos/correios.png" alt="Correios" style="height:48px;width:auto;display:inline-block;margin-right:18px;">
-    <div style="color:#23272a;font-size:1.18em;font-weight:600;letter-spacing:0.5px;">
-        <span style="display:inline-block;vertical-align:middle;">
-            <span style="font-size:1.25em;">&#128230;</span>
-            Seu produto será enviado com <b>segurança</b> e <b>transparência</b> via <span style="color:#1976d2;">Correios</span>! <br>
-            <span style="font-size:0.97em;color:#555;">Acompanhe o rastreio e receba no conforto da sua casa.</span>
-        </span>
-    </div>
-</div>
-
-    <div class="categorias-menu">
-        <span class="categorias-menu-title">Categorias:</span>
-        <div class="categorias-lista">
-            <button class="categoria-btn active" onclick="filtrarCategoria('todas')">Todas</button>
-            
-            <!-- Adicione mais categorias se desejar -->
-        </div>
-    </div>
-
-    <div class="catalogo" id="catalogo">
-        <div class="card-moto">
-            <div class="img-area">
-                <img src="img/mundodasmotos/junta.png" alt="Junta Cabeçote">
+            <!-- Modal Nova Receita -->
+            <div id="modalReceita" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:#0008;z-index:999;align-items:center;justify-content:center;">
+                <div style="background:#fff;border-radius:12px;max-width:420px;width:95vw;padding:2rem 1.5rem;box-shadow:0 4px 24px #0003;position:relative;">
+                    <button id="btnFecharModalReceita" style="position:absolute;top:1rem;right:1rem;background:none;border:none;font-size:1.5rem;color:#888;cursor:pointer;">&times;</button>
+                    <h2 style="font-size:1.3rem;margin-bottom:1.2rem;color:#162d3a;">Nova Receita</h2>
+                    <form id="formNovaReceita" autocomplete="off">
+                        <div style="display:flex;flex-direction:column;gap:.8rem;">
+                            <input type="text" id="receitaCliente" placeholder="Cliente" required style="padding:.7rem;border-radius:6px;border:1px solid #b6d0ff;font-size:1rem;">
+                            <input type="text" id="receitaCategoria" placeholder="Categoria" required style="padding:.7rem;border-radius:6px;border:1px solid #b6d0ff;font-size:1rem;">
+                            <input type="text" id="receitaDetalhes" placeholder="Detalhes" style="padding:.7rem;border-radius:6px;border:1px solid #b6d0ff;font-size:1rem;">
+                            <input type="text" id="receitaForma" placeholder="Forma de Recebimento" style="padding:.7rem;border-radius:6px;border:1px solid #b6d0ff;font-size:1rem;">
+                            <input type="number" id="receitaValor" placeholder="Valor (R$)" min="0.01" step="0.01" required style="padding:.7rem;border-radius:6px;border:1px solid #b6d0ff;font-size:1rem;">
+                            <input type="date" id="receitaData" required style="padding:.7rem;border-radius:6px;border:1px solid #b6d0ff;font-size:1rem;">
+                            <button type="submit" style="background:#43cea2;color:#fff;border:none;border-radius:6px;padding:.8rem 0;font-size:1.1rem;font-weight:600;cursor:pointer;margin-top:.5rem;">Salvar Receita</button>
+                        </div>
+                    </form>
+                </div>
             </div>
-            <div class="selo destaque">Destaque</div>
-            <div class="marca">KMP</div>
-            <div class="nome">JUNTA CABEÇOTE BIZ 125/2006</div>
-            <div class="preco">R$ 10.00</div>
-            <a href="https://ev.braip.com/checkout/pla89vz2/chejx549" class="btn-detalhes" target="_blank" rel="noopener" onclick="event.stopPropagation();">Comprar</a>
+        </section>
+        <!-- Despesas -->
+        <section id="despesas">
+            <header>
+                <h1>Despesas</h1>
+                <p>Visualize e gerencie todos os gastos da empresa.</p>
+            </header>
+            <div class="dashboard-section">
+                <div class="dashboard-chart" style="max-width:100%;">
+                    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.7rem;">
+                        <h3 style="font-size:1.3rem;margin:0;">Contas a Pagar</h3>
+                        <button id="btnNovaDespesa" style="background:#ff7e5f;color:#fff;border:none;border-radius:6px;padding:.7rem 1.5rem;font-weight:600;cursor:pointer;font-size:1rem;box-shadow:0 1px 6px #0001;">
+                            <span style="font-size:1.3rem;">&#43;</span> Nova Despesa
+                        </button>
+                    </div>
+                    <div style="display:flex;gap:2rem;flex-wrap:wrap;margin-bottom:1.2rem;">
+                        <div style="flex:1;min-width:180px;background:#f4f6fb;border-radius:10px;padding:1.2rem 1.5rem;display:flex;align-items:center;gap:1rem;box-shadow:0 1px 6px #0001;">
+                            <span style="font-size:2rem;color:#4f8cff;">&#128200;</span>
+                            <div>
+                                <div style="font-size:.98rem;color:#888;">Média</div>
+                                <div style="font-size:1.2rem;font-weight:600;" id="contasMedia2">R$ 0,00</div>
+                            </div>
+                        </div>
+                        <div style="flex:1;min-width:180px;background:#f4f6fb;border-radius:10px;padding:1.2rem 1.5rem;display:flex;align-items:center;gap:1rem;box-shadow:0 1px 6px #0001;">
+                            <span style="font-size:2rem;color:#4f8cff;">&#9776;</span>
+                            <div>
+                                <div style="font-size:.98rem;color:#888;">Total de Lançamentos</div>
+                                <div style="font-size:1.2rem;font-weight:600;" id="contasTotal2">0</div>
+                            </div>
+                        </div>
+                        <div style="flex:1;min-width:180px;background:#f4f6fb;border-radius:10px;padding:1.2rem 1.5rem;display:flex;align-items:center;gap:1rem;box-shadow:0 1px 6px #0001;">
+                            <span style="font-size:2rem;color:#43cea2;">&#128176;</span>
+                            <div>
+                                <div style="font-size:.98rem;color:#888;">Valor Total</div>
+                                <div style="font-size:1.2rem;font-weight:600;" id="contasValorTotal2">R$ 0,00</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="background:#f4f6fb;border-radius:10px;padding:1.2rem 1rem;box-shadow:0 1px 6px #0001;">
+                        <div style="font-size:1.1rem;font-weight:600;margin-bottom:.7rem;">Contas a Pagar</div>
+                        <div style="font-size:.98rem;color:#888;margin-bottom:.7rem;">
+                            Uma lista com todos os Lançamentos de Gastos cadastrados com a data de vencimento posterior a data atual.
+                        </div>
+                        <div style="overflow-x:auto;">
+                            <table style="width:100%;border-collapse:collapse;background:#fff;">
+                                <thead>
+                                    <tr style="background:#f4f6fb;">
+                                        <th style="padding:.7rem .5rem;">Data</th>
+                                        <th style="padding:.7rem .5rem;">Empresa</th>
+                                        <th style="padding:.7rem .5rem;">Banco</th>
+                                        <th style="padding:.7rem .5rem;">Categoria</th>
+                                        <th style="padding:.7rem .5rem;">Detalhes</th>
+                                        <th style="padding:.7rem .5rem;">Fornecedor</th>
+                                        <th style="padding:.7rem .5rem;">Forma de Pagamento</th>
+                                        <th style="padding:.7rem .5rem;">Parcelas</th>
+                                        <th style="padding:.7rem .5rem;">Valor</th>
+                                        <th style="padding:.7rem .5rem;">Centro de Custo</th>
+                                        <th style="padding:.7rem .5rem;">Ações</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="contasPagarTable2">
+                                    <tr>
+                                        <td colspan="11" style="text-align:center;color:#bbb;padding:2.5rem 0;">
+                                            <span style="font-size:2.2rem;">&#128166;</span><br>
+                                            Nada por aqui...
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Modal Nova Despesa -->
+            <div id="modalDespesa" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:#0008;z-index:999;align-items:center;justify-content:center;">
+                <div style="background:#fff;border-radius:12px;max-width:420px;width:95vw;padding:2rem 1.5rem;box-shadow:0 4px 24px #0003;position:relative;">
+                    <button id="btnFecharModalDespesa" style="position:absolute;top:1rem;right:1rem;background:none;border:none;font-size:1.5rem;color:#888;cursor:pointer;">&times;</button>
+                    <h2 style="font-size:1.3rem;margin-bottom:1.2rem;color:#162d3a;">Nova Despesa</h2>
+                    <form id="formNovaDespesa" autocomplete="off">
+                        <div style="display:flex;flex-direction:column;gap:.8rem;">
+                            <input type="text" id="despesaEmpresa" placeholder="Empresa" required style="padding:.7rem;border-radius:6px;border:1px solid #b6d0ff;font-size:1rem;">
+                            <input type="text" id="despesaBanco" placeholder="Banco" style="padding:.7rem;border-radius:6px;border:1px solid #b6d0ff;font-size:1rem;">
+                            <input type="text" id="despesaCategoria" placeholder="Categoria" required style="padding:.7rem;border-radius:6px;border:1px solid #b6d0ff;font-size:1rem;">
+                            <input type="text" id="despesaDetalhes" placeholder="Detalhes" style="padding:.7rem;border-radius:6px;border:1px solid #b6d0ff;font-size:1rem;">
+                            <input type="text" id="despesaFornecedor" placeholder="Fornecedor" style="padding:.7rem;border-radius:6px;border:1px solid #b6d0ff;font-size:1rem;">
+                            <input type="text" id="despesaForma" placeholder="Forma de Pagamento" style="padding:.7rem;border-radius:6px;border:1px solid #b6d0ff;font-size:1rem;">
+                            <input type="text" id="despesaParcelas" placeholder="Parcelas" style="padding:.7rem;border-radius:6px;border:1px solid #b6d0ff;font-size:1rem;">
+                            <input type="number" id="despesaValor" placeholder="Valor (R$)" min="0.01" step="0.01" required style="padding:.7rem;border-radius:6px;border:1px solid #b6d0ff;font-size:1rem;">
+                            <input type="date" id="despesaData" required style="padding:.7rem;border-radius:6px;border:1px solid #b6d0ff;font-size:1rem;">
+                            <input type="text" id="despesaCentroCusto" placeholder="Centro de Custo" style="padding:.7rem;border-radius:6px;border:1px solid #b6d0ff;font-size:1rem;">
+                            <button type="submit" style="background:#ff7e5f;color:#fff;border:none;border-radius:6px;padding:.8rem 0;font-size:1.1rem;font-weight:600;cursor:pointer;margin-top:.5rem;">Salvar Despesa</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+        <!-- GRÁFICOS -->
+        <section id="graficos">
+            <header>
+                <h1>Gráficos</h1>
+                <p>Visualize os principais gráficos financeiros da empresa.</p>
+            </header>
+            <div class="dashboard-section">
+                <!-- Reaproveite os gráficos principais do dashboard -->
+                <div class="dashboard-charts-row">
+                    <div class="dashboard-chart">
+                        <canvas id="chartResumoGeral"></canvas>
+                    </div>
+                    <div class="dashboard-chart">
+                        <canvas id="chartCategoriasGeral"></canvas>
+                    </div>
+                    <div class="dashboard-chart">
+                        <canvas id="chartEvolucaoGeral"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- RELATÓRIOS -->
+        <section id="relatorios">
+            <header>
+                <h1>Relatórios</h1>
+                <p>Gere relatórios detalhados das movimentações financeiras.</p>
+            </header>
+            <div class="dashboard-section">
+                <button class="dashboard-report-btn" id="btnExportarPDF2" title="Exportar PDF">&#128462; Exportar PDF</button>
+                <div style="margin-top:2rem;color:#888;">Selecione filtros e gere relatórios personalizados.</div>
+            </div>
+        </section>
+        <!-- CONFIGURAÇÕES -->
+        <!--
+        <section id="configuracoes">
+            <header>
+                <h1>Configurações</h1>
+                <p>Personalize o sistema conforme as necessidades da sua empresa.</p>
+            </header>
+            <div class="dashboard-section">
+                <div style="color:#888;">Configurações do sistema em breve...</div>
+            </div>
+        </section>
+        -->
+        <!-- Modal de Lançamento de Gasto -->
+        <div id="modalGasto" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:#0008;z-index:999;align-items:center;justify-content:center;">
+            <div style="background:#fff;border-radius:12px;max-width:420px;width:95vw;padding:2rem 1.5rem;box-shadow:0 4px 24px #0003;position:relative;">
+                <button id="btnFecharModalGasto" style="position:absolute;top:1rem;right:1rem;background:none;border:none;font-size:1.5rem;color:#888;cursor:pointer;">&times;</button>
+                <h2 style="font-size:1.3rem;margin-bottom:1.2rem;color:#162d3a;">Novo Gasto</h2>
+                <form id="formNovoGasto" autocomplete="off">
+                    <div style="display:flex;flex-direction:column;gap:.8rem;">
+                        <input type="text" id="gastoDescricao" placeholder="Descrição" required style="padding:.7rem;border-radius:6px;border:1px solid #b6d0ff;font-size:1rem;">
+                        <input type="number" id="gastoValor" placeholder="Valor (R$)" min="0.01" step="0.01" required style="padding:.7rem;border-radius:6px;border:1px solid #b6d0ff;font-size:1rem;">
+                        <input type="date" id="gastoData" required style="padding:.7rem;border-radius:6px;border:1px solid #b6d0ff;font-size:1rem;">
+                        <select id="gastoCategoria" required style="padding:.7rem;border-radius:6px;border:1px solid #b6d0ff;font-size:1rem;">
+                            <option value="">Categoria</option>
+                            <option>Aluguel</option>
+                            <option>Salários</option>
+                            <option>Fornecedores</option>
+                            <option>Marketing</option>
+                            <option>Transporte</option>
+                            <option>Outros</option>
+                        </select>
+                        <button type="submit" style="background:#00bcd4;color:#fff;border:none;border-radius:6px;padding:.8rem 0;font-size:1.1rem;font-weight:600;cursor:pointer;margin-top:.5rem;">Salvar Gasto</button>
+                    </div>
+                </form>
+            </div>
         </div>
-        
+        <!-- Modal Nova Receita (customizado, popup centralizado e moderno) -->
+        <div id="modalReceitaCustom" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:#0007;z-index:1001;align-items:center;justify-content:center;">
+            <div style="background:#fff;border-radius:18px;max-width:380px;width:95vw;padding:2.2rem 1.5rem;box-shadow:0 8px 32px #0004;position:relative;display:flex;flex-direction:column;gap:1.2rem;">
+                <button id="btnFecharModalReceitaCustom" style="position:absolute;top:1rem;right:1rem;background:none;border:none;font-size:2rem;color:#888;cursor:pointer;">&times;</button>
+                <div style="display:flex;align-items:center;gap:.7rem;">
+                    <span style="font-size:2.1rem;color:#43cea2;">&#128176;</span>
+                    <h2 style="font-size:1.25rem;color:#162d3a;margin:0;">Nova Entrada (Receita)</h2>
+                </div>
+                <form id="formNovaReceitaCustom" autocomplete="off" style="display:flex;flex-direction:column;gap:.7rem;">
+                    <input type="text" id="receitaClienteCustom" placeholder="Cliente" required style="padding:.8rem;border-radius:7px;border:1px solid #b6d0ff;font-size:1rem;">
+                    <input type="text" id="receitaCategoriaCustom" placeholder="Categoria" required style="padding:.8rem;border-radius:7px;border:1px solid #b6d0ff;font-size:1rem;">
+                    <input type="text" id="receitaDetalhesCustom" placeholder="Detalhes" style="padding:.8rem;border-radius:7px;border:1px solid #b6d0ff;font-size:1rem;">
+                    <input type="text" id="receitaFormaCustom" placeholder="Forma de Recebimento" style="padding:.8rem;border-radius:7px;border:1px solid #b6d0ff;font-size:1rem;">
+                    <input type="number" id="receitaValorCustom" placeholder="Valor (R$)" min="0.01" step="0.01" required style="padding:.8rem;border-radius:7px;border:1px solid #b6d0ff;font-size:1rem;">
+                    <input type="date" id="receitaDataCustom" required style="padding:.8rem;border-radius:7px;border:1px solid #b6d0ff;font-size:1rem;">
+                    <button type="submit" style="background:#43cea2;color:#fff;border:none;border-radius:7px;padding:1rem 0;font-size:1.1rem;font-weight:600;cursor:pointer;margin-top:.5rem;transition:background .2s;">Salvar Entrada</button>
+                </form>
+            </div>
+        </div>
 
-    
-        <!-- BOTÃO WHATSAPP FIXO -->
-<!-- BOTÃO WHATSAPP FLUTUANTE PADRÃO -->
-<div class="whatsapp-float">
-    <a href="https://wa.me/5562995277435" target="_blank" aria-label="Fale conosco no WhatsApp">
-        <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M20.52 3.48A11.81 11.81 0 0012.07 0C5.52 0 .08 5.25 0 11.74a11.66 11.66 0 001.64 6L0 24l6.38-1.67a12.13 12.13 0 005.67 1.44h.05c6.56 0 11.9-5.25 11.96-11.74a11.69 11.69 0 00-3.54-8.55zM12.1 21.54a9.66 9.66 0 01-4.87-1.31l-.35-.21-3.78 1 1-3.67-.23-.38a9.55 9.55 0 01-1.48-5.15c.05-5.3 4.4-9.61 9.71-9.61a9.64 9.64 0 016.9 2.84 9.53 9.53 0 012.86 6.89c-.05 5.3-4.4 9.6-9.76 9.6zm5.45-7.23c-.3-.15-1.78-.88-2.06-.98s-.48-.15-.67.15-.77.97-.94 1.17-.35.22-.65.07a7.95 7.95 0 01-2.34-1.44 8.5 8.5 0 01-1.58-1.95c-.17-.3 0-.46.13-.61.14-.14.3-.35.44-.52s.2-.3.3-.5a.57.57 0 000-.53c-.08-.15-.67-1.62-.92-2.23-.24-.58-.5-.5-.67-.5l-.58-.01a1.1 1.1 0 00-.8.37 3.36 3.36 0 00-1.06 2.5c0 1.47 1.07 2.89 1.22 3.09.15.2 2.1 3.2 5.08 4.49 2.38 1 3.3 1.09 4.48.92.72-.1 2.18-.88 2.5-1.73a2.14 2.14 0 00.15-1.74c-.06-.13-.25-.2-.54-.35z"/>
-        </svg>
-    </a>
-</div>
+        <!-- MODAL NOVA ENTRADA (RECEITA) MODERNO -->
+        <div id="modalNovaEntrada" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:#0007;z-index:1002;align-items:center;justify-content:center;">
+            <div style="background:#fff;border-radius:18px;max-width:400px;width:95vw;padding:2.2rem 1.5rem;box-shadow:0 8px 32px #0004;position:relative;display:flex;flex-direction:column;gap:1.2rem;">
+                <button id="btnFecharModalNovaEntrada" style="position:absolute;top:1rem;right:1rem;background:none;border:none;font-size:2rem;color:#888;cursor:pointer;">&times;</button>
+                <div style="display:flex;align-items:center;gap:.7rem;">
+                    <span style="font-size:2.1rem;color:#43cea2;">&#43;</span>
+                    <h2 style="font-size:1.25rem;color:#162d3a;margin:0;">Nova Entrada (Receita)</h2>
+                </div>
+                <form id="formNovaEntrada" autocomplete="off" style="display:flex;flex-direction:column;gap:.7rem;">
+                    <input type="text" id="entradaCliente" placeholder="Cliente" required style="padding:.8rem;border-radius:7px;border:1px solid #b6d0ff;font-size:1rem;">
+                    <input type="text" id="entradaCategoria" placeholder="Categoria" required style="padding:.8rem;border-radius:7px;border:1px solid #b6d0ff;font-size:1rem;">
+                    <input type="text" id="entradaDetalhes" placeholder="Detalhes" style="padding:.8rem;border-radius:7px;border:1px solid #b6d0ff;font-size:1rem;">
+                    <input type="text" id="entradaForma" placeholder="Forma de Recebimento" style="padding:.8rem;border-radius:7px;border:1px solid #b6d0ff;font-size:1rem;">
+                    <input type="number" id="entradaValor" placeholder="Valor (R$)" min="0.01" step="0.01" required style="padding:.8rem;border-radius:7px;border:1px solid #b6d0ff;font-size:1rem;">
+                    <input type="date" id="entradaData" required style="padding:.8rem;border-radius:7px;border:1px solid #b6d0ff;font-size:1rem;">
+                    <button type="submit" style="background:#43cea2;color:#fff;border:none;border-radius:7px;padding:1rem 0;font-size:1.1rem;font-weight:600;cursor:pointer;margin-top:.5rem;transition:background .2s;">Salvar Entrada</button>
+                </form>
+            </div>
+        </div>
 
-
-    <footer>
-        <div class="footer-copyright">
-            &copy; 2026 Mundo das Motos - Catálogo
+        <!-- MODAL NOVA SAÍDA (DESPESA) MODERNO -->
+        <div id="modalNovaSaida" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:#0007;z-index:1002;align-items:center;justify-content:center;">
+            <div style="background:#fff;border-radius:18px;max-width:400px;width:95vw;padding:2.2rem 1.5rem;box-shadow:0 8px 32px #0004;position:relative;display:flex;flex-direction:column;gap:1.2rem;">
+                <button id="btnFecharModalNovaSaida" style="position:absolute;top:1rem;right:1rem;background:none;border:none;font-size:2rem;color:#888;cursor:pointer;">&times;</button>
+                <div style="display:flex;align-items:center;gap:.7rem;">
+                    <span style="font-size:2.1rem;color:#ff7e5f;">&#43;</span>
+                    <h2 style="font-size:1.25rem;color:#162d3a;margin:0;">Nova Saída (Despesa)</h2>
+                </div>
+                <form id="formNovaSaida" autocomplete="off" style="display:flex;flex-direction:column;gap:.7rem;">
+                    <input type="text" id="saidaEmpresa" placeholder="Empresa" required style="padding:.8rem;border-radius:7px;border:1px solid #b6d0ff;font-size:1rem;">
+                    <input type="text" id="saidaCategoria" placeholder="Categoria" required style="padding:.8rem;border-radius:7px;border:1px solid #b6d0ff;font-size:1rem;">
+                    <input type="text" id="saidaDetalhes" placeholder="Detalhes" style="padding:.8rem;border-radius:7px;border:1px solid #b6d0ff;font-size:1rem;">
+                    <input type="text" id="saidaFornecedor" placeholder="Fornecedor" style="padding:.8rem;border-radius:7px;border:1px solid #b6d0ff;font-size:1rem;">
+                    <input type="text" id="saidaForma" placeholder="Forma de Pagamento" style="padding:.8rem;border-radius:7px;border:1px solid #b6d0ff;font-size:1rem;">
+                    <input type="number" id="saidaValor" placeholder="Valor (R$)" min="0.01" step="0.01" required style="padding:.8rem;border-radius:7px;border:1px solid #b6d0ff;font-size:1rem;">
+                    <input type="date" id="saidaData" required style="padding:.8rem;border-radius:7px;border:1px solid #b6d0ff;font-size:1rem;">
+                    <button type="submit" style="background:#ff7e5f;color:#fff;border:none;border-radius:7px;padding:1rem 0;font-size:1.1rem;font-weight:600;cursor:pointer;margin-top:.5rem;transition:background .2s;">Salvar Saída</button>
+                </form>
+            </div>
         </div>
-        <div class="footer-info">
-            Rua Maria Maia da Silva, Qd11 Lt15, N27 - Petrolina/GO - Jardim Santa Paula<br>
-            mundodasmotospetro@gmail.com | (62) 995277435
-        </div>
-        <div class="footer-social">
-        <style>
-                .footer-social a {
-                    display: inline-flex;
-                    align-items: center;
-                    justify-content: center;
-                    width: 38px;
-                    height: 38px;
-                    margin: 0 6px;
-                    border-radius: 50%;
-                    background: linear-gradient(135deg, #23272a 60%, #18191a 100%);
-                    box-shadow: 0 2px 8px #0003;
-                    border: 2px solid transparent;
-                    transition: border 0.2s, transform 0.2s, box-shadow 0.2s, background 0.2s;
-                    position: relative;
-                    overflow: hidden;
-                }
-                .footer-social a svg {
-                    width: 22px;
-                    height: 22px;
-                    vertical-align: middle;
-                    filter: drop-shadow(0 1px 2px #0005);
-                    transition: filter 0.2s;
-                }
-                .footer-social a[title="Instagram"] {
-                    background: radial-gradient(circle at 70% 30%, #fdc468 0%, #e1306c 60%, #23272a 100%);
-                    border-color: #e1306c;
-                }
-                .footer-social a[title="Facebook"] {
-                    background: linear-gradient(135deg, #1877f3 60%, #23272a 100%);
-                    border-color: #1877f3;
-                }
-                .footer-social a[title="WhatsApp"] {
-                    background: linear-gradient(135deg, #25d366 60%, #23272a 100%);
-                    border-color: #25d366;
-                }
-                .footer-social a:hover {
-                    transform: scale(1.13) rotate(-3deg);
-                    box-shadow: 0 4px 16px #d9042940;
-                    border-color: var(--cor-btn);
-                    background: linear-gradient(135deg, var(--cor-btn) 60%, #23272a 100%);
-                }
-                .footer-social a:hover svg {
-                    filter: drop-shadow(0 2px 6px #d9042940);
-                }
-            </style>
-            <a href="https://www.instagram.com/mootorizados/" target="_blank" title="Instagram" style="vertical-align:middle;">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" style="vertical-align:middle;"><rect width="24" height="24" rx="6" fill="#E1306C"/><path d="M12 8.4A3.6 3.6 0 1 0 12 15.6A3.6 3.6 0 1 0 12 8.4Z" stroke="#fff" stroke-width="1.5"/><circle cx="17.2" cy="6.8" r="1.1" fill="#fff"/><rect x="4.5" y="4.5" width="15" height="15" rx="4.5" stroke="#fff" stroke-width="1.5"/></svg>
-            </a>
-            <a href="https://www.facebook.com/mundodasmotoss" target="_blank" title="Facebook" style="vertical-align:middle;">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" style="vertical-align:middle;"><rect width="24" height="24" rx="6" fill="#1877F3"/><path d="M16 8.5h-2a1 1 0 0 0-1 1v2h3l-.5 2H13v6h-2v-6H8.5v-2H11v-2a3 3 0 0 1 3-3h2v2Z" fill="#fff"/></svg>
-            </a>
-            <a href="https://wa.me/5562995277435" target="_blank" title="WhatsApp" style="vertical-align:middle;">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" style="vertical-align:middle;"><rect width="24" height="24" rx="6" fill="#25D366"/><path d="M12 5.5A6.5 6.5 0 0 0 5.5 12c0 1.14.3 2.22.82 3.14L5 19l3.98-1.28A6.5 6.5 0 1 0 12 5.5Zm0-1.5a8 8 0 0 1 6.32 12.97l1.18 3.54a1 1 0 0 1-1.27 1.27l-3.54-1.18A8 8 0 1 1 12 4Z" fill="#fff"/><path d="M16.13 13.47c-.2-.1-1.18-.58-1.36-.65-.18-.07-.31-.1-.44.1-.13.2-.5.65-.62.78-.12.13-.23.15-.43.05-.2-.1-.85-.31-1.62-.99-.6-.54-1-1.2-1.12-1.4-.12-.2-.01-.3.09-.4.09-.09.2-.23.3-.34.1-.11.13-.2.2-.33.07-.13.03-.25-.01-.35-.05-.1-.44-1.06-.6-1.45-.16-.39-.32-.34-.44-.35-.11-.01-.25-.01-.39-.01-.13 0-.34.05-.52.25-.18.2-.7.68-.7 1.66 0 .98.72 1.93.82 2.06.1.13 1.41 2.15 3.42 2.93.48.17.85.27 1.14.34.48.1.92.09 1.27.05.39-.06 1.18-.48 1.35-.95.17-.47.17-.87.12-.95-.05-.08-.18-.13-.38-.23Z" fill="#fff"/></svg>
-            </a>
-        </div>
-    </footer>
-    
     </div>
     <script>
-        // Carrinho e integração com dashboard-pedidos
-        let cartCount = 0;
-        let carrinho = [];
-        let dadosCliente = {};
+        // Dados de exemplo (substitua por integração real)
+        let dados = [
+            { tipo: 'receita', valor: 1200, data: '2024-01-26', categoria: 'Venda' },
+            { tipo: 'despesa', valor: 800, data: '2024-01-26', categoria: 'Aluguel' },
+            { tipo: 'despesa', valor: 200, data: '2024-02-15', categoria: 'Transporte' },
+            { tipo: 'receita', valor: 1500, data: '2024-02-20', categoria: 'Venda' },
+            { tipo: 'despesa', valor: 500, data: '2024-03-10', categoria: 'Marketing' },
+            { tipo: 'receita', valor: 900, data: '2024-03-18', categoria: 'Serviço' },
+            { tipo: 'despesa', valor: 300, data: '2024-04-05', categoria: 'Salários' },
+            { tipo: 'receita', valor: 1100, data: '2024-04-22', categoria: 'Venda' },
+            { tipo: 'despesa', valor: 400, data: '2024-05-12', categoria: 'Fornecedores' },
+            { tipo: 'receita', valor: 1300, data: '2024-05-25', categoria: 'Serviço' }
+        ];
 
-        // Produtos e preços
-        const precos = {
-            'S1000RR': 131900,
-            'Ninja ZX-10R': 95900,
-            'YZF-R3 GP': 32900,
-            'CBR 600F': 40900,
-            'Panigale V4S': 139900
-        };
-
-        // Adicionar ao carrinho (agora com quantidade)
-        function addToCart(nome) {
-            // Busca preço pelo nome no catálogo de detalhes, se não achar, usa o objeto precos
-            let preco = 0;
-            if (produtosDetalhes[nome] && produtosDetalhes[nome].preco) {
-                preco = parseFloat(
-                    produtosDetalhes[nome].preco
-                        .replace('R$', '')
-                        .replace(/\./g, '')
-                        .replace(',', '.')
-                        .trim()
-                );
-            } else if (precos[nome]) {
-                preco = precos[nome];
-            }
-            // Verifica se já existe no carrinho
-            let idx = carrinho.findIndex(item => item.nome === nome);
-            if (idx >= 0) {
-                carrinho[idx].quantidade += 1;
-            } else {
-                carrinho.push({ nome, preco, quantidade: 1 });
-            }
-            cartCount = carrinho.reduce((acc, item) => acc + item.quantidade, 0);
-            document.getElementById('cart-count').textContent = cartCount;
+        // Funções utilitárias
+        function formatarValor(valor) {
+            return valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+        }
+        function getMesAno(data) {
+            const d = new Date(data);
+            return d.toLocaleString('pt-BR', { month: 'short' }) + ' ' + String(d.getFullYear()).slice(-2);
         }
 
-        // Botões dos card
-        // (Removido: não adicionar ao carrinho ao clicar em "Ver Detalhes")
-
-        // Abrir/fechar modal do carrinho
-        function abrirCarrinho() {
-            atualizarCarrinho();
-            document.getElementById('modal-carrinho-bg').classList.add('aberto');
-            document.getElementById('modal-carrinho-bg').style.display = 'flex';
-            mostrarEtapaCarrinho(1);
-        }
-        function fecharCarrinho() {
-            document.getElementById('modal-carrinho-bg').classList.remove('aberto');
-            document.getElementById('modal-carrinho-bg').style.display = 'none';
-        }
-
-        // Atualiza lista de produtos no carrinho
-        function atualizarCarrinho() {
-            const lista = document.getElementById('carrinho-lista');
-            lista.innerHTML = '';
-            if (carrinho.length === 0) {
-                lista.innerHTML = '<div style="text-align:center;color:#888;">Seu carrinho está vazio.</div>';
-            } else {
-                carrinho.forEach((item, idx) => {
-                    lista.innerHTML += `
-                        <div class="carrinho-item">
-                            <span class="carrinho-item-nome">${item.nome} <span style="color:#1976d2;">x${item.quantidade}</span></span>
-                            <span class="carrinho-item-preco">R$ ${(item.preco * item.quantidade).toLocaleString('pt-BR', {minimumFractionDigits:2})}</span>
-                            <button class="carrinho-item-remove" onclick="removerItemCarrinho(${idx})" title="Remover">&times;</button>
-                        </div>
-                    `;
-                });
-            }
-            // Total
-            const total = carrinho.reduce((acc, item) => acc + item.preco * item.quantidade, 0);
-            document.getElementById('carrinho-total').textContent = total > 0 ? `Total: R$ ${total.toLocaleString('pt-BR', {minimumFractionDigits:2})}` : '';
-        }
-        function removerItemCarrinho(idx) {
-            carrinho.splice(idx, 1);
-            cartCount = carrinho.reduce((acc, item) => acc + item.quantidade, 0);
-            document.getElementById('cart-count').textContent = cartCount;
-            atualizarCarrinho();
-        }
-
-        // Etapas do checkout
-        function mostrarEtapaCarrinho(etapa) {
-            document.getElementById('carrinho-etapa1').style.display = etapa === 1 ? '' : 'none';
-            document.getElementById('carrinho-etapa2').style.display = etapa === 2 ? '' : 'none';
-            document.getElementById('carrinho-etapa-pix').style.display = etapa === 'pix' ? '' : 'none';
-            document.getElementById('carrinho-etapa3').style.display = etapa === 3 ? '' : 'none';
-            if (etapa !== 'pix') document.getElementById('area-pix').style.display = 'none';
-        }
-        function avancarEtapaCarrinho() {
-            if (carrinho.length === 0) {
-                alert('Adicione produtos ao carrinho antes de avançar.');
-                return;
-            }
-            mostrarEtapaCarrinho(2);
-        }
-        function avancarParaPix(event) {
-            event.preventDefault();
-            dadosCliente = {
-                nome: document.getElementById('nome').value,
-                email: document.getElementById('email').value,
-                whatsapp: document.getElementById('whatsapp').value,
-                endereco: document.getElementById('endereco').value
-            };
-            mostrarEtapaCarrinho('pix');
-            return false;
-        }
-        function mostrarPix() {
-            document.getElementById('area-pix').style.display = '';
-        }
-        function pagarCartao() {
-            const msg = encodeURIComponent(
-                `Olá, quero pagar minha compra no cartão!\n\nNome: ${dadosCliente.nome}\nEmail: ${dadosCliente.email}\nWhatsApp: ${dadosCliente.whatsapp}\nEndereço: ${dadosCliente.endereco}\nProdutos: ${carrinho.map(item => item.nome).join(', ')}`
-            );
-            window.open(`https://wa.me/556295277435?text=${msg}`, '_blank');
-        }
-        function confirmarPagamentoPix() {
-            // Salva no localStorage para dashboard-pedidos
-            let pedidos = [];
-            try {
-                pedidos = JSON.parse(localStorage.getItem('pedidos_motos')) || [];
-            } catch (e) {
-                pedidos = [];
-            }
-            // Salva produtos detalhados
-            const produtosPedido = carrinho.map(item => ({
-                nome: item.nome,
-                preco: item.preco,
-                quantidade: item.quantidade
-            }));
-            pedidos.push({
-                id: Date.now(),
-                cliente: dadosCliente.nome,
-                email: dadosCliente.email,
-                whatsapp: dadosCliente.whatsapp,
-                endereco: dadosCliente.endereco,
-                produtos: produtosPedido,
-                total: carrinho.reduce((acc, item) => acc + item.preco * item.quantidade, 0),
-                data: new Date().toLocaleString(),
-                status: "Pendente"
+        // Períodos dinâmicos
+        function gerarPeriodos() {
+            const periodos = [];
+            dados.forEach(d => {
+                const p = getMesAno(d.data);
+                if (!periodos.includes(p)) periodos.push(p);
             });
-            localStorage.setItem('pedidos_motos', JSON.stringify(pedidos));
-            carrinho = [];
-            cartCount = 0;
-            document.getElementById('cart-count').textContent = cartCount;
-            mostrarEtapaCarrinho(3);
+            return periodos.sort((a, b) => {
+                const [ma, aa] = a.split(' ');
+                const [mb, ab] = b.split(' ');
+                return ab - aa || new Date('01 ' + ma + ' 2000') - new Date('01 ' + mb + ' 2000');
+            });
         }
 
-        // Dados dos produtos (exemplo, personalize conforme necessário)
-        const produtosDetalhes = {
-            "CAPACETE FW3 X OPEN UP 43": {
-                marca: "FW3",
-                preco: "R$ 309,60",
-                desc: "Capacete FW3 X Open Up 43: conforto, segurança e design moderno para o seu dia a dia.",
-                fotos: [
-                    "img/mundodasmotos/capacete.png",
-                    "img/mundodasmotos/capacete2.png",
-                    "img/mundodasmotos/capacete3.png"
-                ]
-            },
-            "JUNTA CABEÇOTE BIZ 125/2006": {
-                marca: "KMP",
-                preco: "R$ 6.00",
-                desc: "Junta de cabeçote para Biz 125/2006 KMP: vedação eficiente, material de alta qualidade e durabilidade para o motor da sua moto. Produto confiável para manutenção e reparo, garantindo o melhor desempenho e proteção contra vazamentos.",
-                fotos: [
-                    "img/mundodasmotos/junta3.png",
-                    "img/mundodasmotos/junta2.png",
-                    "img/mundodasmotos/junta.png"
-                ]
-            },
-            "JUNTA CABEÇOTE KMP CG 150 /2004/2015": {
-                marca: "KMP",
-                preco: "R$ 8,00",
-                desc: "Junta do cabeçote KMP para CG 150 (2004/2015) e Bros 150 (2006/2015): fabricada com materiais de alta resistência, proporciona vedação perfeita e longa durabilidade. Ideal para manutenção preventiva e corretiva, garantindo o funcionamento seguro do motor.",
-                fotos: [
-                    "img/mundodasmotos/junta150.png",
-                    "img/mundodasmotos/junta1502.png"
-                ]
-            },
-            "KIT REMENDO PNEU": {
-                marca: "BOMVINK",
-                preco: "R$ 12,00",
-                desc: "Kit Remendo de Pneu BOMVINK: prático e eficiente para reparos emergenciais em pneus sem câmara. Inclui ferramentas e tiras de borracha de alta qualidade para vedação rápida e segura, ideal para motociclistas que buscam autonomia e segurança na estrada.",
-                fotos: [
-                    "img/mundodasmotos/kitreparopneu.png",
-                    "img/mundodasmotos/kitreparopneu2.png"
-                ]
-            },
-            "CABO ACELERADOR C100 BIZ": {
-                marca: "K-CABOS",
-                preco: "R$ 10,00",
-                desc: "Cabo do acelerador K-CABOS para C100 Biz: flexível, resistente e de fácil instalação. Garante resposta rápida e segura ao acelerar, ideal para reposição com qualidade original e maior durabilidade.",
-                fotos: [
-                    "img/mundodasmotos/CABOACELERADORC100BIZ.png",
-                    "img/mundodasmotos/CABOACELERADORC100BIZ2.png"
-                ]
-            },
-            "CABO EMBREAGEM CG 125 1982": {
-                marca: "K-CABOS",
-                preco: "R$ 10,00",
-                desc: "Cabo de embreagem K-CABOS para CG 125 1982: alta flexibilidade, resistência e encaixe perfeito. Proporciona acionamento suave e seguro da embreagem, ideal para reposição com padrão original e longa durabilidade.",
-                fotos: [
-                    "img/mundodasmotos/CABOEMBREAGEMCG12519822.png",
-                    "img/mundodasmotos/CABOEMBREAGEMCG1251982.png"
-                ]
-            },
-            "CABO ACELERADOR CG 160": {
-                marca: "K-CABOS",
-                preco: "R$ 10,00",
-                desc: "Cabo do acelerador K-CABOS para CG 160: desenvolvido para máxima durabilidade, flexibilidade e encaixe perfeito. Proporciona resposta rápida e segura ao acelerar, ideal para reposição com padrão original.",
-                fotos: [
-                    "img/mundodasmotos/CABOACELERADORCG1602.png",
-                    "img/mundodasmotos/CABOACELERADORCG160.png"
-                ]
-            }
-        };
+        // Renderiza os cards de período
+        function renderizarPeriodos() {
+            const periodos = gerarPeriodos();
+            const container = document.getElementById('periodSelector');
+            container.innerHTML = '';
+            let idxAtivo = window.periodoAtivo || 0;
+            // Setas
+            const setaEsq = document.createElement('button');
+            setaEsq.className = 'period-arrow';
+            setaEsq.innerHTML = '&#8592;';
+            setaEsq.onclick = () => { window.periodoAtivo = Math.max(0, idxAtivo-1); renderizarPeriodos(); renderizarDashboard(); };
+            container.appendChild(setaEsq);
 
-        // Abrir modal de detalhes do produto
-        function abrirModalProduto(nome) {
-            const prod = produtosDetalhes[nome];
-            if (!prod) return;
-            document.getElementById('modal-produto-marca').textContent = prod.marca;
-            document.getElementById('modal-produto-nome').textContent = nome;
-            document.getElementById('modal-produto-preco').textContent = prod.preco;
-            document.getElementById('modal-produto-desc').textContent = prod.desc;
-            // Fotos
-            const fotos = prod.fotos || [];
-            const imgPrincipal = document.getElementById('modal-produto-img-principal');
-            const thumbs = document.getElementById('modal-produto-thumbs');
-            if (fotos.length > 0) {
-                imgPrincipal.src = fotos[0];
-                imgPrincipal.setAttribute('data-idx', 0);
-                thumbs.innerHTML = '';
-                fotos.forEach((foto, idx) => {
-                    const thumb = document.createElement('img');
-                    thumb.src = foto;
-                    thumb.className = 'modal-produto-thumb' + (idx === 0 ? ' selected' : '');
-                    thumb.onclick = function() {
-                        imgPrincipal.src = foto;
-                        document.querySelectorAll('.modal-produto-thumb').forEach(t => t.classList.remove('selected'));
-                        thumb.classList.add('selected');
-                    };
-                    thumbs.appendChild(thumb);
-                });
-            } else {
-                imgPrincipal.src = '';
-                thumbs.innerHTML = '';
-            }
-            // Botão adicionar ao carrinho
-            const btnAdd = document.getElementById('btn-add-carrinho-modal');
-            btnAdd.onclick = function() {
-                addToCart(nome);
-                fecharModalProduto();
-            };
-            document.getElementById('modal-produto-bg').classList.add('aberto');
-            document.getElementById('modal-produto-bg').style.display = 'flex';
-        }
-        function fecharModalProduto() {
-            document.getElementById('modal-produto-bg').classList.remove('aberto');
-            document.getElementById('modal-produto-bg').style.display = 'none';
+            periodos.forEach((p, idx) => {
+                const card = document.createElement('div');
+                card.className = 'period-card' + (idx === idxAtivo ? ' active' : '');
+                card.innerHTML = `${p}
+                    <div class="trend">
+                        <span class="up">&#8593; ${getResumoPeriodo(p, 'receita')}</span>
+                        <span class="down">&#8595; ${getResumoPeriodo(p, 'despesa')}</span>
+                    </div>`;
+                card.onclick = () => { window.periodoAtivo = idx; renderizarPeriodos(); renderizarDashboard(); };
+                container.appendChild(card);
+            });
+
+            const setaDir = document.createElement('button');
+            setaDir.className = 'period-arrow';
+            setaDir.innerHTML = '&#8594;';
+            setaDir.onclick = () => { window.periodoAtivo = Math.min(periodos.length-1, idxAtivo+1); renderizarPeriodos(); renderizarDashboard(); };
+            container.appendChild(setaDir);
         }
 
-        // Substituir ação dos botões "Comprar" para NÃO impedir o link externo
-        document.addEventListener('DOMContentLoaded', function() {
-            document.querySelectorAll('.btn-detalhes').forEach(btn => {
-                // Remove qualquer listener antigo que previna o default
-                btn.onclick = function(e) {
-                    // Só previne se NÃO for um link externo (com href)
-                    if (!btn.hasAttribute('href') || btn.getAttribute('href') === '#') {
-                        e.preventDefault();
-                        const nome = this.parentElement.querySelector('.nome').textContent.trim();
-                        if (typeof abrirModalProduto === 'function') abrirModalProduto(nome);
+        function getResumoPeriodo(periodo, tipo) {
+            // Retorna total de receitas/despesas do período
+            const [mes, ano] = periodo.split(' ');
+            return dados.filter(d => {
+                const p = getMesAno(d.data);
+                return p === periodo && d.tipo === tipo;
+            }).length;
+        }
+
+        // Função para calcular saldo
+        function calcularSaldo(periodo) {
+            let entrou = 0, saiu = 0;
+            dados.forEach(d => {
+                if (getMesAno(d.data) === periodo) {
+                    if (d.tipo === 'receita') entrou += d.valor;
+                    else saiu += d.valor;
+                }
+            });
+            return entrou - saiu;
+        }
+
+        // Dashboard principal
+        function renderizarDashboard() {
+            const periodos = gerarPeriodos();
+            const periodo = periodos[window.periodoAtivo || 0];
+            document.getElementById('dashboardTitle').textContent = 'Até o momento - ' + periodo;
+            // Resumo receitas/despesas
+            let entrou = 0, saiu = 0;
+            dados.forEach(d => {
+                if (getMesAno(d.data) === periodo) {
+                    if (d.tipo === 'receita') entrou += d.valor;
+                    else saiu += d.valor;
+                }
+            });
+            document.getElementById('valorEntrou').textContent = formatarValor(entrou);
+            document.getElementById('valorSaiu').textContent = formatarValor(saiu);
+            document.getElementById('valorSobrou').textContent = formatarValor(entrou - saiu);
+
+            // Gráfico de pizza (Entrou/Saiu)
+            const ctxResumo = document.getElementById('chartResumo').getContext('2d');
+            if (window.chartResumo) window.chartResumo.destroy();
+            window.chartResumo = new Chart(ctxResumo, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Entrou', 'Saiu'],
+                    datasets: [{
+                        data: [entrou, saiu],
+                        backgroundColor: ['#43cea2', '#ff7e5f'],
+                        borderColor: ['#fff', '#fff'],
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    plugins: {
+                        legend: { display: true, position: 'bottom' }
                     }
-                    // Se for link externo, deixa o comportamento padrão
-                };
+                }
             });
+
+            // Gráfico de barras por categoria
+            const ctxCat = document.getElementById('chartCategorias').getContext('2d');
+            if (window.chartCategorias) window.chartCategorias.destroy();
+            // Agrupa por categoria
+            const catLabels = [];
+            const catValores = [];
+            dados.filter(d => getMesAno(d.data) === periodo && d.tipo === 'despesa')
+                .forEach(d => {
+                    const idx = catLabels.indexOf(d.categoria);
+                    if (idx === -1) {
+                        catLabels.push(d.categoria);
+                        catValores.push(d.valor);
+                    } else {
+                        catValores[idx] += d.valor;
+                    }
+                });
+            window.chartCategorias = new Chart(ctxCat, {
+                type: 'bar',
+                data: {
+                    labels: catLabels,
+                    datasets: [{
+                        label: 'Despesas por Categoria',
+                        data: catValores,
+                        backgroundColor: '#ff7e5f',
+                        borderRadius: 8,
+                        maxBarThickness: 40
+                    }]
+                },
+                options: {
+                    plugins: {
+                        legend: { display: false }
+                    },
+                    scales: {
+                        x: { grid: { color: '#eee' }, ticks: { color: '#222' } },
+                        y: { grid: { color: '#eee' }, ticks: { color: '#222' }, beginAtZero: true }
+                    }
+                }
+            });
+
+            // Gráfico de evolução (linha) - saldo acumulado por período
+            const ctxEvolucao = document.getElementById('chartEvolucao').getContext('2d');
+            if (window.chartEvolucao) window.chartEvolucao.destroy();
+            const evolLabels = gerarPeriodos().slice().reverse();
+            let saldoAcumulado = 0;
+            const evolValores = evolLabels.map(p => {
+                const saldo = calcularSaldo(p);
+                saldoAcumulado += saldo;
+                return saldoAcumulado;
+            });
+            window.chartEvolucao = new Chart(ctxEvolucao, {
+                type: 'line',
+                data: {
+                    labels: evolLabels,
+                    datasets: [{
+                        label: 'Saldo Acumulado',
+                        data: evolValores,
+                        borderColor: '#4f8cff',
+                        backgroundColor: 'rgba(79,140,255,0.08)',
+                        tension: 0.3,
+                        fill: true,
+                        pointRadius: 4,
+                        pointBackgroundColor: '#4f8cff'
+                    }]
+                },
+                options: {
+                    plugins: {
+                        legend: { display: true, position: 'bottom' }
+                    },
+                    scales: {
+                        x: { grid: { color: '#eee' }, ticks: { color: '#222' } },
+                        y: { grid: { color: '#eee' }, ticks: { color: '#222' }, beginAtZero: true }
+                    }
+                }
+            });
+
+            // Gráfico de comparação com período anterior
+            renderizarComparacao();
+
+            // Funções para "Para acontecer" e "Pendentes"
+            renderizarFuturoPendentes();
+            renderizarFaturamento();
+            renderizarContasAPagar();
+            renderizarRecebimentos();
+        }
+
+        // Gráfico de comparação com período anterior
+        function renderizarComparacao() {
+            const periodos = gerarPeriodos();
+            const idx = window.periodoAtivo || 0;
+            const periodoAtual = periodos[idx];
+            const periodoAnterior = periodos[idx+1] || periodos[idx];
+
+            function resumo(p, tipo) {
+                let total = 0;
+                dados.forEach(d => {
+                    if (getMesAno(d.data) === p && d.tipo === tipo) total += d.valor;
+                });
+                return total;
+            }
+
+            const entrouAtual = resumo(periodoAtual, 'receita');
+            const saiuAtual = resumo(periodoAtual, 'despesa');
+            const entrouAnt = resumo(periodoAnterior, 'receita');
+            const saiuAnt = resumo(periodoAnterior, 'despesa');
+
+            const ctxComp = document.getElementById('chartComparacao').getContext('2d');
+            if (window.chartComparacao) window.chartComparacao.destroy();
+            window.chartComparacao = new Chart(ctxComp, {
+                type: 'bar',
+                data: {
+                    labels: [periodoAnterior, periodoAtual],
+                    datasets: [
+                        {
+                            label: 'Entrou',
+                            data: [entrouAnt, entrouAtual],
+                            backgroundColor: '#43cea2'
+                        },
+                        {
+                            label: 'Saiu',
+                            data: [saiuAnt, saiuAtual],
+                            backgroundColor: '#ff7e5f'
+                        }
+                    ]
+                },
+                options: {
+                    plugins:
+                    {
+                        legend: { display: true, position: 'bottom' }
+                    },
+                    scales: {
+                        x: { grid: { color: '#eee' }, ticks: { color: '#222' } },
+                        y: { grid: { color: '#eee' }, ticks: { color: '#222' }, beginAtZero: true }
+                    }
+                }
+            });
+        }
+
+        // NOVO GRÁFICO DE ESTRUTURA DE FATURAMENTO
+        function renderizarFaturamento() {
+            // Exemplo de dados para cada etapa do faturamento
+            const etapas = [
+                "Receita Bruta", "Impostos", "Receita Líquida", "Gastos Variáveis", "Margem Bruta",
+                "Gastos Fixos", "Gastos com Pessoal", "Resultado Operacional", "Despesas Financeiras",
+                "Receitas Financeiras", "Resultado Antes IR e CSLL", "Imposto de Renda e CSLL", "Resultado Final"
+            ];
+            // Exemplo de valores fictícios (substitua por integração real)
+            const receita =    [10000, 0, 9000, 0, 7000, 0, 0, 0, 0, 0, 0, 0, 0];
+            const gasto =      [0, 1000, 0, 2000, 0, 1500, 1200, 0, 300, 0, 0, 800, 0];
+            // Resultado acumulado
+            let resultado = [];
+            let acc = 0;
+            for (let i = 0; i < etapas.length; i++) {
+                acc += (receita[i] || 0) - (gasto[i] || 0);
+                resultado.push(acc);
+            }
+
+            const ctxFaturamento = document.getElementById('chartFaturamento').getContext('2d');
+            if (window.chartFaturamento) window.chartFaturamento.destroy();
+            window.chartFaturamento = new Chart(ctxFaturamento, {
+                type: 'bar',
+                data: {
+                    labels: etapas,
+                    datasets: [
+                        {
+                            label: 'Receita',
+                            data: receita,
+                            backgroundColor: '#43cea2',
+                            stack: 'Stack 0'
+                        },
+                        {
+                            label: 'Gasto',
+                            data: gasto,
+                            backgroundColor: '#ff7e5f',
+                            stack: 'Stack 0'
+                        },
+                        {
+                            label: 'Resultado',
+                            data: resultado,
+                            backgroundColor: '#b0b0b0',
+                            type: 'line',
+                            borderColor: '#b0b0b0',
+                            borderWidth: 2,
+                            fill: false,
+                            pointRadius: 3,
+                            tension: 0.3,
+                            order: 2
+                        }
+                    ]
+                },
+                options: {
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            callbacks: {
+                                label: function(ctx) {
+                                    return ctx.dataset.label + ': ' + formatarValor(ctx.parsed.y);
+                                }
+                            }
+                        }
+                    },
+                        scales: {
+                            x: { grid: { color: '#eee' }, ticks: { color: '#222', maxRotation: 45, minRotation: 20 } },
+                            y: { grid: { color: '#eee' }, ticks: { color: '#222' }, beginAtZero: true }
+                        }
+                    }
+                });
+        }
+
+        // Exportar PDF (simples, pode ser integrado com libs como jsPDF)
+        document.getElementById('btnExportarPDF').onclick = function() {
+            window.print();
+        };
+        document.getElementById('btnExportarPDF2').onclick = function() {
+            window.print();
+        };
+
+        // MODAL DE LANÇAMENTO DE GASTO
+        document.getElementById('btnAbrirModalGasto').onclick = function() {
+            document.getElementById('modalGasto').style.display = 'flex';
+        };
+        document.getElementById('btnFecharModalGasto').onclick = function() {
+            document.getElementById('modalGasto').style.display = 'none';
+        };
+        document.getElementById('modalGasto').onclick = function(e) {
+            if (e.target === this) this.style.display = 'none';
+        };
+
+        document.getElementById('formNovoGasto').onsubmit = function(e) {
+            e.preventDefault();
+            const descricao = document.getElementById('gastoDescricao').value.trim();
+            const valor = parseFloat(document.getElementById('gastoValor').value);
+            const data = document.getElementById('gastoData').value;
+            const categoria = document.getElementById('gastoCategoria').value;
+            if (!descricao || !valor || !data || !categoria) return;
+
+            // Adiciona ao array de dados (mock, substitua por integração real)
+            dados.push({
+                tipo: 'despesa',
+                valor,
+                data,
+                categoria
+            });
+
+            document.getElementById('modalGasto').style.display = 'none';
+            this.reset();
+            renderizarDashboard();
+        };
+
+        // Menu navegação entre páginas
+        document.querySelectorAll('.topnav .menu a').forEach(link => {
+            link.onclick = function(e) {
+                e.preventDefault();
+                document.querySelectorAll('.topnav .menu a').forEach(a => a.classList.remove('active'));
+                this.classList.add('active');
+                document.querySelectorAll('.main-content > section').forEach(sec => sec.classList.remove('active'));
+                const secId = this.getAttribute('data-section');
+                if (secId) document.getElementById(secId).classList.add('active');
+                renderizarPaginasSecundarias();
+            };
         });
 
-        // Move a imagem do banner acima do texto no mobile
-        function ajustarBannerImgMobile() {
-            const bannerContent = document.querySelector('.banner-content');
-            const bannerImg = document.getElementById('banner-img');
-            if (window.innerWidth <= 900) {
-                bannerImg.classList.add('mobile-top');
-                if (bannerContent.firstElementChild !== bannerImg) {
-                    bannerContent.insertBefore(bannerImg, bannerContent.firstElementChild);
-                }
-            } else {
-                bannerImg.classList.remove('mobile-top');
-                // Garante que a ordem padrão é texto depois imagem
-                if (bannerContent.children[0] !== bannerImg) {
-                    bannerContent.appendChild(bannerImg);
+        // Modal Receita
+        document.getElementById('btnNovaReceita').onclick = function() {
+            document.getElementById('modalReceita').style.display = 'flex';
+        };
+        document.getElementById('btnFecharModalReceita').onclick = function() {
+            document.getElementById('modalReceita').style.display = 'none';
+        };
+        document.getElementById('modalReceita').onclick = function(e) {
+            if (e.target === this) this.style.display = 'none';
+        };
+        document.getElementById('formNovaReceita').onsubmit = function(e) {
+            e.preventDefault();
+            const cliente = document.getElementById('receitaCliente').value.trim();
+            const categoria = document.getElementById('receitaCategoria').value.trim();
+            const detalhes = document.getElementById('receitaDetalhes').value.trim();
+            const formaRecebimento = document.getElementById('receitaForma').value.trim();
+            const valor = parseFloat(document.getElementById('receitaValor').value);
+            const data = document.getElementById('receitaData').value;
+            if (!cliente || !categoria || !valor || !data) return;
+            dados.push({
+                tipo: 'receita',
+                cliente,
+                categoria,
+                detalhes,
+                formaRecebimento,
+                valor,
+                data
+            });
+            document.getElementById('modalReceita').style.display = 'none';
+            this.reset();
+            renderizarRecebimentosPagina();
+        };
+
+        // Modal Despesa
+        document.getElementById('btnNovaDespesa').onclick = function() {
+            document.getElementById('modalDespesa').style.display = 'flex';
+        };
+        document.getElementById('btnFecharModalDespesa').onclick = function() {
+            document.getElementById('modalDespesa').style.display = 'none';
+        };
+        document.getElementById('modalDespesa').onclick = function(e) {
+            if (e.target === this) this.style.display = 'none';
+        };
+        document.getElementById('formNovaDespesa').onsubmit = function(e) {
+            e.preventDefault();
+            const empresa = document.getElementById('despesaEmpresa').value.trim();
+            const banco = document.getElementById('despesaBanco').value.trim();
+            const categoria = document.getElementById('despesaCategoria').value.trim();
+            const detalhes = document.getElementById('despesaDetalhes').value.trim();
+            const fornecedor = document.getElementById('despesaFornecedor').value.trim();
+            const formaPagamento = document.getElementById('despesaForma').value.trim();
+            const parcelas = document.getElementById('despesaParcelas').value.trim();
+            const valor = parseFloat(document.getElementById('despesaValor').value);
+            const data = document.getElementById('despesaData').value;
+            const centroCusto = document.getElementById('despesaCentroCusto').value.trim();
+            if (!empresa || !categoria || !valor || !data) return;
+            dados.push({
+                tipo: 'despesa',
+                empresa,
+                banco,
+                categoria,
+                detalhes,
+                fornecedor,
+                formaPagamento,
+                parcelas,
+                valor,
+                data,
+                centroCusto
+            });
+            document.getElementById('modalDespesa').style.display = 'none';
+            this.reset();
+        };
+        // Funções para Receitas (página Receitas)
+        function renderizarRecebimentosPagina() {
+            const recebimentos = dados.filter(d => d.tipo === 'receita');
+            let total = recebimentos.length;
+            let soma = recebimentos.reduce((acc, r) => acc + (r.valor || 0), 0);
+            let media = total > 0 ? soma / total : 0;
+
+            document.getElementById('recebimentosTotal2').textContent = total;
+            document.getElementById('recebimentosValorTotal2').textContent = formatarValor(soma);
+            document.getElementById('recebimentosMedia2').textContent = formatarValor(media);
+
+            const tbody = document.getElementById('recebimentosTable2');
+            if (tbody) {
+                if (recebimentos.length === 0) {
+                    tbody.innerHTML = `<tr>
+                        <td colspan="7" style="text-align:center;color:#bbb;padding:2.5rem 0;">
+                            <span style="font-size:2.2rem;">&#128166;</span><br>
+                            Nada por aqui...
+                        </td>
+                    </tr>`;
+                } else {
+                    tbody.innerHTML = recebimentos.map(r => `
+                        <tr>
+                            <td>${r.data || ''}</td>
+                            <td>${r.cliente || ''}</td>
+                            <td>${r.categoria || ''}</td>
+                            <td>${r.detalhes || ''}</td>
+                            <td>${r.formaRecebimento || ''}</td>
+                            <td>${formatarValor(r.valor || 0)}</td>
+                            <td>
+                                <button onclick="editarReceita(${dados.indexOf(r)})" style="background:none;border:none;color:#4f8cff;cursor:pointer;">&#9998;</button>
+                                <button onclick="removerReceita(${dados.indexOf(r)})" style="background:none;border:none;color:#ff7e5f;cursor:pointer;">&#128465;</button>
+                            </td>
+                        </tr>
+                    `).join('');
                 }
             }
         }
-        window.addEventListener('DOMContentLoaded', ajustarBannerImgMobile);
-        window.addEventListener('resize', ajustarBannerImgMobile);
 
-        // Mapeamento de categorias para os produtos
-        const categoriasProdutos = {
-            "CAPACETE FW3 X OPEN UP 43": ["capacetes", "destaque"],
-            "Pneu II 110-70-16 52P TL Dianteiro Citycom 300": ["pneus", "oferta"],
-            "OLEO 4T MX 10W40 SUPER MOTO 100% SINTÉTICO 1L": ["oleos"],
-            "Jaqueta Casual Resistente À água": ["jaqueta"],
-            "CBR 600F": ["motos"],
-            "Panigale V4S": ["motos", "premium"],
-            "Bateria Route YTX9BS Selada": [],
-            // Adicione mais produtos/categorias conforme necessário
-        };
+        // Funções para Despesas (página Despesas)
+        function renderizarContasAPagarPagina() {
+            const contas = dados.filter(d => d.tipo === 'despesa');
+            let total = contas.length;
+            let soma = contas.reduce((acc, c) => acc + (c.valor || 0), 0);
+            let media = total > 0 ? soma / total : 0;
 
-        function filtrarCategoria(cat) {
-            // Troca botão ativo
-            document.querySelectorAll('.categoria-btn').forEach(btn => btn.classList.remove('active'));
-            const btn = Array.from(document.querySelectorAll('.categoria-btn')).find(b => b.textContent.trim().toLowerCase() === (cat === 'todas' ? 'todas' : cat.charAt(0).toUpperCase() + cat.slice(1)));
-            if (btn) btn.classList.add('active');
+            document.getElementById('contasTotal2').textContent = total;
+            document.getElementById('contasValorTotal2').textContent = formatarValor(soma);
+            document.getElementById('contasMedia2').textContent = formatarValor(media);
 
-            // Mostra/oculta cards
-            document.querySelectorAll('.card-moto').forEach(card => {
-                const nome = card.querySelector('.nome').textContent.trim();
-                if (cat === 'todas') {
-                    card.style.display = '';
+            const tbody = document.getElementById('contasPagarTable2');
+            if (tbody) {
+                if (contas.length === 0) {
+                    tbody.innerHTML = `<tr>
+                        <td colspan="11" style="text-align:center;color:#bbb;padding:2.5rem 0;">
+                            <span style="font-size:2.2rem;">&#128166;</span><br>
+                            Nada por aqui...
+                        </td>
+                    </tr>`;
                 } else {
-                    const cats = categoriasProdutos[nome] || [];
-                    card.style.display = cats.includes(cat) ? '' : 'none';
+                    tbody.innerHTML = contas.map(c => `
+                        <tr>
+                            <td>${c.data || ''}</td>
+                            <td>${c.empresa || ''}</td>
+                            <td>${c.banco || ''}</td>
+                            <td>${c.categoria || ''}</td>
+                            <td>${c.detalhes || ''}</td>
+                            <td>${c.fornecedor || ''}</td>
+                            <td>${c.formaPagamento || ''}</td>
+                            <td>${c.parcelas || ''}</td>
+                            <td>${formatarValor(c.valor || 0)}</td>
+                            <td>${c.centroCusto || ''}</td>
+                            <td>
+                                <button onclick="editarDespesa(${dados.indexOf(c)})" style="background:none;border:none;color:#4f8cff;cursor:pointer;">&#9998;</button>
+                                <button onclick="removerDespesa(${dados.indexOf(c)})" style="background:none;border:none;color:#ff7e5f;cursor:pointer;">&#128465;</button>
+                            </td>
+                        </tr>
+                    `).join('');
+                }
+            }
+        }
+
+        // Funções para Gráficos (página Gráficos)
+        function renderizarGraficosGerais() {
+            const receitas = dados.filter(d => d.tipo === 'receita').reduce((acc, r) => acc + (r.valor || 0), 0);
+            const despesas = dados.filter(d => d.tipo === 'despesa').reduce((acc, r) => acc + (r.valor || 0), 0);
+
+            // Gráfico pizza geral
+            const ctxResumoGeral = document.getElementById('chartResumoGeral').getContext('2d');
+            if (window.chartResumoGeral) window.chartResumoGeral.destroy();
+            window.chartResumoGeral = new Chart(ctxResumoGeral, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Receitas', 'Despesas'],
+                    datasets: [{
+                        data: [receitas, despesas],
+                        backgroundColor: ['#43cea2', '#ff7e5f'],
+                        borderColor: ['#fff', '#fff'],
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    plugins: { legend: { display: true, position: 'bottom' } }
+                }
+            });
+
+            // Gráfico barras categorias geral
+            const catMap = {};
+            dados.filter(d => d.tipo === 'despesa').forEach(d => {
+                catMap[d.categoria] = (catMap[d.categoria] || 0) + (d.valor || 0);
+            });
+            const catLabels = Object.keys(catMap);
+            const catValores = catLabels.map(k => catMap[k]);
+            const ctxCategoriasGeral = document.getElementById('chartCategoriasGeral').getContext('2d');
+            if (window.chartCategoriasGeral) window.chartCategoriasGeral.destroy();
+            window.chartCategoriasGeral = new Chart(ctxCategoriasGeral, {
+                type: 'bar',
+                data: {
+                    labels: catLabels,
+                    datasets: [{
+                        label: 'Despesas por Categoria',
+                        data: catValores,
+                        backgroundColor: '#ff7e5f',
+                        borderRadius: 8,
+                        maxBarThickness: 40
+                    }]
+                },
+                options: {
+                    plugins: { legend: { display: false } },
+                    scales: {
+                        x: { grid: { color: '#eee' }, ticks: { color: '#222' } },
+                        y: { grid: { color: '#eee' }, ticks: { color: '#222' }, beginAtZero: true }
+                    }
+                }
+            });
+
+
+            // Gráfico evolução geral
+            const periodos = gerarPeriodos().slice().reverse();
+            let saldoAcumulado = 0;
+            const evolValores = periodos.map(p => {
+                let entrou = 0, saiu = 0;
+                dados.forEach(d => {
+                    if (getMesAno(d.data) === p) {
+                        if (d.tipo === 'receita') entrou += d.valor;
+                        else saiu += d.valor;
+                    }
+                });
+                saldoAcumulado += entrou - saiu;
+                return saldoAcumulado;
+            });
+            const ctxEvolucaoGeral = document.getElementById('chartEvolucaoGeral').getContext('2d');
+            if (window.chartEvolucaoGeral) window.chartEvolucaoGeral.destroy();
+            window.chartEvolucaoGeral = new Chart(ctxEvolucaoGeral, {
+                type: 'line',
+                data: {
+                    labels: periodos,
+                    datasets: [{
+                        label: 'Saldo Acumulado',
+                        data: evolValores,
+                        borderColor: '#4f8cff',
+                        backgroundColor: 'rgba(79,140,255,0.08)',
+                        tension: 0.3,
+                        fill: true,
+                        pointRadius: 4,
+                        pointBackgroundColor: '#4f8cff'
+                    }]
+                },
+                options: {
+                    plugins: { legend: { display: true, position: 'bottom' } },
+                    scales: {
+                        x: { grid: { color: '#eee' }, ticks: { color: '#222' } },
+                        y: { grid: { color: '#eee' }, ticks: { color: '#222' }, beginAtZero: true }
+                    }
                 }
             });
         }
 
-        // Inicialização: sempre mostrar todas as categorias ao carregar
+        // Função para atualizar as tabelas secundárias e gráficos gerais
+        function renderizarPaginasSecundarias() {
+            renderizarRecebimentosPagina();
+            renderizarContasAPagarPagina();
+            renderizarGraficosGerais();
+        }
+
+        // Botões do dashboard abrem os modais para lançar entradas e saídas
+        document.getElementById('btnAbrirModalReceita').onclick = function() {
+            document.getElementById('modalReceita').style.display = 'flex';
+        };
+        document.getElementById('btnAbrirModalDespesa').onclick = function() {
+            document.getElementById('modalDespesa').style.display = 'flex';
+        };
+        document.getElementById('btnDashboardEntrada').onclick = function() {
+            document.getElementById('modalReceita').style.display = 'flex';
+        };
+        document.getElementById('btnDashboardSaida').onclick = function() {
+            document.getElementById('modalDespesa').style.display = 'flex';
+        };
+
+        // Fechar modais
+        document.getElementById('btnFecharModalReceita').onclick = function() {
+            document.getElementById('modalReceita').style.display = 'none';
+        };
+        document.getElementById('btnFecharModalDespesa').onclick = function() {
+            document.getElementById('modalDespesa').style.display = 'none';
+        };
+        document.getElementById('modalReceita').onclick = function(e) {
+            if (e.target === this) this.style.display = 'none';
+        };
+        document.getElementById('modalDespesa').onclick = function(e) {
+            if (e.target === this) this.style.display = 'none';
+        };
+
+        // Salvar nova receita
+        document.getElementById('formNovaReceita').onsubmit = function(e) {
+            e.preventDefault();
+            const cliente = document.getElementById('receitaCliente').value.trim();
+            const categoria = document.getElementById('receitaCategoria').value.trim();
+            const detalhes = document.getElementById('receitaDetalhes').value.trim();
+            const formaRecebimento = document.getElementById('receitaForma').value.trim();
+            const valor = parseFloat(document.getElementById('receitaValor').value);
+            const data = document.getElementById('receitaData').value;
+            if (!cliente || !categoria || !valor || !data) return;
+            dados.push({
+                tipo: 'receita',
+                cliente,
+                categoria,
+                detalhes,
+                formaRecebimento,
+                valor,
+                data
+            });
+            document.getElementById('modalReceita').style.display = 'none';
+            this.reset();
+            renderizarDashboard();
+            renderizarPaginasSecundarias();
+        };
+
+        // Salvar nova despesa
+        document.getElementById('formNovaDespesa').onsubmit = function(e) {
+            e.preventDefault();
+            const empresa = document.getElementById('despesaEmpresa').value.trim();
+            const banco = document.getElementById('despesaBanco').value.trim();
+            const categoria = document.getElementById('despesaCategoria').value.trim();
+            const detalhes = document.getElementById('despesaDetalhes').value.trim();
+            const fornecedor = document.getElementById('despesaFornecedor').value.trim();
+            const formaPagamento = document.getElementById('despesaForma').value.trim();
+            const parcelas = document.getElementById('despesaParcelas').value.trim();
+            const valor = parseFloat(document.getElementById('despesaValor').value);
+            const data = document.getElementById('despesaData').value;
+            const centroCusto = document.getElementById('despesaCentroCusto').value.trim();
+            if (!empresa || !categoria || !valor || !data) return;
+            dados.push({
+                tipo: 'despesa',
+                empresa,
+                banco,
+                categoria,
+                detalhes,
+                fornecedor,
+                formaPagamento,
+                parcelas,
+                valor,
+                data,
+                centroCusto
+            });
+            document.getElementById('modalDespesa').style.display = 'none';
+            this.reset();
+            renderizarDashboard();
+            renderizarPaginasSecundarias();
+        };
+
+        // Substitui o comportamento dos botões para abrir os novos popups modernos
         document.addEventListener('DOMContentLoaded', function() {
-            filtrarCategoria('todas');
+            document.getElementById('btnAbrirModalReceita').onclick = function() {
+                document.getElementById('modalNovaEntrada').style.display = 'flex';
+            };
+            document.getElementById('btnDashboardEntrada').onclick = function() {
+                document.getElementById('modalNovaEntrada').style.display = 'flex';
+            };
+            document.getElementById('btnAbrirModalDespesa').onclick = function() {
+                document.getElementById('modalNovaSaida').style.display = 'flex';
+            };
+            document.getElementById('btnDashboardSaida').onclick = function() {
+                document.getElementById('modalNovaSaida').style.display = 'flex';
+            };
+        });
+
+        // Fechar popups modernos
+        document.getElementById('btnFecharModalNovaEntrada').onclick = function() {
+            document.getElementById('modalNovaEntrada').style.display = 'none';
+        };
+        document.getElementById('modalNovaEntrada').onclick = function(e) {
+            if (e.target === this) this.style.display = 'none';
+        };
+        document.getElementById('btnFecharModalNovaSaida').onclick = function() {
+            document.getElementById('modalNovaSaida').style.display = 'none';
+        };
+        document.getElementById('modalNovaSaida').onclick = function(e) {
+            if (e.target === this) this.style.display = 'none';
+        };
+
+        // Salvar nova entrada (receita)
+        document.getElementById('formNovaEntrada').onsubmit = function(e) {
+            e.preventDefault();
+            const cliente = document.getElementById('entradaCliente').value.trim();
+            const categoria = document.getElementById('entradaCategoria').value.trim();
+            const detalhes = document.getElementById('entradaDetalhes').value.trim();
+            const formaRecebimento = document.getElementById('entradaForma').value.trim();
+            const valor = parseFloat(document.getElementById('entradaValor').value);
+            const data = document.getElementById('entradaData').value;
+            if (!cliente || !categoria || !valor || !data) return;
+            dados.push({
+                tipo: 'receita',
+                cliente,
+                categoria,
+                detalhes,
+                formaRecebimento,
+                valor,
+                data
+            });
+            document.getElementById('modalNovaEntrada').style.display = 'none';
+            this.reset();
+            renderizarDashboard();
+            renderizarPaginasSecundarias();
+        };
+
+        // Salvar nova saída (despesa)
+        document.getElementById('formNovaSaida').onsubmit = function(e) {
+            e.preventDefault();
+            const empresa = document.getElementById('saidaEmpresa').value.trim();
+            const categoria = document.getElementById('saidaCategoria').value.trim();
+            const detalhes = document.getElementById('saidaDetalhes').value.trim();
+            const fornecedor = document.getElementById('saidaFornecedor').value.trim();
+            const formaPagamento = document.getElementById('saidaForma').value.trim();
+            const valor = parseFloat(document.getElementById('saidaValor').value);
+            const data = document.getElementById('saidaData').value;
+            if (!empresa || !categoria || !valor || !data) return;
+            dados.push({
+                tipo: 'despesa',
+                empresa,
+                categoria,
+                detalhes,
+                fornecedor,
+                formaPagamento,
+                valor,
+                data
+            });
+            document.getElementById('modalNovaSaida').style.display = 'none';
+            this.reset();
+            renderizarDashboard();
+            renderizarPaginasSecundarias();
+        };
+
+        // Funções de edição e remoção
+        function removerReceita(idx) {
+            if (confirm('Deseja remover esta receita?')) {
+                dados.splice(idx, 1);
+                renderizarDashboard();
+                renderizarPaginasSecundarias();
+            }
+        }
+        function removerDespesa(idx) {
+            if (confirm('Deseja remover esta despesa?')) {
+                dados.splice(idx, 1);
+                renderizarDashboard();
+                renderizarPaginasSecundarias();
+            }
+        }
+        function editarReceita(idx) {
+            const r = dados[idx];
+            if (!r) return;
+            document.querySelector('#modalReceita').style.display = 'flex';
+            document.getElementById('receitaCliente').value = r.cliente || '';
+            document.getElementById('receitaCategoria').value = r.categoria || '';
+            document.getElementById('receitaDetalhes').value = r.detalhes || '';
+            document.getElementById('receitaForma').value = r.formaRecebimento || '';
+            document.getElementById('receitaValor').value = r.valor || '';
+            document.getElementById('receitaData').value = r.data || '';
+            document.getElementById('formNovaReceita').onsubmit = function(e) {
+                e.preventDefault();
+                dados.splice(idx, 1);
+                const cliente = document.getElementById('receitaCliente').value.trim();
+                const categoria = document.getElementById('receitaCategoria').value.trim();
+                const detalhes = document.getElementById('receitaDetalhes').value.trim();
+                const formaRecebimento = document.getElementById('receitaForma').value.trim();
+                const valor = parseFloat(document.getElementById('receitaValor').value);
+                const data = document.getElementById('receitaData').value;
+                if (!cliente || !categoria || !valor || !data) return;
+                dados.push({
+                    tipo: 'receita',
+                    cliente,
+                    categoria,
+                    detalhes,
+                    formaRecebimento,
+                    valor,
+                    data
+                });
+                document.getElementById('modalReceita').style.display = 'none';
+                this.reset();
+                renderizarDashboard();
+                renderizarPaginasSecundarias();
+                document.getElementById('formNovaReceita').onsubmit = receitaSubmitOriginal;
+            };
+        }
+        function editarDespesa(idx) {
+            const c = dados[idx];
+            if (!c) return;
+            document.querySelector('#modalDespesa').style.display = 'flex';
+            document.getElementById('despesaEmpresa').value = c.empresa || '';
+            document.getElementById('despesaBanco').value = c.banco || '';
+            document.getElementById('despesaCategoria').value = c.categoria || '';
+            document.getElementById('despesaDetalhes').value = c.detalhes || '';
+            document.getElementById('despesaFornecedor').value = c.fornecedor || '';
+            document.getElementById('despesaForma').value = c.formaPagamento || '';
+            document.getElementById('despesaParcelas').value = c.parcelas || '';
+            document.getElementById('despesaValor').value = c.valor || '';
+            document.getElementById('despesaData').value = c.data || '';
+            document.getElementById('despesaCentroCusto').value = c.centroCusto || '';
+            document.getElementById('formNovaDespesa').onsubmit = function(e) {
+                e.preventDefault();
+                dados.splice(idx, 1);
+                const empresa = document.getElementById('despesaEmpresa').value.trim();
+                const banco = document.getElementById('despesaBanco').value.trim();
+                const categoria = document.getElementById('despesaCategoria').value.trim();
+                const detalhes = document.getElementById('despesaDetalhes').value.trim();
+                const fornecedor = document.getElementById('despesaFornecedor').value.trim();
+                const formaPagamento = document.getElementById('despesaForma').value.trim();
+                const parcelas = document.getElementById('despesaParcelas').value.trim();
+                const valor = parseFloat(document.getElementById('despesaValor').value);
+                const data = document.getElementById('despesaData').value;
+                const centroCusto = document.getElementById('despesaCentroCusto').value.trim();
+                if (!empresa || !categoria || !valor || !data) return;
+                dados.push({
+                    tipo: 'despesa',
+                    empresa,
+                    banco,
+                    categoria,
+                    detalhes,
+                    fornecedor,
+                    formaPagamento,
+                    parcelas,
+                    valor,
+                    data,
+                    centroCusto
+                });
+                document.getElementById('modalDespesa').style.display = 'none';
+                this.reset();
+                renderizarDashboard();
+                renderizarPaginasSecundarias();
+                document.getElementById('formNovaDespesa').onsubmit = despesaSubmitOriginal;
+            };
+        }
+
+        // Guardar submit original para restaurar após edição
+        const receitaSubmitOriginal = document.getElementById('formNovaReceita').onsubmit;
+        const despesaSubmitOriginal = document.getElementById('formNovaDespesa').onsubmit;
+
+        // Inicialização
+        window.periodoAtivo = 0;
+        renderizarPeriodos();
+        renderizarDashboard();
+        renderizarPaginasSecundarias();
+
+        // Corrige: garantir que os botões do dashboard abrem os modais corretamente
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('btnAbrirModalReceita').onclick = function() {
+                document.getElementById('modalReceita').style.display = 'flex';
+            };
+            document.getElementById('btnAbrirModalDespesa').onclick = function() {
+                document.getElementById('modalDespesa').style.display = 'flex';
+            };
+            document.getElementById('btnDashboardEntrada').onclick = function() {
+                document.getElementById('modalReceita').style.display = 'flex';
+            };
+            document.getElementById('btnDashboardSaida').onclick = function() {
+                document.getElementById('modalDespesa').style.display = 'flex';
+            };
         });
     </script>
 </body>
