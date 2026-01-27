@@ -910,18 +910,144 @@
     <!-- FIM Sessão Como Chegar -->
 
     <div class="categorias-menu">
-        <span class="categorias-menu-title">Categorias:</span>
-        <div class="categorias-lista">
-            <button class="categoria-btn active" onclick="filtrarCategoria('todas')">Todas</button>
-            <button class="categoria-btn" onclick="filtrarCategoria('capacetes')">Peças</button>
-            <button class="categoria-btn" onclick="filtrarCategoria('pneus')">Acessórios</button>            <!-- Adicione mais categorias se desejar -->
+        <!-- FILTRO DE CATEGORIAS MODERNO -->
+        <div class="categorias-menu" id="filtro-categorias" style="background:linear-gradient(90deg,#18191a 60%,#23272a 100%);box-shadow:0 4px 24px #d9042922;padding:28px 18px 18px 18px;display:flex;align-items:center;gap:32px;flex-wrap:wrap;justify-content:center;position:relative;overflow:hidden;">
+            <span class="categorias-menu-title" style="font-size:1.25em;color:#fff;font-weight:900;letter-spacing:2px;text-shadow:0 2px 12px #d9042922;">
+                <svg width="28" height="28" fill="none" viewBox="0 0 24 24" style="vertical-align:middle;margin-right:8px;"><circle cx="12" cy="12" r="10" fill="#d90429"/><path d="M7 10h10M9 14h6" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>
+                Filtre por categoria:
+            </span>
+            <div class="categorias-lista" style="display:flex;gap:18px;flex-wrap:wrap;">
+                <button class="categoria-btn active" onclick="filtrarCategoria('todas')" style="background:linear-gradient(90deg,#d90429 60%,#e1306c 100%);color:#fff;box-shadow:0 2px 12px #d9042922;font-size:1.08em;font-weight:700;letter-spacing:1px;transition:transform 0.18s,box-shadow 0.18s;">
+                    <svg width="20" height="20" fill="none" viewBox="0 0 24 24" style="vertical-align:middle;margin-right:6px;"><circle cx="12" cy="12" r="10" fill="#e1306c"/><path d="M12 8v8M8 12h8" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>
+                    Todas
+                </button>
+                <button class="categoria-btn" onclick="filtrarCategoria('pecas')" style="background:linear-gradient(90deg,#23272a 60%,#18191a 100%);color:#fff;box-shadow:0 2px 12px #e1306c22;font-size:1.08em;font-weight:700;letter-spacing:1px;transition:transform 0.18s,box-shadow 0.18s;">
+                    <svg width="20" height="20" fill="none" viewBox="0 0 24 24" style="vertical-align:middle;margin-right:6px;"><circle cx="12" cy="12" r="10" fill="#e1306c"/><path d="M12 8v8M8 12h8" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>
+                    Peças
+                </button>
+                <button class="categoria-btn" onclick="filtrarCategoria('acessorios')" style="background:linear-gradient(90deg,#23272a 60%,#18191a 100%);color:#fff;box-shadow:0 2px 12px #e1306c22;font-size:1.08em;font-weight:700;letter-spacing:1px;transition:transform 0.18s,box-shadow 0.18s;">
+                    <svg width="20" height="20" fill="none" viewBox="0 0 24 24" style="vertical-align:middle;margin-right:6px;"><circle cx="12" cy="12" r="10" fill="#e1306c"/><path d="M12 8v8M8 12h8" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>
+                    Acessórios
+                </button>
+                <button class="categoria-btn" onclick="filtrarCategoria('oficina')" style="background:linear-gradient(90deg,#23272a 60%,#18191a 100%);color:#fff;box-shadow:0 2px 12px #e1306c22;font-size:1.08em;font-weight:700;letter-spacing:1px;transition:transform 0.18s,box-shadow 0.18s;">
+                    <svg width="20" height="20" fill="none" viewBox="0 0 24 24" style="vertical-align:middle;margin-right:6px;"><circle cx="12" cy="12" r="10" fill="#e1306c"/><path d="M12 8v8M8 12h8" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>
+                    Oficina
+                </button>
+                <button class="categoria-btn" onclick="filtrarCategoria('pneus')" style="background:linear-gradient(90deg,#23272a 60%,#18191a 100%);color:#fff;box-shadow:0 2px 12px #e1306c22;font-size:1.08em;font-weight:700;letter-spacing:1px;transition:transform 0.18s,box-shadow 0.18s;">
+                    <svg width="20" height="20" fill="none" viewBox="0 0 24 24" style="vertical-align:middle;margin-right:6px;"><circle cx="12" cy="12" r="10" fill="#e1306c"/><path d="M12 8v8M8 12h8" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>
+                    Pneus
+                </button>
+            </div>
+                <!-- Adicione mais categorias se desejar -->
+            </div>
+            <div style="position:absolute;top:-30px;right:-60px;width:180px;height:180px;background:radial-gradient(circle at 80% 20%,#e1306c33 0%,transparent 80%);z-index:0;pointer-events:none;"></div>
+            <div style="position:absolute;bottom:-30px;left:-60px;width:180px;height:180px;background:radial-gradient(circle at 20% 80%,#d9042933 0%,transparent 80%);z-index:0;pointer-events:none;"></div>
         </div>
+        <style>
+            #filtro-categorias .categoria-btn {
+                border: none;
+                border-radius: 12px;
+                padding: 12px 32px;
+                cursor: pointer;
+                outline: none;
+                position: relative;
+                overflow: hidden;
+                box-shadow: 0 2px 12px #0002;
+                margin-bottom: 6px;
+            }
+            #filtro-categorias .categoria-btn.active,
+            #filtro-categorias .categoria-btn:hover {
+                background: linear-gradient(90deg,#d90429 60%,#e1306c 100%) !important;
+                color: #fff !important;
+                transform: scale(1.07) translateY(-2px);
+                box-shadow: 0 6px 24px #d9042940;
+                z-index: 2;
+            }
+            #filtro-categorias .categoria-btn svg {
+                filter: drop-shadow(0 1px 2px #0005);
+                transition: filter 0.2s;
+            }
+            #filtro-categorias .categoria-btn.active svg,
+            #filtro-categorias .categoria-btn:hover svg {
+                filter: drop-shadow(0 2px 6px #d9042940);
+            }
+            @media (max-width: 900px) {
+                #filtro-categorias {
+                    flex-direction: column;
+                    gap: 14px;
+                    padding: 18px 4vw 10px 4vw !important;
+                }
+                #filtro-categorias .categorias-lista {
+                    width: 100%;
+                    justify-content: flex-start;
+                    gap: 10px;
+                }
+                #filtro-categorias .categoria-btn {
+                    width: 100%;
+                    min-width: 120px;
+                    padding: 10px 0;
+                    font-size: 1em;
+                }
+            }
+        </style>
+        <script>
+            // Mapeamento de categorias para cada produto (exemplo, personalize conforme necessário)
+            window.categoriasProdutos = {
+                "PNEU 60/100 ARO 17 SUPER CITY TT33 L BIZ 100 POP110": ["pneus", "pecas"],
+                "CAMARA DE AR 90/90 ARO 19 DIANTEIRA": ["pecas"],
+                "CAMARA DE AR 275/300 ARO 14 DIANTEIRA E TRASEIRA BIZ 100/125": ["pecas"],
+                "CABO VELOCÍMETRO POP 100": ["pecas"],
+                "CABO ACELERADOR BIZ 125": ["pecas"],
+                "CABO AFOGADOR BIZ 125": ["pecas"],
+                "CABO ACELERADOR BROS 160": ["pecas"],
+                "CABO ACELERADOR CG 160": ["pecas"],
+                "CABO EMBREAGEM CG 125 1982": ["pecas"],
+                "CABO ACELERADOR C100 BIZ": ["pecas"],
+                "KIT REMENDO PNEU": ["acessorios"],
+                "JUNTA CABEÇOTE KMP CG 150 /2004/2015": ["pecas"],
+                "JUNTA CABEÇOTE BIZ 125/2006": ["pecas"],
+                "KIT TRANSMISSÃO BROS 150/200": ["pecas"],
+                "KIT TRANSMISSÃO BIZ 100/2012-2015": ["pecas"],
+                "KIT TRANSMISSAO DAROM POP 110/2015/2024": ["pecas"],
+                "KIT TRANSMISSAO DAROM BIZ 125/2005": ["pecas"],
+                "KIT TRANSMISSAO DAROM CG 150/2004": ["pecas"],
+                "JUNTAS KIT KMP BIZ 100": ["pecas"],
+                "JUNTAS KIT COMPLETO KMP BIZ 100/ DREAM": ["pecas"],
+                "PEDAL CAMBIO GP7 BIZ 100/ 2012": ["pecas"],
+                "PEDAL CAMBIO GP7 CG 125 /1987/1999": ["pecas"],
+                "ESCOVA MOTOR DE PARTIDA COM SUPORTE CONDOR BIZ 100": ["pecas"],
+                "ACIONADOR TENSOR DE CORRENTE DE COMANDO GP7 CG 150": ["pecas"],
+                "FILTRO DE OLEO EKESMI TELA FILTRANTE PENEIRA CG 125 /2009/2018": ["pecas"],
+                "FILTRO COMBUSTIVEL UNIVERSAL": ["acessorios"],
+                "AMORTECEDOR GP7 PAR CG 125 /2000/2008": ["pecas"],
+                "AMORTECEDOR GP7 PAR CG 150": ["pecas"],
+                "BOMBA DE OLEO GP7 BIZ 125 /2005": ["pecas"],
+                "VELA NGK DP7EA-9": ["pecas"],
+                "CHAVE DE IGNIÇÃO CONDOR CG 125 /1992/1999": ["acessorios"],
+                "TAMPA DO TANQUE DE GASOLINA GP7 BIZ 100": ["acessorios"],
+                "TAMPA DO TANQUE DE GASOLINA GP7 BIZ 125": ["acessorios"],
+                "TAMPA DO TANQUE DE GASOLINA GP PRETA CG/ML/TUR/125/1983": ["acessorios"],
+                "ARVORE DE COMANDO WW3 BIZ 100 /1998/2005": ["pecas"],
+                "VÁLVULA E RETENTOR KIT WW3 4PC CG 125 /1976/1991": ["pecas"],
+                "PISTA KIT C/ANEL KMP RX/TT CG 125 0,25": ["pecas"],
+                "BOIA DO TANQUE DE COMBUSTÍVEL CONDOR CG 150 /2008": ["acessorios"],
+                "BOIA DO TANQUE DE COMBUSTÍVEL CONDOR BIZ 100 2012": ["acessorios"],
+                "BOIA DO TANQUE DE COMBUSTÍVEL CONDOR BIZ 125 2006/2008": ["acessorios"],
+                "FILTRO DE ÓLEO EKSIM YES/INTRUDER 125": ["pecas"],
+                "FILTRO DE AR FRAM CG 150 2009/2013 CA 9835": ["pecas"],
+                "CARBURADOR COMPLETO GP7 C 100 BIZ": ["pecas"],
+                "CARBURADOR COMPLETO GP7 BIZ 125": ["pecas"],
+                "CARBURADOR COMPLETO GP7 CG ML / 1981": ["pecas"],
+                "FILTRO DE OLEO EKSIM TELA FILTRANTE PENEIRA CG 125 09/18": ["pecas"],
+                // Exemplos para oficina
+                "CAPACETE FW3 X OPEN UP 43": ["acessorios"],
+            };
+        </script>
     </div>
     <!-- FIM .categorias-menu -->
 
     <!-- Sessão Produtos em Destaque (agora abaixo das categorias) -->
     <section id="produtos-destaque" style="max-width:1200px;margin:36px auto;padding:32px 18px 28px 18px;background:linear-gradient(120deg,#23272a 60%,#18191a 100%);border-radius:18px;box-shadow:0 4px 24px #0003;">
-        <h2 style="color:#d90429;font-size:2.2em;font-weight:900;margin-bottom:24px;text-align:center;">Produtos em Destaque</h2>
         <div class="catalogo" id="catalogo">
             <!-- Os cards de produto abaixo foram invertidos para mostrar os últimos cadastrados no topo -->
             <div class="card-moto">
