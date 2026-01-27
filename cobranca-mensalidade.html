@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>GestãoPRO - Cobrança de Mensalidade</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            background: linear-gradient(135deg, #eaf6ff 0%, #f4f6fb 100%);
+            font-family: 'Segoe UI', Arial, sans-serif;
+            color: #222;
+            min-height: 100vh;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .cobranca-container {
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 4px 24px #0002;
+            max-width: 420px;
+            width: 95vw;
+            padding: 2.5rem 2rem 2rem 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .cobranca-container h1 {
+            color: #4f8cff;
+            font-size: 1.7rem;
+            margin-bottom: 0.7rem;
+        }
+        .cobranca-container .status {
+            font-size: 1.1rem;
+            margin-bottom: 1.2rem;
+            color: #162d3a;
+        }
+        .cobranca-container .mensalidade-info {
+            background: #f4f6fb;
+            border-radius: 10px;
+            padding: 1.2rem 1.5rem;
+            margin-bottom: 1.2rem;
+            width: 100%;
+            box-sizing: border-box;
+            text-align: center;
+        }
+        .cobranca-container .mensalidade-info span {
+            display: block;
+            font-size: 1.05rem;
+            margin-bottom: .3rem;
+        }
+        .cobranca-container .mensalidade-info .valor {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #43cea2;
+        }
+        .cobranca-container .mensalidade-info .vencimento {
+            color: #ff7e5f;
+            font-weight: 600;
+        }
+        .cobranca-container .alerta-atraso {
+            background: #ffeded;
+            color: #b71c1c;
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            margin-bottom: 1.2rem;
+            font-size: 1.08rem;
+            text-align: center;
+            font-weight: 600;
+            box-shadow: 0 2px 8px #ff7e5f22;
+        }
+        .cobranca-container .btn-pagar {
+            background: #43cea2;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            padding: 1rem 2.2rem;
+            font-size: 1.15rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin-bottom: .7rem;
+            transition: background .2s;
+            box-shadow: 0 2px 12px #43cea222;
+        }
+        .cobranca-container .btn-pagar:hover {
+            background: #2ec4a6;
+        }
+        .cobranca-container .historico {
+            margin-top: 1.5rem;
+            width: 100%;
+        }
+        .cobranca-container .historico h2 {
+            font-size: 1.1rem;
+            color: #4f8cff;
+            margin-bottom: .5rem;
+        }
+        .cobranca-container table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: .98rem;
+        }
+        .cobranca-container th, .cobranca-container td {
+            padding: .5rem .3rem;
+            text-align: center;
+        }
+        .cobranca-container th {
+            background: #eaf6ff;
+            color: #162d3a;
+        }
+        .cobranca-container tr:nth-child(even) {
+            background: #f4f6fb;
+        }
+        @media (max-width: 500px) {
+            .cobranca-container {
+                padding: 1.2rem 0.5rem;
+            }
+            .cobranca-container .mensalidade-info {
+                padding: 0.8rem 0.5rem;
+            }
+            .cobranca-container .btn-pagar {
+                width: 100%;
+                padding: 1rem 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="cobranca-container">
+        <h1>GestãoPRO - Mensalidade</h1>
+        <div class="status" id="statusUsuario">Carregando status...</div>
+        <div class="mensalidade-info">
+            <span>Valor da Mensalidade:</span>
+            <span class="valor" id="valorMensalidade">R$ 49,90</span>
+            <span>Vencimento:</span>
+            <span class="vencimento" id="vencimentoMensalidade">10/07/2024</span>
+        </div>
+        <div class="alerta-atraso" id="alertaAtraso" style="display:none;">
+            <span>⚠️ Sua mensalidade está em atraso! Por favor, regularize para continuar usando o sistema.</span>
+        </div>
+        <button class="btn-pagar" id="btnPagar">Pagar Mensalidade</button>
+        <div class="historico">
+            <h2>Histórico de Pagamentos</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Mês</th>
+                        <th>Vencimento</th>
+                        <th>Status</th>
+                        <th>Pagamento</th>
+                    </tr>
+                </thead>
+                <tbody id="historicoPagamentos">
+                    <!-- Linhas geradas via JS -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script>
+        // Simulação de dados do usuário e mensalidades
+        const usuario = {
+            nome: "Empresa Exemplo",
+            valorMensalidade: 49.90,
+            vencimento: "2024-07-10",
+            historico: [
+                { mes: "Jun/2024", vencimento: "2024-06-10", pago: true, dataPagamento: "2024-06-09" },
+                { mes: "Jul/2024", vencimento: "2024-07-10", pago: false, dataPagamento: null }
+            ]
+        };
+
+        // Função para formatar datas
+        function formatarData(data) {
+            if (!data) return "-";
+            const d = new Date(data);
+            return d.toLocaleDateString('pt-BR');
+        }
+
+        // Função para formatar valor
+        function formatarValor(valor) {
+            return valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+        }
+
+        // Atualiza informações na tela
+        function atualizarCobranca() {
+            document.getElementById('valorMensalidade').textContent = formatarValor(usuario.valorMensalidade);
+            document.getElementById('vencimentoMensalidade').textContent = formatarData(usuario.vencimento);
+
+            // Verifica atraso
+            const hoje = new Date();
+            const venc = new Date(usuario.vencimento);
+            const pago = usuario.historico.find(h => h.vencimento === usuario.vencimento && h.pago);
+
+            if (pago) {
+                document.getElementById('statusUsuario').textContent = "Mensalidade em dia. Obrigado!";
+                document.getElementById('alertaAtraso').style.display = "none";
+                document.getElementById('btnPagar').disabled = true;
+                document.getElementById('btnPagar').textContent = "Pago";
+                document.getElementById('btnPagar').style.background = "#b0e6d2";
+                document.getElementById('btnPagar').style.color = "#222";
+            } else if (hoje > venc) {
+                document.getElementById('statusUsuario').textContent = "Mensalidade em atraso!";
+                document.getElementById('alertaAtraso').style.display = "block";
+                document.getElementById('btnPagar').disabled = false;
+                document.getElementById('btnPagar').textContent = "Pagar Mensalidade";
+                document.getElementById('btnPagar').style.background = "#ff7e5f";
+                document.getElementById('btnPagar').style.color = "#fff";
+            } else {
+                document.getElementById('statusUsuario').textContent = "Mensalidade pendente.";
+                document.getElementById('alertaAtraso').style.display = "none";
+                document.getElementById('btnPagar').disabled = false;
+                document.getElementById('btnPagar').textContent = "Pagar Mensalidade";
+                document.getElementById('btnPagar').style.background = "#43cea2";
+                document.getElementById('btnPagar').style.color = "#fff";
+            }
+
+            // Preenche histórico
+            const tbody = document.getElementById('historicoPagamentos');
+            tbody.innerHTML = usuario.historico.map(h => `
+                <tr>
+                    <td>${h.mes}</td>
+                    <td>${formatarData(h.vencimento)}</td>
+                    <td style="color:${h.pago ? '#43cea2' : (new Date(h.vencimento) < hoje ? '#ff7e5f' : '#888')};font-weight:600;">
+                        ${h.pago ? 'Pago' : (new Date(h.vencimento) < hoje ? 'Atrasado' : 'Pendente')}
+                    </td>
+                    <td>${h.pago ? formatarData(h.dataPagamento) : '-'}</td>
+                </tr>
+            `).join('');
+        }
+
+        // Simula pagamento
+        document.getElementById('btnPagar').onclick = function() {
+            if (this.disabled) return;
+            setTimeout(() => {
+                // Marca como pago no histórico
+                const idx = usuario.historico.findIndex(h => h.vencimento === usuario.vencimento);
+                if (idx !== -1) {
+                    usuario.historico[idx].pago = true;
+                    usuario.historico[idx].dataPagamento = new Date().toISOString().slice(0,10);
+                }
+                atualizarCobranca();
+                alert('Pagamento realizado com sucesso! Obrigado.');
+            }, 800);
+        };
+
+        // Inicialização
+        atualizarCobranca();
+    </script>
+</body>
+</html>
