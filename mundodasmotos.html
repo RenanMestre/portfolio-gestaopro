@@ -846,7 +846,273 @@
     </div>
 
     <!-- Sessão Como Chegar (agora acima das categorias) -->
-    <section id="como-chegar" style="max-width:1200px;margin:36px auto 36px auto;padding:32px 18px 28px 18px;background:linear-gradient(120deg,#23272a 60%,#18191a 100%);border-radius:18px;box-shadow:0 4px 24px #0003;display:flex;flex-wrap:wrap;gap:32px;align-items:center;">
+    <section id="como-chegar" style="max-width:1200px;margin:48px auto 48px auto;padding:0;border-radius:24px;box-shadow:0 8px 32px #d9042922;overflow:hidden;position:relative;background:linear-gradient(120deg,#23272a 0%,#18191a 60%,#35363a 100%);">
+        <style>
+            #como-chegar {
+                color: #f5f5f5;
+                background: linear-gradient(120deg, #23272a 0%, #18191a 60%, #35363a 100%);
+                border-radius: 24px;
+                box-shadow: 0 8px 32px #d9042922;
+                overflow: hidden;
+                position: relative;
+            }
+            #como-chegar .chegar-flex {
+                display: flex;
+                flex-wrap: wrap;
+                align-items: stretch;
+                position: relative;
+                z-index: 1;
+            }
+            #como-chegar .chegar-info {
+                flex: 1;
+                min-width: 260px;
+                padding: 48px 40px 40px 56px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                background: linear-gradient(120deg, #23272a 80%, #18191a 100%);
+                box-shadow: 0 4px 24px #0002;
+                position: relative;
+            }
+            #como-chegar .chegar-info h2 {
+                color: #e1306c;
+                font-size: 2.4em;
+                font-weight: 900;
+                margin-bottom: 18px;
+                letter-spacing: 2px;
+                text-shadow: 0 2px 12px #d9042922;
+            }
+            #como-chegar .chegar-info p {
+                font-size: 1.18em;
+                color: #bbb;
+                margin-bottom: 22px;
+                line-height: 1.6;
+            }
+            #como-chegar .chegar-info strong {
+                color: #d90429;
+                font-size: 1.13em;
+            }
+            #como-chegar .chegar-info a {
+                color: #25d366;
+                font-weight: 700;
+                text-decoration: none;
+                margin-left: 8px;
+                transition: color 0.2s;
+            }
+            #como-chegar .chegar-info a:hover {
+                color: #e1306c;
+            }
+            #como-chegar .chegar-info .chegar-btn {
+                background: linear-gradient(90deg, #d90429 60%, #e1306c 100%);
+                color: #fff;
+                padding: 16px 44px;
+                border-radius: 32px;
+                font-size: 1.18em;
+                font-weight: 800;
+                text-decoration: none;
+                box-shadow: 0 4px 16px #d9042922;
+                transition: background 0.2s, transform 0.2s;
+                display: inline-block;
+                margin-top: 24px;
+            }
+            #como-chegar .chegar-info .chegar-btn:hover {
+                background: linear-gradient(90deg, #e1306c 60%, #d90429 100%);
+                transform: scale(1.04) translateY(-2px);
+            }
+            #como-chegar .chegar-info .chegar-tip {
+                margin-top: 32px;
+                color: #888;
+                font-size: 1.03em;
+                background: linear-gradient(90deg, #23272a 80%, #18191a 100%);
+                border-radius: 10px;
+                padding: 10px 18px;
+                box-shadow: 0 2px 8px #d9042922;
+                display: inline-block;
+            }
+            #como-chegar .chegar-info .chegar-tip span {
+                color: #e1306c;
+                font-weight: 700;
+            }
+            #como-chegar .chegar-mapa-area {
+                flex: 1.2;
+                min-width: 320px;
+                max-width: 540px;
+                position: relative;
+                background: linear-gradient(120deg, #35363a 0%, #23272a 100%);
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                z-index: 1;
+            }
+            #como-chegar .chegar-mapa {
+                border-radius: 18px;
+                overflow: hidden;
+                box-shadow: 0 4px 24px #d9042922;
+                margin: 48px 40px 0 40px;
+                border: 2px solid #23272a;
+            }
+            #como-chegar .chegar-mapa iframe {
+                width: 100%;
+                height: 340px;
+                border: 0;
+                filter: grayscale(0.2) contrast(1.1) brightness(0.95) drop-shadow(0 2px 12px #0008);
+            }
+            #como-chegar .chegar-mapa-legenda {
+                margin: 18px 40px 48px 40px;
+                color: #fff;
+                font-size: 1.08em;
+                text-align: center;
+                background: linear-gradient(90deg, #23272a 80%, #18191a 100%);
+                border-radius: 12px;
+                box-shadow: 0 2px 8px #e1306c22;
+                padding: 14px;
+                font-weight: 500;
+            }
+            #como-chegar .chegar-mapa-legenda span {
+                color: #e1306c;
+                font-weight: 700;
+            }
+            #como-chegar .chegar-bg1,
+            #como-chegar .chegar-bg2 {
+                position: absolute;
+                z-index: 0;
+                pointer-events: none;
+            }
+            #como-chegar .chegar-bg1 {
+                top: -40px;
+                right: -80px;
+                width: 220px;
+                height: 220px;
+                background: radial-gradient(circle at 80% 20%, #e1306c33 0%, transparent 80%);
+            }
+            #como-chegar .chegar-bg2 {
+                bottom: -40px;
+                left: -80px;
+                width: 220px;
+                height: 220px;
+                background: radial-gradient(circle at 20% 80%, #d9042933 0%, transparent 80%);
+            }
+            @media (max-width: 900px) {
+                #como-chegar .chegar-flex {
+                    flex-direction: column;
+                }
+                #como-chegar .chegar-info,
+                #como-chegar .chegar-mapa-area {
+                    min-width: 0;
+                    width: 100%;
+                    padding: 32px 6vw 24px 6vw;
+                }
+                #como-chegar .chegar-mapa,
+                #como-chegar .chegar-mapa-legenda {
+                    margin: 24px 0 0 0;
+                }
+            }
+            @media (max-width: 600px) {
+                #como-chegar .chegar-info h2 {
+                    font-size: 1.4em !important;
+                }
+                #como-chegar .chegar-info,
+                #como-chegar .chegar-mapa-area {
+                    padding: 18px 2vw 12px 2vw;
+                }
+                #como-chegar .chegar-mapa iframe {
+                    height: 220px;
+                }
+            }
+        </style>
+        <div class="chegar-flex">
+            <div class="chegar-info">
+                <h2 style="margin-bottom:18px;" class="onde-estamos-titulo">Onde estamos?</h2>
+                <style>
+                @media (max-width: 700px) {
+                    #como-chegar .chegar-info {
+                        padding: 18px 4vw 12px 4vw !important;
+                        min-width: 0 !important;
+                        width: 100% !important;
+                        box-sizing: border-box;
+                        align-items: flex-start !important;
+                    }
+                    #como-chegar .chegar-info h2,
+                    .onde-estamos-titulo {
+                        font-size: 1.2em !important;
+                        margin-bottom: 12px !important;
+                        text-align: left !important;
+                    }
+                    #como-chegar .chegar-info p {
+                        font-size: 1em !important;
+                        margin-bottom: 14px !important;
+                        text-align: left !important;
+                    }
+                    #como-chegar .chegar-info .chegar-btn {
+                        width: 100% !important;
+                        font-size: 1em !important;
+                        padding: 12px 0 !important;
+                        margin-top: 18px !important;
+                        text-align: center !important;
+                    }
+                    #como-chegar .chegar-info .chegar-tip {
+                        margin-top: 18px !important;
+                        font-size: 0.97em !important;
+                        padding: 8px 10px !important;
+                        width: 100% !important;
+                        box-sizing: border-box;
+                    }
+                    #como-chegar .chegar-info div,
+                    #como-chegar .chegar-info a,
+                    #como-chegar .chegar-info span {
+                        font-size: 1em !important;
+                        word-break: break-word;
+                    }
+                }
+                </style>
+                <p>
+                    <span style="background:linear-gradient(90deg,#d90429 60%,#e1306c 100%);color:#fff;padding:2px 12px;border-radius:8px;font-weight:700;box-shadow:0 2px 8px #d9042922;">Visite a Mundo das Motos</span>
+                    e viva uma experiência única em atendimento, peças e serviços para sua moto!
+                </p>
+                <div style="margin-bottom:14px;">
+                    <span style="color:#fff;font-size:1.07em;">
+                        Rua Maria Maia da Silva, Qd11 Lt15, N27<br>
+                        Jardim Santa Paula, Petrolina/GO<br>
+                        <span style="color:#e1306c;font-weight:700;">CEP: 75480-000</span>
+                    </span>
+                </div>
+                <div style="margin-bottom:14px;">
+                    <a href="https://wa.me/5562995277435" target="_blank">
+                        (62) 99527-7435
+                    </a>
+                </div>
+                <div style="margin-bottom:14px;">
+                    <a href="mailto:mundodasmotospetro@gmail.com" style="color:#1976d2;">
+                        mundodasmotospetro@gmail.com
+                    </a>
+                </div>
+                <a href="https://www.google.com/maps/dir//Rua+Maria+Maia+da+Silva,+Qd11+Lt15,+N27+-+Jardim+Santa+Paula,+Petrolina+-+GO,+75513-000" target="_blank" class="chegar-btn">
+                    <svg width="22" height="22" fill="none" viewBox="0 0 24 24" style="vertical-align:middle;margin-right:8px;">
+                        <circle cx="12" cy="12" r="11" fill="#fff" />
+                        <path d="M12 2C6.48 2 2 6.48 2 12c0 5.52 4.48 10 10 10s10-4.48 10-10c0-5.52-4.48-10-10-10zm0 18c-4.41 0-8-3.59-8-8 0-4.41 3.59-8 8-8s8 3.59 8 8c0 4.41-3.59 8-8 8zm0-14a6 6 0 0 0-6 6c0 4.5 6 10 6 10s6-5.5 6-10a6 6 0 0 0-6-6zm0 8.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z" fill="#e1306c"/>
+                    </svg>
+                    Google Maps
+                </a>
+                <div class="chegar-tip">
+                    <span>Dica:</span> Fácil acesso, estacionamento próprio e atendimento personalizado!
+                </div>
+            </div>
+            <div class="chegar-mapa-area">
+                <div class="chegar-mapa">
+                    <iframe
+                        title="Mapa Mundo das Motos"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d958.2963985510596!2d-49.33444193048228!3d-16.107697310580168!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x935c330fd98b4e8b%3A0x441ce97d381113d8!2sR.%20Maria%20Maia%20da%20Silva%2C%202-116%20-%20Lot.%20Jardim%20Santa%20Paula%2C%20Petrolina%20de%20Goi%C3%A1s%20-%20GO%2C%2075480-000!5e0!3m2!1spt-BR!2sbr!4v1769541246184!5m2!1spt-BR!2sbr"
+                        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+                <div class="chegar-mapa-legenda">
+                    <span>Estamos no coração do Jardim Santa Paula!</span><br>
+                    Venha conhecer nossa loja e aproveite o melhor para sua moto.
+                </div>
+            </div>
+        </div>
+        <div class="chegar-bg1"></div>
+        <div class="chegar-bg2"></div>
+    </section>
         <section id="como-chegar" style="max-width:1200px;margin:48px auto 48px auto;padding:0;border-radius:24px;box-shadow:0 8px 32px #d9042922;overflow:hidden;position:relative;background:linear-gradient(120deg,#fff 0%,#f5f5f5 60%,#e1306c22 100%);">
             <div style="display:flex;flex-wrap:wrap;align-items:stretch;">
                 <div style="flex:1;min-width:260px;padding:38px 32px 32px 38px;display:flex;flex-direction:column;justify-content:center;">
@@ -1635,12 +1901,11 @@
     </button>
 
     
-        <!-- BOTÃO WHATSAPP FIXO -->
-<!-- BOTÃO WHATSAPP FLUTUANTE PADRÃO -->
+        <!-- BOTÃO WHATSAPP FLUTUANTE PADRÃO -->
 <div class="whatsapp-float">
     <a href="https://wa.me/5562995277435" target="_blank" aria-label="Fale conosco no WhatsApp">
-        <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M20.52 3.48A11.81 11.81 0 0012.07 0C5.52 0 .08 5.25 0 11.74a11.66 11.66 0 001.64 6L0 24l6.38-1.67A12.13 12.13 0 005.67 1.44h.05c6.56 0 11.9-5.25 11.96-11.74a11.69 11.69 0 00-3.54-8.55zM12.1 21.54a9.66 9.66 0 01-4.87-1.31l-.35-.21-3.78 1 1-3.67-.23-.38a9.55 9.55 0 01-1.48-5.15c.05-5.3 4.4-9.61 9.71-9.61a9.64 9.64 0 016.9 2.84 9.53 9.53 0 012.86 6.89c-.05 5.3-4.4 9.6-9.76 9.6zm5.45-7.23c-.3-.15-1.78-.88-2.06-.98s-.48-.15-.67.15-.77.97-.94 1.17-.35.22-.65.07a7.95 7.95 0 01-2.34-1.44 8.5 8.5 0 01-1.58-1.95c-.17-.3 0-.46.13-.61.14-.14.3-.35.44-.52s.2-.3.3-.5a.57.57 0 000-.53c-.08-.15-.67-1.62-.92-2.23-.24-.58-.5-.5-.67-.5l-.58-.01a1.1 1.1 0 00-.8.37 3.36 3.36 0 00-1.06 2.5c0 1.47 1.07 2.89 1.22 3.09.15.2 2.1 3.2 5.08 4.49 2.38 1 3.3 1.09 4.48.92.72-.1 2.18-.88 2.5-1.73a2.14 2.14 0 00.15-1.74c-.06-.13-.25-.2-.48-.35z"/>
+        <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 448 512" fill="currentColor">
+            <path d="M380.9 97.1C339-3.6 241.7-32.6 151.1 9.4 60.5 51.4 31.5 148.7 73.5 239.3l-36.2 99.2c-5.4 14.8 9.5 29.7 24.3 24.3l99.2-36.2c90.6 42 187.9 13 229.9-77.6 42-90.6 13-187.9-77.6-229.9zm-17.7 207.4c-33.6 33.6-78.2 52.1-125.7 52.1-22.2 0-44.1-4.3-64.7-12.7l-7.6-3.1-58.8 21.5 21.5-58.8-3.1-7.6c-8.4-20.6-12.7-42.5-12.7-64.7 0-47.5 18.5-92.1 52.1-125.7 33.6-33.6 78.2-52.1 125.7-52.1 47.5 0 92.1 18.5 125.7 52.1 33.6 33.6 52.1 78.2 52.1 125.7 0 47.5-18.5 92.1-52.1 125.7zm-27.7-61.2c-4.1-2-24.2-12-27.9-13.4-3.7-1.4-6.4-2-9.1 2-2.7 4-10.4 13.4-12.7 16.1-2.3 2.7-4.7 3-8.8 1-4.1-2-17.3-6.4-33-20.4-12.2-10.8-20.4-24.1-22.8-28.1-2.4-4-0.3-6.1 1.7-8.1 1.8-1.8 4-4.7 6-7.1 2-2.4 2.7-4 4-6.7 1.3-2.7 0.7-5-0.3-7-1-2-9.1-22-12.5-30.1-3.3-8-6.7-6.9-9.1-7-2.3-0.1-5-0.1-7.7-0.1s-7.1 1-10.8 5c-3.7 4-14.2 13.9-14.2 33.8s14.5 39.2 16.5 41.9c2 2.7 28.5 43.6 69.2 59.4 9.7 3.8 17.2 6.1 23.1 7.8 9.7 3.1 18.5 2.7 25.5 1.6 7.8-1.2 24.2-9.9 27.6-19.5 3.4-9.6 3.4-17.8 2.4-19.5-1-1.7-3.7-2.7-7.8-4.7z"/>
         </svg>
     </a>
 </div>
