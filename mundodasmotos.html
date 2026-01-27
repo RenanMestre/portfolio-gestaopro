@@ -947,104 +947,6 @@
         #filtro-categorias .categoria-btn:hover svg {
             filter: drop-shadow(0 2px 6px #d9042940);
         }
-        @media (max-width: 700px) {
-            #filtro-categorias {
-                flex-direction: column !important;
-                gap: 0 !important;
-                padding: 0 !important;
-                background: none !important;
-                box-shadow: none !important;
-                align-items: stretch !important;
-                justify-content: flex-start !important;
-                position: static !important;
-            }
-            #filtro-categorias .categorias-menu-title {
-                display: none !important;
-            }
-            #filtro-categorias .categorias-lista {
-                display: none !important; /* <-- Corrigido: inicia escondido */
-                flex-direction: column !important;
-                gap: 0 !important;
-                background: #23272a;
-                border-radius: 0 0 16px 16px;
-                box-shadow: 0 8px 32px #d9042922;
-                margin: 0;
-                padding: 0;
-                width: 100%;
-                position: absolute;
-                top: 54px;
-                left: 0;
-                z-index: 10;
-                overflow: hidden;
-                border-top: 1px solid #18191a;
-                animation: fadeInMenu .2s;
-            }
-            #filtro-categorias.menu-open .categorias-lista {
-                display: flex !important; /* <-- Corrigido: mostra quando menu-open */
-            }
-            #filtro-categorias .categoria-btn {
-                width: 100% !important;
-                border-radius: 0 !important;
-                margin: 0 !important;
-                padding: 16px 0 !important;
-                font-size: 1.08em !important;
-                background: none !important;
-                color: #fff !important;
-                border-bottom: 1px solid #18191a !important;
-                box-shadow: none !important;
-                text-align: left !important;
-                justify-content: flex-start !important;
-                transition: background 0.18s, color 0.18s;
-            }
-            #filtro-categorias .categoria-btn:last-child {
-                border-bottom: none !important;
-            }
-            #filtro-categorias .categoria-btn.active,
-            #filtro-categorias .categoria-btn:hover {
-                background: linear-gradient(90deg,#d90429 60%,#e1306c 100%) !important;
-                color: #fff !important;
-                transform: none !important;
-                box-shadow: none !important;
-            }
-            #filtro-categorias .categoria-btn svg {
-                margin-right: 10px !important;
-            }
-            #filtro-categorias .menu-mobile-toggle {
-                display: flex !important;
-                align-items: center;
-                justify-content: space-between;
-                background: linear-gradient(90deg,#23272a 60%,#18191a 100%);
-                color: #fff;
-                font-size: 1.13em;
-                font-weight: 700;
-                padding: 16px 18px;
-                border-radius: 16px;
-                cursor: pointer;
-                box-shadow: 0 2px 12px #d9042922;
-                width: 100%;
-                position: relative;
-                z-index: 11;
-                letter-spacing: 1px;
-                user-select: none;
-            }
-            #filtro-categorias .menu-mobile-toggle svg {
-                margin-left: 12px;
-                transition: transform 0.2s;
-            }
-            #filtro-categorias.menu-open .menu-mobile-toggle svg {
-                transform: rotate(180deg);
-            }
-            #filtro-categorias.menu-open .categorias-lista {
-                display: flex !important;
-            }
-            @keyframes fadeInMenu {
-                from { opacity: 0; transform: translateY(-12px);}
-                to { opacity: 1; transform: translateY(0);}
-            }
-            #filtro-categorias > div[style*="position:absolute"] {
-                display: none !important;
-            }
-        }
         @media (max-width: 900px) {
             #filtro-categorias {
                 flex-direction: column;
@@ -1063,42 +965,90 @@
                 font-size: 1em;
             }
         }
+        @media (max-width: 700px) {
+            #filtro-categorias {
+                flex-direction: column !important;
+                gap: 10px !important;
+                padding: 10px 4vw !important;
+                background: linear-gradient(90deg,#23272a 60%,#18191a 100%) !important;
+                box-shadow: 0 4px 24px #d9042922 !important;
+                align-items: flex-start !important;
+                justify-content: flex-start !important;
+                position: relative !important;
+            }
+            #filtro-categorias .categorias-menu-title {
+                display: block !important;
+            }
+            #filtro-categorias .categorias-lista {
+                display: flex !important;
+                flex-direction: row !important;
+                gap: 10px !important;
+                background: none !important;
+                border-radius: 0 !important;
+                box-shadow: none !important;
+                margin: 0 !important;
+                padding: 0 !important;
+                width: 100% !important;
+                position: static !important;
+                border-top: none !important;
+                animation: none !important;
+            }
+            #filtro-categorias .categoria-btn {
+                width: auto !important;
+                border-radius: 14px !important;
+                margin: 0 6px 6px 0 !important;
+                padding: 12px 24px !important;
+                font-size: 1em !important;
+                background: linear-gradient(90deg, #d90429 60%, #e1306c 100%) !important;
+                color: #fff !important;
+                border-bottom: none !important;
+                box-shadow: 0 2px 8px #d9042922 !important;
+                text-align: center !important;
+                justify-content: center !important;
+                transition: background 0.18s, color 0.18s;
+            }
+            #filtro-categorias .categoria-btn:last-child {
+                border-bottom: none !important;
+            }
+            #filtro-categorias .categoria-btn.active,
+            #filtro-categorias .categoria-btn:hover {
+                background: linear-gradient(90deg,#e1306c 60%,#d90429 100%) !important;
+                color: #fff !important;
+                transform: scale(1.07) translateY(-2px) !important;
+                box-shadow: 0 8px 32px #d9042940 !important;
+            }
+            #filtro-categorias .categoria-btn svg {
+                margin-right: 10px !important;
+            }
+            #filtro-categorias .menu-mobile-toggle {
+                display: none !important;
+            }
+        }
         </style>
-        <div class="menu-mobile-toggle" onclick="toggleFiltroCategoriasMobile()" aria-label="Abrir filtro de categorias">
-            <span>
-                <svg width="26" height="26" fill="none" viewBox="0 0 24 24" style="vertical-align:middle;margin-right:8px;">
-                    <circle cx="12" cy="12" r="10" fill="#d90429"/>
-                    <path d="M7 10h10M9 14h6" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
-                </svg>
-                Filtrar por categoria
-            </span>
-            <svg width="26" height="26" fill="none" viewBox="0 0 24 24">
-                <path d="M7 10l5 5 5-5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-        </div>
+        <span class="categorias-menu-title">Filtrar por categoria:</span>
         <div class="categorias-lista">
-            <button class="categoria-btn active" onclick="filtrarCategoria('todas')">
+            <button class="categoria-btn active" data-cat="todas">
                 <svg width="20" height="20" fill="none" viewBox="0 0 24 24" style="vertical-align:middle;margin-right:6px;">
                     <circle cx="12" cy="12" r="10" fill="#e1306c"/>
                     <path d="M12 8v8M8 12h8" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
                 </svg>
                 Todas
             </button>
-            <button class="categoria-btn" onclick="filtrarCategoria('pecas')">
+            <button class="categoria-btn" data-cat="pecas">
                 <svg width="20" height="20" fill="none" viewBox="0 0 24 24" style="vertical-align:middle;margin-right:6px;">
                     <circle cx="12" cy="12" r="10" fill="#e1306c"/>
                     <path d="M12 8v8M8 12h8" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
                 </svg>
                 Peças
             </button>
-            <button class="categoria-btn" onclick="filtrarCategoria('acessorios')">
+            <button class="categoria-btn" data-cat="acessorios">
                 <svg width="20" height="20" fill="none" viewBox="0 0 24 24" style="vertical-align:middle;margin-right:6px;">
                     <circle cx="12" cy="12" r="10" fill="#e1306c"/>
                     <path d="M12 8v8M8 12h8" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
                 </svg>
                 Acessórios
             </button>
-            <button class="categoria-btn" onclick="filtrarCategoria('pneus')">
+            <button class="categoria-btn" data-cat="pneus">
                 <svg width="20" height="20" fill="none" viewBox="0 0 24 24" style="vertical-align:middle;margin-right:6px;">
                     <circle cx="12" cy="12" r="10" fill="#e1306c"/>
                     <path d="M12 8v8M8 12h8" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
@@ -1109,36 +1059,19 @@
         <div style="position:absolute;top:-30px;right:-60px;width:180px;height:180px;background:radial-gradient(circle at 80% 20%,#e1306c33 0%,transparent 80%);z-index:0;pointer-events:none;"></div>
         <div style="position:absolute;bottom:-30px;left:-60px;width:180px;height:180px;background:radial-gradient(circle at 20% 80%,#d9042933 0%,transparent 80%);z-index:0;pointer-events:none;"></div>
         <script>
-        function toggleFiltroCategoriasMobile() {
-            var filtro = document.getElementById('filtro-categorias');
-            if (!filtro) return;
-            filtro.classList.toggle('menu-open');
-            // Corrigido: não adicionar listener múltiplas vezes
-            if (filtro.classList.contains('menu-open')) {
-                setTimeout(function() {
-                    document.addEventListener('click', closeFiltroCategoriasMobile, { once: true });
-                }, 10);
-            }
-        }
-        function closeFiltroCategoriasMobile(e) {
-            var filtro = document.getElementById('filtro-categorias');
-            if (!filtro) return;
-            // Corrigido: só fecha se clicar fora do filtro
-            if (!filtro.contains(e.target)) {
-                filtro.classList.remove('menu-open');
-            }
-        }
-        // Corrigido: garantir que o evento só é adicionado em telas pequenas
+        // Unifica o filtro para desktop e mobile
         function addCategoriaBtnCloseOnClick() {
             document.querySelectorAll('#filtro-categorias .categoria-btn').forEach(btn => {
                 btn.onclick = function() {
-                    var filtro = document.getElementById('filtro-categorias');
-                    if (window.innerWidth <= 700 && filtro) filtro.classList.remove('menu-open');
+                    var cat = btn.getAttribute('data-cat');
+                    filtrarCategoria(cat);
                 };
             });
         }
-        addCategoriaBtnCloseOnClick();
+        document.addEventListener('DOMContentLoaded', addCategoriaBtnCloseOnClick);
         window.addEventListener('resize', addCategoriaBtnCloseOnClick);
+        </script>
+        <script>
         // Mapeamento de categorias para cada produto (exemplo, personalize conforme necessário)
         window.categoriasProdutos = {
             "PNEU 60/100 ARO 17 SUPER CITY TT33 L BIZ 100 POP110": ["pneus", "pecas"],
@@ -1495,7 +1428,7 @@
                     <div class="marca">GP7</div>
                     <div class="nome">TAMPA DO TANQUE DE GASOLINA GP7 BIZ 125</div>
                     <div class="preco">R$ 10,00</div>
-                    <a href="#" class="btn-detalhes">Ver Detalhes</a>
+                                       <a href="#" class="btn-detalhes">Ver Detalhes</a>
                 </div>
                 <div class="card-moto">
                     <div class="img-area">
@@ -1615,7 +1548,8 @@
                     <a href="#" class="btn-detalhes">Ver Detalhes</a>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
     <!-- FIM Sessão Produtos em Destaque -->
 
     <!-- Carrinho Modal -->
@@ -2008,7 +1942,8 @@
                     "img/mundodasmotos/CABOACELERADORBROS1602.png",
                     "img/mundodasmotos/CABOACELERADORBROS160.png"
                 ]
-            },
+            }
+            ,
             "CABO AFOGADOR BIZ 125": {
                 marca: "K-CABOS",
                 preco: "R$ 10,00",
