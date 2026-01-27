@@ -909,135 +909,287 @@
     </section>
     <!-- FIM Sessão Como Chegar -->
 
-    <div class="categorias-menu">
-        <!-- FILTRO DE CATEGORIAS MODERNO -->
-        <div class="categorias-menu" id="filtro-categorias" style="background:linear-gradient(90deg,#18191a 60%,#23272a 100%);box-shadow:0 4px 24px #d9042922;padding:28px 18px 18px 18px;display:flex;align-items:center;gap:32px;flex-wrap:wrap;justify-content:center;position:relative;overflow:hidden;">
-            <span class="categorias-menu-title" style="font-size:1.25em;color:#fff;font-weight:900;letter-spacing:2px;text-shadow:0 2px 12px #d9042922;">
-                <svg width="28" height="28" fill="none" viewBox="0 0 24 24" style="vertical-align:middle;margin-right:8px;"><circle cx="12" cy="12" r="10" fill="#d90429"/><path d="M7 10h10M9 14h6" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>
-                Filtre por categoria:
-            </span>
-            <div class="categorias-lista" style="display:flex;gap:18px;flex-wrap:wrap;">
-                <button class="categoria-btn active" onclick="filtrarCategoria('todas')" style="background:linear-gradient(90deg,#d90429 60%,#e1306c 100%);color:#fff;box-shadow:0 2px 12px #d9042922;font-size:1.08em;font-weight:700;letter-spacing:1px;transition:transform 0.18s,box-shadow 0.18s;">
-                    <svg width="20" height="20" fill="none" viewBox="0 0 24 24" style="vertical-align:middle;margin-right:6px;"><circle cx="12" cy="12" r="10" fill="#e1306c"/><path d="M12 8v8M8 12h8" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>
-                    Todas
-                </button>
-                <button class="categoria-btn" onclick="filtrarCategoria('pecas')" style="background:linear-gradient(90deg,#23272a 60%,#18191a 100%);color:#fff;box-shadow:0 2px 12px #e1306c22;font-size:1.08em;font-weight:700;letter-spacing:1px;transition:transform 0.18s,box-shadow 0.18s;">
-                    <svg width="20" height="20" fill="none" viewBox="0 0 24 24" style="vertical-align:middle;margin-right:6px;"><circle cx="12" cy="12" r="10" fill="#e1306c"/><path d="M12 8v8M8 12h8" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>
-                    Peças
-                </button>
-                <button class="categoria-btn" onclick="filtrarCategoria('acessorios')" style="background:linear-gradient(90deg,#23272a 60%,#18191a 100%);color:#fff;box-shadow:0 2px 12px #e1306c22;font-size:1.08em;font-weight:700;letter-spacing:1px;transition:transform 0.18s,box-shadow 0.18s;">
-                    <svg width="20" height="20" fill="none" viewBox="0 0 24 24" style="vertical-align:middle;margin-right:6px;"><circle cx="12" cy="12" r="10" fill="#e1306c"/><path d="M12 8v8M8 12h8" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>
-                    Acessórios
-                </button>
-                <button class="categoria-btn" onclick="filtrarCategoria('pneus')" style="background:linear-gradient(90deg,#23272a 60%,#18191a 100%);color:#fff;box-shadow:0 2px 12px #e1306c22;font-size:1.08em;font-weight:700;letter-spacing:1px;transition:transform 0.18s,box-shadow 0.18s;">
-                    <svg width="20" height="20" fill="none" viewBox="0 0 24 24" style="vertical-align:middle;margin-right:6px;"><circle cx="12" cy="12" r="10" fill="#e1306c"/><path d="M12 8v8M8 12h8" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>
-                    Pneus
-                </button>
-            </div>
-                <!-- Adicione mais categorias se desejar -->
-            </div>
-            <div style="position:absolute;top:-30px;right:-60px;width:180px;height:180px;background:radial-gradient(circle at 80% 20%,#e1306c33 0%,transparent 80%);z-index:0;pointer-events:none;"></div>
-            <div style="position:absolute;bottom:-30px;left:-60px;width:180px;height:180px;background:radial-gradient(circle at 20% 80%,#d9042933 0%,transparent 80%);z-index:0;pointer-events:none;"></div>
-        </div>
+    <div class="categorias-menu" id="filtro-categorias" style="background:linear-gradient(90deg,#23272a 60%,#18191a 100%);box-shadow:0 4px 24px #d9042922;padding:28px 18px 18px 18px;display:flex;align-items:center;gap:32px;flex-wrap:wrap;justify-content:center;position:relative;overflow:hidden;border-radius:18px;">
         <style>
-            #filtro-categorias .categoria-btn {
-                border: none;
-                border-radius: 12px;
-                padding: 12px 32px;
-                cursor: pointer;
-                outline: none;
-                position: relative;
+        #filtro-categorias .categoria-btn {
+            background: linear-gradient(90deg, #d90429 60%, #e1306c 100%);
+            color: #fff;
+            border: none;
+            border-radius: 14px;
+            padding: 14px 38px;
+            font-weight: 700;
+            font-size: 1.13em;
+            cursor: pointer;
+            box-shadow: 0 4px 16px #d9042922, 0 2px 8px #0002;
+            outline: none;
+            margin-bottom: 6px;
+            letter-spacing: 1px;
+            transition: background 0.18s, color 0.18s, box-shadow 0.18s, transform 0.18s;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        #filtro-categorias .categoria-btn.active,
+        #filtro-categorias .categoria-btn:hover {
+            background: linear-gradient(90deg, #e1306c 60%, #d90429 100%);
+            color: #fff;
+            transform: scale(1.07) translateY(-2px);
+            box-shadow: 0 8px 32px #d9042940;
+            z-index: 2;
+        }
+        #filtro-categorias .categoria-btn svg {
+            filter: drop-shadow(0 1px 2px #0005);
+            transition: filter 0.2s;
+        }
+        #filtro-categorias .categoria-btn.active svg,
+        #filtro-categorias .categoria-btn:hover svg {
+            filter: drop-shadow(0 2px 6px #d9042940);
+        }
+        @media (max-width: 700px) {
+            #filtro-categorias {
+                flex-direction: column !important;
+                gap: 0 !important;
+                padding: 0 !important;
+                background: none !important;
+                box-shadow: none !important;
+                align-items: stretch !important;
+                justify-content: flex-start !important;
+                position: static !important;
+            }
+            #filtro-categorias .categorias-menu-title {
+                display: none !important;
+            }
+            #filtro-categorias .categorias-lista {
+                display: none !important; /* <-- Corrigido: inicia escondido */
+                flex-direction: column !important;
+                gap: 0 !important;
+                background: #23272a;
+                border-radius: 0 0 16px 16px;
+                box-shadow: 0 8px 32px #d9042922;
+                margin: 0;
+                padding: 0;
+                width: 100%;
+                position: absolute;
+                top: 54px;
+                left: 0;
+                z-index: 10;
                 overflow: hidden;
-                box-shadow: 0 2px 12px #0002;
-                margin-bottom: 6px;
+                border-top: 1px solid #18191a;
+                animation: fadeInMenu .2s;
+            }
+            #filtro-categorias.menu-open .categorias-lista {
+                display: flex !important; /* <-- Corrigido: mostra quando menu-open */
+            }
+            #filtro-categorias .categoria-btn {
+                width: 100% !important;
+                border-radius: 0 !important;
+                margin: 0 !important;
+                padding: 16px 0 !important;
+                font-size: 1.08em !important;
+                background: none !important;
+                color: #fff !important;
+                border-bottom: 1px solid #18191a !important;
+                box-shadow: none !important;
+                text-align: left !important;
+                justify-content: flex-start !important;
+                transition: background 0.18s, color 0.18s;
+            }
+            #filtro-categorias .categoria-btn:last-child {
+                border-bottom: none !important;
             }
             #filtro-categorias .categoria-btn.active,
             #filtro-categorias .categoria-btn:hover {
                 background: linear-gradient(90deg,#d90429 60%,#e1306c 100%) !important;
                 color: #fff !important;
-                transform: scale(1.07) translateY(-2px);
-                box-shadow: 0 6px 24px #d9042940;
-                z-index: 2;
+                transform: none !important;
+                box-shadow: none !important;
             }
             #filtro-categorias .categoria-btn svg {
-                filter: drop-shadow(0 1px 2px #0005);
-                transition: filter 0.2s;
+                margin-right: 10px !important;
             }
-            #filtro-categorias .categoria-btn.active svg,
-            #filtro-categorias .categoria-btn:hover svg {
-                filter: drop-shadow(0 2px 6px #d9042940);
+            #filtro-categorias .menu-mobile-toggle {
+                display: flex !important;
+                align-items: center;
+                justify-content: space-between;
+                background: linear-gradient(90deg,#23272a 60%,#18191a 100%);
+                color: #fff;
+                font-size: 1.13em;
+                font-weight: 700;
+                padding: 16px 18px;
+                border-radius: 16px;
+                cursor: pointer;
+                box-shadow: 0 2px 12px #d9042922;
+                width: 100%;
+                position: relative;
+                z-index: 11;
+                letter-spacing: 1px;
+                user-select: none;
             }
-            @media (max-width: 900px) {
-                #filtro-categorias {
-                    flex-direction: column;
-                    gap: 14px;
-                    padding: 18px 4vw 10px 4vw !important;
-                }
-                #filtro-categorias .categorias-lista {
-                    width: 100%;
-                    justify-content: flex-start;
-                    gap: 10px;
-                }
-                #filtro-categorias .categoria-btn {
-                    width: 100%;
-                    min-width: 120px;
-                    padding: 10px 0;
-                    font-size: 1em;
-                }
+            #filtro-categorias .menu-mobile-toggle svg {
+                margin-left: 12px;
+                transition: transform 0.2s;
             }
+            #filtro-categorias.menu-open .menu-mobile-toggle svg {
+                transform: rotate(180deg);
+            }
+            #filtro-categorias.menu-open .categorias-lista {
+                display: flex !important;
+            }
+            @keyframes fadeInMenu {
+                from { opacity: 0; transform: translateY(-12px);}
+                to { opacity: 1; transform: translateY(0);}
+            }
+            #filtro-categorias > div[style*="position:absolute"] {
+                display: none !important;
+            }
+        }
+        @media (max-width: 900px) {
+            #filtro-categorias {
+                flex-direction: column;
+                gap: 14px;
+                padding: 18px 4vw 10px 4vw !important;
+            }
+            #filtro-categorias .categorias-lista {
+                width: 100%;
+                justify-content: flex-start;
+                gap: 10px;
+            }
+            #filtro-categorias .categoria-btn {
+                width: 100%;
+                min-width: 120px;
+                padding: 10px 0;
+                font-size: 1em;
+            }
+        }
         </style>
+        <div class="menu-mobile-toggle" onclick="toggleFiltroCategoriasMobile()" aria-label="Abrir filtro de categorias">
+            <span>
+                <svg width="26" height="26" fill="none" viewBox="0 0 24 24" style="vertical-align:middle;margin-right:8px;">
+                    <circle cx="12" cy="12" r="10" fill="#d90429"/>
+                    <path d="M7 10h10M9 14h6" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+                Filtrar por categoria
+            </span>
+            <svg width="26" height="26" fill="none" viewBox="0 0 24 24">
+                <path d="M7 10l5 5 5-5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </div>
+        <div class="categorias-lista">
+            <button class="categoria-btn active" onclick="filtrarCategoria('todas')">
+                <svg width="20" height="20" fill="none" viewBox="0 0 24 24" style="vertical-align:middle;margin-right:6px;">
+                    <circle cx="12" cy="12" r="10" fill="#e1306c"/>
+                    <path d="M12 8v8M8 12h8" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+                Todas
+            </button>
+            <button class="categoria-btn" onclick="filtrarCategoria('pecas')">
+                <svg width="20" height="20" fill="none" viewBox="0 0 24 24" style="vertical-align:middle;margin-right:6px;">
+                    <circle cx="12" cy="12" r="10" fill="#e1306c"/>
+                    <path d="M12 8v8M8 12h8" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+                Peças
+            </button>
+            <button class="categoria-btn" onclick="filtrarCategoria('acessorios')">
+                <svg width="20" height="20" fill="none" viewBox="0 0 24 24" style="vertical-align:middle;margin-right:6px;">
+                    <circle cx="12" cy="12" r="10" fill="#e1306c"/>
+                    <path d="M12 8v8M8 12h8" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+                Acessórios
+            </button>
+            <button class="categoria-btn" onclick="filtrarCategoria('pneus')">
+                <svg width="20" height="20" fill="none" viewBox="0 0 24 24" style="vertical-align:middle;margin-right:6px;">
+                    <circle cx="12" cy="12" r="10" fill="#e1306c"/>
+                    <path d="M12 8v8M8 12h8" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+                Pneus
+            </button>
+        </div>
+        <div style="position:absolute;top:-30px;right:-60px;width:180px;height:180px;background:radial-gradient(circle at 80% 20%,#e1306c33 0%,transparent 80%);z-index:0;pointer-events:none;"></div>
+        <div style="position:absolute;bottom:-30px;left:-60px;width:180px;height:180px;background:radial-gradient(circle at 20% 80%,#d9042933 0%,transparent 80%);z-index:0;pointer-events:none;"></div>
         <script>
-            // Mapeamento de categorias para cada produto (exemplo, personalize conforme necessário)
-            window.categoriasProdutos = {
-                "PNEU 60/100 ARO 17 SUPER CITY TT33 L BIZ 100 POP110": ["pneus", "pecas"],
-                "CAMARA DE AR 90/90 ARO 19 DIANTEIRA": ["pecas"],
-                "CAMARA DE AR 275/300 ARO 14 DIANTEIRA E TRASEIRA BIZ 100/125": ["pecas"],
-                "CABO VELOCÍMETRO POP 100": ["pecas"],
-                "CABO ACELERADOR BIZ 125": ["pecas"],
-                "CABO AFOGADOR BIZ 125": ["pecas"],
-                "CABO ACELERADOR BROS 160": ["pecas"],
-                "CABO ACELERADOR CG 160": ["pecas"],
-                "CABO EMBREAGEM CG 125 1982": ["pecas"],
-                "CABO ACELERADOR C100 BIZ": ["pecas"],
-                "KIT REMENDO PNEU": ["acessorios"],
-                "JUNTA CABEÇOTE KMP CG 150 /2004/2015": ["pecas"],
-                "JUNTA CABEÇOTE BIZ 125/2006": ["pecas"],
-                "KIT TRANSMISSÃO BROS 150/200": ["pecas"],
-                "KIT TRANSMISSÃO BIZ 100/2012-2015": ["pecas"],
-                "KIT TRANSMISSAO DAROM POP 110/2015/2024": ["pecas"],
-                "KIT TRANSMISSAO DAROM BIZ 125/2005": ["pecas"],
-                "KIT TRANSMISSAO DAROM CG 150/2004": ["pecas"],
-                "JUNTAS KIT KMP BIZ 100": ["pecas"],
-                "JUNTAS KIT COMPLETO KMP BIZ 100/ DREAM": ["pecas"],
-                "PEDAL CAMBIO GP7 BIZ 100/ 2012": ["pecas"],
-                "PEDAL CAMBIO GP7 CG 125 /1987/1999": ["pecas"],
-                "ESCOVA MOTOR DE PARTIDA COM SUPORTE CONDOR BIZ 100": ["pecas"],
-                "ACIONADOR TENSOR DE CORRENTE DE COMANDO GP7 CG 150": ["pecas"],
-                "FILTRO DE OLEO EKESMI TELA FILTRANTE PENEIRA CG 125 /2009/2018": ["pecas"],
-                "FILTRO COMBUSTIVEL UNIVERSAL": ["acessorios"],
-                "AMORTECEDOR GP7 PAR CG 125 /2000/2008": ["pecas"],
-                "AMORTECEDOR GP7 PAR CG 150": ["pecas"],
-                "BOMBA DE OLEO GP7 BIZ 125 /2005": ["pecas"],
-                "VELA NGK DP7EA-9": ["pecas"],
-                "CHAVE DE IGNIÇÃO CONDOR CG 125 /1992/1999": ["acessorios"],
-                "TAMPA DO TANQUE DE GASOLINA GP7 BIZ 100": ["acessorios"],
-                "TAMPA DO TANQUE DE GASOLINA GP7 BIZ 125": ["acessorios"],
-                "TAMPA DO TANQUE DE GASOLINA GP PRETA CG/ML/TUR/125/1983": ["acessorios"],
-                "ARVORE DE COMANDO WW3 BIZ 100 /1998/2005": ["pecas"],
-                "VÁLVULA E RETENTOR KIT WW3 4PC CG 125 /1976/1991": ["pecas"],
-                "PISTA KIT C/ANEL KMP RX/TT CG 125 0,25": ["pecas"],
-                "BOIA DO TANQUE DE COMBUSTÍVEL CONDOR CG 150 /2008": ["acessorios"],
-                "BOIA DO TANQUE DE COMBUSTÍVEL CONDOR BIZ 100 2012": ["acessorios"],
-                "BOIA DO TANQUE DE COMBUSTÍVEL CONDOR BIZ 125 2006/2008": ["acessorios"],
-                "FILTRO DE ÓLEO EKSIM YES/INTRUDER 125": ["pecas"],
-                "FILTRO DE AR FRAM CG 150 2009/2013 CA 9835": ["pecas"],
-                "CARBURADOR COMPLETO GP7 C 100 BIZ": ["pecas"],
-                "CARBURADOR COMPLETO GP7 BIZ 125": ["pecas"],
-                "CARBURADOR COMPLETO GP7 CG ML / 1981": ["pecas"],
-                "FILTRO DE OLEO EKSIM TELA FILTRANTE PENEIRA CG 125 09/18": ["pecas"],
-                // Exemplos para oficina
-                "CAPACETE FW3 X OPEN UP 43": ["acessorios"],
-            };
+        function toggleFiltroCategoriasMobile() {
+            var filtro = document.getElementById('filtro-categorias');
+            if (!filtro) return;
+            filtro.classList.toggle('menu-open');
+            // Corrigido: não adicionar listener múltiplas vezes
+            if (filtro.classList.contains('menu-open')) {
+                setTimeout(function() {
+                    document.addEventListener('click', closeFiltroCategoriasMobile, { once: true });
+                }, 10);
+            }
+        }
+        function closeFiltroCategoriasMobile(e) {
+            var filtro = document.getElementById('filtro-categorias');
+            if (!filtro) return;
+            // Corrigido: só fecha se clicar fora do filtro
+            if (!filtro.contains(e.target)) {
+                filtro.classList.remove('menu-open');
+            }
+        }
+        // Corrigido: garantir que o evento só é adicionado em telas pequenas
+        function addCategoriaBtnCloseOnClick() {
+            document.querySelectorAll('#filtro-categorias .categoria-btn').forEach(btn => {
+                btn.onclick = function() {
+                    var filtro = document.getElementById('filtro-categorias');
+                    if (window.innerWidth <= 700 && filtro) filtro.classList.remove('menu-open');
+                };
+            });
+        }
+        addCategoriaBtnCloseOnClick();
+        window.addEventListener('resize', addCategoriaBtnCloseOnClick);
+        // Mapeamento de categorias para cada produto (exemplo, personalize conforme necessário)
+        window.categoriasProdutos = {
+            "PNEU 60/100 ARO 17 SUPER CITY TT33 L BIZ 100 POP110": ["pneus", "pecas"],
+            "CAMARA DE AR 90/90 ARO 19 DIANTEIRA": ["pecas"],
+            "CAMARA DE AR 275/300 ARO 14 DIANTEIRA E TRASEIRA BIZ 100/125": ["pecas"],
+            "CABO VELOCÍMETRO POP 100": ["pecas"],
+            "CABO ACELERADOR BIZ 125": ["pecas"],
+            "CABO AFOGADOR BIZ 125": ["pecas"],
+            "CABO ACELERADOR BROS 160": ["pecas"],
+            "CABO ACELERADOR CG 160": ["pecas"],
+            "CABO EMBREAGEM CG 125 1982": ["pecas"],
+            "CABO ACELERADOR C100 BIZ": ["pecas"],
+            "KIT REMENDO PNEU": ["acessorios"],
+            "JUNTA CABEÇOTE KMP CG 150 /2004/2015": ["pecas"],
+            "JUNTA CABEÇOTE BIZ 125/2006": ["pecas"],
+            "KIT TRANSMISSÃO BROS 150/200": ["pecas"],
+            "KIT TRANSMISSÃO BIZ 100/2012-2015": ["pecas"],
+            "KIT TRANSMISSAO DAROM POP 110/2015/2024": ["pecas"],
+            "KIT TRANSMISSAO DAROM BIZ 125/2005": ["pecas"],
+            "KIT TRANSMISSAO DAROM CG 150/2004": ["pecas"],
+            "JUNTAS KIT KMP BIZ 100": ["pecas"],
+            "JUNTAS KIT COMPLETO KMP BIZ 100/ DREAM": ["pecas"],
+            "PEDAL CAMBIO GP7 BIZ 100/ 2012": ["pecas"],
+            "PEDAL CAMBIO GP7 CG 125 /1987/1999": ["pecas"],
+            "ESCOVA MOTOR DE PARTIDA COM SUPORTE CONDOR BIZ 100": ["pecas"],
+            "ACIONADOR TENSOR DE CORRENTE DE COMANDO GP7 CG 150": ["pecas"],
+            "FILTRO DE OLEO EKESMI TELA FILTRANTE PENEIRA CG 125 /2009/2018": ["pecas"],
+            "FILTRO COMBUSTIVEL UNIVERSAL": ["acessorios"],
+            "AMORTECEDOR GP7 PAR CG 125 /2000/2008": ["pecas"],
+            "AMORTECEDOR GP7 PAR CG 150": ["pecas"],
+            "BOMBA DE OLEO GP7 BIZ 125 /2005": ["pecas"],
+            "VELA NGK DP7EA-9": ["pecas"],
+            "CHAVE DE IGNIÇÃO CONDOR CG 125 /1992/1999": ["acessorios"],
+            "TAMPA DO TANQUE DE GASOLINA GP7 BIZ 100": ["acessorios"],
+            "TAMPA DO TANQUE DE GASOLINA GP7 BIZ 125": ["acessorios"],
+            "TAMPA DO TANQUE DE GASOLINA GP PRETA CG/ML/TUR/125/1983": ["acessorios"],
+            "ARVORE DE COMANDO WW3 BIZ 100 /1998/2005": ["pecas"],
+            "VÁLVULA E RETENTOR KIT WW3 4PC CG 125 /1976/1991": ["pecas"],
+            "PISTA KIT C/ANEL KMP RX/TT CG 125 0,25": ["pecas"],
+            "BOIA DO TANQUE DE COMBUSTÍVEL CONDOR CG 150 /2008": ["acessorios"],
+            "BOIA DO TANQUE DE COMBUSTÍVEL CONDOR BIZ 100 2012": ["acessorios"],
+            "BOIA DO TANQUE DE COMBUSTÍVEL CONDOR BIZ 125 2006/2008": ["acessorios"],
+            "FILTRO DE ÓLEO EKSIM YES/INTRUDER 125": ["pecas"],
+            "FILTRO DE AR FRAM CG 150 2009/2013 CA 9835": ["pecas"],
+            "CARBURADOR COMPLETO GP7 C 100 BIZ": ["pecas"],
+            "CARBURADOR COMPLETO GP7 BIZ 125": ["pecas"],
+            "CARBURADOR COMPLETO GP7 CG ML / 1981": ["pecas"],
+            "FILTRO DE OLEO EKSIM TELA FILTRANTE PENEIRA CG 125 09/18": ["pecas"],
+            // Exemplos para oficina
+            "CAPACETE FW3 X OPEN UP 43": ["acessorios"],
+        };
         </script>
     </div>
     <!-- FIM .categorias-menu -->
@@ -1300,170 +1452,170 @@
                 <div class="preco">R$ 120,00</div>
                 <a href="#" class="btn-detalhes">Ver Detalhes</a>
             </div>
-            <div class="card-moto">
-                <div class="img-area">
-                    <img src="img/mundodasmotos/BOMBAOLEOGP7BIZ1252005.png" alt="Bomba de Óleo GP7 Biz 125 /2005">
+                <div class="card-moto">
+                    <div class="img-area">
+                        <img src="img/mundodasmotos/BOMBAOLEOGP7BIZ1252005.png" alt="Bomba de Óleo GP7 Biz 125 /2005">
+                    </div>
+                    <div class="marca">GP7</div>
+                    <div class="nome">BOMBA DE OLEO GP7 BIZ 125 /2005</div>
+                    <div class="preco">R$ 45,00</div>
+                    <a href="#" class="btn-detalhes">Ver Detalhes</a>
                 </div>
-                <div class="marca">GP7</div>
-                <div class="nome">BOMBA DE OLEO GP7 BIZ 125 /2005</div>
-                <div class="preco">R$ 45,00</div>
-                <a href="#" class="btn-detalhes">Ver Detalhes</a>
-            </div>
-            <div class="card-moto">
-                <div class="img-area">
-                    <img src="img/mundodasmotos/VELANGKDP7EA9.png" alt="Vela NGK DP7EA-9">
+                <div class="card-moto">
+                    <div class="img-area">
+                        <img src="img/mundodasmotos/VELANGKDP7EA9.png" alt="Vela NGK DP7EA-9">
+                    </div>
+                    <div class="marca">NGK</div>
+                    <div class="nome">VELA NGK DP7EA-9</div>
+                    <div class="preco">R$ 18,00</div>
+                    <a href="#" class="btn-detalhes">Ver Detalhes</a>
                 </div>
-                <div class="marca">NGK</div>
-                <div class="nome">VELA NGK DP7EA-9</div>
-                <div class="preco">R$ 18,00</div>
-                <a href="#" class="btn-detalhes">Ver Detalhes</a>
-            </div>
-            <div class="card-moto">
-                <div class="img-area">
-                    <img src="img/mundodasmotos/CHAVEIGNICAOCONDORCG12519921999.png" alt="Chave de Ignição Condor CG 125 /1992/1999">
+                <div class="card-moto">
+                    <div class="img-area">
+                        <img src="img/mundodasmotos/CHAVEIGNICAOCONDORCG12519921999.png" alt="Chave de Ignição Condor CG 125 /1992/1999">
+                    </div>
+                    <div class="marca">CONDOR</div>
+                    <div class="nome">CHAVE DE IGNIÇÃO CONDOR CG 125 /1992/1999</div>
+                    <div class="preco">R$ 15,00</div>
+                    <a href="#" class="btn-detalhes">Ver Detalhes</a>
                 </div>
-                <div class="marca">CONDOR</div>
-                <div class="nome">CHAVE DE IGNIÇÃO CONDOR CG 125 /1992/1999</div>
-                <div class="preco">R$ 15,00</div>
-                <a href="#" class="btn-detalhes">Ver Detalhes</a>
-            </div>
-            <div class="card-moto">
-                <div class="img-area">
-                    <img src="img/mundodasmotos/TAMPATANQUEGP7BIZ100.png" alt="Tampa do Tanque de Gasolina GP7 Biz 100">
+                <div class="card-moto">
+                    <div class="img-area">
+                        <img src="img/mundodasmotos/TAMPATANQUEGP7BIZ100.png" alt="Tampa do Tanque de Gasolina GP7 Biz 100">
+                    </div>
+                    <div class="marca">GP7</div>
+                    <div class="nome">TAMPA DO TANQUE DE GASOLINA GP7 BIZ 100</div>
+                    <div class="preco">R$ 10,00</div>
+                    <a href="#" class="btn-detalhes">Ver Detalhes</a>
                 </div>
-                <div class="marca">GP7</div>
-                <div class="nome">TAMPA DO TANQUE DE GASOLINA GP7 BIZ 100</div>
-                <div class="preco">R$ 10,00</div>
-                <a href="#" class="btn-detalhes">Ver Detalhes</a>
-            </div>
-            <div class="card-moto">
-                <div class="img-area">
-                    <img src="img/mundodasmotos/TAMPATANQUEGP7BIZ125.png" alt="Tampa do Tanque de Gasolina GP7 Biz 125">
+                <div class="card-moto">
+                    <div class="img-area">
+                        <img src="img/mundodasmotos/TAMPATANQUEGP7BIZ125.png" alt="Tampa do Tanque de Gasolina GP7 Biz 125">
+                    </div>
+                    <div class="marca">GP7</div>
+                    <div class="nome">TAMPA DO TANQUE DE GASOLINA GP7 BIZ 125</div>
+                    <div class="preco">R$ 10,00</div>
+                    <a href="#" class="btn-detalhes">Ver Detalhes</a>
                 </div>
-                <div class="marca">GP7</div>
-                <div class="nome">TAMPA DO TANQUE DE GASOLINA GP7 BIZ 125</div>
-                <div class="preco">R$ 10,00</div>
-                <a href="#" class="btn-detalhes">Ver Detalhes</a>
-            </div>
-            <div class="card-moto">
-                <div class="img-area">
-                    <img src="img/mundodasmotos/TAMPATANQUEGP7PRETACGMLTUR.png" alt="Tampa do Tanque de Gasolina GP Preta CG/ML/TUR/125/1983">
+                <div class="card-moto">
+                    <div class="img-area">
+                        <img src="img/mundodasmotos/TAMPATANQUEGP7PRETACGMLTUR.png" alt="Tampa do Tanque de Gasolina GP Preta CG/ML/TUR/125/1983">
+                    </div>
+                    <div class="marca">GP7</div>
+                    <div class="nome">TAMPA DO TANQUE DE GASOLINA GP PRETA CG/ML/TUR/125/1983</div>
+                    <div class="preco">R$ 26,00</div>
+                    <a href="#" class="btn-detalhes">Ver Detalhes</a>
                 </div>
-                <div class="marca">GP7</div>
-                <div class="nome">TAMPA DO TANQUE DE GASOLINA GP PRETA CG/ML/TUR/125/1983</div>
-                <div class="preco">R$ 26,00</div>
-                <a href="#" class="btn-detalhes">Ver Detalhes</a>
-            </div>
-            <div class="card-moto">
-                <div class="img-area">
-                    <img src="img/mundodasmotos/ARVORECOMANDOWW3BIZ100.png" alt="Árvore de Comando WW3 Biz 100 /1998/2005">
+                <div class="card-moto">
+                    <div class="img-area">
+                        <img src="img/mundodasmotos/ARVORECOMANDOWW3BIZ100.png" alt="Árvore de Comando WW3 Biz 100 /1998/2005">
+                    </div>
+                    <div class="marca">WW3</div>
+                    <div class="nome">ARVORE DE COMANDO WW3 BIZ 100 /1998/2005</div>
+                    <div class="preco">R$ 55,00</div>
+                    <a href="#" class="btn-detalhes">Ver Detalhes</a>
                 </div>
-                <div class="marca">WW3</div>
-                <div class="nome">ARVORE DE COMANDO WW3 BIZ 100 /1998/2005</div>
-                <div class="preco">R$ 55,00</div>
-                <a href="#" class="btn-detalhes">Ver Detalhes</a>
-            </div>
-            <div class="card-moto">
-                <div class="img-area">
-                    <img src="img/mundodasmotos/VALVULARETENTORKITWW3CG125.png" alt="Válvula e Retentor Kit WW3 4PC CG 125 /1976/1991">
+                <div class="card-moto">
+                    <div class="img-area">
+                        <img src="img/mundodasmotos/VALVULARETENTORKITWW3CG125.png" alt="Válvula e Retentor Kit WW3 4PC CG 125 /1976/1991">
+                    </div>
+                    <div class="marca">WW3</div>
+                    <div class="nome">VÁLVULA E RETENTOR KIT WW3 4PC CG 125 /1976/1991</div>
+                    <div class="preco">R$ 40,00</div>
+                    <a href="#" class="btn-detalhes">Ver Detalhes</a>
                 </div>
-                <div class="marca">WW3</div>
-                <div class="nome">VÁLVULA E RETENTOR KIT WW3 4PC CG 125 /1976/1991</div>
-                <div class="preco">R$ 40,00</div>
-                <a href="#" class="btn-detalhes">Ver Detalhes</a>
-            </div>
-            <div class="card-moto">
-                <div class="img-area">
-                    <img src="img/mundodasmotos/PISTAAANELKMPRXTT125.png" alt="Pista Kit C/Anel KMP RX/TT CG 125 0,25">
+                <div class="card-moto">
+                    <div class="img-area">
+                        <img src="img/mundodasmotos/PISTAAANELKMPRXTT125.png" alt="Pista Kit C/Anel KMP RX/TT CG 125 0,25">
+                    </div>
+                    <div class="marca">KMP</div>
+                    <div class="nome">PISTA KIT C/ANEL KMP RX/TT CG 125 0,25</div>
+                    <div class="preco">R$ 20,00</div>
+                    <a href="#" class="btn-detalhes">Ver Detalhes</a>
                 </div>
-                <div class="marca">KMP</div>
-                <div class="nome">PISTA KIT C/ANEL KMP RX/TT CG 125 0,25</div>
-                <div class="preco">R$ 20,00</div>
-                <a href="#" class="btn-detalhes">Ver Detalhes</a>
-            </div>
-            <div class="card-moto">
-                <div class="img-area">
-                    <img src="img/mundodasmotos/BOIATANQUECG150.png" alt="Boia do Tanque de Combustível Condor CG 150 /2008">
+                <div class="card-moto">
+                    <div class="img-area">
+                        <img src="img/mundodasmotos/BOIATANQUECG150.png" alt="Boia do Tanque de Combustível Condor CG 150 /2008">
+                    </div>
+                    <div class="marca">CONDOR</div>
+                    <div class="nome">BOIA DO TANQUE DE COMBUSTÍVEL CONDOR CG 150 /2008</div>
+                    <div class="preco">R$ 35,00</div>
+                    <a href="#" class="btn-detalhes">Ver Detalhes</a>
                 </div>
-                <div class="marca">CONDOR</div>
-                <div class="nome">BOIA DO TANQUE DE COMBUSTÍVEL CONDOR CG 150 /2008</div>
-                <div class="preco">R$ 35,00</div>
-                <a href="#" class="btn-detalhes">Ver Detalhes</a>
-            </div>
-            <div class="card-moto">
-                <div class="img-area">
-                    <img src="img/mundodasmotos/BOIATANQUEBIZ1002012.png" alt="Boia do Tanque de Combustível Condor Biz 100 2012">
+                <div class="card-moto">
+                    <div class="img-area">
+                        <img src="img/mundodasmotos/BOIATANQUEBIZ1002012.png" alt="Boia do Tanque de Combustível Condor Biz 100 2012">
+                    </div>
+                    <div class="marca">CONDOR</div>
+                    <div class="nome">BOIA DO TANQUE DE COMBUSTÍVEL CONDOR BIZ 100 2012</div>
+                    <div class="preco">R$ 33,00</div>
+                    <a href="#" class="btn-detalhes">Ver Detalhes</a>
                 </div>
-                <div class="marca">CONDOR</div>
-                <div class="nome">BOIA DO TANQUE DE COMBUSTÍVEL CONDOR BIZ 100 2012</div>
-                <div class="preco">R$ 33,00</div>
-                <a href="#" class="btn-detalhes">Ver Detalhes</a>
-            </div>
-            <div class="card-moto">
-                <div class="img-area">
-                    <img src="img/mundodasmotos/BOIATANQUEBIZ12520062008.png" alt="Boia do Tanque de Combustível Condor Biz 125 2006/2008">
+                <div class="card-moto">
+                    <div class="img-area">
+                        <img src="img/mundodasmotos/BOIATANQUEBIZ12520062008.png" alt="Boia do Tanque de Combustível Condor Biz 125 2006/2008">
+                    </div>
+                    <div class="marca">CONDOR</div>
+                    <div class="nome">BOIA DO TANQUE DE COMBUSTÍVEL CONDOR BIZ 125 2006/2008</div>
+                    <div class="preco">R$ 35,00</div>
+                    <a href="#" class="btn-detalhes">Ver Detalhes</a>
                 </div>
-                <div class="marca">CONDOR</div>
-                <div class="nome">BOIA DO TANQUE DE COMBUSTÍVEL CONDOR BIZ 125 2006/2008</div>
-                <div class="preco">R$ 35,00</div>
-                <a href="#" class="btn-detalhes">Ver Detalhes</a>
-            </div>
-            <div class="card-moto">
-                <div class="img-area">
-                    <img src="img/mundodasmotos/FILTROOLEOEKSIMYESINTRUDER125.png" alt="Filtro de Óleo Eksim Yes/Intruder 125">
+                <div class="card-moto">
+                    <div class="img-area">
+                        <img src="img/mundodasmotos/FILTROOLEOEKSIMYESINTRUDER125.png" alt="Filtro de Óleo Eksim Yes/Intruder 125">
+                    </div>
+                    <div class="marca">EKSIM</div>
+                    <div class="nome">FILTRO DE ÓLEO EKSIM YES/INTRUDER 125</div>
+                    <div class="preco">R$ 10,00</div>
+                    <a href="#" class="btn-detalhes">Ver Detalhes</a>
                 </div>
-                <div class="marca">EKSIM</div>
-                <div class="nome">FILTRO DE ÓLEO EKSIM YES/INTRUDER 125</div>
-                <div class="preco">R$ 10,00</div>
-                <a href="#" class="btn-detalhes">Ver Detalhes</a>
-            </div>
-            <div class="card-moto">
-                <div class="img-area">
-                    <img src="img/mundodasmotos/FILTROARFRAMCG15020092013CA9835.png" alt="Filtro de Ar Fram CG 150 2009/2013 CA 9835">
+                <div class="card-moto">
+                    <div class="img-area">
+                        <img src="img/mundodasmotos/FILTROARFRAMCG15020092013CA9835.png" alt="Filtro de Ar Fram CG 150 2009/2013 CA 9835">
+                    </div>
+                    <div class="marca">FRAM</div>
+                    <div class="nome">FILTRO DE AR FRAM CG 150 2009/2013 CA 9835</div>
+                    <div class="preco">R$ 12,00</div>
+                    <a href="#" class="btn-detalhes">Ver Detalhes</a>
                 </div>
-                <div class="marca">FRAM</div>
-                <div class="nome">FILTRO DE AR FRAM CG 150 2009/2013 CA 9835</div>
-                <div class="preco">R$ 12,00</div>
-                <a href="#" class="btn-detalhes">Ver Detalhes</a>
-            </div>
-            <div class="card-moto">
-                <div class="img-area">
-                    <img src="img/mundodasmotos/CARBURADORGP7C100BIZ.png" alt="Carburador Completo GP7 C 100 Biz">
+                <div class="card-moto">
+                    <div class="img-area">
+                        <img src="img/mundodasmotos/CARBURADORGP7C100BIZ.png" alt="Carburador Completo GP7 C 100 Biz">
+                    </div>
+                    <div class="marca">GP7</div>
+                    <div class="nome">CARBURADOR COMPLETO GP7 C 100 BIZ</div>
+                    <div class="preco">R$ 110,00</div>
+                    <a href="#" class="btn-detalhes">Ver Detalhes</a>
                 </div>
-                <div class="marca">GP7</div>
-                <div class="nome">CARBURADOR COMPLETO GP7 C 100 BIZ</div>
-                <div class="preco">R$ 110,00</div>
-                <a href="#" class="btn-detalhes">Ver Detalhes</a>
-            </div>
-            <div class="card-moto">
-                <div class="img-area">
-                    <img src="img/mundodasmotos/CARBURADORGP7BIZ125.png" alt="Carburador Completo GP7 Biz 125">
+                <div class="card-moto">
+                    <div class="img-area">
+                        <img src="img/mundodasmotos/CARBURADORGP7BIZ125.png" alt="Carburador Completo GP7 Biz 125">
+                    </div>
+                    <div class="marca">GP7</div>
+                    <div class="nome">CARBURADOR COMPLETO GP7 BIZ 125</div>
+                    <div class="preco">R$ 130,00</div>
+                    <a href="#" class="btn-detalhes">Ver Detalhes</a>
                 </div>
-                <div class="marca">GP7</div>
-                <div class="nome">CARBURADOR COMPLETO GP7 BIZ 125</div>
-                <div class="preco">R$ 130,00</div>
-                <a href="#" class="btn-detalhes">Ver Detalhes</a>
-            </div>
-            <div class="card-moto">
-                <div class="img-area">
-                    <img src="img/mundodasmotos/CARBURADORGP7CGML1981.png" alt="Carburador Completo GP7 CG ML 1981">
+                <div class="card-moto">
+                    <div class="img-area">
+                        <img src="img/mundodasmotos/CARBURADORGP7CGML1981.png" alt="Carburador Completo GP7 CG ML 1981">
+                    </div>
+                    <div class="marca">GP7</div>
+                    <div class="nome">CARBURADOR COMPLETO GP7 CG ML / 1981</div>
+                    <div class="preco">R$ 110,00</div>
+                    <a href="#" class="btn-detalhes">Ver Detalhes</a>
                 </div>
-                <div class="marca">GP7</div>
-                <div class="nome">CARBURADOR COMPLETO GP7 CG ML / 1981</div>
-                <div class="preco">R$ 110,00</div>
-                <a href="#" class="btn-detalhes">Ver Detalhes</a>
-            </div>
-            <div class="card-moto">
-                <div class="img-area">
-                    <img src="img/mundodasmotos/FILTROOLEOEKSIMTELAFILTRANTEPENEIRACG1250918.png" alt="Filtro de Óleo Eksim Tela Filtrante Peneira CG 125 09/18">
+                <div class="card-moto">
+                    <div class="img-area">
+                        <img src="img/mundodasmotos/FILTROOLEOEKSIMTELAFILTRANTEPENEIRACG1250918.png" alt="Filtro de Óleo Eksim Tela Filtrante Peneira CG 125 09/18">
+                    </div>
+                    <div class="marca">EKSIM</div>
+                    <div class="nome">FILTRO DE OLEO EKSIM TELA FILTRANTE PENEIRA CG 125 09/18</div>
+                    <div class="preco">R$ 2,00</div>
+                    <a href="#" class="btn-detalhes">Ver Detalhes</a>
                 </div>
-                <div class="marca">EKSIM</div>
-                <div class="nome">FILTRO DE OLEO EKSIM TELA FILTRANTE PENEIRA CG 125 09/18</div>
-                <div class="preco">R$ 2,00</div>
-                <a href="#" class="btn-detalhes">Ver Detalhes</a>
             </div>
-        </div>
-    </section>
+        </section>
     <!-- FIM Sessão Produtos em Destaque -->
 
     <!-- Carrinho Modal -->
