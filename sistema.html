@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Mundo das Motos | Link da Bio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Jost:400,700&display=swap" rel="stylesheet">
+    <meta name="description" content="Acesse todos os canais, promoções e novidades da Mundo das Motos. Clique e acelere seu sonho!">
+    <style>
+        :root {
+            --cor-principal: #d90429;
+            --cor-secundaria: #e1306c;
+            --cor-bg: #18191a;
+            --cor-card: #23272a;
+            --cor-texto: #fff;
+            --cor-btn: #fff;
+            --cor-btn-text: #d90429;
+            --cor-btn-hover: #e1306c;
+        }
+        body {
+            background: linear-gradient(135deg, #23272a 0%, #18191a 100%);
+            color: var(--cor-texto);
+            font-family: 'Jost', Arial, Helvetica, sans-serif;
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+        }
+        .container {
+            width: 100%;
+            max-width: 420px;
+            margin: 0 auto;
+            padding: 32px 12px 24px 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .logo-moto {
+            width: 92px;
+            height: 92px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #d90429 60%, #e1306c 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 18px;
+            box-shadow: 0 4px 24px #d9042940;
+        }
+        .logo-moto img {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: #fff;
+            object-fit: contain;
+            border: 3px solid #fff;
+        }
+        .titulo {
+            font-size: 2em;
+            font-weight: 900;
+            color: var(--cor-principal);
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+            text-align: center;
+            text-shadow: 0 2px 12px #d9042922;
+        }
+        .slogan {
+            font-size: 1.13em;
+            color: #bbb;
+            margin-bottom: 22px;
+            text-align: center;
+            font-weight: 500;
+        }
+        .links-bio {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            margin-bottom: 28px;
+        }
+        .link-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            background: linear-gradient(90deg, #fff 60%, #e1306c 100%);
+            color: var(--cor-btn-text);
+            font-weight: 800;
+            font-size: 1.13em;
+            border: none;
+            border-radius: 32px;
+            padding: 16px 0;
+            width: 100%;
+            box-shadow: 0 4px 16px #d9042922;
+            text-decoration: none;
+            transition: background 0.18s, color 0.18s, transform 0.18s;
+            letter-spacing: 1px;
+        }
+        .link-btn svg {
+            width: 28px;
+            height: 28px;
+            vertical-align: middle;
+        }
+        .link-btn:hover {
+            background: linear-gradient(90deg, #e1306c 60%, #d90429 100%);
+            color: #fff;
+            transform: scale(1.04);
+        }
+        .promo-card {
+            background: linear-gradient(120deg, #fff 60%, #e1306c22 100%);
+            color: #d90429;
+            border-radius: 18px;
+            box-shadow: 0 2px 12px #d9042922;
+            padding: 18px 18px 14px 18px;
+            margin-bottom: 24px;
+            text-align: center;
+            font-size: 1.13em;
+            font-weight: 700;
+            animation: pulse 2.5s infinite;
+        }
+        @keyframes pulse {
+            0% { box-shadow: 0 2px 12px #d9042922; }
+            50% { box-shadow: 0 8px 32px #d9042940; }
+            100% { box-shadow: 0 2px 12px #d9042922; }
+        }
+        .redes {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            margin-bottom: 18px;
+        }
+        .redes a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #23272a 60%, #18191a 100%);
+            color: #fff;
+            font-size: 1.5em;
+            box-shadow: 0 2px 8px #0003;
+            border: 2px solid transparent;
+            transition: border 0.2s, transform 0.2s, box-shadow 0.2s, background 0.2s;
+        }
+        .redes a:hover {
+            border-color: var(--cor-principal);
+            background: linear-gradient(135deg, var(--cor-principal) 60%, #23272a 100%);
+            transform: scale(1.13) rotate(-3deg);
+            box-shadow: 0 4px 16px #d9042940;
+        }
+        .footer {
+            color: #bbb;
+            font-size: 0.98em;
+            text-align: center;
+            margin-top: 18px;
+            opacity: 0.85;
+        }
+        @media (max-width: 600px) {
+            .container { padding: 18px 2vw 12px 2vw; }
+            .titulo { font-size: 1.3em; }
+            .promo-card { font-size: 1em; }
+            .link-btn { font-size: 1em; padding: 13px 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo-moto">
+            <img src="img/moto.png" alt="Logo Mundo das Motos">
+        </div>
+        <div class="titulo">Mundo das Motos</div>
+        <div class="slogan">Acelere seu sonho! Peças, oficina e atendimento premium em Petrolina-GO.</div>
+        <div class="promo-card">
+            🚨 <b>Promoção Relâmpago:</b> 10% OFF em peças e acessórios!<br>
+            <span style="font-size:0.93em;color:#e1306c;">Só hoje para seguidores do Instagram!</span>
+        </div>
+        <div class="links-bio">
+            <a class="link-btn" href="https://wa.me/5562995277435" target="_blank">
+                <svg fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="#25D366"/><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.472-.148-.67.15-.198.297-.767.967-.94 1.164-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.173.198-.298.298-.496.099-.198.05-.372-.025-.521-.074-.148-.669-1.611-.916-2.206-.242-.58-.487-.501-.669-.511-.173-.008-.372-.01-.571-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.099 3.209 5.077 4.374.71.306 1.263.489 1.695.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.007-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" fill="#fff"/></svg>
+                Fale no WhatsApp
+            </a>
+            <a class="link-btn" href="tel:+5562995277435">
+                <svg fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="#d90429"/><path d="M17.707 16.293l-2.414-2.414a1 1 0 0 0-1.414 0l-.586.586a8.001 8.001 0 0 1-4.95-4.95l.586-.586a1 1 0 0 0 0-1.414L7.707 6.293a1 1 0 0 0-1.414 0l-.586.586a2 2 0 0 0-.293 2.293c1.2 2.4 3.2 4.4 5.6 5.6a2 2 0 0 0 2.293-.293l.586-.586a1 1 0 0 0 0-1.414z" fill="#fff"/></svg>
+                Ligue Agora
+            </a>
+            <a class="link-btn" href="https://www.google.com/maps/dir//Rua+Maria+Maia+da+Silva,+Qd11+Lt15,+N27+-+Jardim+Santa+Paula,+Petrolina+-+GO,+75513-000" target="_blank">
+                <svg fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="#e1306c"/><path d="M12 6a5 5 0 0 0-5 5c0 3.25 5 8 5 8s5-4.75 5-8a5 5 0 0 0-5-5zm0 6.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z" fill="#fff"/></svg>
+                Como Chegar
+            </a>
+            <a class="link-btn" href="mundodasmotos.html" target="_blank">
+                <svg fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="#23272a"/><path d="M7 17v-2a4 4 0 0 1 8 0v2M12 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8z" stroke="#fff" stroke-width="2"/></svg>
+                Catálogo Online
+            </a>
+            <a class="link-btn" href="https://www.instagram.com/mootorizados/" target="_blank">
+                <svg fill="none" viewBox="0 0 24 24"><rect width="24" height="24" rx="12" fill="#E1306C"/><path d="M12 8.4A3.6 3.6 0 1 0 12 15.6A3.6 3.6 0 1 0 12 8.4Z" stroke="#fff" stroke-width="1.5"/><circle cx="17.2" cy="6.8" r="1.1" fill="#fff"/><rect x="4.5" y="4.5" width="15" height="15" rx="4.5" stroke="#fff" stroke-width="1.5"/></svg>
+                Siga no Instagram
+            </a>
+        </div>
+        <div class="redes">
+            <a href="https://www.instagram.com/mootorizados/" target="_blank" title="Instagram">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect width="24" height="24" rx="6" fill="#E1306C"/><path d="M12 8.4A3.6 3.6 0 1 0 12 15.6A3.6 3.6 0 1 0 12 8.4Z" stroke="#fff" stroke-width="1.5"/><circle cx="17.2" cy="6.8" r="1.1" fill="#fff"/><rect x="4.5" y="4.5" width="15" height="15" rx="4.5" stroke="#fff" stroke-width="1.5"/></svg>
+            </a>
+            <a href="https://www.facebook.com/mundodasmotoss" target="_blank" title="Facebook">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect width="24" height="24" rx="6" fill="#1877F3"/><path d="M16 8.5h-2a1 1 0 0 0-1 1v2h3l-.5 2H13v6h-2v-6H8.5v-2H11v-2a3 3 0 0 1 3-3h2v2Z" fill="#fff"/></svg>
+            </a>
+            <a href="https://wa.me/5562995277435" target="_blank" title="WhatsApp">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect width="24" height="24" rx="6" fill="#25D366"/><path d="M12 5.5A6.5 6.5 0 0 0 5.5 12c0 1.14.3 2.22.82 3.14L5 19l3.98-1.28A6.5 6.5 0 1 0 12 5.5Zm0-1.5a8 8 0 0 1 6.32 12.97l1.18 3.54a1 1 0 0 1-1.27 1.27l-3.54-1.18A8 8 0 1 1 12 4Z" fill="#fff"/><path d="M16.13 13.47c-.2-.1-1.18-.58-1.36-.65-.18-.07-.31-.1-.44.1-.13.2-.5.65-.62.78-.12.13-.23.15-.43.05-.2-.1-.85-.31-1.62-.99-.6-.54-1-1.2-1.12-1.4-.12-.2-.01-.3.09-.4.09-.09.2-.23.3-.34.1-.11.13-.2.2-.33.07-.13.03-.25-.01-.35-.05-.1-.44-1.06-.6-1.45-.16-.39-.32-.34-.44-.35-.11-.01-.25-.01-.39-.01-.13 0-.34.05-.52.25-.18.2-.7.68-.7 1.66 0 .98.72 1.93.82 2.06.1.13 1.41 2.15 3.42 2.93.48.17.85.27 1.14.34.48.1.92.09 1.27.05.39-.06 1.18-.48 1.35-.95.17-.47.17-.87.12-.95-.05-.08-.18-.13-.38-.23Z" fill="#fff"/></svg>
+            </a>
+        </div>
+        <div class="footer">
+            Rua Maria Maia da Silva, Qd11 Lt15, N27 - Petrolina/GO<br>
+            <span style="color:#e1306c;">Acesse. Compartilhe. Acelere!</span>
+        </div>
+    </div>
+</body>
+</html>
