@@ -797,6 +797,17 @@
         .modal-produto-img,
         .modal-produto-thumb {
             background: #222 url('img/loading.gif') center center no-repeat;
+            transition: background 0.2s;
+        }
+        /* CORREÇÃO FINAL: Fundo branco das imagens no tema claro */
+        body.tema-claro .img-area img,
+        body.tema-claro .card-moto img,
+        body.tema-claro .modal-produto-img,
+        body.tema-claro .modal-produto-thumb {
+            background: #fff !important;
+            background-color: #fff !important;
+            background-image: none !important;
+            /* Remove gradiente e imagem de loading */
         }
     </style>
 </head>
@@ -1336,7 +1347,26 @@
     <!-- FIM .categorias-menu -->
 
     <!-- Sessão Produtos em Destaque (agora abaixo das categorias) -->
-    <section id="produtos-destaque" style="max-width:1200px;margin:36px auto;padding:32px 18px 28px 18px;background:linear-gradient(120deg,#23272a 60%,#18191a 100%);border-radius:18px;box-shadow:0 4px 24px #0003;">
+    <section id="produtos-destaque" style="max-width:1200px;margin:36px auto;padding:32px 18px 28px 18px;background:var(--cor-card);border-radius:18px;box-shadow:0 4px 24px #0003;">
+        <div class="catalogo" id="catalogo">
+            <!-- Os cards de produto abaixo foram invertidos para mostrar os últimos cadastrados no topo -->
+            <!-- ... (restante dos cards) ... -->
+        </div>
+    </section>
+    <!-- FIM Sessão Produtos em Destaque -->
+    <section id="produtos-destaque" style="max-width:1200px;margin:36px auto;padding:32px 18px 28px 18px;border-radius:18px;box-shadow:0 4px 24px #0003;">
+    <style>
+        /* Fundo das imagens dos produtos - tema claro */
+        body.tema-claro .img-area img,
+        body.tema-claro .modal-produto-img,
+        body.tema-claro .modal-produto-thumb {
+            background: #fff !important;
+        }
+        /* Bloco destaque fundo claro apenas no tema claro */
+        body.tema-claro #produtos-destaque {
+            background: #fff !important;
+        }
+    </style>
         <div class="catalogo" id="catalogo">
             <!-- Os cards de produto abaixo foram invertidos para mostrar os últimos cadastrados no topo -->
             <div class="card-moto">
@@ -2435,7 +2465,7 @@
             "FILTRO DE ÓLEO EKSIM YES/INTRUDER 125": {
                 marca: "EKSIM",
                 preco: "R$ 10,00",
-                desc: "Filtro de óleo Eksim para Yes/Intruder 125: retém impurezas e partículas, protegendo o motor e aumentando sua vida útil. Produto de fácil instalação e excelente custo-benefício.",
+                desc: "Filtro de óleo Eksim para Yes/Intruder 125: retém impurezas e partículas, protegendo o motor e garantindo maior vida útil. Produto de fácil instalação e excelente custo-benefício.",
                 fotos: [
                     "img/mundodasmotos/FILTROOLEOEKSIMYESINTRUDER125.png"
                 ]
@@ -2604,6 +2634,72 @@
         // Botão flutuante de tema criativo
 
         // Tema claro: troca preto/cinza por branco de forma criativa e profissional
+
+        // Organiza o botão de tema para telas pequenas: sempre acima do carrinho e com espaçamento adequado
+        function organizarBotaoTemaFlutuante() {
+            const themeBtn = document.getElementById('theme-float-btn');
+            const cartBtn = document.querySelector('.cart-btn-float');
+            if (!themeBtn || !cartBtn) return;
+            // Para telas pequenas, coloca acima do carrinho com espaçamento
+            if (window.innerWidth <= 700) {
+            themeBtn.style.position = 'fixed';
+            themeBtn.style.right = '14px';
+            // O carrinho está em bottom: 24px, height: 62px, então 24+62+12=98
+            themeBtn.style.bottom = (24 + 62 + 12) + 'px'; // 98px
+            themeBtn.style.zIndex = 1002;
+            } else {
+            themeBtn.style.position = 'fixed';
+            themeBtn.style.right = '24px';
+            themeBtn.style.bottom = '170px';
+            themeBtn.style.zIndex = 1001;
+            }
+        }
+        window.addEventListener('resize', organizarBotaoTemaFlutuante);
+        document.addEventListener('DOMContentLoaded', organizarBotaoTemaFlutuante);
+        organizarBotaoTemaFlutuante();
+        function organizarBotaoTemaFlutuante() {
+            const themeBtn = document.getElementById('theme-float-btn');
+            const cartBtn = document.querySelector('.cart-btn-float');
+            if (!themeBtn || !cartBtn) return;
+            // Para telas pequenas, coloca acima do carrinho com espaçamento
+            if (window.innerWidth <= 700) {
+            themeBtn.style.position = 'fixed';
+            themeBtn.style.right = '14px';
+            // O carrinho está em bottom: 24px, height: 62px, então 24+62+12=98
+            themeBtn.style.bottom = (24 + 62 + 12) + 'px'; // 98px
+            themeBtn.style.zIndex = 1002;
+            } else {
+            themeBtn.style.position = 'fixed';
+            themeBtn.style.right = '24px';
+            themeBtn.style.bottom = '170px';
+            themeBtn.style.zIndex = 1001;
+            }
+        }
+        window.addEventListener('resize', organizarBotaoTemaFlutuante);
+        document.addEventListener('DOMContentLoaded', organizarBotaoTemaFlutuante);
+        organizarBotaoTemaFlutuante();
+        // Ajuste responsivo do botão de tema para telas pequenas
+        // Sempre posiciona à direita, acima do botão do carrinho
+        function ajustarPosicaoBotaoTema() {
+            const themeBtn = document.getElementById('theme-float-btn');
+            const cartBtn = document.querySelector('.cart-btn-float');
+            if (!themeBtn || !cartBtn) return;
+            if (window.innerWidth <= 700) {
+                themeBtn.style.left = '';
+                themeBtn.style.right = '14px';
+                themeBtn.style.transform = '';
+                themeBtn.style.bottom = '110px';
+            } else {
+                themeBtn.style.left = '';
+                themeBtn.style.right = '24px';
+                themeBtn.style.bottom = '170px';
+                themeBtn.style.transform = '';
+            }
+        }
+        window.addEventListener('resize', ajustarPosicaoBotaoTema);
+        document.addEventListener('DOMContentLoaded', ajustarPosicaoBotaoTema);
+        ajustarPosicaoBotaoTema();
+
         (function() {
             function aplicarTemaClaroCriativo() {
             document.body.classList.add('tema-claro');
@@ -2671,6 +2767,8 @@
             document.querySelectorAll('.modal-carrinho-bg, .modal-produto-bg').forEach(function(el) {
                 el.style.background = 'rgba(255,255,255,0.65)';
             });
+            // Corrige fundo das imagens no tema claro (NÃO adiciona classe, apenas CSS já resolve)
+            // Nenhuma ação necessária aqui, pois o CSS já faz a troca pelo seletor body.tema-claro
             }
             function aplicarTemaEscuroCriativo() {
             document.body.classList.remove('tema-claro');
@@ -2698,6 +2796,8 @@
             document.querySelectorAll('.modal-carrinho-bg, .modal-produto-bg').forEach(function(el) {
                 el.style.background = 'rgba(0,0,0,0.45)';
             });
+            // Remove fundo branco das imagens no tema escuro (NÃO precisa remover classe, CSS já faz a troca)
+            // Nenhuma ação necessária aqui, pois o CSS já faz a troca pelo seletor body.tema-claro
             }
             // Hook no botão de tema
             var btn = document.getElementById('theme-float-btn');
