@@ -1841,9 +1841,12 @@
         <span>&#128722;</span>
         <span class="cart-count" id="cart-count">0</span>
     </button>
+    <!-- Botão flutuante de tema criativo -->
+    <button class="theme-float-btn" id="theme-float-btn" title="Alternar tema claro/escuro" aria-label="Alternar tema">
+        <span class="theme-float-icon" id="theme-float-icon">&#9788;</span>
+    </button>
 
-    
-        <!-- BOTÃO WHATSAPP FLUTUANTE PADRÃO -->
+    <!-- BOTÃO WHATSAPP FLUTUANTE PADRÃO -->
 <div class="whatsapp-float">
     <a href="https://wa.me/5562995277435" target="_blank" aria-label="Fale conosco no WhatsApp">
         <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 448 512" fill="currentColor">
@@ -2597,6 +2600,206 @@
                 }
             });
         }
+
+        // Botão flutuante de tema criativo
+
+        // Tema claro: troca preto/cinza por branco de forma criativa e profissional
+        (function() {
+            function aplicarTemaClaroCriativo() {
+            document.body.classList.add('tema-claro');
+            // Troca gradientes escuros por tons claros
+            document.documentElement.style.setProperty('--cor-principal', '#fff');
+            document.documentElement.style.setProperty('--cor-bg', '#f7f7f7');
+            document.documentElement.style.setProperty('--cor-card', '#fff');
+            document.documentElement.style.setProperty('--cor-texto', '#23272a');
+            document.documentElement.style.setProperty('--cor-preto', '#23272a');
+            document.documentElement.style.setProperty('--cor-cinza', '#888');
+            document.documentElement.style.setProperty('--cor-borda', '#e0e0e0');
+            document.documentElement.style.setProperty('--cor-footer-bg', '#f7f7f7');
+            document.documentElement.style.setProperty('--cor-footer-texto', '#23272a');
+            document.documentElement.style.setProperty('--cor-degrade1', '#fff');
+            document.documentElement.style.setProperty('--cor-degrade2', '#f7f7f7');
+            document.documentElement.style.setProperty('--cor-degrade3', '#f1f1f1');
+            // Troca gradientes inline
+            document.querySelectorAll('[style*="linear-gradient"],[style*="background: #23272a"],[style*="background: #18191a"]').forEach(function(el) {
+                el.style.background = el.style.background.replace(/#23272a|#18191a|#35363a/gi, '#fff');
+                el.style.background = el.style.background.replace(/#101113|#333|#bbb|#888/gi, '#f7f7f7');
+                el.style.background = el.style.background.replace(/linear-gradient\([^)]+\)/gi, 'linear-gradient(135deg, #fff 60%, #e1306c 100%)');
+            });
+            // Cards e menus
+            document.querySelectorAll('.card-moto, .modal-carrinho, .modal-produto, .categorias-menu, .filtros-catalogo, .banner, .footer-social a').forEach(function(el) {
+                el.style.background = 'linear-gradient(135deg, #fff 60%, #f7f7f7 100%)';
+                el.style.boxShadow = '0 4px 24px #e1306c22, 0 2px 8px #0001';
+            });
+            // Textos
+            document.querySelectorAll('body, .card-moto .nome, .banner-text h1, .footer-info, .footer-copyright, .modal-produto-nome, .modal-produto-marca, .modal-produto-preco, .modal-produto-desc, .carrinho-item-nome, .carrinho-total').forEach(function(el) {
+                el.style.color = '#23272a';
+            });
+            // Inputs e selects
+            document.querySelectorAll('input, select, textarea').forEach(function(el) {
+                el.style.background = '#fff';
+                el.style.color = '#23272a';
+                el.style.borderColor = '#e0e0e0';
+            });
+            // Footer
+            var footer = document.querySelector('footer');
+            if (footer) {
+                footer.style.background = 'linear-gradient(90deg, #fff 60%, #f7f7f7 100%)';
+                footer.style.color = '#23272a';
+            }
+            // WhatsApp e botões flutuantes
+            document.querySelectorAll('.whatsapp-float a, .cart-btn-float, .theme-float-btn').forEach(function(el) {
+                el.style.boxShadow = '0 4px 16px #e1306c33, 0 2px 8px #0001';
+            });
+            // Selo destaque/premium
+            document.querySelectorAll('.card-moto .selo.destaque, .card-moto .selo.premium, .card-moto .selo.oferta').forEach(function(el) {
+                el.style.background = 'linear-gradient(90deg, #fff 60%, #fff 100%)';
+                el.style.color = '#e1306c';
+                el.style.border = '2px solid #e1306c';
+            });
+            // Categoria ativa
+            document.querySelectorAll('.categoria-btn.active').forEach(function(el) {
+                el.style.background = 'linear-gradient(90deg, #e1306c 60%, #fff 100%)';
+                el.style.color = '#fff';
+            });
+            // Banner
+            var banner = document.querySelector('.banner');
+            if (banner) {
+                banner.style.background = 'linear-gradient(120deg, #fff 0%, #fff 40%, #f7f7f7 100%)';
+            }
+            // Modal overlay
+            document.querySelectorAll('.modal-carrinho-bg, .modal-produto-bg').forEach(function(el) {
+                el.style.background = 'rgba(255,255,255,0.65)';
+            });
+            }
+            function aplicarTemaEscuroCriativo() {
+            document.body.classList.remove('tema-claro');
+            // Restaura as cores do tema escuro
+            document.documentElement.style.setProperty('--cor-principal', '#23272a');
+            document.documentElement.style.setProperty('--cor-bg', '#18191a');
+            document.documentElement.style.setProperty('--cor-card', '#23272a');
+            document.documentElement.style.setProperty('--cor-texto', '#f5f5f5');
+            document.documentElement.style.setProperty('--cor-preto', '#fff');
+            document.documentElement.style.setProperty('--cor-cinza', '#bbb');
+            document.documentElement.style.setProperty('--cor-borda', '#333');
+            document.documentElement.style.setProperty('--cor-footer-bg', '#101113');
+            document.documentElement.style.setProperty('--cor-footer-texto', '#fff');
+            document.documentElement.style.setProperty('--cor-degrade1', '#23272a');
+            document.documentElement.style.setProperty('--cor-degrade2', '#18191a');
+            document.documentElement.style.setProperty('--cor-degrade3', '#35363a');
+            // Remove estilos inline aplicados pelo tema claro
+            document.querySelectorAll('[style]').forEach(function(el) {
+                el.style.background = '';
+                el.style.color = '';
+                el.style.boxShadow = '';
+                el.style.borderColor = '';
+            });
+            // Modal overlay
+            document.querySelectorAll('.modal-carrinho-bg, .modal-produto-bg').forEach(function(el) {
+                el.style.background = 'rgba(0,0,0,0.45)';
+            });
+            }
+            // Hook no botão de tema
+            var btn = document.getElementById('theme-float-btn');
+            if (btn) {
+            btn.addEventListener('click', function() {
+                if (document.body.classList.contains('tema-claro')) {
+                aplicarTemaEscuroCriativo();
+                } else {
+                aplicarTemaClaroCriativo();
+                }
+            });
+            }
+            // Aplica tema salvo ao carregar
+            document.addEventListener('DOMContentLoaded', function() {
+            if (localStorage.getItem('tema-motos') === 'claro') {
+                aplicarTemaClaroCriativo();
+            }
+            });
+        })();
+        // Estilo visual do botão de tema
+        (function() {
+            const style = document.createElement('style');
+            style.innerHTML = `
+            .theme-float-btn {
+            position: fixed;
+            bottom: 170px;
+            right: 24px;
+            z-index: 1001;
+            background: linear-gradient(135deg, #23272a 60%, #e1306c 100%);
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            width: 56px;
+            height: 56px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 16px #e1306c33, 0 2px 8px #0002;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.18s, box-shadow 0.18s;
+            font-size: 2em;
+            outline: none;
+            border: 2.5px solid #fff2;
+            overflow: hidden;
+            }
+            .theme-float-btn:hover, .theme-float-btn:focus {
+            background: linear-gradient(135deg, #e1306c 60%, #23272a 100%);
+            transform: scale(1.08) translateY(-2px) rotate(-6deg);
+            box-shadow: 0 8px 32px #e1306c55, 0 2px 8px #0002;
+            border-color: #e1306c;
+            }
+            .theme-float-icon {
+            transition: color 0.2s, text-shadow 0.2s;
+            color: #fff;
+            text-shadow: 0 2px 8px #d9042922, 0 1px 2px #0005;
+            font-size: 1.4em;
+            pointer-events: none;
+            user-select: none;
+            }
+            body.tema-claro .theme-float-btn {
+            background: linear-gradient(135deg, #fff 60%, #e1306c 100%);
+            color: #e1306c;
+            border-color: #e1306c;
+            }
+            body.tema-claro .theme-float-icon {
+            color: #e1306c;
+            text-shadow: 0 2px 8px #fff2, 0 1px 2px #e1306c55;
+            }
+            @media (max-width: 700px) {
+            .theme-float-btn { right: 14px; bottom: 110px; width: 48px; height: 48px; font-size: 1.5em; }
+            }
+            `;
+            document.head.appendChild(style);
+        })();
+        (function() {
+            const body = document.body;
+            const btn = document.getElementById('theme-float-btn');
+            const icon = document.getElementById('theme-float-icon');
+            function setTheme(theme) {
+                if (theme === 'claro') {
+                    body.classList.add('tema-claro');
+                    icon.innerHTML = '&#9790;'; // lua
+                } else {
+                    body.classList.remove('tema-claro');
+                    icon.innerHTML = '&#9788;'; // sol
+                }
+                localStorage.setItem('tema-motos', theme);
+            }
+            function getPreferredTheme() {
+                const saved = localStorage.getItem('tema-motos');
+                if (saved) return saved;
+                if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+                    return 'claro';
+                }
+                return 'escuro';
+            }
+            btn.onclick = function() {
+                const atual = body.classList.contains('tema-claro') ? 'claro' : 'escuro';
+                setTheme(atual === 'claro' ? 'escuro' : 'claro');
+            };
+            setTheme(getPreferredTheme());
+        })();
     </script>
 </body>
 </html>
