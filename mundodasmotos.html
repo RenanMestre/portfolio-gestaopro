@@ -814,10 +814,12 @@
         body.tema-escuro .topo {
             background: linear-gradient(90deg, #1a1a1a 60%, #0f0f0f 100%);
             box-shadow: 0 2px 12px #ff174422;
+            border-bottom: 1px solid #30363d;
         }
 
         body.tema-escuro .banner {
             background: linear-gradient(120deg, #1a1a1a 0%, #1a1a1a 40%, #0f0f0f 100%);
+            border: 1px solid #30363d;
         }
 
         body.tema-escuro .banner::before {
@@ -829,25 +831,31 @@
         body.tema-escuro #filtro-categorias {
             background: linear-gradient(90deg, #1a1a1a 60%, #0f0f0f 100%);
             box-shadow: 0 2px 12px #ff174411;
+            border: 1px solid #30363d;
         }
 
         body.tema-escuro .card-moto {
             background: linear-gradient(120deg, #2a2a2a 60%, #1a1a1a 100%);
             box-shadow: 0 2px 16px #ff174411;
+            border: 1px solid #30363d;
         }
 
         body.tema-escuro .card-moto:hover {
             box-shadow: 0 8px 32px #ff174433;
+            border-color: #ff1744;
         }
 
         body.tema-escuro footer {
             background: linear-gradient(90deg, #1a1a1a 60%, #0f0f0f 100%);
+            border-top: 1px solid #30363d;
         }
 
         body.tema-escuro .modal-carrinho,
         body.tema-escuro .modal-produto {
             background: #2a2a2a;
             color: #e8e8e8;
+            border: 1px solid #30363d;
+            box-shadow: 0 8px 32px #0007;
         }
 
         body.tema-escuro .busca input,
@@ -855,32 +863,46 @@
         body.tema-escuro .carrinho-form input {
             background: #3a3a3a;
             color: #e8e8e8;
-            border-color: #505050;
+            border: 1.5px solid #30363d;
         }
 
         body.tema-escuro .busca input:focus,
         body.tema-escuro .filtros-catalogo select:focus,
         body.tema-escuro .carrinho-form input:focus {
             border-color: #ff1744;
+            box-shadow: inset 0 0 0 1px #ff1744, 0 0 0 3px rgba(255, 23, 68, 0.1);
         }
 
         body.tema-escuro .modal-produto-img,
         body.tema-escuro .img-area img,
         body.tema-escuro .modal-produto-thumb {
             background: #3a3a3a;
+            border: 1px solid #30363d;
+        }
+
+        body.tema-escuro .modal-produto-thumb.selected {
+            border: 1px solid #ff1744;
         }
 
         body.tema-escuro .carrinho-item {
-            border-bottom-color: #505050;
+            border-bottom-color: #30363d;
+        }
+
+        body.tema-escuro .carrinho-lista {
+            background: #1a1a1a;
+            border: 1px solid #30363d;
+            border-radius: 6px;
         }
 
         body.tema-escuro #como-chegar {
             background: linear-gradient(120deg, #1a1a1a 0%, #0f0f0f 60%, #0a0a0a 100%);
             box-shadow: 0 8px 32px #ff174422;
+            border: 1px solid #30363d;
         }
 
         body.tema-escuro #como-chegar .chegar-info {
             background: linear-gradient(120deg, #1a1a1a 80%, #0f0f0f 100%);
+            border-right: 1px solid #30363d;
         }
 
         body.tema-escuro #como-chegar .chegar-info h2 {
@@ -896,9 +918,15 @@
             background: linear-gradient(120deg, #0f0f0f 0%, #1a1a1a 100%);
         }
 
+        body.tema-escuro #como-chegar .chegar-mapa {
+            border: 1px solid #30363d;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.5);
+        }
+
         body.tema-escuro #como-chegar .chegar-mapa-legenda {
             background: linear-gradient(90deg, #1a1a1a 80%, #0f0f0f 100%);
             color: #e8e8e8;
+            border: 1px solid #30363d;
         }
 
         body.tema-escuro #como-chegar .chegar-mapa-legenda span {
@@ -977,17 +1005,19 @@
             background: linear-gradient(135deg, #ffd600 0%, #ffb300 100%);
             box-shadow: 0 4px 16px #ffd60055;
             color: #1a1a1a;
+            border: 1.5px solid #30363d;
         }
 
         body.tema-escuro .theme-toggle-btn:hover {
             background: linear-gradient(135deg, #ffff00 0%, #ffd600 100%);
             box-shadow: 0 8px 24px #ffd60066;
+            border-color: #ffd600;
         }
 
         body.tema-escuro .theme-toggle-tooltip {
             background: #3a3a3a;
             color: #ffd600;
-            border-color: #ffd600;
+            border: 1.5px solid #30363d;
             box-shadow: 0 2px 8px #ffd60044;
         }
 
