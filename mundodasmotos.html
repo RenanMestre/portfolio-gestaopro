@@ -857,6 +857,30 @@
     
     <!-- Sessão Como Chegar (agora acima das categorias) -->
     <div style="max-width:1200px;margin:36px auto 0 auto;padding:0 18px;">
+    <style>
+        body.tema-claro #como-chegar {
+            background: #fff !important;
+        }
+        body.tema-claro #como-chegar .chegar-info {
+            background: #fff !important;
+            color: #23272a !important;
+        }
+        body.tema-claro #como-chegar .chegar-mapa-area {
+            background: #fff !important;
+        }
+        body.tema-claro #como-chegar .chegar-mapa-legenda {
+            background: #f7f7f7 !important;
+            color: #23272a !important;
+        }
+        body.tema-claro #como-chegar .chegar-tip {
+            background: #f7f7f7 !important;
+            color: #23272a !important;
+        }
+        /* Garante que gradientes inline sejam removidos no tema claro */
+        body.tema-claro #como-chegar[style] {
+            background: #fff !important;
+        }
+    </style>
         <section id="como-chegar" style="border-radius:24px;box-shadow:0 8px 32px #d9042922;overflow:hidden;position:relative;background:linear-gradient(120deg,#23272a 0%,#18191a 60%,#35363a 100%);margin:0;">
         <style>
             #como-chegar {
@@ -2769,6 +2793,11 @@
             });
             // Corrige fundo das imagens no tema claro (NÃO adiciona classe, apenas CSS já resolve)
             // Nenhuma ação necessária aqui, pois o CSS já faz a troca pelo seletor body.tema-claro
+            // Corrige fundo da sessão como-chegar
+            var comoChegar = document.getElementById('como-chegar');
+            if (comoChegar) {
+                comoChegar.style.background = '#fff';
+            }
             }
             function aplicarTemaEscuroCriativo() {
             document.body.classList.remove('tema-claro');
