@@ -180,7 +180,7 @@
             width: 100%;
             border-radius: 18px;
             box-shadow: 0 8px 32px #0004, 0 0 0 8px #23272a55;
-            background: linear-gradient(120deg, #23272a 60%, #18191a 100%);
+            background: #ffffff;
         }
         /* Categorias */
         .categorias-menu {
@@ -337,7 +337,7 @@
             width: 100%;
             object-fit: contain;
             border-radius: 10px;
-            background: linear-gradient(120deg, #23272a 60%, #18191a 100%);
+            background: #ffffff;
         }
         .card-moto .marca {
             font-size: 1em;
@@ -680,7 +680,7 @@
             height: 180px;
             object-fit: contain;
             border-radius: 10px;
-            background: #222;
+            background: #ffffff;
             margin-bottom: 12px;
             box-shadow: 0 2px 12px #0004;
         }
@@ -696,7 +696,7 @@
             border-radius: 6px;
             border: 2px solid transparent;
             cursor: pointer;
-            background: #222;
+            background: #ffffff;
             transition: border 0.2s;
         }
         .modal-produto-thumb.selected {
@@ -939,7 +939,7 @@
             width: 100%;
             border-radius: 18px;
             box-shadow: 0 8px 32px #0004, 0 0 0 8px #23272a55;
-            background: linear-gradient(120deg, #23272a 60%, #18191a 100%);
+            background: #ffffff;
         }
         /* Categorias */
         .categorias-menu {
@@ -1096,7 +1096,7 @@
             width: 100%;
             object-fit: contain;
             border-radius: 10px;
-            background: linear-gradient(120deg, #23272a 60%, #18191a 100%);
+            background: #ffffff;
         }
         .card-moto .marca {
             font-size: 1em;
@@ -1439,7 +1439,7 @@
             height: 180px;
             object-fit: contain;
             border-radius: 10px;
-            background: #222;
+            background: #ffffff;
             margin-bottom: 12px;
             box-shadow: 0 2px 12px #0004;
         }
@@ -1455,7 +1455,7 @@
             border-radius: 6px;
             border: 2px solid transparent;
             cursor: pointer;
-            background: #222;
+            background: #ffffff;
             transition: border 0.2s;
         }
         .modal-produto-thumb.selected {
@@ -1563,10 +1563,9 @@
         body.tema-claro .card-moto img,
         body.tema-claro .modal-produto-img,
         body.tema-claro .modal-produto-thumb {
-            background: #fff !important;
-            background-color: #fff !important;
+            background: #ffffff !important;
+            background-color: #ffffff !important;
             background-image: none !important;
-            /* Remove gradiente e imagem de loading */
         }
     </style>
 </head>
@@ -2122,8 +2121,6 @@
             "CARBURADOR COMPLETO GP7 BIZ 125": ["pecas"],
             "CARBURADOR COMPLETO GP7 CG ML / 1981": ["pecas"],
             "FILTRO DE OLEO EKSIM TELA FILTRANTE PENEIRA CG 125 09/18": ["pecas"],
-            // Exemplos para oficina
-            "CAPACETE FW3 X OPEN UP 43": ["acessorios"],
         };
         </script>
     </div>
@@ -2131,25 +2128,6 @@
 
     <!-- Sessão Produtos em Destaque (agora abaixo das categorias) -->
     <section id="produtos-destaque" style="max-width:1200px;margin:36px auto;padding:32px 18px 28px 18px;background:var(--cor-card);border-radius:18px;box-shadow:0 4px 24px #0003;">
-        <div class="catalogo" id="catalogo">
-            <!-- Os cards de produto abaixo foram invertidos para mostrar os últimos cadastrados no topo -->
-            <!-- ... (restante dos cards) ... -->
-        </div>
-    </section>
-    <!-- FIM Sessão Produtos em Destaque -->
-    <section id="produtos-destaque" style="max-width:1200px;margin:36px auto;padding:32px 18px 28px 18px;border-radius:18px;box-shadow:0 4px 24px #0003;">
-    <style>
-        /* Fundo das imagens dos produtos - tema claro */
-        body.tema-claro .img-area img,
-        body.tema-claro .modal-produto-img,
-        body.tema-claro .modal-produto-thumb {
-            background: #fff !important;
-        }
-        /* Bloco destaque fundo claro apenas no tema claro */
-        body.tema-claro #produtos-destaque {
-            background: #fff !important;
-        }
-    </style>
         <div class="catalogo" id="catalogo">
             <!-- Os cards de produto abaixo foram invertidos para mostrar os últimos cadastrados no topo -->
             <div class="card-moto">
@@ -2160,26 +2138,26 @@
                 <div class="selo destaque">Destaque</div>
                 <div class="nome">PNEU 60/100 ARO 17 SUPER CITY TT33 L BIZ 100 POP110</div>
                 <div class="preco">R$ 200,00</div>
-                <a href="#" class="btn-detalhes">Ver Detalhes</a>
+                <button class="btn-detalhes" onclick="abrirDetalhes('PNEU 60/100 ARO 17 SUPER CITY TT33 L BIZ 100 POP110', 'PIRELLI', 200, 'img/mundodasmotos/PNEUPIRELLI60100ARO17SUPERCITYTT33LBIZ100POP110.png')">Ver Detalhes</button>
             </div>
             <div class="card-moto">
                 <div class="img-area">
-                    <img src="img/mundodasmotos/CAMARADEARKB509090ARO19DIANTEIRAHONDABROS3.png" alt="Camera de Ar 90/90 Aro 19 Dianteira Honda Bros 125/150/160 XRE 190 CB 400/450 CRF 230 CRF 250 FXR 250 NX4 Falcon Yamaha XTZ 150 Crosser XT600/660 TTR230 Lander XTZ 250 DT180/200 YZF125/250/450 Outras NH190 CRF250RX CRF450RX CR125/250 KXF250/450 RMZ250/450">
+                    <img src="img/mundodasmotos/CAMARADEARKB509090ARO19DIANTEIRAHONDABROS3.png" alt="Camera de Ar 90/90 Aro 19 Dianteira">
                 </div>
                 <div class="marca">KB 50</div>
                 <div class="selo destaque">Destaque</div>
                 <div class="nome">CAMARA DE AR 90/90 ARO 19 DIANTEIRA</div>
                 <div class="preco">R$ 20,00</div>
-                <a href="#" class="btn-detalhes">Ver Detalhes</a>
+                <button class="btn-detalhes" onclick="abrirDetalhes('CAMARA DE AR 90/90 ARO 19 DIANTEIRA', 'KB 50', 20, 'img/mundodasmotos/CAMARADEARKB509090ARO19DIANTEIRAHONDABROS3.png')">Ver Detalhes</button>
             </div>
             <div class="card-moto">
                 <div class="img-area">
-                    <img src="img/mundodasmotos/CAMARADEARKB50275300ARO14DIANTEIRAETRASEIRABIZ100125.png" alt="Camera de Ar KB 50/275/300 Aro 14 Dianteira e Traseira BIZ 100/125">
+                    <img src="img/mundodasmotos/CAMARADEARKB50275300ARO14DIANTEIRAETRASEIRABIZ100125.png" alt="Camera de Ar KB 50/275/300 Aro 14">
                 </div>
                 <div class="marca">KB 50</div>
                 <div class="nome">CAMARA DE AR 275/300 ARO 14 DIANTEIRA E TRASEIRA BIZ 100/125</div>
                 <div class="preco">R$ 20,00</div>
-                <a href="#" class="btn-detalhes">Ver Detalhes</a>
+                <button class="btn-detalhes" onclick="abrirDetalhes('CAMARA DE AR 275/300 ARO 14 DIANTEIRA E TRASEIRA BIZ 100/125', 'KB 50', 20, 'img/mundodasmotos/CAMARADEARKB50275300ARO14DIANTEIRAETRASEIRABIZ100125.png')">Ver Detalhes</button>
             </div>
             <div class="card-moto">
                 <div class="img-area">
@@ -2188,7 +2166,7 @@
                 <div class="marca">K-CABOS</div>
                 <div class="nome">CABO VELOCÍMETRO POP 100</div>
                 <div class="preco">R$ 10,00</div>
-                <a href="#" class="btn-detalhes">Ver Detalhes</a>
+                <button class="btn-detalhes" onclick="abrirDetalhes('CABO VELOCÍMETRO POP 100', 'K-CABOS', 10, 'img/mundodasmotos/CABODEVELOCIMETROPOP100200720152.png')">Ver Detalhes</button>
             </div>
             <div class="card-moto">
                 <div class="img-area">
@@ -2197,7 +2175,7 @@
                 <div class="marca">K-CABOS</div>
                 <div class="nome">CABO ACELERADOR BIZ 125</div>
                 <div class="preco">R$ 10,00</div>
-                <a href="#" class="btn-detalhes">Ver Detalhes</a>
+                <button class="btn-detalhes" onclick="abrirDetalhes('CABO ACELERADOR BIZ 125', 'K-CABOS', 10, 'img/mundodasmotos/CABOACELERADORBIZ125200520082.png')">Ver Detalhes</button>
             </div>
             <div class="card-moto">
                 <div class="img-area">
@@ -2206,7 +2184,7 @@
                 <div class="marca">K-CABOS</div>
                 <div class="nome">CABO AFOGADOR BIZ 125</div>
                 <div class="preco">R$ 10,00</div>
-                <a href="#" class="btn-detalhes">Ver Detalhes</a>
+                <button class="btn-detalhes" onclick="abrirDetalhes('CABO AFOGADOR BIZ 125', 'K-CABOS', 10, 'img/mundodasmotos/CABOAFOGADORBIZ1252.png')">Ver Detalhes</button>
             </div>
             <div class="card-moto">
                 <div class="img-area">
@@ -2215,7 +2193,7 @@
                 <div class="marca">K-CABOS</div>
                 <div class="nome">CABO ACELERADOR BROS 160</div>
                 <div class="preco">R$ 11,00</div>
-                <a href="#" class="btn-detalhes">Ver Detalhes</a>
+                <button class="btn-detalhes" onclick="abrirDetalhes('CABO ACELERADOR BROS 160', 'K-CABOS', 11, 'img/mundodasmotos/CABOACELERADORBROS1602.png')">Ver Detalhes</button>
             </div>
             <div class="card-moto">
                 <div class="img-area">
@@ -2224,7 +2202,7 @@
                 <div class="marca">K-CABOS</div>
                 <div class="nome">CABO ACELERADOR CG 160</div>
                 <div class="preco">R$ 10,00</div>
-                <a href="#" class="btn-detalhes">Ver Detalhes</a>
+                <button class="btn-detalhes" onclick="abrirDetalhes('CABO ACELERADOR CG 160', 'K-CABOS', 10, 'img/mundodasmotos/CABOACELERADORCG1602.png')">Ver Detalhes</button>
             </div>
             <div class="card-moto">
                 <div class="img-area">
@@ -2233,7 +2211,7 @@
                 <div class="marca">K-CABOS</div>
                 <div class="nome">CABO EMBREAGEM CG 125 1982</div>
                 <div class="preco">R$ 10,00</div>
-                <a href="#" class="btn-detalhes">Ver Detalhes</a>
+                <button class="btn-detalhes" onclick="abrirDetalhes('CABO EMBREAGEM CG 125 1982', 'K-CABOS', 10, 'img/mundodasmotos/CABOEMBREAGEMCG12519822.png')">Ver Detalhes</button>
             </div>
             <div class="card-moto">
                 <div class="img-area">
@@ -2242,7 +2220,7 @@
                 <div class="marca">K-CABOS</div>
                 <div class="nome">CABO ACELERADOR C100 BIZ</div>
                 <div class="preco">R$ 10,00</div>
-                <a href="#" class="btn-detalhes">Ver Detalhes</a>
+                <button class="btn-detalhes" onclick="abrirDetalhes('CABO ACELERADOR C100 BIZ', 'K-CABOS', 10, 'img/mundodasmotos/CABOACELERADORC100BIZ2.png')">Ver Detalhes</button>
             </div>
             <div class="card-moto">
                 <div class="img-area">
@@ -2251,7 +2229,7 @@
                 <div class="marca">BOMVINK</div>
                 <div class="nome">KIT REMENDO PNEU</div>
                 <div class="preco">R$ 12,00</div>
-                <a href="#" class="btn-detalhes">Ver Detalhes</a>
+                <button class="btn-detalhes" onclick="abrirDetalhes('KIT REMENDO PNEU', 'BOMVINK', 12, 'img/mundodasmotos/kitreparopneu.png')">Ver Detalhes</button>
             </div>
             <div class="card-moto">
                 <div class="img-area">
@@ -2260,7 +2238,7 @@
                 <div class="marca">KMP</div>
                 <div class="nome">JUNTA CABEÇOTE KMP CG 150 /2004/2015</div>
                 <div class="preco">R$ 8,00</div>
-                <a href="#" class="btn-detalhes">Ver Detalhes</a>
+                <button class="btn-detalhes" onclick="abrirDetalhes('JUNTA CABEÇOTE KMP CG 150 /2004/2015', 'KMP', 8, 'img/mundodasmotos/junta1502.png')">Ver Detalhes</button>
             </div>
             <div class="card-moto">
                 <div class="img-area">
@@ -2269,7 +2247,7 @@
                 <div class="marca">KMP</div>
                 <div class="nome">JUNTA CABEÇOTE BIZ 125/2006</div>
                 <div class="preco">R$ 6.00</div>
-                <a href="#" class="btn-detalhes">Ver Detalhes</a>
+                <button class="btn-detalhes" onclick="abrirDetalhes('JUNTA CABEÇOTE BIZ 125/2006', 'KMP', 6, 'img/mundodasmotos/junta.png')">Ver Detalhes</button>
             </div>
             <div class="card-moto">
                 <div class="img-area">
@@ -2278,7 +2256,7 @@
                 <div class="marca">DAROM</div>
                 <div class="nome">KIT TRANSMISSÃO BROS 150/200</div>
                 <div class="preco">R$ 80.00</div>
-                <a href="#" class="btn-detalhes">Ver Detalhes</a>
+                <button class="btn-detalhes" onclick="abrirDetalhes('KIT TRANSMISSÃO BROS 150/200', 'DAROM', 80, 'img/mundodasmotos/KITTRANSMISSAODAROMBROS1502003.png')">Ver Detalhes</button>
             </div>
             <div class="card-moto">
                 <div class="img-area">
@@ -2287,7 +2265,7 @@
                 <div class="marca">DAROM</div>
                 <div class="nome">KIT TRANSMISSÃO BIZ 100/2012-2015</div>
                 <div class="preco">R$ 60.00</div>
-                <a href="#" class="btn-detalhes">Ver Detalhes</a>
+                <button class="btn-detalhes" onclick="abrirDetalhes('KIT TRANSMISSÃO BIZ 100/2012-2015', 'DAROM', 60, 'img/mundodasmotos/KITTRANSMISSAODAROMBIZ10020122015.png')">Ver Detalhes</button>
             </div>
             <div class="card-moto">
                 <div class="img-area">
@@ -2296,7 +2274,7 @@
                 <div class="marca">DAROM</div>
                 <div class="nome">KIT TRANSMISSAO DAROM POP 110/2015/2024</div>
                 <div class="preco">R$ 55,00</div>
-                <a href="#" class="btn-detalhes">Ver Detalhes</a>
+                <button class="btn-detalhes" onclick="abrirDetalhes('KIT TRANSMISSAO DAROM POP 110/2015/2024', 'DAROM', 55, 'img/mundodasmotos/KITTRANSMISSAODAROMPOP11020152024.png')">Ver Detalhes</button>
             </div>
             <div class="card-moto">
                 <div class="img-area">
@@ -2305,7 +2283,7 @@
                 <div class="marca">DAROM</div>
                 <div class="nome">KIT TRANSMISSAO DAROM BIZ 125/2005</div>
                 <div class="preco">R$ 60,00</div>
-                <a href="#" class="btn-detalhes">Ver Detalhes</a>
+                <button class="btn-detalhes" onclick="abrirDetalhes('KIT TRANSMISSAO DAROM BIZ 125/2005', 'DAROM', 60, 'img/mundodasmotos/KITTRANSMISSAODAROMBIZ1252005.png')">Ver Detalhes</button>
             </div>
             <div class="card-moto">
                 <div class="img-area">
@@ -2314,7 +2292,7 @@
                 <div class="marca">DAROM</div>
                 <div class="nome">KIT TRANSMISSAO DAROM CG 150/2004</div>
                 <div class="preco">R$ 65,00</div>
-                <a href="#" class="btn-detalhes">Ver Detalhes</a>
+                <button class="btn-detalhes" onclick="abrirDetalhes('KIT TRANSMISSAO DAROM CG 150/2004', 'DAROM', 65, 'img/mundodasmotos/KITTRANSMISSAODAROMCG1502004.png')">Ver Detalhes</button>
             </div>
             <div class="card-moto">
                 <div class="img-area">
@@ -2323,7 +2301,7 @@
                 <div class="marca">KMP</div>
                 <div class="nome">JUNTAS KIT KMP BIZ 100</div>
                 <div class="preco">R$ 10,00</div>
-                <a href="#" class="btn-detalhes">Ver Detalhes</a>
+                <button class="btn-detalhes" onclick="abrirDetalhes('JUNTAS KIT KMP BIZ 100', 'KMP', 10, 'img/mundodasmotos/JUNTASKITKMPBIZ100.png')">Ver Detalhes</button>
             </div>
             <div class="card-moto">
                 <div class="img-area">
@@ -2332,7 +2310,7 @@
                 <div class="marca">KMP</div>
                 <div class="nome">JUNTAS KIT COMPLETO KMP BIZ 100/ DREAM</div>
                 <div class="preco">R$ 25,00</div>
-                <a href="#" class="btn-detalhes">Ver Detalhes</a>
+                <button class="btn-detalhes" onclick="abrirDetalhes('JUNTAS KIT COMPLETO KMP BIZ 100/ DREAM', 'KMP', 25, 'img/mundodasmotos/JUNTASKITCOMPLETOKMPBIZ100DREAM.png')">Ver Detalhes</button>
             </div>
             <div class="card-moto">
                 <div class="img-area">
@@ -2341,7 +2319,7 @@
                 <div class="marca">GP7</div>
                 <div class="nome">PEDAL CAMBIO GP7 BIZ 100/ 2012</div>
                 <div class="preco">R$ 26,00</div>
-                <a href="#" class="btn-detalhes">Ver Detalhes</a>
+                <button class="btn-detalhes" onclick="abrirDetalhes('PEDAL CAMBIO GP7 BIZ 100/ 2012', 'GP7', 26, 'img/mundodasmotos/PEDALCAMBIOGP7BIZ1002012.png')">Ver Detalhes</button>
             </div>
             <div class="card-moto">
                 <div class="img-area">
@@ -2350,7 +2328,7 @@
                 <div class="marca">GP7</div>
                 <div class="nome">PEDAL CAMBIO GP7 CG 125 /1987/1999</div>
                 <div class="preco">R$ 15,00</div>
-                <a href="#" class="btn-detalhes">Ver Detalhes</a>
+                <button class="btn-detalhes" onclick="abrirDetalhes('PEDAL CAMBIO GP7 CG 125 /1987/1999', 'GP7', 15, 'img/mundodasmotos/PEDALCAMBIOGP7CG12519871999.png')">Ver Detalhes</button>
             </div>
             <div class="card-moto">
                 <div class="img-area">
@@ -2359,7 +2337,7 @@
                 <div class="marca">CONDOR</div>
                 <div class="nome">ESCOVA MOTOR DE PARTIDA COM SUPORTE CONDOR BIZ 100</div>
                 <div class="preco">R$ 10,00</div>
-                <a href="#" class="btn-detalhes">Ver Detalhes</a>
+                <button class="btn-detalhes" onclick="abrirDetalhes('ESCOVA MOTOR DE PARTIDA COM SUPORTE CONDOR BIZ 100', 'CONDOR', 10, 'img/mundodasmotos/ESCOVAMOTORDPARTIDACOMSUPORTEBIZ100.png')">Ver Detalhes</button>
             </div>
             <div class="card-moto">
                 <div class="img-area">
@@ -2368,7 +2346,7 @@
                 <div class="marca">GP7</div>
                 <div class="nome">ACIONADOR TENSOR DE CORRENTE DE COMANDO GP7 CG 150</div>
                 <div class="preco">R$ 15,00</div>
-                <a href="#" class="btn-detalhes">Ver Detalhes</a>
+                <button class="btn-detalhes" onclick="abrirDetalhes('ACIONADOR TENSOR DE CORRENTE DE COMANDO GP7 CG 150', 'GP7', 15, 'img/mundodasmotos/ACIONADORTENSORCORRENTEGP7CG150.png')">Ver Detalhes</button>
             </div>
             <div class="card-moto">
                 <div class="img-area">
@@ -2377,7 +2355,7 @@
                 <div class="marca">EKESMI</div>
                 <div class="nome">FILTRO DE OLEO EKESMI TELA FILTRANTE PENEIRA CG 125 /2009/2018</div>
                 <div class="preco">R$ 2,00</div>
-                <a href="#" class="btn-detalhes">Ver Detalhes</a>
+                <button class="btn-detalhes" onclick="abrirDetalhes('FILTRO DE OLEO EKESMI TELA FILTRANTE PENEIRA CG 125 /2009/2018', 'EKESMI', 2, 'img/mundodasmotos/FILTROOLEOEKESMITELAFILTRANTEPENEIRACG125.png')">Ver Detalhes</button>
             </div>
             <div class="card-moto">
                 <div class="img-area">
@@ -2386,7 +2364,7 @@
                 <div class="marca">UNIVERSAL</div>
                 <div class="nome">FILTRO COMBUSTIVEL UNIVERSAL</div>
                 <div class="preco">R$ 5,00</div>
-                <a href="#" class="btn-detalhes">Ver Detalhes</a>
+                <button class="btn-detalhes" onclick="abrirDetalhes('FILTRO COMBUSTIVEL UNIVERSAL', 'UNIVERSAL', 5, 'img/mundodasmotos/FILTROCOMBUSTIVELUNIVERSAL.png')">Ver Detalhes</button>
             </div>
             <div class="card-moto">
                 <div class="img-area">
@@ -2395,7 +2373,7 @@
                 <div class="marca">GP7</div>
                 <div class="nome">AMORTECEDOR GP7 PAR CG 125 /2000/2008</div>
                 <div class="preco">R$ 120,00</div>
-                <a href="#" class="btn-detalhes">Ver Detalhes</a>
+                <button class="btn-detalhes" onclick="abrirDetalhes('AMORTECEDOR GP7 PAR CG 125 /2000/2008', 'GP7', 120, 'img/mundodasmotos/AMORTECEDORGP7PARCG12520002008.png')">Ver Detalhes</button>
             </div>
             <div class="card-moto">
                 <div class="img-area">
@@ -2404,7 +2382,7 @@
                 <div class="marca">GP7</div>
                 <div class="nome">AMORTECEDOR GP7 PAR CG 150</div>
                 <div class="preco">R$ 120,00</div>
-                <a href="#" class="btn-detalhes">Ver Detalhes</a>
+                <button class="btn-detalhes" onclick="abrirDetalhes('AMORTECEDOR GP7 PAR CG 150', 'GP7', 120, 'img/mundodasmotos/AMORTECEDORGP7PARCG150.png')">Ver Detalhes</button>
             </div>
                 <div class="card-moto">
                     <div class="img-area">
@@ -2413,7 +2391,7 @@
                     <div class="marca">GP7</div>
                     <div class="nome">BOMBA DE OLEO GP7 BIZ 125 /2005</div>
                     <div class="preco">R$ 45,00</div>
-                    <a href="#" class="btn-detalhes">Ver Detalhes</a>
+                    <button class="btn-detalhes" onclick="abrirDetalhes('BOMBA DE OLEO GP7 BIZ 125 /2005', 'GP7', 45, 'img/mundodasmotos/BOMBAOLEOGP7BIZ1252005.png')">Ver Detalhes</button>
                 </div>
                 <div class="card-moto">
                     <div class="img-area">
@@ -2422,7 +2400,7 @@
                     <div class="marca">NGK</div>
                     <div class="nome">VELA NGK DP7EA-9</div>
                     <div class="preco">R$ 18,00</div>
-                    <a href="#" class="btn-detalhes">Ver Detalhes</a>
+                    <button class="btn-detalhes" onclick="abrirDetalhes('VELA NGK DP7EA-9', 'NGK', 18, 'img/mundodasmotos/VELANGKDP7EA9.png')">Ver Detalhes</button>
                 </div>
                 <div class="card-moto">
                     <div class="img-area">
@@ -2431,7 +2409,7 @@
                     <div class="marca">CONDOR</div>
                     <div class="nome">CHAVE DE IGNIÇÃO CONDOR CG 125 /1992/1999</div>
                     <div class="preco">R$ 15,00</div>
-                    <a href="#" class="btn-detalhes">Ver Detalhes</a>
+                    <button class="btn-detalhes" onclick="abrirDetalhes('CHAVE DE IGNIÇÃO CONDOR CG 125 /1992/1999', 'CONDOR', 15, 'img/mundodasmotos/CHAVEIGNICAOCONDORCG12519921999.png')">Ver Detalhes</button>
                 </div>
                 <div class="card-moto">
                     <div class="img-area">
@@ -2440,7 +2418,7 @@
                     <div class="marca">GP7</div>
                     <div class="nome">TAMPA DO TANQUE DE GASOLINA GP7 BIZ 100</div>
                     <div class="preco">R$ 10,00</div>
-                    <a href="#" class="btn-detalhes">Ver Detalhes</a>
+                    <button class="btn-detalhes" onclick="abrirDetalhes('TAMPA DO TANQUE DE GASOLINA GP7 BIZ 100', 'GP7', 10, 'img/mundodasmotos/TAMPATANQUEGP7BIZ100.png')">Ver Detalhes</button>
                 </div>
                 <div class="card-moto">
                     <div class="img-area">
@@ -2449,7 +2427,7 @@
                     <div class="marca">GP7</div>
                     <div class="nome">TAMPA DO TANQUE DE GASOLINA GP7 BIZ 125</div>
                     <div class="preco">R$ 10,00</div>
-                                       <a href="#" class="btn-detalhes">Ver Detalhes</a>
+                    <button class="btn-detalhes" onclick="abrirDetalhes('TAMPA DO TANQUE DE GASOLINA GP7 BIZ 125', 'GP7', 10, 'img/mundodasmotos/TAMPATANQUEGP7BIZ125.png')">Ver Detalhes</button>
                 </div>
                 <div class="card-moto">
                     <div class="img-area">
@@ -2458,7 +2436,7 @@
                     <div class="marca">GP7</div>
                     <div class="nome">TAMPA DO TANQUE DE GASOLINA GP PRETA CG/ML/TUR/125/1983</div>
                     <div class="preco">R$ 26,00</div>
-                    <a href="#" class="btn-detalhes">Ver Detalhes</a>
+                    <button class="btn-detalhes" onclick="abrirDetalhes('TAMPA DO TANQUE DE GASOLINA GP PRETA CG/ML/TUR/125/1983', 'GP7', 26, 'img/mundodasmotos/TAMPATANQUEGP7PRETACGMLTUR.png')">Ver Detalhes</button>
                 </div>
                 <div class="card-moto">
                     <div class="img-area">
@@ -2467,7 +2445,7 @@
                     <div class="marca">WW3</div>
                     <div class="nome">ARVORE DE COMANDO WW3 BIZ 100 /1998/2005</div>
                     <div class="preco">R$ 55,00</div>
-                    <a href="#" class="btn-detalhes">Ver Detalhes</a>
+                    <button class="btn-detalhes" onclick="abrirDetalhes('ARVORE DE COMANDO WW3 BIZ 100 /1998/2005', 'WW3', 55, 'img/mundodasmotos/ARVORECOMANDOWW3BIZ100.png')">Ver Detalhes</button>
                 </div>
                 <div class="card-moto">
                     <div class="img-area">
@@ -2476,7 +2454,7 @@
                     <div class="marca">WW3</div>
                     <div class="nome">VÁLVULA E RETENTOR KIT WW3 4PC CG 125 /1976/1991</div>
                     <div class="preco">R$ 40,00</div>
-                    <a href="#" class="btn-detalhes">Ver Detalhes</a>
+                    <button class="btn-detalhes" onclick="abrirDetalhes('VÁLVULA E RETENTOR KIT WW3 4PC CG 125 /1976/1991', 'WW3', 40, 'img/mundodasmotos/VALVULARETENTORKITWW3CG125.png')">Ver Detalhes</button>
                 </div>
                 <div class="card-moto">
                     <div class="img-area">
@@ -2485,7 +2463,7 @@
                     <div class="marca">KMP</div>
                     <div class="nome">PISTA KIT C/ANEL KMP RX/TT CG 125 0,25</div>
                     <div class="preco">R$ 20,00</div>
-                    <a href="#" class="btn-detalhes">Ver Detalhes</a>
+                    <button class="btn-detalhes" onclick="abrirDetalhes('PISTA KIT C/ANEL KMP RX/TT CG 125 0,25', 'KMP', 20, 'img/mundodasmotos/PISTAAANELKMPRXTT125.png')">Ver Detalhes</button>
                 </div>
                 <div class="card-moto">
                     <div class="img-area">
@@ -2494,7 +2472,7 @@
                     <div class="marca">CONDOR</div>
                     <div class="nome">BOIA DO TANQUE DE COMBUSTÍVEL CONDOR CG 150 /2008</div>
                     <div class="preco">R$ 35,00</div>
-                    <a href="#" class="btn-detalhes">Ver Detalhes</a>
+                    <button class="btn-detalhes" onclick="abrirDetalhes('BOIA DO TANQUE DE COMBUSTÍVEL CONDOR CG 150 /2008', 'CONDOR', 35, 'img/mundodasmotos/BOIATANQUECG150.png')">Ver Detalhes</button>
                 </div>
                 <div class="card-moto">
                     <div class="img-area">
@@ -2503,7 +2481,7 @@
                     <div class="marca">CONDOR</div>
                     <div class="nome">BOIA DO TANQUE DE COMBUSTÍVEL CONDOR BIZ 100 2012</div>
                     <div class="preco">R$ 33,00</div>
-                    <a href="#" class="btn-detalhes">Ver Detalhes</a>
+                    <button class="btn-detalhes" onclick="abrirDetalhes('BOIA DO TANQUE DE COMBUSTÍVEL CONDOR BIZ 100 2012', 'CONDOR', 33, 'img/mundodasmotos/BOIATANQUEBIZ1002012.png')">Ver Detalhes</button>
                 </div>
                 <div class="card-moto">
                     <div class="img-area">
@@ -2512,7 +2490,7 @@
                     <div class="marca">CONDOR</div>
                     <div class="nome">BOIA DO TANQUE DE COMBUSTÍVEL CONDOR BIZ 125 2006/2008</div>
                     <div class="preco">R$ 35,00</div>
-                    <a href="#" class="btn-detalhes">Ver Detalhes</a>
+                    <button class="btn-detalhes" onclick="abrirDetalhes('BOIA DO TANQUE DE COMBUSTÍVEL CONDOR BIZ 125 2006/2008', 'CONDOR', 35, 'img/mundodasmotos/BOIATANQUEBIZ12520062008.png')">Ver Detalhes</button>
                 </div>
                 <div class="card-moto">
                     <div class="img-area">
@@ -2521,7 +2499,7 @@
                     <div class="marca">EKSIM</div>
                     <div class="nome">FILTRO DE ÓLEO EKSIM YES/INTRUDER 125</div>
                     <div class="preco">R$ 10,00</div>
-                    <a href="#" class="btn-detalhes">Ver Detalhes</a>
+                    <button class="btn-detalhes" onclick="abrirDetalhes('FILTRO DE ÓLEO EKSIM YES/INTRUDER 125', 'EKSIM', 10, 'img/mundodasmotos/FILTROOLEOEKSIMYESINTRUDER125.png')">Ver Detalhes</button>
                 </div>
                 <div class="card-moto">
                     <div class="img-area">
@@ -2530,7 +2508,7 @@
                     <div class="marca">FRAM</div>
                     <div class="nome">FILTRO DE AR FRAM CG 150 2009/2013 CA 9835</div>
                     <div class="preco">R$ 12,00</div>
-                    <a href="#" class="btn-detalhes">Ver Detalhes</a>
+                    <button class="btn-detalhes" onclick="abrirDetalhes('FILTRO DE AR FRAM CG 150 2009/2013 CA 9835', 'FRAM', 12, 'img/mundodasmotos/FILTROARFRAMCG15020092013CA9835.png')">Ver Detalhes</button>
                 </div>
                 <div class="card-moto">
                     <div class="img-area">
@@ -2539,7 +2517,7 @@
                     <div class="marca">GP7</div>
                     <div class="nome">CARBURADOR COMPLETO GP7 C 100 BIZ</div>
                     <div class="preco">R$ 110,00</div>
-                    <a href="#" class="btn-detalhes">Ver Detalhes</a>
+                    <button class="btn-detalhes" onclick="abrirDetalhes('CARBURADOR COMPLETO GP7 C 100 BIZ', 'GP7', 110, 'img/mundodasmotos/CARBURADORGP7C100BIZ.png')">Ver Detalhes</button>
                 </div>
                 <div class="card-moto">
                     <div class="img-area">
@@ -2548,7 +2526,7 @@
                     <div class="marca">GP7</div>
                     <div class="nome">CARBURADOR COMPLETO GP7 BIZ 125</div>
                     <div class="preco">R$ 130,00</div>
-                    <a href="#" class="btn-detalhes">Ver Detalhes</a>
+                    <button class="btn-detalhes" onclick="abrirDetalhes('CARBURADOR COMPLETO GP7 BIZ 125', 'GP7', 130, 'img/mundodasmotos/CARBURADORGP7BIZ125.png')">Ver Detalhes</button>
                 </div>
                 <div class="card-moto">
                     <div class="img-area">
@@ -2557,7 +2535,7 @@
                     <div class="marca">GP7</div>
                     <div class="nome">CARBURADOR COMPLETO GP7 CG ML / 1981</div>
                     <div class="preco">R$ 110,00</div>
-                    <a href="#" class="btn-detalhes">Ver Detalhes</a>
+                    <button class="btn-detalhes" onclick="abrirDetalhes('CARBURADOR COMPLETO GP7 CG ML / 1981', 'GP7', 110, 'img/mundodasmotos/CARBURADORGP7CGML1981.png')">Ver Detalhes</button>
                 </div>
                 <div class="card-moto">
                     <div class="img-area">
@@ -2566,7 +2544,7 @@
                     <div class="marca">EKSIM</div>
                     <div class="nome">FILTRO DE OLEO EKSIM TELA FILTRANTE PENEIRA CG 125 09/18</div>
                     <div class="preco">R$ 2,00</div>
-                    <a href="#" class="btn-detalhes">Ver Detalhes</a>
+                    <button class="btn-detalhes" onclick="abrirDetalhes('FILTRO DE OLEO EKSIM TELA FILTRANTE PENEIRA CG 125 09/18', 'EKSIM', 2, 'img/mundodasmotos/FILTROOLEOEKSIMTELAFILTRANTEPENEIRACG1250918.png')">Ver Detalhes</button>
                 </div>
             </div>
         </div>
@@ -2731,31 +2709,38 @@
 </div>
 
     <script>
-        // Dados dos produtos
-        const produtos = [
-            { id: 1, nome: "PNEU 60/100 ARO 17 SUPER CITY TT33 L BIZ 100 POP110", marca: "PIRELLI", preco: 200, img: "img/mundodasmotos/PNEUPIRELLI60100ARO17SUPERCITYTT33LBIZ100POP110.png", desc: "Pneu de qualidade premium para sua moto" },
-            { id: 2, nome: "CAMARA DE AR 90/90 ARO 19 DIANTEIRA", marca: "KB 50", preco: 20, img: "img/mundodasmotos/CAMARADEARKB509090ARO19DIANTEIRAHONDABROS3.png", desc: "Câmara de ar resistente e durável" },
-            { id: 3, nome: "CAMARA DE AR 275/300 ARO 14 DIANTEIRA E TRASEIRA BIZ 100/125", marca: "KB 50", preco: 20, img: "img/mundodasmotos/CAMARADEARKB50275300ARO14DIANTEIRAETRASEIRABIZ100125.png", desc: "Câmara compatível com BIZ 100/125" },
-            { id: 4, nome: "CABO VELOCÍMETRO POP 100", marca: "K-CABOS", preco: 10, img: "img/mundodasmotos/CABODEVELOCIMETROPOP100200720152.png", desc: "Cabo de velocímetro original" },
-            { id: 5, nome: "CABO ACELERADOR BIZ 125", marca: "K-CABOS", preco: 10, img: "img/mundodasmotos/CABOACELERADORBIZ125200520082.png", desc: "Cabo acelerador resistente" },
-        ];
+        // Dados completos dos produtos
+        const produtos = {
+            "PNEU 60/100 ARO 17 SUPER CITY TT33 L BIZ 100 POP110": { preco: 200, desc: "Pneu de qualidade premium para sua moto" },
+            "CAMARA DE AR 90/90 ARO 19 DIANTEIRA": { preco: 20, desc: "Câmara de ar resistente e durável" },
+            "CAMARA DE AR 275/300 ARO 14 DIANTEIRA E TRASEIRA BIZ 100/125": { preco: 20, desc: "Câmara compatível com BIZ 100/125" },
+            "CABO VELOCÍMETRO POP 100": { preco: 10, desc: "Cabo de velocímetro original" },
+            "CABO ACELERADOR BIZ 125": { preco: 10, desc: "Cabo acelerador resistente" },
+            "CABO AFOGADOR BIZ 125": { preco: 10, desc: "Cabo afogador resistente" },
+            "CABO ACELERADOR BROS 160": { preco: 11, desc: "Cabo acelerador BROS 160" },
+            "CABO ACELERADOR CG 160": { preco: 10, desc: "Cabo acelerador CG 160" },
+        };
 
-        // Abrir modal de produto
+        // Abrir modal de produto - CORRIGIDO
         function abrirDetalhes(nome, marca, preco, img) {
-            const produto = produtos.find(p => p.nome === nome);
-            
-            if (produto) {
-                document.getElementById('modal-produto-marca').textContent = marca;
-                document.getElementById('modal-produto-nome').textContent = nome;
-                document.getElementById('modal-produto-preco').textContent = 'R$ ' + preco.toFixed(2).replace('.', ',');
-                document.getElementById('modal-produto-desc').textContent = produto.desc || 'Produto de alta qualidade';
-                document.getElementById('modal-produto-img-principal').src = img;
-                document.getElementById('modal-produto-bg').classList.add('aberto');
-                
-                document.getElementById('btn-add-carrinho-modal').onclick = function() {
-                    adicionarAoCarrinho(nome, preco);
-                };
+            if (!nome || !marca || !preco || !img) {
+                console.error('Parâmetros inválidos:', {nome, marca, preco, img});
+                return;
             }
+            
+            const produtoInfo = produtos[nome] || { desc: 'Produto de alta qualidade' };
+            
+            document.getElementById('modal-produto-marca').textContent = marca;
+            document.getElementById('modal-produto-nome').textContent = nome;
+            document.getElementById('modal-produto-preco').textContent = 'R$ ' + parseFloat(preco).toFixed(2).replace('.', ',');
+            document.getElementById('modal-produto-desc').textContent = produtoInfo.desc;
+            document.getElementById('modal-produto-img-principal').src = img;
+            document.getElementById('modal-produto-bg').classList.add('aberto');
+            
+            // Configurar botão adicionar ao carrinho
+            document.getElementById('btn-add-carrinho-modal').onclick = function() {
+                adicionarAoCarrinho(nome, parseFloat(preco));
+            };
         }
 
         // Fechar modal de produto
@@ -2763,25 +2748,38 @@
             document.getElementById('modal-produto-bg').classList.remove('aberto');
         }
 
-        // Fechar modal ao clicar fora dele
-        document.getElementById('modal-produto-bg').addEventListener('click', function(e) {
-            if (e.target === this) {
-                fecharModalProduto();
+        // Fechar modal ao clicar fora - CORRIGIDO
+        document.addEventListener('DOMContentLoaded', function() {
+            const modalBg = document.getElementById('modal-produto-bg');
+            if (modalBg) {
+                modalBg.addEventListener('click', function(e) {
+                    if (e.target === this) {
+                        fecharModalProduto();
+                    }
+                });
             }
         });
 
-        // Carrinho
+        // Carrinho - CORRIGIDO
         let carrinho = [];
 
         function adicionarAoCarrinho(nome, preco) {
-            carrinho.push({ nome, preco, id: Date.now() });
+            if (!nome || isNaN(preco)) {
+                console.error('Dados inválidos para carrinho:', {nome, preco});
+                return;
+            }
+            
+            carrinho.push({ nome, preco: parseFloat(preco), id: Date.now() });
             atualizarContadorCarrinho();
             fecharModalProduto();
             alert('Produto adicionado ao carrinho!');
         }
 
         function atualizarContadorCarrinho() {
-            document.getElementById('cart-count').textContent = carrinho.length;
+            const cartCount = document.getElementById('cart-count');
+            if (cartCount) {
+                cartCount.textContent = carrinho.length;
+            }
         }
 
         function abrirCarrinho() {
@@ -2800,6 +2798,8 @@
         function atualizarListaCarrinho() {
             const lista = document.getElementById('carrinho-lista');
             const total = document.getElementById('carrinho-total');
+            
+            if (!lista || !total) return;
             
             lista.innerHTML = '';
             let totalPreco = 0;
@@ -2856,14 +2856,22 @@
             atualizarContadorCarrinho();
         }
 
-        // Buscar produtos
+        // Buscar produtos - CORRIGIDO
         function buscarProdutos() {
-            const termo = document.getElementById('input-busca').value.toLowerCase();
+            const inputBusca = document.getElementById('input-busca');
+            if (!inputBusca) return;
+            
+            const termo = inputBusca.value.toLowerCase();
             const cards = document.querySelectorAll('.card-moto');
             
             cards.forEach(card => {
-                const nome = card.querySelector('.nome').textContent.toLowerCase();
-                const marca = card.querySelector('.marca').textContent.toLowerCase();
+                const nomeEl = card.querySelector('.nome');
+                const marcaEl = card.querySelector('.marca');
+                
+                if (!nomeEl || !marcaEl) return;
+                
+                const nome = nomeEl.textContent.toLowerCase();
+                const marca = marcaEl.textContent.toLowerCase();
                 
                 if (nome.includes(termo) || marca.includes(termo) || termo === '') {
                     card.style.display = '';
@@ -2873,19 +2881,25 @@
             });
         }
 
-        // Filtrar categoria
+        // Filtrar categoria - CORRIGIDO
         function filtrarCategoria(categoria) {
             const btnAtivos = document.querySelectorAll('#filtro-categorias .categoria-btn');
             btnAtivos.forEach(btn => btn.classList.remove('active'));
             
-            event.target.classList.add('active');
-            // Implemente lógica de filtro conforme necessário
+            if (event && event.target) {
+                event.target.classList.add('active');
+            }
         }
 
-        // Fechar modal ao clicar fora
-        document.getElementById('modal-carrinho-bg').addEventListener('click', function(e) {
-            if (e.target === this) {
-                fecharCarrinho();
+        // Fechar modal carrinho ao clicar fora
+        document.addEventListener('DOMContentLoaded', function() {
+            const modalCarrinhoBg = document.getElementById('modal-carrinho-bg');
+            if (modalCarrinhoBg) {
+                modalCarrinhoBg.addEventListener('click', function(e) {
+                    if (e.target === this) {
+                        fecharCarrinho();
+                    }
+                });
             }
         });
     </script>
