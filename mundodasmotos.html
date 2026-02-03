@@ -2636,115 +2636,319 @@
     </a>
 </div>
 
-    <footer>
-        <div class="footer-copyright">
-            &copy; 2026 Mundo das Motos - Catálogo
-        </div>
-        <div class="footer-info">
-            Rua Maria Maia da Silva, Qd11 Lt15, N27 - Petrolina/GO - Jardim Santa Paula<br>
-            mundodasmotospetro@gmail.com | (62) 995277435
-        </div>
-        <div class="footer-social">
-        <style>
-                .footer-social a {
-                    display: inline-flex;
-                    align-items: center;
-                    justify-content: center;
-                    width: 38px;
-                    height: 38px;
-                    margin: 0 6px;
-                    border-radius: 50%;
-                    background: linear-gradient(135deg, #23272a 60%, #18191a 100%);
-                    box-shadow: 0 2px 8px #0003;
-                    border: 2px solid transparent;
-                    transition: border 0.2s, transform 0.2s, box-shadow 0.2s, background 0.2s;
-                    position: relative;
-                    overflow: hidden;
-                }
-                .footer-social a svg {
-                    width: 22px;
-                    height: 22px;
-                    vertical-align: middle;
-                    filter: drop-shadow(0 1px 2px #0005);
-                    transition: filter 0.2s;
-                }
-                .footer-social a[title="Instagram"] {
-                    background: radial-gradient(circle at 70% 30%, #fdc468 0%, #e1306c 60%, #23272a 100%);
-                    border-color: #e1306c;
-                }
-                .footer-social a[title="Facebook"] {
-                    background: linear-gradient(135deg, #1877f3 60%, #23272a 100%);
-                    border-color: #1877f3;
-                }
-                .footer-social a[title="WhatsApp"] {
-                    background: linear-gradient(135deg, #25d366 60%, #23272a 100%);
-                    border-color: #25d366;
-                }
-                .footer-social a:hover {
-                    transform: scale(1.13) rotate(-3deg);
-                    box-shadow: 0 4px 16px #d9042940;
-                    border-color: var(--cor-btn);
-                    background: linear-gradient(135deg, var(--cor-btn) 60%, #23272a 100%);
-                }
-                .footer-social a:hover svg {
-                    filter: drop-shadow(0 2px 6px #d9042940);
-                }
-            </style>
-            <a href="https://www.instagram.com/mootorizados/" target="_blank" title="Instagram" style="vertical-align:middle;">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" style="vertical-align:middle;"><rect width="24" height="24" rx="6" fill="#E1306C"/><path d="M12 8.4A3.6 3.6 0 1 0 12 15.6A3.6 3.6 0 1 0 12 8.4Z" stroke="#fff" stroke-width="1.5"/><circle cx="17.2" cy="6.8" r="1.1" fill="#fff"/><rect x="4.5" y="4.5" width="15" height="15" rx="4.5" stroke="#fff" stroke-width="1.5"/></svg>
-            </a>
-            <a href="https://www.facebook.com/mundodasmotoss" target="_blank" title="Facebook" style="vertical-align:middle;">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" style="vertical-align:middle;"><rect width="24" height="24" rx="6" fill="#1877F3"/><path d="M16 8.5h-2a1 1 0 0 0-1 1v2h3l-.5 2H13v6h-2v-6H8.5v-2H11v-2a3 3 0 0 1 3-3h2v2Z" fill="#fff"/></svg>
-            </a>
-            <a href="https://wa.me/5562995277435" target="_blank" title="WhatsApp" style="vertical-align:middle;">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" style="vertical-align:middle;"><rect width="24" height="24" rx="6" fill="#25D366"/><path d="M12 5.5A6.5 6.5 0 0 0 5.5 12c0 1.14.3 2.22.82 3.14L5 19l3.98-1.28A6.5 6.5 0 1 0 12 5.5Zm0-1.5a8 8 0 0 1 6.32 12.97l1.18 3.54a1 1 0 0 1-1.27 1.27l-3.54-1.18A8 8 0 1 1 12 4Z" fill="#fff"/><path d="M16.13 13.47c-.2-.1-1.18-.58-1.36-.65-.18-.07-.31-.1-.44.1-.13.2-.5.65-.62.78-.12.13-.23.15-.43.05-.2-.1-.85-.31-1.62-.99-.6-.54-1-1.2-1.12-1.4-.12-.2-.01-.3.09-.4.09-.09.2-.23.3-.34.1-.11.13-.2.2-.33.07-.13.03-.25-.01-.35-.05-.1-.44-1.06-.6-1.45-.16-.39-.32-.34-.44-.35-.11-.01-.25-.01-.39-.01s-7.1 1-10.8 5c-3.7 4-14.2 13.9-14.2 33.8s14.5 39.2 16.5 41.9c2 2.7 28.5 43.6 69.2 59.4 9.7 3.8 17.2 6.1 23.1 7.8 9.7 3.1 18.5 2.7 25.5 1.6 7.8-1.2 24.2-9.9 27.6-19.5 3.4-9.6 3.4-17.8 2.4-19.5-1-1.7-3.7-2.7-7.8-4.7z"/>
-        </svg>
-    </a>
-</div>
-
     <script>
-        // Dados completos dos produtos
+        // Dados completos dos produtos COM IMAGENS
         const produtos = {
-            "PNEU 60/100 ARO 17 SUPER CITY TT33 L BIZ 100 POP110": { preco: 200, desc: "Pneu de qualidade premium para sua moto" },
-            "CAMARA DE AR 90/90 ARO 19 DIANTEIRA": { preco: 20, desc: "Câmara de ar resistente e durável" },
-            "CAMARA DE AR 275/300 ARO 14 DIANTEIRA E TRASEIRA BIZ 100/125": { preco: 20, desc: "Câmara compatível com BIZ 100/125" },
-            "CABO VELOCÍMETRO POP 100": { preco: 10, desc: "Cabo de velocímetro original" },
-            "CABO ACELERADOR BIZ 125": { preco: 10, desc: "Cabo acelerador resistente" },
-            "CABO AFOGADOR BIZ 125": { preco: 10, desc: "Cabo afogador resistente" },
-            "CABO ACELERADOR BROS 160": { preco: 11, desc: "Cabo acelerador BROS 160" },
-            "CABO ACELERADOR CG 160": { preco: 10, desc: "Cabo acelerador CG 160" },
+            "PNEU 60/100 ARO 17 SUPER CITY TT33 L BIZ 100 POP110": { 
+                preco: 200, 
+                desc: "Pneu de qualidade premium para sua moto. Aro 17, resistente e durável.",
+                imagens: ["img/mundodasmotos/PNEUPIRELLI60100ARO17SUPERCITYTT33LBIZ100POP110.png"]
+            },
+            "CAMARA DE AR 90/90 ARO 19 DIANTEIRA": { 
+                preco: 20, 
+                desc: "Câmara de ar resistente e durável para motos com pneu 90/90 Aro 19.",
+                imagens: ["img/mundodasmotos/CAMARADEARKB509090ARO19DIANTEIRAHONDABROS3.png"]
+            },
+            "CAMARA DE AR 275/300 ARO 14 DIANTEIRA E TRASEIRA BIZ 100/125": { 
+                preco: 20, 
+                desc: "Câmara compatível com BIZ 100/125, aro 14.",
+                imagens: ["img/mundodasmotos/CAMARADEARKB50275300ARO14DIANTEIRAETRASEIRABIZ100125.png"]
+            },
+            "CABO VELOCÍMETRO POP 100": { 
+                preco: 10, 
+                desc: "Cabo de velocímetro original, compatível com POP 100.",
+                imagens: ["img/mundodasmotos/CABODEVELOCIMETROPOP100200720152.png"]
+            },
+            "CABO ACELERADOR BIZ 125": { 
+                preco: 10, 
+                desc: "Cabo acelerador resistente para BIZ 125 2005/2008.",
+                imagens: ["img/mundodasmotos/CABOACELERADORBIZ125200520082.png"]
+            },
+            "CABO AFOGADOR BIZ 125": { 
+                preco: 10, 
+                desc: "Cabo afogador resistente para BIZ 125.",
+                imagens: ["img/mundodasmotos/CABOAFOGADORBIZ1252.png"]
+            },
+            "CABO ACELERADOR BROS 160": { 
+                preco: 11, 
+                desc: "Cabo acelerador resistente para BROS 160.",
+                imagens: ["img/mundodasmotos/CABOACELERADORBROS1602.png"]
+            },
+            "CABO ACELERADOR CG 160": { 
+                preco: 10, 
+                desc: "Cabo acelerador resistente para CG 160.",
+                imagens: ["img/mundodasmotos/CABOACELERADORCG1602.png"]
+            },
+            "CABO EMBREAGEM CG 125 1982": { 
+                preco: 10, 
+                desc: "Cabo embreagem original para CG 125 1982.",
+                imagens: ["img/mundodasmotos/CABOEMBREAGEMCG12519822.png"]
+            },
+            "CABO ACELERADOR C100 BIZ": { 
+                preco: 10, 
+                desc: "Cabo acelerador para C100 BIZ.",
+                imagens: ["img/mundodasmotos/CABOACELERADORC100BIZ2.png"]
+            },
+            "KIT REMENDO PNEU": { 
+                preco: 12, 
+                desc: "Kit completo para remendo de pneu. Inclui colagem e patches.",
+                imagens: ["img/mundodasmotos/kitreparopneu.png"]
+            },
+            "JUNTA CABEÇOTE KMP CG 150 /2004/2015": { 
+                preco: 8, 
+                desc: "Junta cabeçote KMP para CG 150 2004/2015.",
+                imagens: ["img/mundodasmotos/junta1502.png"]
+            },
+            "JUNTA CABEÇOTE BIZ 125/2006": { 
+                preco: 6, 
+                desc: "Junta cabeçote para BIZ 125 2006.",
+                imagens: ["img/mundodasmotos/junta.png"]
+            },
+            "KIT TRANSMISSÃO BROS 150/200": { 
+                preco: 80, 
+                desc: "Kit completo de transmissão para BROS 150/200.",
+                imagens: ["img/mundodasmotos/KITTRANSMISSAODAROMBROS1502003.png"]
+            },
+            "KIT TRANSMISSÃO BIZ 100/2012-2015": { 
+                preco: 60, 
+                desc: "Kit transmissão DAROM para BIZ 100 2012/2015.",
+                imagens: ["img/mundodasmotos/KITTRANSMISSAODAROMBIZ10020122015.png"]
+            },
+            "KIT TRANSMISSAO DAROM POP 110/2015/2024": { 
+                preco: 55, 
+                desc: "Kit transmissão DAROM para POP 110 2015/2024.",
+                imagens: ["img/mundodasmotos/KITTRANSMISSAODAROMPOP11020152024.png"]
+            },
+            "KIT TRANSMISSAO DAROM BIZ 125/2005": { 
+                preco: 60, 
+                desc: "Kit transmissão DAROM para BIZ 125 2005.",
+                imagens: ["img/mundodasmotos/KITTRANSMISSAODAROMBIZ1252005.png"]
+            },
+            "KIT TRANSMISSAO DAROM CG 150/2004": { 
+                preco: 65, 
+                desc: "Kit transmissão DAROM para CG 150 2004.",
+                imagens: ["img/mundodasmotos/KITTRANSMISSAODAROMCG1502004.png"]
+            },
+            "JUNTAS KIT KMP BIZ 100": { 
+                preco: 10, 
+                desc: "Juntas kit KMP para BIZ 100.",
+                imagens: ["img/mundodasmotos/JUNTASKITKMPBIZ100.png"]
+            },
+            "JUNTAS KIT COMPLETO KMP BIZ 100/ DREAM": { 
+                preco: 25, 
+                desc: "Kit completo de juntas KMP para BIZ 100 e DREAM.",
+                imagens: ["img/mundodasmotos/JUNTASKITCOMPLETOKMPBIZ100DREAM.png"]
+            },
+            "PEDAL CAMBIO GP7 BIZ 100/ 2012": { 
+                preco: 26, 
+                desc: "Pedal de câmbio GP7 para BIZ 100 2012.",
+                imagens: ["img/mundodasmotos/PEDALCAMBIOGP7BIZ1002012.png"]
+            },
+            "PEDAL CAMBIO GP7 CG 125 /1987/1999": { 
+                preco: 15, 
+                desc: "Pedal de câmbio GP7 para CG 125 1987/1999.",
+                imagens: ["img/mundodasmotos/PEDALCAMBIOGP7CG12519871999.png"]
+            },
+            "ESCOVA MOTOR DE PARTIDA COM SUPORTE CONDOR BIZ 100": { 
+                preco: 10, 
+                desc: "Escova motor de partida com suporte CONDOR para BIZ 100.",
+                imagens: ["img/mundodasmotos/ESCOVAMOTORDPARTIDACOMSUPORTEBIZ100.png"]
+            },
+            "ACIONADOR TENSOR DE CORRENTE DE COMANDO GP7 CG 150": { 
+                preco: 15, 
+                desc: "Acionador tensor de corrente de comando GP7 para CG 150.",
+                imagens: ["img/mundodasmotos/ACIONADORTENSORCORRENTEGP7CG150.png"]
+            },
+            "FILTRO DE OLEO EKESMI TELA FILTRANTE PENEIRA CG 125 /2009/2018": { 
+                preco: 2, 
+                desc: "Filtro de óleo com tela filtrante peneira para CG 125 2009/2018.",
+                imagens: ["img/mundodasmotos/FILTROOLEOEKESMITELAFILTRANTEPENEIRACG125.png"]
+            },
+            "FILTRO COMBUSTIVEL UNIVERSAL": { 
+                preco: 5, 
+                desc: "Filtro de combustível universal, compatível com várias motos.",
+                imagens: ["img/mundodasmotos/FILTROCOMBUSTIVELUNIVERSAL.png"]
+            },
+            "AMORTECEDOR GP7 PAR CG 125 /2000/2008": { 
+                preco: 120, 
+                desc: "Amortecedor GP7 par (2 unidades) para CG 125 2000/2008.",
+                imagens: ["img/mundodasmotos/AMORTECEDORGP7PARCG12520002008.png"]
+            },
+            "AMORTECEDOR GP7 PAR CG 150": { 
+                preco: 120, 
+                desc: "Amortecedor GP7 par (2 unidades) para CG 150.",
+                imagens: ["img/mundodasmotos/AMORTECEDORGP7PARCG150.png"]
+            },
+            "BOMBA DE OLEO GP7 BIZ 125 /2005": { 
+                preco: 45, 
+                desc: "Bomba de óleo GP7 para BIZ 125 2005.",
+                imagens: ["img/mundodasmotos/BOMBAOLEOGP7BIZ1252005.png"]
+            },
+            "VELA NGK DP7EA-9": { 
+                preco: 18, 
+                desc: "Vela de ignição NGK DP7EA-9, qualidade original.",
+                imagens: ["img/mundodasmotos/VELANGKDP7EA9.png"]
+            },
+            "CHAVE DE IGNIÇÃO CONDOR CG 125 /1992/1999": { 
+                preco: 15, 
+                desc: "Chave de ignição CONDOR para CG 125 1992/1999.",
+                imagens: ["img/mundodasmotos/CHAVEIGNICAOCONDORCG12519921999.png"]
+            },
+            "TAMPA DO TANQUE DE GASOLINA GP7 BIZ 100": { 
+                preco: 10, 
+                desc: "Tampa do tanque de gasolina GP7 para BIZ 100.",
+                imagens: ["img/mundodasmotos/TAMPATANQUEGP7BIZ100.png"]
+            },
+            "TAMPA DO TANQUE DE GASOLINA GP7 BIZ 125": { 
+                preco: 10, 
+                desc: "Tampa do tanque de gasolina GP7 para BIZ 125.",
+                imagens: ["img/mundodasmotos/TAMPATANQUEGP7BIZ125.png"]
+            },
+            "TAMPA DO TANQUE DE GASOLINA GP PRETA CG/ML/TUR/125/1983": { 
+                preco: 26, 
+                desc: "Tampa do tanque de gasolina preta GP para CG/ML/TUR 125 1983.",
+                imagens: ["img/mundodasmotos/TAMPATANQUEGP7PRETACGMLTUR.png"]
+            },
+            "ARVORE DE COMANDO WW3 BIZ 100 /1998/2005": { 
+                preco: 55, 
+                desc: "Árvore de comando WW3 para BIZ 100 1998/2005.",
+                imagens: ["img/mundodasmotos/ARVORECOMANDOWW3BIZ100.png"]
+            },
+            "VÁLVULA E RETENTOR KIT WW3 4PC CG 125 /1976/1991": { 
+                preco: 40, 
+                desc: "Kit válvula e retentor WW3 4 peças para CG 125 1976/1991.",
+                imagens: ["img/mundodasmotos/VALVULARETENTORKITWW3CG125.png"]
+            },
+            "PISTA KIT C/ANEL KMP RX/TT CG 125 0,25": { 
+                preco: 20, 
+                desc: "Pista kit com anel KMP RX/TT para CG 125 0,25.",
+                imagens: ["img/mundodasmotos/PISTAAANELKMPRXTT125.png"]
+            },
+            "BOIA DO TANQUE DE COMBUSTÍVEL CONDOR CG 150 /2008": { 
+                preco: 35, 
+                desc: "Boia do tanque de combustível CONDOR para CG 150 2008.",
+                imagens: ["img/mundodasmotos/BOIATANQUECG150.png"]
+            },
+            "BOIA DO TANQUE DE COMBUSTÍVEL CONDOR BIZ 100 2012": { 
+                preco: 33, 
+                desc: "Boia do tanque de combustível CONDOR para BIZ 100 2012.",
+                imagens: ["img/mundodasmotos/BOIATANQUEBIZ1002012.png"]
+            },
+            "BOIA DO TANQUE DE COMBUSTÍVEL CONDOR BIZ 125 2006/2008": { 
+                preco: 35, 
+                desc: "Boia do tanque de combustível CONDOR para BIZ 125 2006/2008.",
+                imagens: ["img/mundodasmotos/BOIATANQUEBIZ12520062008.png"]
+            },
+            "FILTRO DE ÓLEO EKSIM YES/INTRUDER 125": { 
+                preco: 10, 
+                desc: "Filtro de óleo EKSIM para YES/INTRUDER 125.",
+                imagens: ["img/mundodasmotos/FILTROOLEOEKSIMYESINTRUDER125.png"]
+            },
+            "FILTRO DE AR FRAM CG 150 2009/2013 CA 9835": { 
+                preco: 12, 
+                desc: "Filtro de ar FRAM para CG 150 2009/2013 modelo CA 9835.",
+                imagens: ["img/mundodasmotos/FILTROARFRAMCG15020092013CA9835.png"]
+            },
+            "CARBURADOR COMPLETO GP7 C 100 BIZ": { 
+                preco: 110, 
+                desc: "Carburador completo GP7 para C 100 BIZ.",
+                imagens: ["img/mundodasmotos/CARBURADORGP7C100BIZ.png"]
+            },
+            "CARBURADOR COMPLETO GP7 BIZ 125": { 
+                preco: 130, 
+                desc: "Carburador completo GP7 para BIZ 125.",
+                imagens: ["img/mundodasmotos/CARBURADORGP7BIZ125.png"]
+            },
+            "CARBURADOR COMPLETO GP7 CG ML / 1981": { 
+                preco: 110, 
+                desc: "Carburador completo GP7 para CG ML 1981.",
+                imagens: ["img/mundodasmotos/CARBURADORGP7CGML1981.png"]
+            },
+            "FILTRO DE OLEO EKSIM TELA FILTRANTE PENEIRA CG 125 09/18": { 
+                preco: 2, 
+                desc: "Filtro de óleo EKSIM tela filtrante peneira para CG 125 09/18.",
+                imagens: ["img/mundodasmotos/FILTROOLEOEKSIMTELAFILTRANTEPENEIRACG1250918.png"]
+            }
         };
 
-        // Abrir modal de produto - CORRIGIDO
+        // Abrir modal de produto - CORRIGIDO E MELHORADO
         function abrirDetalhes(nome, marca, preco, img) {
-            if (!nome || !marca || !preco || !img) {
+            console.log('Abrindo detalhes:', {nome, marca, preco, img});
+            
+            nome = String(nome).trim();
+            marca = String(marca).trim();
+            preco = parseFloat(preco);
+            
+            if (!nome || !marca || isNaN(preco) || !img) {
                 console.error('Parâmetros inválidos:', {nome, marca, preco, img});
                 return;
             }
             
-            const produtoInfo = produtos[nome] || { desc: 'Produto de alta qualidade' };
+            const produtoInfo = produtos[nome] || { 
+                desc: 'Produto de alta qualidade para sua moto', 
+                imagens: [img] 
+            };
             
+            // Preencher informações
             document.getElementById('modal-produto-marca').textContent = marca;
             document.getElementById('modal-produto-nome').textContent = nome;
-            document.getElementById('modal-produto-preco').textContent = 'R$ ' + parseFloat(preco).toFixed(2).replace('.', ',');
+            document.getElementById('modal-produto-preco').textContent = 'R$ ' + preco.toFixed(2).replace('.', ',');
             document.getElementById('modal-produto-desc').textContent = produtoInfo.desc;
-            document.getElementById('modal-produto-img-principal').src = img;
-            document.getElementById('modal-produto-bg').classList.add('aberto');
+            
+            // Carregar imagem principal
+            const imgPrincipal = document.getElementById('modal-produto-img-principal');
+            imgPrincipal.src = produtoInfo.imagens[0] || img;
+            imgPrincipal.onerror = function() {
+                this.src = 'img/placeholder.png'; // Fallback
+            };
+            
+            // Carregar miniaturas
+            const thumbsContainer = document.getElementById('modal-produto-thumbs');
+            thumbsContainer.innerHTML = '';
+            
+            produtoInfo.imagens.forEach((imgSrc, index) => {
+                const thumb = document.createElement('img');
+                thumb.className = 'modal-produto-thumb' + (index === 0 ? ' selected' : '');
+                thumb.src = imgSrc;
+                thumb.alt = 'Miniatura ' + (index + 1);
+                thumb.onclick = function() {
+                    document.querySelectorAll('.modal-produto-thumb').forEach(t => t.classList.remove('selected'));
+                    this.classList.add('selected');
+                    imgPrincipal.src = imgSrc;
+                };
+                thumb.onerror = function() {
+                    this.src = 'img/placeholder.png';
+                };
+                thumbsContainer.appendChild(thumb);
+            });
             
             // Configurar botão adicionar ao carrinho
             document.getElementById('btn-add-carrinho-modal').onclick = function() {
-                adicionarAoCarrinho(nome, parseFloat(preco));
+                adicionarAoCarrinho(nome, preco);
             };
+            
+            // Abrir modal
+            const modalBg = document.getElementById('modal-produto-bg');
+            if (modalBg) {
+                modalBg.classList.add('aberto');
+                modalBg.style.display = 'flex';
+            }
         }
 
         // Fechar modal de produto
         function fecharModalProduto() {
-            document.getElementById('modal-produto-bg').classList.remove('aberto');
+            const modalBg = document.getElementById('modal-produto-bg');
+            if (modalBg) {
+                modalBg.classList.remove('aberto');
+                modalBg.style.display = 'none';
+            }
         }
 
-        // Fechar modal ao clicar fora - CORRIGIDO
+        // Fechar modal ao clicar fora - MELHORADO
         document.addEventListener('DOMContentLoaded', function() {
             const modalBg = document.getElementById('modal-produto-bg');
+            const modalCarrinhoBg = document.getElementById('modal-carrinho-bg');
+            
             if (modalBg) {
                 modalBg.addEventListener('click', function(e) {
                     if (e.target === this) {
@@ -2752,142 +2956,7 @@
                     }
                 });
             }
-        });
-
-        // Carrinho - CORRIGIDO
-        let carrinho = [];
-
-        function adicionarAoCarrinho(nome, preco) {
-            if (!nome || isNaN(preco)) {
-                console.error('Dados inválidos para carrinho:', {nome, preco});
-                return;
-            }
             
-            carrinho.push({ nome, preco: parseFloat(preco), id: Date.now() });
-            atualizarContadorCarrinho();
-            fecharModalProduto();
-            alert('Produto adicionado ao carrinho!');
-        }
-
-        function atualizarContadorCarrinho() {
-            const cartCount = document.getElementById('cart-count');
-            if (cartCount) {
-                cartCount.textContent = carrinho.length;
-            }
-        }
-
-        function abrirCarrinho() {
-            atualizarListaCarrinho();
-            document.getElementById('modal-carrinho-bg').classList.add('aberto');
-            document.getElementById('carrinho-etapa1').style.display = 'block';
-            document.getElementById('carrinho-etapa2').style.display = 'none';
-            document.getElementById('carrinho-etapa-pix').style.display = 'none';
-            document.getElementById('carrinho-etapa3').style.display = 'none';
-        }
-
-        function fecharCarrinho() {
-            document.getElementById('modal-carrinho-bg').classList.remove('aberto');
-        }
-
-        function atualizarListaCarrinho() {
-            const lista = document.getElementById('carrinho-lista');
-            const total = document.getElementById('carrinho-total');
-            
-            if (!lista || !total) return;
-            
-            lista.innerHTML = '';
-            let totalPreco = 0;
-
-            carrinho.forEach(item => {
-                totalPreco += item.preco;
-                const div = document.createElement('div');
-                div.className = 'carrinho-item';
-                div.innerHTML = `
-                    <span class="carrinho-item-nome">${item.nome}</span>
-                    <span class="carrinho-item-preco">R$ ${item.preco.toFixed(2).replace('.', ',')}</span>
-                    <button class="carrinho-item-remove" onclick="removerDoCarrinho(${item.id})">✕</button>
-                `;
-                lista.appendChild(div);
-            });
-
-            total.textContent = `Total: R$ ${totalPreco.toFixed(2).replace('.', ',')}`;
-        }
-
-        function removerDoCarrinho(id) {
-            carrinho = carrinho.filter(item => item.id !== id);
-            atualizarContadorCarrinho();
-            atualizarListaCarrinho();
-        }
-
-        function avancarEtapaCarrinho() {
-            if (carrinho.length === 0) {
-                alert('Carrinho vazio!');
-                return;
-            }
-            document.getElementById('carrinho-etapa1').style.display = 'none';
-            document.getElementById('carrinho-etapa2').style.display = 'block';
-        }
-
-        function avancarParaPix(e) {
-            e.preventDefault();
-            document.getElementById('carrinho-etapa2').style.display = 'none';
-            document.getElementById('carrinho-etapa-pix').style.display = 'block';
-            return false;
-        }
-
-        function mostrarPix() {
-            document.getElementById('area-pix').style.display = 'block';
-        }
-
-        function pagarCartao() {
-            alert('Sistema de cartão indisponível. Use PIX para pagar.');
-        }
-
-        function confirmarPagamentoPix() {
-            document.getElementById('carrinho-etapa-pix').style.display = 'none';
-            document.getElementById('carrinho-etapa3').style.display = 'block';
-            carrinho = [];
-            atualizarContadorCarrinho();
-        }
-
-        // Buscar produtos - CORRIGIDO
-        function buscarProdutos() {
-            const inputBusca = document.getElementById('input-busca');
-            if (!inputBusca) return;
-            
-            const termo = inputBusca.value.toLowerCase();
-            const cards = document.querySelectorAll('.card-moto');
-            
-            cards.forEach(card => {
-                const nomeEl = card.querySelector('.nome');
-                const marcaEl = card.querySelector('.marca');
-                
-                if (!nomeEl || !marcaEl) return;
-                
-                const nome = nomeEl.textContent.toLowerCase();
-                const marca = marcaEl.textContent.toLowerCase();
-                
-                if (nome.includes(termo) || marca.includes(termo) || termo === '') {
-                    card.style.display = '';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-        }
-
-        // Filtrar categoria - CORRIGIDO
-        function filtrarCategoria(categoria) {
-            const btnAtivos = document.querySelectorAll('#filtro-categorias .categoria-btn');
-            btnAtivos.forEach(btn => btn.classList.remove('active'));
-            
-            if (event && event.target) {
-                event.target.classList.add('active');
-            }
-        }
-
-        // Fechar modal carrinho ao clicar fora
-        document.addEventListener('DOMContentLoaded', function() {
-            const modalCarrinhoBg = document.getElementById('modal-carrinho-bg');
             if (modalCarrinhoBg) {
                 modalCarrinhoBg.addEventListener('click', function(e) {
                     if (e.target === this) {
