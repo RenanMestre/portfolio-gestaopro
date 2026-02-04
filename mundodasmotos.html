@@ -1627,7 +1627,183 @@
     <!-- FIM .categorias-menu -->
 
     <!-- Sessão Produtos em Destaque (agora abaixo das categorias) -->
-    <section id="produtos-destaque" style="max-width:1200px;margin:36px auto;padding:32px 18px 28px 18px;background:var(--cor-card);border-radius:18px;box-shadow:0 4px 24px #0003;">
+    <section id="produtos-destaque" style="max-width:1200px;margin:36px auto;padding:0 18px;">
+        <!-- NOVO: Contador de Produtos Premium -->
+        <div style="background: linear-gradient(135deg, #d90429 0%, #e1306c 50%, #a0031f 100%); border-radius: 16px; padding: 24px 28px; margin-bottom: 28px; box-shadow: 0 8px 32px #d9042933; position: relative; overflow: hidden;">
+            <style>
+                .contador-produtos {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    flex-wrap: wrap;
+                    gap: 24px;
+                }
+                .contador-info {
+                    flex: 1;
+                    min-width: 250px;
+                }
+                .contador-titulo {
+                    font-size: 1.15em;
+                    color: rgba(255, 255, 255, 0.9);
+                    font-weight: 600;
+                    margin-bottom: 8px;
+                    letter-spacing: 1px;
+                    text-transform: uppercase;
+                }
+                .contador-numero {
+                    font-size: 3.5em;
+                    font-weight: 900;
+                    color: #fff;
+                    line-height: 1;
+                    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+                    font-family: 'Courier New', monospace;
+                }
+                .contador-descricao {
+                    font-size: 1em;
+                    color: rgba(255, 255, 255, 0.85);
+                    margin-top: 8px;
+                    line-height: 1.5;
+                }
+                .contador-badges {
+                    display: flex;
+                    gap: 12px;
+                    flex-wrap: wrap;
+                }
+                .badge {
+                    background: rgba(255, 255, 255, 0.15);
+                    backdrop-filter: blur(8px);
+                    border: 1px solid rgba(255, 255, 255, 0.25);
+                    color: #fff;
+                    padding: 8px 16px;
+                    border-radius: 20px;
+                    font-size: 0.9em;
+                    font-weight: 600;
+                    display: flex;
+                    align-items: center;
+                    gap: 6px;
+                }
+                .badge-icon {
+                    font-size: 1.2em;
+                }
+                .stats-container {
+                    display: flex;
+                    gap: 18px;
+                    flex-wrap: wrap;
+                }
+                .stat-item {
+                    background: rgba(255, 255, 255, 0.1);
+                    backdrop-filter: blur(8px);
+                    border: 1px solid rgba(255, 255, 255, 0.2);
+                    border-radius: 12px;
+                    padding: 16px 20px;
+                    text-align: center;
+                    flex: 1;
+                    min-width: 120px;
+                }
+                .stat-numero {
+                    font-size: 2em;
+                    font-weight: 800;
+                    color: #fff;
+                    display: block;
+                }
+                .stat-label {
+                    font-size: 0.85em;
+                    color: rgba(255, 255, 255, 0.8);
+                    margin-top: 4px;
+                    text-transform: uppercase;
+                    letter-spacing: 0.5px;
+                }
+                .animate-pulse-custom {
+                    animation: pulse-custom 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+                }
+                @keyframes pulse-custom {
+                    0%, 100% { opacity: 1; }
+                    50% { opacity: 0.7; }
+                }
+                .glow-effect {
+                    position: absolute;
+                    width: 300px;
+                    height: 300px;
+                    background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, transparent 70%);
+                    border-radius: 50%;
+                    top: -100px;
+                    right: -100px;
+                    pointer-events: none;
+                }
+                @media (max-width: 768px) {
+                    .contador-numero {
+                        font-size: 2.5em;
+                    }
+                    .contador-produtos {
+                        flex-direction: column;
+                        gap: 18px;
+                    }
+                    .stats-container {
+                        width: 100%;
+                    }
+                    .stat-item {
+                        flex: 0 1 calc(50% - 9px);
+                    }
+                }
+                @media (max-width: 500px) {
+                    .contador-numero {
+                        font-size: 2em;
+                    }
+                    .contador-titulo {
+                        font-size: 1em;
+                    }
+                    .stat-item {
+                        flex: 1;
+                        min-width: 100%;
+                    }
+                }
+                body.tema-escuro .contador-badges {
+                    background: linear-gradient(135deg, #ff1744 0%, #e91e63 50%, #c2185b 100%);
+                }
+                body.tema-escuro .badge {
+                    background: rgba(255, 255, 255, 0.08) !important;
+                    border-color: rgba(255, 255, 255, 0.15) !important;
+                }
+                body.tema-escuro .stat-item {
+                    background: rgba(255, 255, 255, 0.05) !important;
+                    border-color: rgba(255, 255, 255, 0.1) !important;
+                }
+            </style>
+            <div class="glow-effect"></div>
+            <div class="contador-produtos">
+                <div class="contador-info">
+                    <div class="contador-titulo">🏍️ Catálogo Disponível</div>
+                    <div class="contador-numero" id="total-produtos">48</div>
+                    <div class="contador-descricao">Produtos Premium selecionados para sua moto</div>
+                    <div class="contador-badges" style="margin-top: 14px;">
+                        <div class="badge">
+                            <span class="badge-icon">✨</span>
+                            Qualidade Garantida
+                        </div>
+                        <div class="badge">
+                            <span class="badge-icon">⚡</span>
+                            Atualizado em Tempo Real
+                        </div>
+                    </div>
+                </div>
+                <div class="stats-container">
+                    <div class="stat-item">
+                        <span class="stat-numero" id="stat-pecas">35</span>
+                        <span class="stat-label">Peças</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-numero" id="stat-pneus">8</span>
+                        <span class="stat-label">Pneus</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-numero" id="stat-acessorios">5</span>
+                        <span class="stat-label">Acessórios</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- FIM: Contador de Produtos -->
+
         <div class="catalogo" id="catalogo">
             <!-- Os cards de produto abaixo foram invertidos para mostrar os últimos cadastrados no topo -->
             <div class="card-moto">
@@ -1796,256 +1972,205 @@
             </div>
             <div class="card-moto">
                 <div class="img-area">
-                    <img src="img/mundodasmotos/JUNTASKITKMPBIZ100.png" alt="Juntas Kit KMP Biz 100">
-                </div>
-                <div class="marca">KMP</div>
-                <div class="nome">JUNTAS KIT KMP BIZ 100</div>
-                <div class="preco">R$ 10,00</div>
-                <button class="btn-detalhes" onclick="abrirDetalhes('JUNTAS KIT KMP BIZ 100', 'KMP', 10, 'img/mundodasmotos/JUNTASKITKMPBIZ100.png')">Ver Detalhes</button>
-            </div>
-            <div class="card-moto">
-                <div class="img-area">
-                    <img src="img/mundodasmotos/JUNTASKITCOMPLETOKMPBIZ100DREAM.png" alt="Juntas Kit Completo KMP Biz 100/Dream">
-                </div>
-                <div class="marca">KMP</div>
-                <div class="nome">JUNTAS KIT COMPLETO KMP BIZ 100/ DREAM</div>
-                <div class="preco">R$ 25,00</div>
-                <button class="btn-detalhes" onclick="abrirDetalhes('JUNTAS KIT COMPLETO KMP BIZ 100/ DREAM', 'KMP', 25, 'img/mundodasmotos/JUNTASKITCOMPLETOKMPBIZ100DREAM.png')">Ver Detalhes</button>
-            </div>
-            <div class="card-moto">
-                <div class="img-area">
-                    <img src="img/mundodasmotos/PEDALCAMBIOGP7BIZ1002012.png" alt="Pedal Câmbio GP7 Biz 100/2012">
-                </div>
-                <div class="marca">GP7</div>
-                <div class="nome">PEDAL CAMBIO GP7 BIZ 100/ 2012</div>
-                <div class="preco">R$ 26,00</div>
-                <button class="btn-detalhes" onclick="abrirDetalhes('PEDAL CAMBIO GP7 BIZ 100/ 2012', 'GP7', 26, 'img/mundodasmotos/PEDALCAMBIOGP7BIZ1002012.png')">Ver Detalhes</button>
-            </div>
-            <div class="card-moto">
-                <div class="img-area">
-                    <img src="img/mundodasmotos/PEDALCAMBIOGP7CG12519871999.png" alt="Pedal Câmbio GP7 CG 125 /1987/1999">
-                </div>
-                <div class="marca">GP7</div>
-                <div class="nome">PEDAL CAMBIO GP7 CG 125 /1987/1999</div>
-                <div class="preco">R$ 15,00</div>
-                <button class="btn-detalhes" onclick="abrirDetalhes('PEDAL CAMBIO GP7 CG 125 /1987/1999', 'GP7', 15, 'img/mundodasmotos/PEDALCAMBIOGP7CG12519871999.png')">Ver Detalhes</button>
-            </div>
-            <div class="card-moto">
-                <div class="img-area">
-                    <img src="img/mundodasmotos/ESCOVAMOTORDPARTIDACOMSUPORTEBIZ100.png" alt="Escova Motor de Partida com Suporte Condor Biz 100">
+                    <img src="img/mundodasmotos/PAINEL_COMPLETO_CONDOR_CG_150_ESD.png" alt="Painel Completo de Instrumentos Condor CG 150 ESD">
                 </div>
                 <div class="marca">CONDOR</div>
-                <div class="nome">ESCOVA MOTOR DE PARTIDA COM SUPORTE CONDOR BIZ 100</div>
-                <div class="preco">R$ 10,00</div>
-                <button class="btn-detalhes" onclick="abrirDetalhes('ESCOVA MOTOR DE PARTIDA COM SUPORTE CONDOR BIZ 100', 'CONDOR', 10, 'img/mundodasmotos/ESCOVAMOTORDPARTIDACOMSUPORTEBIZ100.png')">Ver Detalhes</button>
+                <div class="nome">PAINEL COMPLETO DE INSTRUMENTOS CONDOR CG 150 ESD</div>
+                <div class="preco">R$ 125,00</div>
+                <button class="btn-detalhes" onclick="abrirDetalhes('PAINEL COMPLETO DE INSTRUMENTOS CONDOR CG 150 ESD', 'CONDOR', 125, 'img/mundodasmotos/PAINEL_COMPLETO_CONDOR_CG_150_ESD.png')">Ver Detalhes</button>
             </div>
+
             <div class="card-moto">
                 <div class="img-area">
-                    <img src="img/mundodasmotos/ACIONADORTENSORCORRENTEGP7CG150.png" alt="Acionador Tensor de Corrente de Comando GP7 CG 150">
+                    <img src="img/mundodasmotos/BOMBA_OLEO_GP7_CG_150_2004_2015_CG125_2009_BRS150_150.png" alt="Bomba de Óleo GP7 CG 150/2004-2015 CG125/2009 BROS150">
                 </div>
                 <div class="marca">GP7</div>
-                <div class="nome">ACIONADOR TENSOR DE CORRENTE DE COMANDO GP7 CG 150</div>
-                <div class="preco">R$ 15,00</div>
-                <button class="btn-detalhes" onclick="abrirDetalhes('ACIONADOR TENSOR DE CORRENTE DE COMANDO GP7 CG 150', 'GP7', 15, 'img/mundodasmotos/ACIONADORTENSORCORRENTEGP7CG150.png')">Ver Detalhes</button>
+                <div class="selo destaque">Promoção</div>
+                <div class="nome">BOMBA DE ÓLEO GP7 CG 150/2004-2015 CG125/2009 BROS150</div>
+                <div class="preco">R$ 55,00</div>
+                <button class="btn-detalhes" onclick="abrirDetalhes('BOMBA DE ÓLEO GP7 CG 150/2004-2015 CG125/2009 BROS150', 'GP7', 55, 'img/mundodasmotos/BOMBA_OLEO_GP7_CG_150_2004_2015_CG125_2009_BRS150_150.png')">Ver Detalhes</button>
             </div>
+
             <div class="card-moto">
                 <div class="img-area">
-                    <img src="img/mundodasmotos/FILTROOLEOEKESMITELAFILTRANTEPENEIRACG125.png" alt="Filtro de Óleo Ekesmi Tela Filtrante CG 125 /2009/2018">
+                    <img src="img/mundodasmotos/PATINHOS_FREIO_MOLLAS_CORRETO_TRASEIRO.png" alt="Patinhos de Freio com Molas Correto Traseiro">
                 </div>
-                <div class="marca">EKESMI</div>
-                <div class="nome">FILTRO DE OLEO EKESMI TELA FILTRANTE PENEIRA CG 125 /2009/2018</div>
-                <div class="preco">R$ 2,00</div>
-                <button class="btn-detalhes" onclick="abrirDetalhes('FILTRO DE OLEO EKESMI TELA FILTRANTE PENEIRA CG 125 /2009/2018', 'EKESMI', 2, 'img/mundodasmotos/FILTROOLEOEKESMITELAFILTRANTEPENEIRACG125.png')">Ver Detalhes</button>
+                <div class="marca">K-CABOS</div>
+                <div class="nome">PATINHOS DE FREIO COM MOLAS CORRETO TRASEIRO</div>
+                <div class="preco">R$ 35,00</div>
+                <button class="btn-detalhes" onclick="abrirDetalhes('PATINHOS DE FREIO COM MOLAS CORRETO TRASEIRO', 'K-CABOS', 35, 'img/mundodasmotos/PATINHOS_FREIO_MOLLAS_CORRETO_TRASEIRO.png')">Ver Detalhes</button>
+            </div>
+
+            <div class="card-moto">
+                <div class="img-area">
+                    <img src="img/mundodasmotos/VALVULA_RETENTOR_KIT_WW3_4PC_CG150_2004_BRS150_2006_2015.png" alt="Válvula e Retentor Kit WW3 4PC CG150/2004 BROS150/2006-2015">
+                </div>
+                <div class="marca">WW3</div>
+                <div class="selo destaque">Premium</div>
+                <div class="nome">VÁLVULA E RETENTOR KIT WW3 4PC CG150/2004 BROS150/2006-2015</div>
+                <div class="preco">R$ 50,00</div>
+                <button class="btn-detalhes" onclick="abrirDetalhes('VÁLVULA E RETENTOR KIT WW3 4PC CG150/2004 BROS150/2006-2015', 'WW3', 50, 'img/mundodasmotos/VALVULA_RETENTOR_KIT_WW3_4PC_CG150_2004_BRS150_2006_2015.png')">Ver Detalhes</button>
+            </div>
+
+            <div class="card-moto">
+                <div class="img-area">
+                    <img src="img/mundodasmotos/VALVULA_RETENTOR_KIT_WW3_4PC_BIZ_125_2005_2024.png" alt="Válvula e Retentor Kit WW3 4PC BIZ 125/2005-2024">
+                </div>
+                <div class="marca">WW3</div>
+                <div class="nome">VÁLVULA E RETENTOR KIT WW3 4PC BIZ 125/2005-2024</div>
+                <div class="preco">R$ 42,00</div>
+                <button class="btn-detalhes" onclick="abrirDetalhes('VÁLVULA E RETENTOR KIT WW3 4PC BIZ 125/2005-2024', 'WW3', 42, 'img/mundodasmotos/VALVULA_RETENTOR_KIT_WW3_4PC_BIZ_125_2005_2024.png')">Ver Detalhes</button>
+            </div>
+
+            <div class="card-moto">
+                <div class="img-area">
+                    <img src="img/mundodasmotos/CACHIMBO_VELA_GP7_CG_150.png" alt="Cachimbo de Vela GP7 CG 150">
+                </div>
+                <div class="marca">GP7</div>
+                <div class="nome">CACHIMBO DE VELA GP7 CG 150</div>
+                <div class="preco">R$ 6,00</div>
+                <button class="btn-detalhes" onclick="abrirDetalhes('CACHIMBO DE VELA GP7 CG 150', 'GP7', 6, 'img/mundodasmotos/CACHIMBO_VELA_GP7_CG_150.png')">Ver Detalhes</button>
+            </div>
+
+            <div class="card-moto">
+                <div class="img-area">
+                    <img src="img/mundodasmotos/TRAVA_PINHAO_TRANSMISSAO_GP7_CG_150.png" alt="Trava Pinhão Transmissão GP7 CG 150">
+                </div>
+                <div class="marca">GP7</div>
+                <div class="nome">TRAVA PINHÃO TRANSMISSÃO GP7 CG 150</div>
+                <div class="preco">R$ 3,00</div>
+                <button class="btn-detalhes" onclick="abrirDetalhes('TRAVA PINHÃO TRANSMISSÃO GP7 CG 150', 'GP7', 3, 'img/mundodasmotos/TRAVA_PINHAO_TRANSMISSAO_GP7_CG_150.png')">Ver Detalhes</button>
+            </div>
+
+            <div class="card-moto">
+                <div class="img-area">
+                    <img src="img/mundodasmotos/KIT_TRANSMISSAO_DAROM_CG_125_1989_1999.png" alt="Kit Transmissão DAROM CG 125/1989-1999">
+                </div>
+                <div class="marca">DAROM</div>
+                <div class="nome">KIT TRANSMISSÃO DAROM CG 125/1989-1999</div>
+                <div class="preco">R$ 80,00</div>
+                <button class="btn-detalhes" onclick="abrirDetalhes('KIT TRANSMISSÃO DAROM CG 125/1989-1999', 'DAROM', 80, 'img/mundodasmotos/KIT_TRANSMISSAO_DAROM_CG_125_1989_1999.png')">Ver Detalhes</button>
+            </div>
+
+            <div class="card-moto">
+                <div class="img-area">
+                    <img src="img/mundodasmotos/REPARO_CARBURADOR_GP7_C_100_BIZ.png" alt="Reparo Carburador GP7 C 100 BIZ">
+                </div>
+                <div class="marca">GP7</div>
+                <div class="nome">REPARO CARBURADOR GP7 C 100 BIZ</div>
+                <div class="preco">R$ 14,00</div>
+                <button class="btn-detalhes" onclick="abrirDetalhes('REPARO CARBURADOR GP7 C 100 BIZ', 'GP7', 14, 'img/mundodasmotos/REPARO_CARBURADOR_GP7_C_100_BIZ.png')">Ver Detalhes</button>
+            </div>
+
+            <div class="card-moto">
+                <div class="img-area">
+                    <img src="img/mundodasmotos/REPARO_CARBURADOR_GP7_BIZ_125_2006_2008.png" alt="Reparo Carburador GP7 BIZ 125/2006-2008">
+                </div>
+                <div class="marca">GP7</div>
+                <div class="nome">REPARO CARBURADOR GP7 BIZ 125/2006-2008</div>
+                <div class="preco">R$ 18,00</div>
+                <button class="btn-detalhes" onclick="abrirDetalhes('REPARO CARBURADOR GP7 BIZ 125/2006-2008', 'GP7', 18, 'img/mundodasmotos/REPARO_CARBURADOR_GP7_BIZ_125_2006_2008.png')">Ver Detalhes</button>
+            </div>
+
+            <div class="card-moto">
+                <div class="img-area">
+                    <img src="img/mundodasmotos/REPARO_CARBURADOR_GP7_CG_150_2008.png" alt="Reparo Carburador GP7 CG 150/2008">
+                </div>
+                <div class="marca">GP7</div>
+                <div class="nome">REPARO CARBURADOR GP7 CG 150/2008</div>
+                <div class="preco">R$ 18,00</div>
+                <button class="btn-detalhes" onclick="abrirDetalhes('REPARO CARBURADOR GP7 CG 150/2008', 'GP7', 18, 'img/mundodasmotos/REPARO_CARBURADOR_GP7_CG_150_2008.png')">Ver Detalhes</button>
+            </div>
+
+            <div class="card-moto">
+                <div class="img-area">
+                    <img src="img/mundodasmotos/REPARO_CARBURADOR_GP7_CG125_1992_1995.png" alt="Reparo Carburador GP7 CG125/1992-1995">
+                </div>
+                <div class="marca">GP7</div>
+                <div class="nome">REPARO CARBURADOR GP7 CG125/1992-1995</div>
+                <div class="preco">R$ 15,00</div>
+                <button class="btn-detalhes" onclick="abrirDetalhes('REPARO CARBURADOR GP7 CG125/1992-1995', 'GP7', 15, 'img/mundodasmotos/REPARO_CARBURADOR_GP7_CG125_1992_1995.png')">Ver Detalhes</button>
             </div>
             <div class="card-moto">
                 <div class="img-area">
-                    <img src="img/mundodasmotos/FILTROCOMBUSTIVELUNIVERSAL.png" alt="Filtro Combustível Universal">
+                    <img src="img/mundodasmotos/EMENDA_CORRENTE_DAROM_428H.png" alt="Emenda Corrente DAROM 428H">
+                </div>
+                <div class="marca">DAROM</div>
+                <div class="nome">EMENDA CORRENTE DAROM 428H</div>
+                <div class="preco">R$ 2,00</div>
+                <button class="btn-detalhes" onclick="abrirDetalhes('EMENDA CORRENTE DAROM 428H', 'DAROM', 2, 'img/mundodasmotos/EMENDA_CORRENTE_DAROM_428H.png')">Ver Detalhes</button>
+            </div>
+
+            <div class="card-moto">
+                <div class="img-area">
+                    <img src="img/mundodasmotos/ESCOVA_MOTOR_PARTIDA_CONDOR_CG150.png" alt="Escova Motor de Partida com Suporte Condor CG150/ESD">
+                </div>
+                <div class="marca">CONDOR</div>
+                <div class="nome">ESCOVA MOTOR DE PARTIDA COM SUPORTE CONDOR CG150/ESD</div>
+                <div class="preco">R$ 10,00</div>
+                <button class="btn-detalhes" onclick="abrirDetalhes('ESCOVA MOTOR DE PARTIDA COM SUPORTE CONDOR CG150/ESD', 'CONDOR', 10, 'img/mundodasmotos/ESCOVA_MOTOR_PARTIDA_CONDOR_CG150.png')">Ver Detalhes</button>
+            </div>
+
+            <div class="card-moto">
+                <div class="img-area">
+                    <img src="img/mundodasmotos/ESCOVA_MOTOR_PARTIDA_CONDOR_BIZ125.png" alt="Escova Motor de Partida com Suporte Condor BIZ 125">
+                </div>
+                <div class="marca">CONDOR</div>
+                <div class="nome">ESCOVA MOTOR DE PARTIDA COM SUPORTE CONDOR BIZ 125</div>
+                <div class="preco">R$ 8,00</div>
+                <button class="btn-detalhes" onclick="abrirDetalhes('ESCOVA MOTOR DE PARTIDA COM SUPORTE CONDOR BIZ 125', 'CONDOR', 8, 'img/mundodasmotos/ESCOVA_MOTOR_PARTIDA_CONDOR_BIZ125.png')">Ver Detalhes</button>
+            </div>
+
+            <div class="card-moto">
+                <div class="img-area">
+                    <img src="img/mundodasmotos/ESTICADOR_CORRENTE_GP7_CG_ML_TUR.png" alt="Esticador de Corrente GP7 CG/ML/TUR">
+                </div>
+                <div class="marca">GP7</div>
+                <div class="nome">ESTICADOR DE CORRENTE GP7 CG/ML/TUR</div>
+                <div class="preco">R$ 5,00</div>
+                <button class="btn-detalhes" onclick="abrirDetalhes('ESTICADOR DE CORRENTE GP7 CG/ML/TUR', 'GP7', 5, 'img/mundodasmotos/ESTICADOR_CORRENTE_GP7_CG_ML_TUR.png')">Ver Detalhes</button>
+            </div>
+
+            <div class="card-moto">
+                <div class="img-area">
+                    <img src="img/mundodasmotos/BIELA_COMPLETA_WW3_CG150.png" alt="Biela Completa WW3 CG150">
+                </div>
+                <div class="marca">WW3</div>
+                <div class="selo destaque">Premium</div>
+                <div class="nome">BIELA COMPLETA WW3 CG150</div>
+                <div class="preco">R$ 100,00</div>
+                <button class="btn-detalhes" onclick="abrirDetalhes('BIELA COMPLETA WW3 CG150', 'WW3', 100, 'img/mundodasmotos/BIELA_COMPLETA_WW3_CG150.png')">Ver Detalhes</button>
+            </div>
+
+            <div class="card-moto">
+                <div class="img-area">
+                    <img src="img/mundodasmotos/BIELA_COMPLETA_WW3_BIZ125.png" alt="Biela Completa WW3 BIZ 125">
+                </div>
+                <div class="marca">WW3</div>
+                <div class="nome">BIELA COMPLETA WW3 BIZ 125</div>
+                <div class="preco">R$ 55,00</div>
+                <button class="btn-detalhes" onclick="abrirDetalhes('BIELA COMPLETA WW3 BIZ 125', 'WW3', 55, 'img/mundodasmotos/BIELA_COMPLETA_WW3_BIZ125.png')">Ver Detalhes</button>
+            </div>
+
+            <div class="card-moto">
+                <div class="img-area">
+                    <img src="img/mundodasmotos/BIELA_COMPLETA_WW3_BIZ100_POP100.png" alt="Biela Completa WW3 BIZ100/POP100">
+                </div>
+                <div class="marca">WW3</div>
+                <div class="nome">BIELA COMPLETA WW3 BIZ100/POP100</div>
+                <div class="preco">R$ 60,00</div>
+                <button class="btn-detalhes" onclick="abrirDetalhes('BIELA COMPLETA WW3 BIZ100/POP100', 'WW3', 60, 'img/mundodasmotos/BIELA_COMPLETA_WW3_BIZ100_POP100.png')">Ver Detalhes</button>
+            </div>
+
+            <div class="card-moto">
+                <div class="img-area">
+                    <img src="img/mundodasmotos/LAMPADA_FAROL_HALOGENA_H4.png" alt="Lâmpada Farol Halógena H4 12V 35W Azul">
                 </div>
                 <div class="marca">UNIVERSAL</div>
-                <div class="nome">FILTRO COMBUSTIVEL UNIVERSAL</div>
-                <div class="preco">R$ 5,00</div>
-                <button class="btn-detalhes" onclick="abrirDetalhes('FILTRO COMBUSTIVEL UNIVERSAL', 'UNIVERSAL', 5, 'img/mundodasmotos/FILTROCOMBUSTIVELUNIVERSAL.png')">Ver Detalhes</button>
-            </div>
-            <div class="card-moto">
-                <div class="img-area">
-                    <img src="img/mundodasmotos/AMORTECEDORGP7PARCG12520002008.png" alt="Amortecedor GP7 Par CG 125 /2000/2008">
-                </div>
-                <div class="marca">GP7</div>
-                <div class="nome">AMORTECEDOR GP7 PAR CG 125 /2000/2008</div>
-                <div class="preco">R$ 120,00</div>
-                <button class="btn-detalhes" onclick="abrirDetalhes('AMORTECEDOR GP7 PAR CG 125 /2000/2008', 'GP7', 120, 'img/mundodasmotos/AMORTECEDORGP7PARCG12520002008.png')">Ver Detalhes</button>
-            </div>
-            <div class="card-moto">
-                <div class="img-area">
-                    <img src="img/mundodasmotos/AMORTECEDORGP7PARCG150.png" alt="Amortecedor GP7 Par CG 150">
-                </div>
-                <div class="marca">GP7</div>
-                <div class="nome">AMORTECEDOR GP7 PAR CG 150</div>
-                <div class="preco">R$ 120,00</div>
-                <button class="btn-detalhes" onclick="abrirDetalhes('AMORTECEDOR GP7 PAR CG 150', 'GP7', 120, 'img/mundodasmotos/AMORTECEDORGP7PARCG150.png')">Ver Detalhes</button>
-            </div>
-                <div class="card-moto">
-                    <div class="img-area">
-                        <img src="img/mundodasmotos/BOMBAOLEOGP7BIZ1252005.png" alt="Bomba de Óleo GP7 Biz 125 /2005">
-                    </div>
-                    <div class="marca">GP7</div>
-                    <div class="nome">BOMBA DE OLEO GP7 BIZ 125 /2005</div>
-                    <div class="preco">R$ 45,00</div>
-                    <button class="btn-detalhes" onclick="abrirDetalhes('BOMBA DE OLEO GP7 BIZ 125 /2005', 'GP7', 45, 'img/mundodasmotos/BOMBAOLEOGP7BIZ1252005.png')">Ver Detalhes</button>
-                </div>
-                <div class="card-moto">
-                    <div class="img-area">
-                        <img src="img/mundodasmotos/VELANGKDP7EA9.png" alt="Vela NGK DP7EA-9">
-                    </div>
-                    <div class="marca">NGK</div>
-                    <div class="nome">VELA NGK DP7EA-9</div>
-                    <div class="preco">R$ 18,00</div>
-                    <button class="btn-detalhes" onclick="abrirDetalhes('VELA NGK DP7EA-9', 'NGK', 18, 'img/mundodasmotos/VELANGKDP7EA9.png')">Ver Detalhes</button>
-                </div>
-                <div class="card-moto">
-                    <div class="img-area">
-                        <img src="img/mundodasmotos/CHAVEIGNICAOCONDORCG12519921999.png" alt="Chave de Ignição Condor CG 125 /1992/1999">
-                    </div>
-                    <div class="marca">CONDOR</div>
-                    <div class="nome">CHAVE DE IGNIÇÃO CONDOR CG 125 /1992/1999</div>
-                    <div class="preco">R$ 15,00</div>
-                    <button class="btn-detalhes" onclick="abrirDetalhes('CHAVE DE IGNIÇÃO CONDOR CG 125 /1992/1999', 'CONDOR', 15, 'img/mundodasmotos/CHAVEIGNICAOCONDORCG12519921999.png')">Ver Detalhes</button>
-                </div>
-                <div class="card-moto">
-                    <div class="img-area">
-                        <img src="img/mundodasmotos/TAMPATANQUEGP7BIZ100.png" alt="Tampa do Tanque de Gasolina GP7 Biz 100">
-                    </div>
-                    <div class="marca">GP7</div>
-                    <div class="nome">TAMPA DO TANQUE DE GASOLINA GP7 BIZ 100</div>
-                    <div class="preco">R$ 10,00</div>
-                    <button class="btn-detalhes" onclick="abrirDetalhes('TAMPA DO TANQUE DE GASOLINA GP7 BIZ 100', 'GP7', 10, 'img/mundodasmotos/TAMPATANQUEGP7BIZ100.png')">Ver Detalhes</button>
-                </div>
-                <div class="card-moto">
-                    <div class="img-area">
-                        <img src="img/mundodasmotos/TAMPATANQUEGP7BIZ125.png" alt="Tampa do Tanque de Gasolina GP7 Biz 125">
-                    </div>
-                    <div class="marca">GP7</div>
-                    <div class="nome">TAMPA DO TANQUE DE GASOLINA GP7 BIZ 125</div>
-                    <div class="preco">R$ 10,00</div>
-                    <button class="btn-detalhes" onclick="abrirDetalhes('TAMPA DO TANQUE DE GASOLINA GP7 BIZ 125', 'GP7', 10, 'img/mundodasmotos/TAMPATANQUEGP7BIZ125.png')">Ver Detalhes</button>
-                </div>
-                <div class="card-moto">
-                    <div class="img-area">
-                        <img src="img/mundodasmotos/TAMPATANQUEGP7PRETACGMLTUR.png" alt="Tampa do Tanque de Gasolina GP Preta CG/ML/TUR/125/1983">
-                    </div>
-                    <div class="marca">GP7</div>
-                    <div class="nome">TAMPA DO TANQUE DE GASOLINA GP PRETA CG/ML/TUR/125/1983</div>
-                    <div class="preco">R$ 26,00</div>
-                    <button class="btn-detalhes" onclick="abrirDetalhes('TAMPA DO TANQUE DE GASOLINA GP PRETA CG/ML/TUR/125/1983', 'GP7', 26, 'img/mundodasmotos/TAMPATANQUEGP7PRETACGMLTUR.png')">Ver Detalhes</button>
-                </div>
-                <div class="card-moto">
-                    <div class="img-area">
-                        <img src="img/mundodasmotos/ARVORECOMANDOWW3BIZ100.png" alt="Árvore de Comando WW3 Biz 100 /1998/2005">
-                    </div>
-                    <div class="marca">WW3</div>
-                    <div class="nome">ARVORE DE COMANDO WW3 BIZ 100 /1998/2005</div>
-                    <div class="preco">R$ 55,00</div>
-                    <button class="btn-detalhes" onclick="abrirDetalhes('ARVORE DE COMANDO WW3 BIZ 100 /1998/2005', 'WW3', 55, 'img/mundodasmotos/ARVORECOMANDOWW3BIZ100.png')">Ver Detalhes</button>
-                </div>
-                <div class="card-moto">
-                    <div class="img-area">
-                        <img src="img/mundodasmotos/VALVULARETENTORKITWW3CG125.png" alt="Válvula e Retentor Kit WW3 4PC CG 125 /1976/1991">
-                    </div>
-                    <div class="marca">WW3</div>
-                    <div class="nome">VÁLVULA E RETENTOR KIT WW3 4PC CG 125 /1976/1991</div>
-                    <div class="preco">R$ 40,00</div>
-                    <button class="btn-detalhes" onclick="abrirDetalhes('VÁLVULA E RETENTOR KIT WW3 4PC CG 125 /1976/1991', 'WW3', 40, 'img/mundodasmotos/VALVULARETENTORKITWW3CG125.png')">Ver Detalhes</button>
-                </div>
-                <div class="card-moto">
-                    <div class="img-area">
-                        <img src="img/mundodasmotos/PISTAAANELKMPRXTT125.png" alt="Pista Kit C/Anel KMP RX/TT CG 125 0,25">
-                    </div>
-                    <div class="marca">KMP</div>
-                    <div class="nome">PISTA KIT C/ANEL KMP RX/TT CG 125 0,25</div>
-                    <div class="preco">R$ 20,00</div>
-                    <button class="btn-detalhes" onclick="abrirDetalhes('PISTA KIT C/ANEL KMP RX/TT CG 125 0,25', 'KMP', 20, 'img/mundodasmotos/PISTAAANELKMPRXTT125.png')">Ver Detalhes</button>
-                </div>
-                <div class="card-moto">
-                    <div class="img-area">
-                        <img src="img/mundodasmotos/BOIATANQUECG150.png" alt="Boia do Tanque de Combustível Condor CG 150 /2008">
-                    </div>
-                    <div class="marca">CONDOR</div>
-                    <div class="nome">BOIA DO TANQUE DE COMBUSTÍVEL CONDOR CG 150 /2008</div>
-                    <div class="preco">R$ 35,00</div>
-                    <button class="btn-detalhes" onclick="abrirDetalhes('BOIA DO TANQUE DE COMBUSTÍVEL CONDOR CG 150 /2008', 'CONDOR', 35, 'img/mundodasmotos/BOIATANQUECG150.png')">Ver Detalhes</button>
-                </div>
-                <div class="card-moto">
-                    <div class="img-area">
-                        <img src="img/mundodasmotos/BOIATANQUEBIZ1002012.png" alt="Boia do Tanque de Combustível Condor Biz 100 2012">
-                    </div>
-                    <div class="marca">CONDOR</div>
-                    <div class="nome">BOIA DO TANQUE DE COMBUSTÍVEL CONDOR BIZ 100 2012</div>
-                    <div class="preco">R$ 33,00</div>
-                    <button class="btn-detalhes" onclick="abrirDetalhes('BOIA DO TANQUE DE COMBUSTÍVEL CONDOR BIZ 100 2012', 'CONDOR', 33, 'img/mundodasmotos/BOIATANQUEBIZ1002012.png')">Ver Detalhes</button>
-                </div>
-                <div class="card-moto">
-                    <div class="img-area">
-                        <img src="img/mundodasmotos/BOIATANQUEBIZ12520062008.png" alt="Boia do Tanque de Combustível Condor Biz 125 2006/2008">
-                    </div>
-                    <div class="marca">CONDOR</div>
-                    <div class="nome">BOIA DO TANQUE DE COMBUSTÍVEL CONDOR BIZ 125 2006/2008</div>
-                    <div class="preco">R$ 35,00</div>
-                    <button class="btn-detalhes" onclick="abrirDetalhes('BOIA DO TANQUE DE COMBUSTÍVEL CONDOR BIZ 125 2006/2008', 'CONDOR', 35, 'img/mundodasmotos/BOIATANQUEBIZ12520062008.png')">Ver Detalhes</button>
-                </div>
-                <div class="card-moto">
-                    <div class="img-area">
-                        <img src="img/mundodasmotos/FILTROOLEOEKSIMYESINTRUDER125.png" alt="Filtro de Óleo Eksim Yes/Intruder 125">
-                    </div>
-                    <div class="marca">EKSIM</div>
-                    <div class="nome">FILTRO DE ÓLEO EKSIM YES/INTRUDER 125</div>
-                    <div class="preco">R$ 10,00</div>
-                    <button class="btn-detalhes" onclick="abrirDetalhes('FILTRO DE ÓLEO EKSIM YES/INTRUDER 125', 'EKSIM', 10, 'img/mundodasmotos/FILTROOLEOEKSIMYESINTRUDER125.png')">Ver Detalhes</button>
-                </div>
-                <div class="card-moto">
-                    <div class="img-area">
-                        <img src="img/mundodasmotos/FILTROARFRAMCG15020092013CA9835.png" alt="Filtro de Ar Fram CG 150 2009/2013 CA 9835">
-                    </div>
-                    <div class="marca">FRAM</div>
-                    <div class="nome">FILTRO DE AR FRAM CG 150 2009/2013 CA 9835</div>
-                    <div class="preco">R$ 12,00</div>
-                    <button class="btn-detalhes" onclick="abrirDetalhes('FILTRO DE AR FRAM CG 150 2009/2013 CA 9835', 'FRAM', 12, 'img/mundodasmotos/FILTROARFRAMCG15020092013CA9835.png')">Ver Detalhes</button>
-                </div>
-                <div class="card-moto">
-                    <div class="img-area">
-                        <img src="img/mundodasmotos/CARBURADORGP7C100BIZ.png" alt="Carburador Completo GP7 C 100 Biz">
-                    </div>
-                    <div class="marca">GP7</div>
-                    <div class="nome">CARBURADOR COMPLETO GP7 C 100 BIZ</div>
-                    <div class="preco">R$ 110,00</div>
-                    <button class="btn-detalhes" onclick="abrirDetalhes('CARBURADOR COMPLETO GP7 C 100 BIZ', 'GP7', 110, 'img/mundodasmotos/CARBURADORGP7C100BIZ.png')">Ver Detalhes</button>
-                </div>
-                <div class="card-moto">
-                    <div class="img-area">
-                        <img src="img/mundodasmotos/CARBURADORGP7BIZ125.png" alt="Carburador Completo GP7 Biz 125">
-                    </div>
-                    <div class="marca">GP7</div>
-                    <div class="nome">CARBURADOR COMPLETO GP7 BIZ 125</div>
-                    <div class="preco">R$ 130,00</div>
-                    <button class="btn-detalhes" onclick="abrirDetalhes('CARBURADOR COMPLETO GP7 BIZ 125', 'GP7', 130, 'img/mundodasmotos/CARBURADORGP7BIZ125.png')">Ver Detalhes</button>
-                </div>
-                <div class="card-moto">
-                    <div class="img-area">
-                        <img src="img/mundodasmotos/CARBURADORGP7CGML1981.png" alt="Carburador Completo GP7 CG ML 1981">
-                    </div>
-                    <div class="marca">GP7</div>
-                    <div class="nome">CARBURADOR COMPLETO GP7 CG ML / 1981</div>
-                    <div class="preco">R$ 110,00</div>
-                    <button class="btn-detalhes" onclick="abrirDetalhes('CARBURADOR COMPLETO GP7 CG ML / 1981', 'GP7', 110, 'img/mundodasmotos/CARBURADORGP7CGML1981.png')">Ver Detalhes</button>
-                </div>
-                <div class="card-moto">
-                    <div class="img-area">
-                        <img src="img/mundodasmotos/FILTROOLEOEKSIMTELAFILTRANTEPENEIRACG1250918.png" alt="Filtro de Óleo Eksim Tela Filtrante Peneira CG 125 09/18">
-                    </div>
-                    <div class="marca">EKSIM</div>
-                    <div class="nome">FILTRO DE OLEO EKSIM TELA FILTRANTE PENEIRA CG 125 09/18</div>
-                    <div class="preco">R$ 2,00</div>
-                    <button class="btn-detalhes" onclick="abrirDetalhes('FILTRO DE OLEO EKSIM TELA FILTRANTE PENEIRA CG 125 09/18', 'EKSIM', 2, 'img/mundodasmotos/FILTROOLEOEKSIMTELAFILTRANTEPENEIRACG1250918.png')">Ver Detalhes</button>
-                </div>
+                <div class="selo destaque">Promoção</div>
+                <div class="nome">LÂMPADA FAROL HALÓGENA H4 12V/35W AZUL CG/ML/TITAN/YBR125</div>
+                <div class="preco">R$ 11,00</div>
+                <button class="btn-detalhes" onclick="abrirDetalhes('LÂMPADA FAROL HALÓGENA H4 12V/35W AZUL CG/ML/TITAN/YBR125', 'UNIVERSAL', 11, 'img/mundodasmotos/LAMPADA_FAROL_HALOGENA_H4.png')">Ver Detalhes</button>
             </div>
         </div>
     </section>
@@ -2266,107 +2391,6 @@ document.addEventListener("DOMContentLoaded", function() {
                 imagens: ["img/mundodasmotos/KITTRANSMISSAODAROMCG1502004.png"]
             },
             "JUNTAS KIT KMP BIZ 100": { 
-                preco: 10, 
-                desc: "Juntas kit KMP para BIZ 100.",
-                imagens: ["img/mundodasmotos/JUNTASKITKMPBIZ100.png"]
-            },
-            "JUNTAS KIT COMPLETO KMP BIZ 100/ DREAM": { 
-                preco: 25, 
-                desc: "Kit completo de juntas KMP para BIZ 100 e DREAM.",
-                imagens: ["img/mundodasmotos/JUNTASKITCOMPLETOKMPBIZ100DREAM.png"]
-            },
-            "PEDAL CAMBIO GP7 BIZ 100/ 2012": { 
-                preco: 26, 
-                desc: "Pedal de câmbio GP7 para BIZ 100 2012.",
-                imagens: ["img/mundodasmotos/PEDALCAMBIOGP7BIZ1002012.png"]
-            },
-            "PEDAL CAMBIO GP7 CG 125 /1987/1999": { 
-                preco: 15, 
-                desc: "Pedal de câmbio GP7 para CG 125 1987/1999.",
-                imagens: ["img/mundodasmotos/PEDALCAMBIOGP7CG12519871999.png"]
-            }
-            ,
-            "ESCOVA MOTOR DE PARTIDA COM SUPORTE CONDOR BIZ 100": { 
-                preco: 10, 
-                desc: "Escova motor de partida com suporte CONDOR para BIZ 100.",
-                imagens: ["img/mundodasmotos/ESCOVAMOTORDPARTIDACOMSUPORTEBIZ100.png"]
-            },
-            "ACIONADOR TENSOR DE CORRENTE DE COMANDO GP7 CG 150": { 
-                preco: 15, 
-                desc: "Acionador tensor de corrente de comando GP7 para CG 150.",
-                imagens: ["img/mundodasmotos/ACIONADORTENSORCORRENTEGP7CG150.png"]
-            },
-            "FILTRO DE OLEO EKESMI TELA FILTRANTE PENEIRA CG 125 /2009/2018": { 
-                preco: 2, 
-                desc: "Filtro de óleo com tela filtrante peneira para CG 125 2009/2018.",
-                imagens: ["img/mundodasmotos/FILTROOLEOEKESMITELAFILTRANTEPENEIRACG125.png"]
-            },
-            "FILTRO COMBUSTIVEL UNIVERSAL": { 
-                preco: 5, 
-                desc: "Filtro de combustível universal, compatível com várias motos.",
-                imagens: ["img/mundodasmotos/FILTROCOMBUSTIVELUNIVERSAL.png"]
-            },
-            "AMORTECEDOR GP7 PAR CG 125 /2000/2008": { 
-                preco: 120, 
-                desc: "Amortecedor GP7 par (2 unidades) para CG 125 2000/2008.",
-                imagens: ["img/mundodasmotos/AMORTECEDORGP7PARCG12520002008.png"]
-            },
-            "AMORTECEDOR GP7 PAR CG 150": { 
-                preco: 120, 
-                desc: "Amortecedor GP7 par (2 unidades) para CG 150.",
-                imagens: ["img/mundodasmotos/AMORTECEDORGP7PARCG150.png"]
-            },
-            "BOMBA DE OLEO GP7 BIZ 125 /2005": { 
-                preco: 45, 
-                desc: "Bomba de óleo GP7 para BIZ 125 2005.",
-                imagens: ["img/mundodasmotos/BOMBAOLEOGP7BIZ1252005.png"]
-            },
-            "VELA NGK DP7EA-9": { 
-                preco: 18, 
-                desc: "Vela de ignição NGK DP7EA-9, qualidade original.",
-                imagens: ["img/mundodasmotos/VELANGKDP7EA9.png"]
-            },
-            "CHAVE DE IGNIÇÃO CONDOR CG 125 /1992/1999": { 
-                preco: 15, 
-                desc: "Chave de ignição CONDOR para CG 125 1992/1999.",
-                imagens: ["img/mundodasmotos/CHAVEIGNICAOCONDORCG12519921999.png"]
-            },
-            "TAMPA DO TANQUE DE GASOLINA GP7 BIZ 100": { 
-                preco: 10, 
-                desc: "Tampa do tanque de gasolina GP7 para BIZ 100.",
-                imagens: ["img/mundodasmotos/TAMPATANQUEGP7BIZ100.png"]
-            },
-            "TAMPA DO TANQUE DE GASOLINA GP7 BIZ 125": { 
-                preco: 10, 
-                desc: "Tampa do tanque de gasolina GP7 para BIZ 125.",
-                imagens: ["img/mundodasmotos/TAMPATANQUEGP7BIZ125.png"]
-            },
-            "TAMPA DO TANQUE DE GASOLINA GP PRETA CG/ML/TUR/125/1983": { 
-                preco: 26, 
-                desc: "Tampa do tanque de gasolina preta GP para CG/ML/TUR 125 1983.",
-                imagens: ["img/mundodasmotos/TAMPATANQUEGP7PRETACGMLTUR.png"]
-            },
-            "ARVORE DE COMANDO WW3 BIZ 100 /1998/2005": { 
-                preco: 55, 
-                desc: "Árvore de comando WW3 para BIZ 100 1998/2005.",
-                imagens: ["img/mundodasmotos/ARVORECOMANDOWW3BIZ100.png"]
-            },
-            "VÁLVULA E RETENTOR KIT WW3 4PC CG 125 /1976/1991": { 
-                preco: 40, 
-                desc: "Kit válvula e retentor WW3 4 peças para CG 125 1976/1991.",
-                imagens: ["img/mundodasmotos/VALVULARETENTORKITWW3CG125.png"]
-            },
-            "PISTA KIT C/ANEL KMP RX/TT CG 125 0,25": { 
-                preco: 20, 
-                desc: "Pista kit com anel KMP RX/TT para CG 125 0,25.",
-                imagens: ["img/mundodasmotos/PISTAAANELKMPRXTT125.png"]
-            },
-            "BOIA DO TANQUE DE COMBUSTÍVEL CONDOR CG 150 /2008": { 
-                preco: 35, 
-                desc: "Boia do tanque de combustível CONDOR para CG 150 2008.",
-                imagens: ["img/mundodasmotos/BOIATANQUECG150.png"]
-            },
-            "BOIA DO TANQUE DE COMBUSTÍVEL CONDOR BIZ 100 2012": { 
                 preco: 33, 
                 desc: "Boia do tanque de combustível CONDOR para BIZ 100 2012.",
                 imagens: ["img/mundodasmotos/BOIATANQUEBIZ1002012.png"]
@@ -2405,6 +2429,61 @@ document.addEventListener("DOMContentLoaded", function() {
                 preco: 2, 
                 desc: "Filtro de óleo EKSIM tela filtrante peneira para CG 125 09/18.",
                 imagens: ["img/mundodasmotos/FILTROOLEOEKSIMTELAFILTRANTEPENEIRACG1250918.png"]
+            },
+            "REPARO CARBURADOR GP7 POP 100": { 
+                preco: 15, 
+                desc: "Reparo para carburador GP7, modelo POP 100.",
+                imagens: ["img/mundodasmotos/REPARO_CARBURADOR_GP7_POP_100.png"]
+            },
+            "PISTÃO KIT COM ANEL KMP CG 150/0,25": { 
+                preco: 66, 
+                desc: "Pistão com anel KMP para CG 150, medida 0,25.",
+                imagens: ["img/mundodasmotos/PISTAO_KIT_COM_ANEL_KMP_CG_150_0_25.png"]
+            },
+            "ESTICADOR DE CORRENTE GP7 BIZ 100": { 
+                preco: 5, 
+                desc: "Esticador de corrente GP7 para BIZ 100.",
+                imagens: ["img/mundodasmotos/ESTRICADOR_CORRENTE_GP7_BIZ_100.png"]
+            },
+            "KIT TRANSMISSÃO DAROM BROS 160/2015/2016": { 
+                preco: 100, 
+                desc: "Kit transmissão DAROM para BROS 160, anos 2015 a 2016.",
+                imagens: ["img/mundodasmotos/KIT_TRANSMISSAO_DAROM_BROS_160_2015.png"]
+            },
+            "KIT TRANSMISSÃO DAROM CG 125/2008": { 
+                preco: 80, 
+                desc: "Kit transmissão DAROM para CG 125, ano 2008.",
+                imagens: ["img/mundodasmotos/KIT_TRANSMISSAO_DAROM_CG_125.png"]
+            },
+            "KIT TRANSMISSAO DAROM CG 160/2015": { 
+                preco: 82, 
+                desc: "Kit transmissão DAROM para CG 160, ano 2015.",
+                imagens: ["img/mundodasmotos/KIT_TRANSMISSAO_DAROM_CG_160_2015.png"]
+            },
+            "PNEU TRASEIRO KENDA 90/90 ARO 17 SPORT K677": { 
+                preco: 198, 
+                desc: "Pneu traseiro Kenda 90/90 Aro 17, modelo Sport K677.",
+                imagens: ["img/mundodasmotos/PNEU_TRASEIRO_KENDA_90_90_ARO_17.png"]
+            },
+            "PNEU DIANTEIRO KENDA 80/100-18 K677E THORAX": { 
+                preco: 185, 
+                desc: "Pneu dianteiro Kenda 80/100 Aro 18, modelo K677E THORAX.",
+                imagens: ["img/mundodasmotos/PNEU_DIANTEIRO_KENDA_80_100_ARO_18.png"]
+            },
+            "PNEU DIANTEIRO KENDA 60/100-17 TT K677E THORAX": { 
+                preco: 155, 
+                desc: "Pneu dianteiro Kenda 60/100 Aro 17, modelo TT K677E THORAX.",
+                imagens: ["img/mundodasmotos/PNEU_DIANTEIRO_KENDA_60_100_ARO_17.png"]
+            },
+            "PNEU TRASEIRO KENDA 80/100-14 TT K677 THORAX BIZ": { 
+                preco: 195, 
+                desc: "Pneu traseiro Kenda 80/100 Aro 14, modelo TT K677 THORAX, para Biz.",
+                imagens: ["img/mundodasmotos/PNEU_TRASEIRO_KENDA_80_100_ARO_14.png"]
+            },
+            "BATERIA LÍTIO LX 5 AMPERES BIZ/125/CG/125/150": { 
+                preco: 160, 
+                desc: "Bateria de lítio LX 5 amperes, compatível com BIZ 125, CG 125 e 150.",
+                imagens: ["img/mundodasmotos/BATERIA_LITO_LX_5_AMPERES_BIZ_125.png"]
             }
         };
 
@@ -2775,5 +2854,3 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     </style>
 </footer>
-</body>
-</html>
