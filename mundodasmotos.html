@@ -2492,7 +2492,7 @@
         // Inicializar tema
         function initTheme() {
             const savedTheme = localStorage.getItem(STORAGE_KEY);
-            let theme = savedTheme || 'claro';
+            let theme = savedTheme || 'claro';  // Tema padrão é 'claro'
 
             applyTheme(theme);
         }
@@ -2533,8 +2533,12 @@
             }
         });
 
-        // Inicializar ao carregar
-        document.addEventListener('DOMContentLoaded', initTheme);
+        // Inicializar ao carregar - EXECUTA ANTES DE TUDO
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initTheme);
+        } else {
+            initTheme();
+        }
         
         // Suporte para temas personalizados
         function updateThemeForAccessibility() {
