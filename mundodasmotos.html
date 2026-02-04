@@ -1772,6 +1772,58 @@
             <div class="glow-effect"></div>
             <div class="contador-produtos">
                 <div class="contador-info">
+                    <style>
+                        @media (max-width: 768px) {
+                            .contador-info {
+                                text-align: center;
+                                width: 100%;
+                            }
+                            .contador-numero {
+                                font-size: 2.8em !important;
+                                margin: 12px 0 8px 0 !important;
+                            }
+                            .contador-titulo {
+                                font-size: 1.05em !important;
+                                margin-bottom: 6px !important;
+                            }
+                            .contador-descricao {
+                                font-size: 0.95em !important;
+                                margin-bottom: 14px !important;
+                            }
+                            .contador-badges {
+                                justify-content: center !important;
+                                margin-top: 10px !important;
+                            }
+                            .badge {
+                                font-size: 0.85em !important;
+                                padding: 6px 12px !important;
+                            }
+                        }
+                        @media (max-width: 500px) {
+                            .contador-info {
+                                padding: 0 2vw;
+                            }
+                            .contador-numero {
+                                font-size: 2.2em !important;
+                            }
+                            .contador-titulo {
+                                font-size: 0.95em !important;
+                            }
+                            .contador-descricao {
+                                font-size: 0.9em !important;
+                                line-height: 1.4;
+                            }
+                            .badge {
+                                font-size: 0.8em !important;
+                                padding: 5px 10px !important;
+                                flex: 1;
+                                min-width: calc(50% - 6px);
+                            }
+                            .contador-badges {
+                                gap: 8px !important;
+                            }
+                        }
+                    </style>
                     <div class="contador-titulo">🏍️ Catálogo Disponível</div>
                     <div class="contador-numero" id="total-produtos">48</div>
                     <div class="contador-descricao">Produtos Premium selecionados para sua moto</div>
