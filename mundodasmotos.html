@@ -933,123 +933,142 @@
             color: #ff1744;
         }
 
-        /* Botão Flutuante de Tema - CORRIGIDO */
+        /* Botão Flutuante de Tema - DESIGN PROFISSIONAL SOFISTICADO */
         .theme-toggle-btn {
             position: fixed;
             bottom: 180px;
             right: 24px;
-            width: 62px;
-            height: 62px;
+            width: 56px;
+            height: 56px;
             border-radius: 50%;
-            border: none;
-            background: linear-gradient(135deg, #ff1744 0%, #d90429 100%);
-            color: #fff;
-            font-size: 1.8em;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            color: rgba(50, 50, 50, 0.7);
+            font-size: 1.4em;
             cursor: pointer;
-            box-shadow: 0 4px 16px #ff174455;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08), inset 0 1px 2px rgba(255, 255, 255, 0.5);
             z-index: 1000;
             display: flex !important;
             align-items: center !important;
             justify-content: center !important;
             visibility: visible !important;
             opacity: 1 !important;
-            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-            transform: scale(1);
-            animation: pulse-theme 2s infinite;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: translateZ(0);
         }
 
         .theme-toggle-btn:hover {
-            transform: scale(1.15) rotate(20deg);
-            box-shadow: 0 8px 24px #ff174466;
-            background: linear-gradient(135deg, #ff5252 0%, #ff1744 100%);
+            transform: scale(1.12) translateY(-4px);
+            background: rgba(255, 255, 255, 0.25);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12), inset 0 1px 2px rgba(255, 255, 255, 0.6);
+            border-color: rgba(255, 255, 255, 0.5);
         }
 
         .theme-toggle-btn:active {
-            transform: scale(0.95);
+            transform: scale(0.96);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08), inset 0 1px 2px rgba(255, 255, 255, 0.5);
         }
 
         body.tema-escuro .theme-toggle-btn {
-            background: linear-gradient(135deg, #ffd600 0%, #ffb300 100%) !important;
-            box-shadow: 0 4px 16px #ffd60055 !important;
-            color: #1a1a1a !important;
-            border: 1.5px solid #30363d !important;
-            display: flex !important;
-            visibility: visible !important;
-            opacity: 1 !important;
-            z-index: 1000 !important;
+            background: rgba(255, 255, 255, 0.08) !important;
+            border-color: rgba(255, 255, 255, 0.2) !important;
+            color: rgba(255, 255, 255, 0.7) !important;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 2px rgba(255, 255, 255, 0.15) !important;
         }
 
         body.tema-escuro .theme-toggle-btn:hover {
-            background: linear-gradient(135deg, #ffff00 0%, #ffd600 100%) !important;
-            box-shadow: 0 8px 24px #ffd60066 !important;
-            border-color: #ffd600 !important;
+            background: rgba(255, 255, 255, 0.15) !important;
+            border-color: rgba(255, 255, 255, 0.35) !important;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4), inset 0 1px 2px rgba(255, 255, 255, 0.2) !important;
+            color: rgba(255, 255, 255, 0.9) !important;
         }
 
-        /* Tooltip */
+        body.tema-escuro .theme-toggle-btn:active {
+            transform: scale(0.96) !important;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3), inset 0 1px 2px rgba(255, 255, 255, 0.15) !important;
+        }
+
+        /* Tooltip Minimalista */
         .theme-toggle-tooltip {
             position: absolute;
-            bottom: 80px;
+            bottom: 75px;
             right: 0;
-            background: #1a1a1a;
-            color: #ff1744;
-            padding: 8px 12px;
-            border-radius: 6px;
-            font-size: 0.85em;
-            font-weight: 600;
+            background: rgba(30, 30, 30, 0.95);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            color: rgba(255, 255, 255, 0.8);
+            padding: 8px 14px;
+            border-radius: 8px;
+            font-size: 0.75em;
+            font-weight: 700;
             white-space: nowrap;
             opacity: 0;
             visibility: hidden;
-            transition: all 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             pointer-events: none;
-            border: 1.5px solid #ff1744;
-            box-shadow: 0 2px 8px #ff174444;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+            letter-spacing: 0.4px;
+            text-transform: uppercase;
+            transform: translateY(8px) scale(0.95);
         }
 
         .theme-toggle-btn:hover .theme-toggle-tooltip {
             opacity: 1;
             visibility: visible;
-            bottom: 75px;
+            transform: translateY(0) scale(1);
         }
 
         body.tema-escuro .theme-toggle-tooltip {
-            background: #3a3a3a !important;
-            color: #ffd600 !important;
-            border: 1.5px solid #30363d !important;
-            box-shadow: 0 2px 8px #ffd60044 !important;
+            background: rgba(50, 50, 50, 0.95) !important;
+            color: rgba(255, 255, 255, 0.9) !important;
+            border-color: rgba(255, 255, 255, 0.15) !important;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4) !important;
         }
 
-        /* Indicador de Status */
+        /* Indicador de Status Minimalista */
         .theme-status-indicator {
             position: fixed;
             top: 24px;
             right: 24px;
-            width: 12px;
-            height: 12px;
+            width: 10px;
+            height: 10px;
             border-radius: 50%;
-            background: #4caf50;
-            box-shadow: 0 0 10px #4caf5066;
+            background: rgba(100, 100, 100, 0.5);
+            box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.4), inset 0 1px 2px rgba(0, 0, 0, 0.1);
             z-index: 1000;
-            animation: blink-indicator 2s infinite;
+            animation: subtle-pulse 3s ease-in-out infinite;
             visibility: visible !important;
             display: block !important;
+            border: none;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
         }
 
         body.tema-escuro .theme-status-indicator {
-            background: #ffd600 !important;
-            box-shadow: 0 0 10px #ffd60066 !important;
+            background: rgba(180, 180, 180, 0.4) !important;
+            box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.3), inset 0 1px 2px rgba(255, 255, 255, 0.1) !important;
         }
 
-        @keyframes blink-indicator {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
+        @keyframes subtle-pulse {
+            0%, 100% {
+                box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.4), inset 0 1px 2px rgba(0, 0, 0, 0.1);
+                opacity: 0.6;
+            }
+            50% {
+                box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.2), inset 0 1px 2px rgba(0, 0, 0, 0.1);
+                opacity: 0.8;
+            }
         }
 
         @keyframes pulse-theme {
             0%, 100% {
-                box-shadow: 0 4px 16px #ff174455;
+                box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
             }
             50% {
-                box-shadow: 0 6px 24px #ff174477;
+                box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
             }
         }
     </style>
@@ -1594,45 +1613,6 @@
                 Pneus
             </button>
         </div>
-        <div style="position:absolute;top:-30px;right:-60px;width:180px;height:180px;background:radial-gradient(circle at 80% 20%,#e1306c33 0%,transparent 80%);z-index:0;pointer-events:none;"></div>
-        <div style="position:absolute;bottom:-30px;left:-60px;width:180px;height:180px;background:radial-gradient(circle at 20% 80%,#d9042933 0%,transparent 80%);z-index:0;pointer-events:none;"></div>
-        <script>
-        // Unifica o filtro para desktop e mobile
-        function addCategoriaBtnCloseOnClick() {
-            document.querySelectorAll('#filtro-categorias .categoria-btn').forEach(btn => {
-                btn.onclick = function() {
-                    var cat = btn.getAttribute('data-cat');
-                    filtrarCategoria(cat);
-                };
-            });
-        }
-        document.addEventListener('DOMContentLoaded', addCategoriaBtnCloseOnClick);
-        window.addEventListener('resize', addCategoriaBtnCloseOnClick);
-        </script>
-        <script>
-        // Mapeamento de categorias para cada produto (exemplo, personalize conforme necessário)
-        window.categoriasProdutos = {
-            "PNEU 60/100 ARO 17 SUPER CITY TT33 L BIZ 100 POP110": ["pneus", "pecas"],
-            "CAMARA DE AR 90/90 ARO 19 DIANTEIRA": ["pecas"],
-            "CAMARA DE AR 275/300 ARO 14 DIANTEIRA E TRASEIRA BIZ 100/125": ["pecas"],
-            "CABO VELOCÍMETRO POP 100": ["pecas"],
-            "CABO ACELERADOR BIZ 125": ["pecas"],
-            "CABO AFOGADOR BIZ 125": ["pecas"],
-            "CABO ACELERADOR BROS 160": ["pecas"],
-            "CABO ACELERADOR CG 160": ["pecas"],
-            "CABO EMBREAGEM CG 125 1982": ["pecas"],
-            "CABO ACELERADOR C100 BIZ": ["pecas"],
-            "KIT REMENDO PNEU": ["acessorios"],
-            "JUNTA CABEÇOTE KMP CG 150 /2004/2015": ["pecas"],
-            "JUNTA CABEÇOTE BIZ 125/2006": ["pecas"],
-            "KIT TRANSMISSÃO BROS 150/200": ["pecas"],
-            "KIT TRANSMISSÃO BIZ 100/2012-2015": ["pecas"],
-            "KIT TRANSMISSAO DAROM POP 110/2015/2024": ["pecas"],
-            "KIT TRANSMISSAO DAROM BIZ 125/2005": ["pecas"],
-            "KIT TRANSMISSAO DAROM CG 150/2004": ["pecas"],
-            "JUNTAS KIT KMP BIZ 100": ["pecas"],
-            "JUNTAS KIT COMPLETO KMP BIZ 100/ DREAM": ["pecas"],
-            "PEDAL CAMBIO GP7 BIZ 100/ 2012": ["pecas"],
             "PEDAL CAMBIO GP7 CG 125 /1987/1999": ["pecas"],
             "ESCOVA MOTOR DE PARTIDA COM SUPORTE CONDOR BIZ 100": ["pecas"],
             "ACIONADOR TENSOR DE CORRENTE DE COMANDO GP7 CG 150": ["pecas"],
@@ -1829,7 +1809,7 @@
                 <div class="marca">DAROM</div>
                 <div class="nome">KIT TRANSMISSAO DAROM CG 150/2004</div>
                 <div class="preco">R$ 65,00</div>
-                <button class="btn-detalhes" onclick="abrirDetalhes('KIT TRANSMISSAO DAROM CG 150/2004', 'DAROM', 65, 'img/mundodasmotos/KITTRANSMISSAODAROMCG1502004.png')">Ver Detalhes</button>
+                <button class="btn-detalhes" onclick="abrirDetalhes('KIT TRANSMISSÃO DAROM CG 150/2004', 'DAROM', 65, 'img/mundodasmotos/KITTRANSMISSAODAROMCG1502004.png')">Ver Detalhes</button>
             </div>
             <div class="card-moto">
                 <div class="img-area">
@@ -2783,5 +2763,4 @@
     </style>
 </footer>
 </body>
-</html>
 </html>
