@@ -933,7 +933,7 @@
             color: #ff1744;
         }
 
-        /* Botão Flutuante de Tema */
+        /* Botão Flutuante de Tema - CORRIGIDO */
         .theme-toggle-btn {
             position: fixed;
             bottom: 180px;
@@ -948,9 +948,11 @@
             cursor: pointer;
             box-shadow: 0 4px 16px #ff174455;
             z-index: 1000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            visibility: visible !important;
+            opacity: 1 !important;
             transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
             transform: scale(1);
             animation: pulse-theme 2s infinite;
@@ -966,13 +968,21 @@
             transform: scale(0.95);
         }
 
-        @keyframes pulse-theme {
-            0%, 100% {
-                box-shadow: 0 4px 16px #ff174455;
-            }
-            50% {
-                box-shadow: 0 6px 24px #ff174477;
-            }
+        body.tema-escuro .theme-toggle-btn {
+            background: linear-gradient(135deg, #ffd600 0%, #ffb300 100%) !important;
+            box-shadow: 0 4px 16px #ffd60055 !important;
+            color: #1a1a1a !important;
+            border: 1.5px solid #30363d !important;
+            display: flex !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+            z-index: 1000 !important;
+        }
+
+        body.tema-escuro .theme-toggle-btn:hover {
+            background: linear-gradient(135deg, #ffff00 0%, #ffd600 100%) !important;
+            box-shadow: 0 8px 24px #ffd60066 !important;
+            border-color: #ffd600 !important;
         }
 
         /* Tooltip */
@@ -1001,24 +1011,11 @@
             bottom: 75px;
         }
 
-        body.tema-escuro .theme-toggle-btn {
-            background: linear-gradient(135deg, #ffd600 0%, #ffb300 100%);
-            box-shadow: 0 4px 16px #ffd60055;
-            color: #1a1a1a;
-            border: 1.5px solid #30363d;
-        }
-
-        body.tema-escuro .theme-toggle-btn:hover {
-            background: linear-gradient(135deg, #ffff00 0%, #ffd600 100%);
-            box-shadow: 0 8px 24px #ffd60066;
-            border-color: #ffd600;
-        }
-
         body.tema-escuro .theme-toggle-tooltip {
-            background: #3a3a3a;
-            color: #ffd600;
-            border: 1.5px solid #30363d;
-            box-shadow: 0 2px 8px #ffd60044;
+            background: #3a3a3a !important;
+            color: #ffd600 !important;
+            border: 1.5px solid #30363d !important;
+            box-shadow: 0 2px 8px #ffd60044 !important;
         }
 
         /* Indicador de Status */
@@ -1033,6 +1030,13 @@
             box-shadow: 0 0 10px #4caf5066;
             z-index: 1000;
             animation: blink-indicator 2s infinite;
+            visibility: visible !important;
+            display: block !important;
+        }
+
+        body.tema-escuro .theme-status-indicator {
+            background: #ffd600 !important;
+            box-shadow: 0 0 10px #ffd60066 !important;
         }
 
         @keyframes blink-indicator {
@@ -1040,18 +1044,13 @@
             50% { opacity: 0.5; }
         }
 
-        body.tema-escuro .theme-status-indicator {
-            background: #ffd600;
-            box-shadow: 0 0 10px #ffd60066;
-        }
-
-        /* Transições Suaves */
-        * {
-            transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
-        }
-
-        button, a, input, select {
-            transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+        @keyframes pulse-theme {
+            0%, 100% {
+                box-shadow: 0 4px 16px #ff174455;
+            }
+            50% {
+                box-shadow: 0 6px 24px #ff174477;
+            }
         }
     </style>
     <style>
@@ -1061,8 +1060,18 @@
         .banner-img img,
         .modal-produto-img,
         .modal-produto-thumb {
-            background: #ffffff !important;
-            background-color: #ffffff !important;
+            background: transparent !important;
+            background-color: transparent !important;
+            background-image: none !important;
+        }
+
+        body.tema-escuro .img-area img,
+        body.tema-escuro .card-moto img,
+        body.tema-escuro .banner-img img,
+        body.tema-escuro .modal-produto-img,
+        body.tema-escuro .modal-produto-thumb {
+            background: transparent !important;
+            background-color: transparent !important;
             background-image: none !important;
         }
     </style>
@@ -1532,6 +1541,27 @@
                 display: none !important;
             }
         }
+        body.tema-escuro #filtro-categorias {
+            background: linear-gradient(90deg, #1a1a1a 60%, #0f0f0f 100%) !important;
+            box-shadow: 0 2px 12px #ff174411 !important;
+            border: 1px solid #30363d !important;
+        }
+
+        body.tema-escuro #filtro-categorias .categorias-menu-title {
+            color: #b0b0b0 !important;
+        }
+
+        body.tema-escuro #filtro-categorias .categoria-btn {
+            background: linear-gradient(90deg, #ff1744 60%, #e91e63 100%) !important;
+            color: #fff !important;
+            box-shadow: 0 4px 16px #ff174422 !important;
+        }
+
+        body.tema-escuro #filtro-categorias .categoria-btn:hover,
+        body.tema-escuro #filtro-categorias .categoria-btn.active {
+            background: linear-gradient(90deg, #e91e63 60%, #ff1744 100%) !important;
+            box-shadow: 0 8px 32px #ff174444 !important;
+        }
         </style>
         <span class="categorias-menu-title">Filtrar por categoria:</span>
         <div class="categorias-lista">
@@ -1645,7 +1675,7 @@
                 <div class="selo destaque">Destaque</div>
                 <div class="nome">PNEU 60/100 ARO 17 SUPER CITY TT33 L BIZ 100 POP110</div>
                 <div class="preco">R$ 200,00</div>
-                <button class="btn-detalhes" onclick="abrirDetalhes('PNEU 60/100 ARO 17 SUPER CITY TT33 L BIZ 100 POP110', 'PIRELLI', 200, 'img/mundodasmotos/PNEUPIRELLI60100ARO17SUPERCITYTT33LBIZ100POP110.png')">Ver Detalhes</button>
+                <button class="btn-detalhes" onclick="abrirDetalhes('PNEU 60/100 ARO 17 SUPER CITY TT33 L BIZ 100 POP110', 'PIRELLI',  200, 'img/mundodasmotos/PNEUPIRELLI60100ARO17SUPERCITYTT33LBIZ100POP110.png')">Ver Detalhes</button>
             </div>
             <div class="card-moto">
                 <div class="img-area">
@@ -2261,7 +2291,8 @@
                 preco: 15, 
                 desc: "Pedal de câmbio GP7 para CG 125 1987/1999.",
                 imagens: ["img/mundodasmotos/PEDALCAMBIOGP7CG12519871999.png"]
-            },
+            }
+            ,
             "ESCOVA MOTOR DE PARTIDA COM SUPORTE CONDOR BIZ 100": { 
                 preco: 10, 
                 desc: "Escova motor de partida com suporte CONDOR para BIZ 100.",
@@ -2549,5 +2580,152 @@
         // Atualizar acessibilidade ao alternar
         themeToggle.addEventListener('click', updateThemeForAccessibility);
     </script>
+
+<script>
+    // Carrinho - Sistema Completo
+    let carrinho = [];
+
+    function adicionarAoCarrinho(nome, preco) {
+        const item = carrinho.find(p => p.nome === nome);
+        if (item) {
+            item.quantidade++;
+        } else {
+            carrinho.push({ nome, preco, quantidade: 1 });
+        }
+        atualizarCarrinho();
+        fecharModalProduto();
+    }
+
+    function atualizarCarrinho() {
+        document.getElementById('cart-count').textContent = carrinho.reduce((sum, item) => sum + item.quantidade, 0);
+        atualizarListaCarrinho();
+    }
+
+    function atualizarListaCarrinho() {
+        const lista = document.getElementById('carrinho-lista');
+        const total = document.getElementById('carrinho-total');
+        lista.innerHTML = '';
+        let totalPreco = 0;
+
+        carrinho.forEach((item, index) => {
+            const div = document.createElement('div');
+            div.className = 'carrinho-item';
+            div.innerHTML = `
+                <span class="carrinho-item-nome">${item.nome} x${item.quantidade}</span>
+                <span class="carrinho-item-preco">R$ ${(item.preco * item.quantidade).toFixed(2).replace('.', ',')}</span>
+                <button class="carrinho-item-remove" onclick="removerDoCarrinho(${index})">✕</button>
+            `;
+            lista.appendChild(div);
+            totalPreco += item.preco * item.quantidade;
+        });
+
+        total.textContent = 'Total: R$ ' + totalPreco.toFixed(2).replace('.', ',');
+    }
+
+    function removerDoCarrinho(index) {
+        carrinho.splice(index, 1);
+        atualizarCarrinho();
+    }
+
+    function abrirCarrinho() {
+        document.getElementById('modal-carrinho-bg').classList.add('aberto');
+        document.getElementById('modal-carrinho-bg').style.display = 'flex';
+        document.getElementById('carrinho-etapa1').style.display = 'block';
+        document.getElementById('carrinho-etapa2').style.display = 'none';
+        document.getElementById('carrinho-etapa-pix').style.display = 'none';
+        document.getElementById('carrinho-etapa3').style.display = 'none';
+    }
+
+    function fecharCarrinho() {
+        document.getElementById('modal-carrinho-bg').classList.remove('aberto');
+        document.getElementById('modal-carrinho-bg').style.display = 'none';
+    }
+
+    function avancarEtapaCarrinho() {
+        if (carrinho.length === 0) {
+            alert('Seu carrinho está vazio!');
+            return;
+        }
+        document.getElementById('carrinho-etapa1').style.display = 'none';
+        document.getElementById('carrinho-etapa2').style.display = 'block';
+    }
+
+    function avancarParaPix(event) {
+        event.preventDefault();
+        document.getElementById('carrinho-etapa2').style.display = 'none';
+        document.getElementById('carrinho-etapa-pix').style.display = 'block';
+    }
+
+    function mostrarPix() {
+        document.getElementById('area-pix').style.display = 'block';
+    }
+
+    function pagarCartao() {
+        alert('Redirecionando para pagamento com cartão...');
+        window.location.href = 'https://wa.me/5562995277435?text=Gostaria%20de%20pagar%20com%20cart%C3%A3o%20de%20cr%C3%A9dito';
+    }
+
+    function confirmarPagamentoPix() {
+        document.getElementById('carrinho-etapa-pix').style.display = 'none';
+        document.getElementById('carrinho-etapa3').style.display = 'block';
+        carrinho = [];
+        atualizarCarrinho();
+    }
+
+    // Filtrar categoria
+    function filtrarCategoria(categoria) {
+        const cards = document.querySelectorAll('.card-moto');
+        cards.forEach(card => {
+            const nome = card.querySelector('.nome').textContent;
+            const cats = window.categoriasProdutos[nome] || ['todas'];
+            
+            if (categoria === 'todas' || cats.includes(categoria)) {
+                card.style.display = 'block';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+
+        // Atualizar botões
+        document.querySelectorAll('#filtro-categorias .categoria-btn').forEach(btn => {
+            btn.classList.remove('active');
+            if (btn.getAttribute('data-cat') === categoria) {
+                btn.classList.add('active');
+            }
+        });
+    }
+
+    // Buscar produtos
+    function buscarProdutos() {
+        const termo = document.getElementById('input-busca').value.toLowerCase();
+        const cards = document.querySelectorAll('.card-moto');
+        
+        cards.forEach(card => {
+            const nome = card.querySelector('.nome').textContent.toLowerCase();
+            const marca = card.querySelector('.marca').textContent.toLowerCase();
+            
+            if (nome.includes(termo) || marca.includes(termo) || termo === '') {
+                card.style.display = 'block';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    }
+</script>
+
+<footer style="max-width: 1200px; margin: 40px auto 0; width: 100%; box-sizing: border-box;">
+    <div class="footer-copyright">
+        © 2026 Mundo das Motos - Todos os direitos reservados
+    </div>
+    <div class="footer-info">
+        Catálogo Premium de Peças e Acessórios para Motos
+    </div>
+    <div class="footer-social">
+    </div>
+    <div style="margin-top: 18px; padding-top: 18px; border-top: 1px solid var(--cor-borda); font-size: 0.9em; color: var(--cor-cinza);">
+        Desenvolvido com ❤️ por <strong>Webtec Informática</strong>
+    </div>
+</footer>
 </body>
+</html>
 </html>
