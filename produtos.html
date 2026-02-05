@@ -839,9 +839,25 @@
         body.tema-escuro .categorias-menu,
         body.tema-escuro .filtros-catalogo,
         body.tema-escuro #filtro-categorias {
-            background: linear-gradient(90deg, #1a1a1a 60%, #0f0f0f 100%);
+            background: linear-gradient(90deg, #1a1a1a 60%, #0f0f0f 100%) !important;
             box-shadow: 0 2px 12px #ff174411;
             border: 1px solid #30363d;
+        }
+
+        body.tema-escuro #filtro-categorias .categorias-menu-title {
+            color: #b0b0b0 !important;
+        }
+
+        body.tema-escuro #filtro-categorias .categoria-btn {
+            background: linear-gradient(90deg, #ff1744 60%, #e91e63 100%) !important;
+            color: #fff !important;
+            box-shadow: 0 4px 16px #ff174422 !important;
+        }
+
+        body.tema-escuro #filtro-categorias .categoria-btn:hover,
+        body.tema-escuro #filtro-categorias .categoria-btn.active {
+            background: linear-gradient(90deg, #e91e63 60%, #ff1744 100%) !important;
+            box-shadow: 0 8px 32px #ff174444 !important;
         }
 
         body.tema-escuro .card-moto {
@@ -1371,7 +1387,7 @@ document.addEventListener("DOMContentLoaded", function() {
             { nome: "JUNTA CABEÇOTE KMP CG 125 2000/2008", marca: "KMP", preco: 6, cat: "pecas" },
             { nome: "JUNTA CABEÇOTE KMP BIZ 125/2006", marca: "KMP", preco: 6, cat: "pecas" },
             { nome: "JUNTA CABEÇOTE KMP BIZ 100 1998/2004", marca: "KMP", preco: 6, cat: "pecas" },
-            { nome: "COXIM DA COROA GP7 BIZ 125 2005/2022", marca: "GP7", preco: 16, cat: "pecas" },
+            { nome: "COXIM DA COROA GP7 BIZ  125 2005/2022", marca: "GP7", preco: 16, cat: "pecas" },
             { nome: "RAIO CROMADO 4MM BROS 150 ESD DIANTEIRO", marca: "GP7", preco: 50, cat: "pecas" },
             { nome: "RAIO CROMADO 4MM GP7 BIZ 100/125 TRASEIRO", marca: "GP7", preco: 45, cat: "pecas" },
             { nome: "RAIO CROMADO 4MM CG125 1983/1999 DIANTEIRO", marca: "GP7", preco: 50, cat: "pecas" },

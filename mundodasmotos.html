@@ -946,7 +946,7 @@
         /* Botão Flutuante de Tema - DESIGN PROFISSIONAL SOFISTICADO */
         .theme-toggle-btn {
             position: fixed;
-            bottom: 180px;
+            bottom: 100px;
             right: 24px;
             width: 56px;
             height: 56px;
@@ -1453,409 +1453,8 @@
         <div class="chegar-bg2"></div>
     </section>
     <!-- FIM Sessão Como Chegar -->
-<!-- Espaço extra entre a sessão Como Chegar e o menu abaixo -->
-        <div style="height:32px;"></div>
-    <div class="categorias-menu" id="filtro-categorias" style="background:linear-gradient(90deg,#fff 60%,#f7f7f7 100%);box-shadow:0 4px 24px #e1306c22;padding:28px 18px 18px 18px;display:flex;align-items:center;gap:32px;flex-wrap:wrap;justify-content:center;position:relative;overflow:hidden;border-radius:18px;">
-        <style>
-        #filtro-categorias .categoria-btn {
-            background: linear-gradient(90deg, #d90429 60%, #e1306c 100%);
-            color: #fff;
-            border: none;
-            border-radius: 14px;
-            padding: 14px 38px;
-            font-weight: 700;
-            font-size: 1.13em;
-            cursor: pointer;
-            box-shadow: 0 4px 16px #e1306c22, 0 2px 8px #0002;
-            outline: none;
-            margin-bottom: 6px;
-            letter-spacing: 1px;
-            transition: background 0.18s, color 0.18s, box-shadow 0.18s, transform 0.18s;
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        #filtro-categorias .categoria-btn.active,
-        #filtro-categorias .categoria-btn:hover {
-            background: linear-gradient(90deg, #e1306c 60%, #d90429 100%);
-            color: #fff;
-            transform: scale(1.07) translateY(-2px);
-            box-shadow: 0 8px 32px #d9042940;
-            z-index: 2;
-        }
-        #filtro-categorias .categoria-btn svg {
-            filter: drop-shadow(0 1px 2px #0005);
-            transition: filter 0.2s;
-        }
-        #filtro-categorias .categoria-btn.active svg,
-        #filtro-categorias .categoria-btn:hover svg {
-            filter: drop-shadow(0 2px 6px #d9042940);
-        }
-        @media (max-width: 900px) {
-            #filtro-categorias {
-                flex-direction: column;
-                gap: 14px;
-                padding: 18px 4vw 10px 4vw !important;
-            }
-            #filtro-categorias .categorias-lista {
-                width: 100%;
-                justify-content: flex-start;
-                gap: 10px;
-            }
-            #filtro-categorias .categoria-btn {
-                width: 100%;
-                min-width: 120px;
-                padding: 10px 0;
-                font-size: 1em;
-            }
-        }
-        @media (max-width: 700px) {
-            #filtro-categorias {
-                flex-direction: column !important;
-                gap: 10px !important;
-                padding: 10px 4vw !important;
-                background: linear-gradient(90deg,#fff 60%,#f7f7f7 100%) !important;
-                box-shadow: 0 4px 24px #e1306c22 !important;
-                align-items: flex-start !important;
-                justify-content: flex-start !important;
-                position: relative !important;
-            }
-            #filtro-categorias .categorias-menu-title {
-                display: block !important;
-            }
-            #filtro-categorias .categorias-lista {
-                display: flex !important;
-                flex-direction: row !important;
-                gap: 10px !important;
-                background: none !important;
-                border-radius: 0 !important;
-                box-shadow: none !important;
-                margin: 0 !important;
-                padding: 0 !important;
-                width: 100% !important;
-                position: static !important;
-                border-top: none !important;
-                animation: none !important;
-            }
-            #filtro-categorias .categoria-btn {
-                width: auto !important;
-                border-radius: 14px !important;
-                margin: 0 6px 6px 0 !important;
-                padding: 12px 24px !important;
-                font-size: 1em !important;
-                background: linear-gradient(90deg, #d90429 60%, #e1306c 100%) !important;
-                color: #fff !important;
-                border-bottom: none !important;
-                box-shadow: 0 2px 8px #d9042922 !important;
-                text-align: center !important;
-                justify-content: center !important;
-                transition: background 0.18s, color 0.18s;
-            }
-            #filtro-categorias .categoria-btn:last-child {
-                border-bottom: none !important;
-            }
-            #filtro-categorias .categoria-btn.active,
-            #filtro-categorias .categoria-btn:hover {
-                background: linear-gradient(90deg,#e1306c 60%,#d90429 100%) !important;
-                color: #fff !important;
-                transform: scale(1.07) translateY(-2px) !important;
-                box-shadow: 0 8px 32px #d9042940 !important;
-            }
-            #filtro-categorias .categoria-btn svg {
-                margin-right: 10px !important;
-            }
-            #filtro-categorias .menu-mobile-toggle {
-                display: none !important;
-            }
-        }
-        body.tema-escuro #filtro-categorias {
-            background: linear-gradient(90deg, #1a1a1a 60%, #0f0f0f 100%) !important;
-            box-shadow: 0 2px 12px #ff174411 !important;
-            border: 1px solid #30363d !important;
-        }
-
-        body.tema-escuro #filtro-categorias .categorias-menu-title {
-            color: #b0b0b0 !important;
-        }
-
-        body.tema-escuro #filtro-categorias .categoria-btn {
-            background: linear-gradient(90deg, #ff1744 60%, #e91e63 100%) !important;
-            color: #fff !important;
-            box-shadow: 0 4px 16px #ff174422 !important;
-        }
-
-        body.tema-escuro #filtro-categorias .categoria-btn:hover,
-        body.tema-escuro #filtro-categorias .categoria-btn.active {
-            background: linear-gradient(90deg, #e91e63 60%, #ff1744 100%) !important;
-            box-shadow: 0 8px 32px #ff174444 !important;
-        }
-        </style>
-        <span class="categorias-menu-title">Filtrar por categoria:</span>
-        <div class="categorias-lista">
-            <button class="categoria-btn active" data-cat="todas">
-                <svg width="20" height="20" fill="none" viewBox="0 0 24 24" style="vertical-align:middle;margin-right:6px;">
-                    <circle cx="12" cy="12" r="10" fill="#e1306c"/>
-                    <path d="M12 8v8M8 12h8" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
-                </svg>
-                Todas
-            </button>
-            <button class="categoria-btn" data-cat="pecas">
-                <svg width="20" height="20" fill="none" viewBox="0 0 24 24" style="vertical-align:middle;margin-right:6px;">
-                    <circle cx="12" cy="12" r="10" fill="#e1306c"/>
-                    <path d="M12 8v8M8 12h8" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
-                </svg>
-                Peças
-            </button>
-            <button class="categoria-btn" data-cat="acessorios">
-                <svg width="20" height="20" fill="none" viewBox="0 0 24 24" style="vertical-align:middle;margin-right:6px;">
-                    <circle cx="12" cy="12" r="10" fill="#e1306c"/>
-                    <path d="M12 8v8M8 12h8" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
-                </svg>
-                Acessórios
-            </button>
-            <button class="categoria-btn" data-cat="pneus">
-                <svg width="20" height="20" fill="none" viewBox="0 0 24 24" style="vertical-align:middle;margin-right:6px;">
-                    <circle cx="12" cy="12" r="10" fill="#e1306c"/>
-                    <path d="M12 8v8M8 12h8" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
-                </svg>
-                Pneus
-            </button>
-        </div>
-    </div>
-    <!-- FIM .categorias-menu -->
-
     <!-- Sessão Produtos em Destaque (agora abaixo das categorias) -->
     <section id="produtos-destaque" style="max-width:1200px;margin:36px auto;padding:0 18px;">
-        <!-- NOVO: Contador de Produtos Premium -->
-        <div style="background: linear-gradient(135deg, #d90429 0%, #e1306c 50%, #a0031f 100%); border-radius: 16px; padding: 24px 28px; margin-bottom: 28px; box-shadow: 0 8px 32px #d9042933; position: relative; overflow: hidden;">
-            <style>
-                .contador-produtos {
-                    display: flex;
-                    align-items: center;
-                    justify-content: space-between;
-                    flex-wrap: wrap;
-                    gap: 24px;
-                }
-                .contador-info {
-                    flex: 1;
-                    min-width: 250px;
-                }
-                .contador-titulo {
-                    font-size: 1.15em;
-                    color: rgba(255, 255, 255, 0.9);
-                    font-weight: 600;
-                    margin-bottom: 8px;
-                    letter-spacing: 1px;
-                    text-transform: uppercase;
-                }
-                .contador-numero {
-                    font-size: 3.5em;
-                    font-weight: 900;
-                    color: #fff;
-                    line-height: 1;
-                    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-                    font-family: 'Courier New', monospace;
-                }
-                .contador-descricao {
-                    font-size: 1em;
-                    color: rgba(255, 255, 255, 0.85);
-                    margin-top: 8px;
-                    line-height: 1.5;
-                }
-                .contador-badges {
-                    display: flex;
-                    gap: 12px;
-                    flex-wrap: wrap;
-                }
-                .badge {
-                    background: rgba(255, 255, 255, 0.15);
-                    backdrop-filter: blur(8px);
-                    border: 1px solid rgba(255, 255, 255, 0.25);
-                    color: #fff;
-                    padding: 8px 16px;
-                    border-radius: 20px;
-                    font-size: 0.9em;
-                    font-weight: 600;
-                    display: flex;
-                    align-items: center;
-                    gap: 6px;
-                }
-                .badge-icon {
-                    font-size: 1.2em;
-                }
-                .stats-container {
-                    display: flex;
-                    gap: 18px;
-                    flex-wrap: wrap;
-                }
-                .stat-item {
-                    background: rgba(255, 255, 255, 0.1);
-                    backdrop-filter: blur(8px);
-                    border: 1px solid rgba(255, 255, 255, 0.2);
-                    border-radius: 12px;
-                    padding: 16px 20px;
-                    text-align: center;
-                    flex: 1;
-                    min-width: 120px;
-                }
-                .stat-numero {
-                    font-size: 2em;
-                    font-weight: 800;
-                    color: #fff;
-                    display: block;
-                }
-                .stat-label {
-                    font-size: 0.85em;
-                    color: rgba(255, 255, 255, 0.8);
-                    margin-top: 4px;
-                    text-transform: uppercase;
-                    letter-spacing: 0.5px;
-                }
-                .animate-pulse-custom {
-                    animation: pulse-custom 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-                }
-                @keyframes pulse-custom {
-                    0%, 100% { opacity: 1; }
-                    50% { opacity: 0.7; }
-                }
-                .glow-effect {
-                    position: absolute;
-                    width: 300px;
-                    height: 300px;
-                    background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, transparent 70%);
-                    border-radius: 50%;
-                    top: -100px;
-                    right: -100px;
-                    pointer-events: none;
-                }
-                @media (max-width: 768px) {
-                    .contador-numero {
-                        font-size: 2.5em;
-                    }
-                    .contador-produtos {
-                        flex-direction: column;
-                        gap: 18px;
-                    }
-                    .stats-container {
-                        width: 100%;
-                    }
-                    .stat-item {
-                        flex: 0 1 calc(50% - 9px);
-                    }
-                }
-                @media (max-width: 500px) {
-                    .contador-numero {
-                        font-size: 2em;
-                    }
-                    .contador-titulo {
-                        font-size: 1em;
-                    }
-                    .stat-item {
-                        flex: 1;
-                        min-width: 100%;
-                    }
-                }
-                body.tema-escuro .contador-badges {
-                    background: linear-gradient(135deg, #ff1744 0%, #e91e63 50%, #c2185b 100%);
-                }
-                body.tema-escuro .badge {
-                    background: rgba(255, 255, 255, 0.08) !important;
-                    border-color: rgba(255, 255, 255, 0.15) !important;
-                }
-                body.tema-escuro .stat-item {
-                    background: rgba(255, 255, 255, 0.05) !important;
-                    border-color: rgba(255, 255, 255, 0.1) !important;
-                }
-            </style>
-            <div class="glow-effect"></div>
-            <div class="contador-produtos">
-                <div class="contador-info">
-                    <style>
-                        @media (max-width: 768px) {
-                            .contador-info {
-                                text-align: center;
-                                width: 100%;
-                            }
-                            .contador-numero {
-                                font-size: 2.8em !important;
-                                margin: 12px 0 8px 0 !important;
-                            }
-                            .contador-titulo {
-                                font-size: 1.05em !important;
-                                margin-bottom: 6px !important;
-                            }
-                            .contador-descricao {
-                                font-size: 0.95em !important;
-                                margin-bottom: 14px !important;
-                            }
-                            .contador-badges {
-                                justify-content: center !important;
-                                margin-top: 10px !important;
-                            }
-                            .badge {
-                                font-size: 0.85em !important;
-                                padding: 6px 12px !important;
-                            }
-                        }
-                        @media (max-width: 500px) {
-                            .contador-info {
-                                padding: 0 2vw;
-                            }
-                            .contador-numero {
-                                font-size: 2.2em !important;
-                            }
-                            .contador-titulo {
-                                font-size: 0.95em !important;
-                            }
-                            .contador-descricao {
-                                font-size: 0.9em !important;
-                                line-height: 1.4;
-                            }
-                            .badge {
-                                font-size: 0.8em !important;
-                                padding: 5px 10px !important;
-                                flex: 1;
-                                min-width: calc(50% - 6px);
-                            }
-                            .contador-badges {
-                                gap: 8px !important;
-                            }
-                        }
-                    </style>
-                    <div class="contador-titulo">🏍️ Catálogo Disponível</div>
-                    <div class="contador-numero" id="total-produtos">48</div>
-                    <div class="contador-descricao">Produtos Premium selecionados para sua moto</div>
-                    <div class="contador-badges" style="margin-top: 14px;">
-                        <div class="badge">
-                            <span class="badge-icon">✨</span>
-                            Qualidade Garantida
-                        </div>
-                        <div class="badge">
-                            <span class="badge-icon">⚡</span>
-                            Atualizado em Tempo Real
-                        </div>
-                    </div>
-                </div>
-                <div class="stats-container">
-                    <div class="stat-item">
-                        <span class="stat-numero" id="stat-pecas">35</span>
-                        <span class="stat-label">Peças</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-numero" id="stat-pneus">8</span>
-                        <span class="stat-label">Pneus</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-numero" id="stat-acessorios">5</span>
-                        <span class="stat-label">Acessórios</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- FIM: Contador de Produtos -->
-
         <div class="catalogo" id="catalogo">
             <!-- Os cards de produto abaixo foram invertidos para mostrar os últimos cadastrados no topo -->
             <div class="card-moto">
@@ -1971,7 +1570,7 @@
             <div class="card-moto">
                 <div class="img-area">
                     <img src="img/mundodasmotos/junta.png" alt="Junta Cabeçote">
-                </div>
+                                                                                                                                                                                                                                                                                                                         </div>
                 <div class="marca">KMP</div>
                 <div class="nome">JUNTA CABEÇOTE BIZ 125/2006</div>
                 <div class="preco">R$ 6.00</div>
@@ -1994,235 +1593,6 @@
                 <div class="nome">KIT TRANSMISSÃO BIZ 100/2012-2015</div>
                 <div class="preco">R$ 60.00</div>
                 <button class="btn-detalhes" onclick="abrirDetalhes('KIT TRANSMISSÃO BIZ 100/2012-2015', 'DAROM', 60, 'img/mundodasmotos/KITTRANSMISSAODAROMBIZ10020122015.png')">Ver Detalhes</button>
-            </div>
-            <div class="card-moto">
-                <div class="img-area">
-                    <img src="img/mundodasmotos/KITTRANSMISSAODAROMPOP11020152024.png" alt="Kit Transmissão Darom POP 110/2015/2024">
-                </div>
-                <div class="marca">DAROM</div>
-                <div class="nome">KIT TRANSMISSAO DAROM POP 110/2015/2024</div>
-                <div class="preco">R$ 55,00</div>
-                <button class="btn-detalhes" onclick="abrirDetalhes('KIT TRANSMISSAO DAROM POP 110/2015/2024', 'DAROM', 55, 'img/mundodasmotos/KITTRANSMISSAODAROMPOP11020152024.png')">Ver Detalhes</button>
-            </div>
-            <div class="card-moto">
-                <div class="img-area">
-                    <img src="img/mundodasmotos/KITTRANSMISSAODAROMBIZ1252005.png" alt="Kit Transmissão Darom BIZ 125/2005">
-                </div>
-                <div class="marca">DAROM</div>
-                <div class="nome">KIT TRANSMISSAO DAROM BIZ 125/2005</div>
-                <div class="preco">R$ 60,00</div>
-                <button class="btn-detalhes" onclick="abrirDetalhes('KIT TRANSMISSAO DAROM BIZ 125/2005', 'DAROM', 60, 'img/mundodasmotos/KITTRANSMISSAODAROMBIZ12520052005.png')">Ver Detalhes</button>
-            </div>
-            <div class="card-moto">
-                <div class="img-area">
-                    <img src="img/mundodasmotos/KITTRANSMISSAODAROMCG1502004.png" alt="Kit Transmissão Darom CG 150/2004">
-                </div>
-                <div class="marca">DAROM</div>
-                <div class="nome">KIT TRANSMISSAO DAROM CG 150/2004</div>
-                <div class="preco">R$ 65,00</div>
-                <button class="btn-detalhes" onclick="abrirDetalhes('KIT TRANSMISSAO DAROM CG 150/2004', 'DAROM', 65, 'img/mundodasmotos/KITTRANSMISSAODAROMCG1502004.png')">Ver Detalhes</button>
-            </div>
-            <div class="card-moto">
-                <div class="img-area">
-                    <img src="img/mundodasmotos/PAINEL_COMPLETO_CONDOR_CG_150_ESD.png" alt="Painel Completo de Instrumentos Condor CG 150 ESD">
-                </div>
-                <div class="marca">CONDOR</div>
-                <div class="nome">PAINEL COMPLETO DE INSTRUMENTOS CONDOR CG 150 ESD</div>
-                <div class="preco">R$ 125,00</div>
-                <button class="btn-detalhes" onclick="abrirDetalhes('PAINEL COMPLETO DE INSTRUMENTOS CONDOR CG 150 ESD', 'CONDOR', 125, 'img/mundodasmotos/PAINEL_COMPLETO_CONDOR_CG_150_ESD.png')">Ver Detalhes</button>
-            </div>
-
-            <div class="card-moto">
-                <div class="img-area">
-                    <img src="img/mundodasmotos/BOMBA_OLEO_GP7_CG_150_2004_2015_CG125_2009_BRS150_150.png" alt="Bomba de Óleo GP7 CG 150/2004-2015 CG125/2009 BROS150">
-                </div>
-                <div class="marca">GP7</div>
-                <div class="selo destaque">Promoção</div>
-                <div class="nome">BOMBA DE ÓLEO GP7 CG 150/2004-2015 CG125/2009 BROS150</div>
-                <div class="preco">R$ 55,00</div>
-                <button class="btn-detalhes" onclick="abrirDetalhes('BOMBA DE ÓLEO GP7 CG 150/2004-2015 CG125/2009 BROS150', 'GP7', 55, 'img/mundodasmotos/BOMBA_OLEO_GP7_CG_150_2004_2015_CG125_2009_BRS150_150.png')">Ver Detalhes</button>
-            </div>
-
-            <div class="card-moto">
-                <div class="img-area">
-                    <img src="img/mundodasmotos/PATINHOS_FREIO_MOLLAS_CORRETO_TRASEIRO.png" alt="Patinhos de Freio com Molas Correto Traseiro">
-                </div>
-                <div class="marca">K-CABOS</div>
-                <div class="nome">PATINHOS DE FREIO COM MOLAS CORRETO TRASEIRO</div>
-                <div class="preco">R$ 35,00</div>
-                <button class="btn-detalhes" onclick="abrirDetalhes('PATINHOS DE FREIO COM MOLAS CORRETO TRASEIRO', 'K-CABOS', 35, 'img/mundodasmotos/PATINHOS_FREIO_MOLLAS_CORRETO_TRASEIRO.png')">Ver Detalhes</button>
-            </div>
-
-            <div class="card-moto">
-                <div class="img-area">
-                    <img src="img/mundodasmotos/VALVULA_RETENTOR_KIT_WW3_4PC_CG150_2004_BRS150_2006_2015.png" alt="Válvula e Retentor Kit WW3 4PC CG150/2004 BROS150/2006-2015">
-                </div>
-                <div class="marca">WW3</div>
-                <div class="selo destaque">Premium</div>
-                <div class="nome">VÁLVULA E RETENTOR KIT WW3 4PC CG150/2004 BROS150/2006-2015</div>
-                <div class="preco">R$ 50,00</div>
-                <button class="btn-detalhes" onclick="abrirDetalhes('VÁLVULA E RETENTOR KIT WW3 4PC CG150/2004 BROS150/2006-2015', 'WW3', 50, 'img/mundodasmotos/VALVULA_RETENTOR_KIT_WW3_4PC_CG150_2004_BRS150_2006_2015.png')">Ver Detalhes</button>
-            </div>
-
-            <div class="card-moto">
-                <div class="img-area">
-                    <img src="img/mundodasmotos/VALVULA_RETENTOR_KIT_WW3_4PC_BIZ_125_2005_2024.png" alt="Válvula e Retentor Kit WW3 4PC BIZ 125/2005-2024">
-                </div>
-                <div class="marca">WW3</div>
-                <div class="nome">VÁLVULA E RETENTOR KIT WW3 4PC BIZ 125/2005-2024</div>
-                <div class="preco">R$ 42,00</div>
-                <button class="btn-detalhes" onclick="abrirDetalhes('VÁLVULA E RETENTOR KIT WW3 4PC BIZ 125/2005-2024', 'WW3', 42, 'img/mundodasmotos/VALVULA_RETENTOR_KIT_WW3_4PC_BIZ_125_2005_2024.png')">Ver Detalhes</button>
-            </div>
-
-            <div class="card-moto">
-                <div class="img-area">
-                    <img src="img/mundodasmotos/CACHIMBO_VELA_GP7_CG_150.png" alt="Cachimbo de Vela GP7 CG 150">
-                </div>
-                <div class="marca">GP7</div>
-                <div class="nome">CACHIMBO DE VELA GP7 CG 150</div>
-                <div class="preco">R$ 6,00</div>
-                <button class="btn-detalhes" onclick="abrirDetalhes('CACHIMBO DE VELA GP7 CG 150', 'GP7', 6, 'img/mundodasmotos/CACHIMBO_VELA_GP7_CG_150.png')">Ver Detalhes</button>
-            </div>
-
-            <div class="card-moto">
-                <div class="img-area">
-                    <img src="img/mundodasmotos/TRAVA_PINHAO_TRANSMISSAO_GP7_CG_150.png" alt="Trava Pinhão Transmissão GP7 CG 150">
-                </div>
-                <div class="marca">GP7</div>
-                <div class="nome">TRAVA PINHÃO TRANSMISSÃO GP7 CG 150</div>
-                <div class="preco">R$ 3,00</div>
-                <button class="btn-detalhes" onclick="abrirDetalhes('TRAVA PINHÃO TRANSMISSÃO GP7 CG 150', 'GP7', 3, 'img/mundodasmotos/TRAVA_PINHAO_TRANSMISSAO_GP7_CG_150.png')">Ver Detalhes</button>
-            </div>
-
-            <div class="card-moto">
-                <div class="img-area">
-                    <img src="img/mundodasmotos/KIT_TRANSMISSAO_DAROM_CG_125_1989_1999.png" alt="Kit Transmissão DAROM CG 125/1989-1999">
-                </div>
-                <div class="marca">DAROM</div>
-                <div class="nome">KIT TRANSMISSÃO DAROM CG 125/1989-1999</div>
-                <div class="preco">R$ 80,00</div>
-                <button class="btn-detalhes" onclick="abrirDetalhes('KIT TRANSMISSÃO DAROM CG 125/1989-1999', 'DAROM', 80, 'img/mundodasmotos/KIT_TRANSMISSAO_DAROM_CG_125_1989_1999.png')">Ver Detalhes</button>
-            </div>
-
-            <div class="card-moto">
-                <div class="img-area">
-                    <img src="img/mundodasmotos/REPARO_CARBURADOR_GP7_C_100_BIZ.png" alt="Reparo Carburador GP7 C 100 BIZ">
-                </div>
-                <div class="marca">GP7</div>
-                <div class="nome">REPARO CARBURADOR GP7 C 100 BIZ</div>
-                <div class="preco">R$ 14,00</div>
-                <button class="btn-detalhes" onclick="abrirDetalhes('REPARO CARBURADOR GP7 C 100 BIZ', 'GP7', 14, 'img/mundodasmotos/REPARO_CARBURADOR_GP7_C_100_BIZ.png')">Ver Detalhes</button>
-            </div>
-
-            <div class="card-moto">
-                <div class="img-area">
-                    <img src="img/mundodasmotos/REPARO_CARBURADOR_GP7_BIZ_125_2006_2008.png" alt="Reparo Carburador GP7 BIZ 125/2006-2008">
-                </div>
-                <div class="marca">GP7</div>
-                <div class="nome">REPARO CARBURADOR GP7 BIZ 125/2006-2008</div>
-                <div class="preco">R$ 18,00</div>
-                <button class="btn-detalhes" onclick="abrirDetalhes('REPARO CARBURADOR GP7 BIZ 125/2006-2008', 'GP7', 18, 'img/mundodasmotos/REPARO_CARBURADOR_GP7_BIZ_125_2006_2008.png')">Ver Detalhes</button>
-            </div>
-
-            <div class="card-moto">
-                <div class="img-area">
-                    <img src="img/mundodasmotos/REPARO_CARBURADOR_GP7_CG_150_2008.png" alt="Reparo Carburador GP7 CG 150/2008">
-                </div>
-                <div class="marca">GP7</div>
-                <div class="nome">REPARO CARBURADOR GP7 CG 150/2008</div>
-                <div class="preco">R$ 18,00</div>
-                <button class="btn-detalhes" onclick="abrirDetalhes('REPARO CARBURADOR GP7 CG 150/2008', 'GP7', 18, 'img/mundodasmotos/REPARO_CARBURADOR_GP7_CG_150_2008.png')">Ver Detalhes</button>
-            </div>
-
-            <div class="card-moto">
-                <div class="img-area">
-                    <img src="img/mundodasmotos/REPARO_CARBURADOR_GP7_CG125_1992_1995.png" alt="Reparo Carburador GP7 CG125/1992-1995">
-                </div>
-                <div class="marca">GP7</div>
-                <div class="nome">REPARO CARBURADOR GP7 CG125/1992-1995</div>
-                <div class="preco">R$ 15,00</div>
-                <button class="btn-detalhes" onclick="abrirDetalhes('REPARO CARBURADOR GP7 CG125/1992-1995', 'GP7', 15, 'img/mundodasmotos/REPARO_CARBURADOR_GP7_CG125_1992_1995.png')">Ver Detalhes</button>
-            </div>
-            <div class="card-moto">
-                <div class="img-area">
-                    <img src="img/mundodasmotos/EMENDA_CORRENTE_DAROM_428H.png" alt="Emenda Corrente DAROM 428H">
-                </div>
-                <div class="marca">DAROM</div>
-                <div class="nome">EMENDA CORRENTE DAROM 428H</div>
-                <div class="preco">R$ 2,00</div>
-                <button class="btn-detalhes" onclick="abrirDetalhes('EMENDA CORRENTE DAROM 428H', 'DAROM', 2, 'img/mundodasmotos/EMENDA_CORRENTE_DAROM_428H.png')">Ver Detalhes</button>
-            </div>
-
-            <div class="card-moto">
-                <div class="img-area">
-                    <img src="img/mundodasmotos/ESCOVA_MOTOR_PARTIDA_CONDOR_CG150.png" alt="Escova Motor de Partida com Suporte Condor CG150/ESD">
-                </div>
-                <div class="marca">CONDOR</div>
-                <div class="nome">ESCOVA MOTOR DE PARTIDA COM SUPORTE CONDOR CG150/ESD</div>
-                <div class="preco">R$ 10,00</div>
-                <button class="btn-detalhes" onclick="abrirDetalhes('ESCOVA MOTOR DE PARTIDA COM SUPORTE CONDOR CG150/ESD', 'CONDOR', 10, 'img/mundodasmotos/ESCOVA_MOTOR_PARTIDA_CONDOR_CG150.png')">Ver Detalhes</button>
-            </div>
-
-            <div class="card-moto">
-                <div class="img-area">
-                    <img src="img/mundodasmotos/ESCOVA_MOTOR_PARTIDA_CONDOR_BIZ125.png" alt="Escova Motor de Partida com Suporte Condor BIZ 125">
-                </div>
-                <div class="marca">CONDOR</div>
-                <div class="nome">ESCOVA MOTOR DE PARTIDA COM SUPORTE CONDOR BIZ 125</div>
-                <div class="preco">R$ 8,00</div>
-                <button class="btn-detalhes" onclick="abrirDetalhes('ESCOVA MOTOR DE PARTIDA COM SUPORTE CONDOR BIZ 125', 'CONDOR', 8, 'img/mundodasmotos/ESCOVA_MOTOR_PARTIDA_CONDOR_BIZ125.png')">Ver Detalhes</button>
-            </div>
-
-            <div class="card-moto">
-                <div class="img-area">
-                    <img src="img/mundodasmotos/ESTICADOR_CORRENTE_GP7_CG_ML_TUR.png" alt="Esticador de Corrente GP7 CG/ML/TUR">
-                </div>
-                <div class="marca">GP7</div>
-                <div class="nome">ESTICADOR DE CORRENTE GP7 CG/ML/TUR</div>
-                <div class="preco">R$ 5,00</div>
-                <button class="btn-detalhes" onclick="abrirDetalhes('ESTICADOR DE CORRENTE GP7 CG/ML/TUR', 'GP7', 5, 'img/mundodasmotos/ESTICADOR_CORRENTE_GP7_CG_ML_TUR.png')">Ver Detalhes</button>
-            </div>
-
-            <div class="card-moto">
-                <div class="img-area">
-                    <img src="img/mundodasmotos/BIELA_COMPLETA_WW3_CG150.png" alt="Biela Completa WW3 CG150">
-                </div>
-                <div class="marca">WW3</div>
-                <div class="selo destaque">Premium</div>
-                <div class="nome">BIELA COMPLETA WW3 CG150</div>
-                <div class="preco">R$ 100,00</div>
-                <button class="btn-detalhes" onclick="abrirDetalhes('BIELA COMPLETA WW3 CG150', 'WW3', 100, 'img/mundodasmotos/BIELA_COMPLETA_WW3_CG150.png')">Ver Detalhes</button>
-            </div>
-
-            <div class="card-moto">
-                <div class="img-area">
-                    <img src="img/mundodasmotos/BIELA_COMPLETA_WW3_BIZ125.png" alt="Biela Completa WW3 BIZ 125">
-                </div>
-                <div class="marca">WW3</div>
-                <div class="nome">BIELA COMPLETA WW3 BIZ 125</div>
-                <div class="preco">R$ 55,00</div>
-                <button class="btn-detalhes" onclick="abrirDetalhes('BIELA COMPLETA WW3 BIZ 125', 'WW3', 55, 'img/mundodasmotos/BIELA_COMPLETA_WW3_BIZ125.png')">Ver Detalhes</button>
-            </div>
-
-            <div class="card-moto">
-                <div class="img-area">
-                    <img src="img/mundodasmotos/BIELA_COMPLETA_WW3_BIZ100_POP100.png" alt="Biela Completa WW3 BIZ100/POP100">
-                </div>
-                <div class="marca">WW3</div>
-                <div class="nome">BIELA COMPLETA WW3 BIZ100/POP100</div>
-                <div class="preco">R$ 60,00</div>
-                <button class="btn-detalhes" onclick="abrirDetalhes('BIELA COMPLETA WW3 BIZ100/POP100', 'WW3', 60, 'img/mundodasmotos/BIELA_COMPLETA_WW3_BIZ100_POP100.png')">Ver Detalhes</button>
-            </div>
-
-            <div class="card-moto">
-                <div class="img-area">
-                    <img src="img/mundodasmotos/LAMPADA_FAROL_HALOGENA_H4.png" alt="Lâmpada Farol Halógena H4 12V 35W Azul">
-                </div>
-                <div class="marca">UNIVERSAL</div>
-                <div class="selo destaque">Promoção</div>
-                <div class="nome">LÂMPADA FAROL HALÓGENA H4 12V/35W AZUL CG/ML/TITAN/YBR125</div>
-                <div class="preco">R$ 11,00</div>
-                <button class="btn-detalhes" onclick="abrirDetalhes('LÂMPADA FAROL HALÓGENA H4 12V/35W AZUL CG/ML/TITAN/YBR125', 'UNIVERSAL', 11, 'img/mundodasmotos/LAMPADA_FAROL_HALOGENA_H4.png')">Ver Detalhes</button>
             </div>
         </div>
     </section>
@@ -2298,18 +1668,11 @@
                     <div class="modal-produto-nome" id="modal-produto-nome"></div>
                     <div class="modal-produto-preco" id="modal-produto-preco"></div>
                     <div class="modal-produto-desc" id="modal-produto-desc"></div>
-                    <button class="carrinho-btn" id="btn-add-carrinho-modal" onclick="">Adicionar ao carrinho</button>
+                    <button class="carrinho-btn" id="btn-add-carrinho-modal" onclick="">Ir para Checkout</button>
                 </div>
             </div>
         </div>
     </div>
-
-    <!-- Botão Carrinho Flutuante -->
-    <button class="cart-btn-float" title="Carrinho" onclick="abrirCarrinho()">
-        <span>&#128722;</span>
-        <span class="cart-count" id="cart-count">0</span>
-    </button>
-
     <!-- BOTÃO WHATSAPP FLUTUANTE PADRÃO -->
 <!-- BOTÃO WHATSAPP FLUTUANTE -->
 <div style="position: fixed; bottom: 24px; right: 24px; z-index: 9999; display: flex; align-items: center; gap: 12px;">
@@ -2567,7 +1930,7 @@ document.addEventListener("DOMContentLoaded", function() {
             const imgPrincipal = document.getElementById('modal-produto-img-principal');
             imgPrincipal.src = produtoInfo.imagens[0] || img;
             imgPrincipal.onerror = function() {
-                this.src = 'img/placeholder.png'; // Fallback
+                this.src = 'img/placeholder.png';
             };
             
             // Carregar miniaturas
@@ -2590,9 +1953,9 @@ document.addEventListener("DOMContentLoaded", function() {
                 thumbsContainer.appendChild(thumb);
             });
             
-            // Configurar botão adicionar ao carrinho
+            // Configurar botão para abrir checkout via WhatsApp
             document.getElementById('btn-add-carrinho-modal').onclick = function() {
-                adicionarAoCarrinho(nome, preco);
+                abrirCheckoutWhatsapp(nome, preco, marca);
             };
             
             // Abrir modal
@@ -2601,6 +1964,17 @@ document.addEventListener("DOMContentLoaded", function() {
                 modalBg.classList.add('aberto');
                 modalBg.style.display = 'flex';
             }
+        }
+
+        // Função para abrir checkout via WhatsApp
+        function abrirCheckoutWhatsapp(nomeProduto, precoProduto, marcaProduto) {
+            const mensagem = `Olá! Gostaria de comprar o produto:\n\n📦 *${nomeProduto}*\n💰 Preço: R$ ${precoProduto.toFixed(2).replace('.', ',')}\n🏷️ Marca: ${marcaProduto}\n\nPoderia me passar mais informações sobre como efetuar a compra?`;
+            
+            const whatsappLink = `https://wa.me/5562995277435?text=${encodeURIComponent(mensagem)}`;
+            window.open(whatsappLink, '_blank');
+            
+            // Fechar modal após abrir WhatsApp
+            fecharModalProduto();
         }
 
         // Fechar modal de produto
@@ -2906,3 +2280,305 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     </style>
 </footer>
+
+    <!-- Botão Flutuante de Acesso ao Catálogo Completo -->
+    <a href="produtos.html" class="btn-catalogo-completo" title="Ver Catálogo Completo de Produtos">
+        <div class="btn-catalogo-icon">
+            <svg width="32" height="32" fill="none" viewBox="0 0 24 24" style="vertical-align:middle;">
+                <rect x="3" y="3" width="8" height="8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                <rect x="13" y="3" width="8" height="8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                <rect x="3" y="13" width="8" height="8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                <rect x="13" y="13" width="8" height="8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            </svg>
+        </div>
+        <div class="btn-catalogo-label">
+            <span class="btn-catalogo-texto">VER TODOS</span>
+            <span class="btn-catalogo-subtexto">156 Produtos</span>
+        </div>
+        <div class="btn-catalogo-badge">
+            <span class="badge-shine">✨</span>
+        </div>
+    </a>
+
+    <style>
+        /* Botão Flutuante do Catálogo Completo */
+        .btn-catalogo-completo {
+            position: fixed;
+            bottom: 100px;
+            right: 24px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            width: 64px;
+            padding: 10px;
+            background: linear-gradient(135deg, #d90429 0%, #e1306c 50%, #a0031f 100%);
+            color: #fff;
+            border: none;
+            border-radius: 18px;
+            text-decoration: none;
+            box-shadow: 0 8px 32px rgba(217, 4, 41, 0.35), inset 0 1px 2px rgba(255, 255, 255, 0.2);
+            cursor: pointer;
+            z-index: 1001;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 2px solid rgba(255, 255, 255, 0.15);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-catalogo-icon {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8em;
+            color: #fff;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+        }
+
+        .btn-catalogo-label {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 2px;
+        }
+
+        .btn-catalogo-texto {
+            font-size: 0.6em;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            color: #fff;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+            line-height: 1;
+        }
+
+        .btn-catalogo-subtexto {
+            font-size: 0.5em;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.9);
+            text-transform: uppercase;
+            letter-spacing: 0.4px;
+            line-height: 1;
+        }
+
+        .btn-catalogo-badge {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            width: 28px;
+            height: 28px;
+            background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(255, 215, 0, 0.4), inset 0 1px 2px rgba(255, 255, 255, 0.6);
+            animation: badge-pulse 2s ease-in-out infinite;
+            border: 2px solid #fff;
+            font-size: 1.2em;
+        }
+
+        @keyframes badge-pulse {
+            0%, 100% {
+                transform: scale(1);
+                box-shadow: 0 4px 12px rgba(255, 215, 0, 0.4), inset 0 1px 2px rgba(255, 255, 255, 0.6);
+            }
+            50% {
+                transform: scale(1.1);
+                box-shadow: 0 6px 16px rgba(255, 215, 0, 0.6), inset 0 1px 2px rgba(255, 255, 255, 0.8);
+            }
+        }
+
+        .badge-shine {
+            animation: shine-spin 3s linear infinite;
+            display: inline-block;
+        }
+
+        @keyframes shine-spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .btn-catalogo-completo:hover {
+            transform: scale(1.12) translateY(-6px);
+            background: linear-gradient(135deg, #e1306c 0%, #a0031f 50%, #7a0220 100%);
+            box-shadow: 0 12px 40px rgba(217, 4, 41, 0.5), inset 0 1px 2px rgba(255, 255, 255, 0.25);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-catalogo-completo:active {
+            transform: scale(0.96);
+            box-shadow: 0 4px 16px rgba(217, 4, 41, 0.3), inset 0 1px 2px rgba(255, 255, 255, 0.15);
+        }
+
+        /* Tema Escuro */
+        body.tema-escuro .btn-catalogo-completo {
+            background: linear-gradient(135deg, #ff1744 0%, #e91e63 50%, #c2185b 100%);
+            box-shadow: 0 8px 32px rgba(255, 23, 68, 0.4), inset 0 1px 2px rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        body.tema-escuro .btn-catalogo-completo:hover {
+            background: linear-gradient(135deg, #e91e63 0%, #c2185b 50%, #ad1457 100%);
+            box-shadow: 0 12px 40px rgba(255, 23, 68, 0.6), inset 0 1px 2px rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Responsivo */
+        @media (max-width: 900px) {
+            .btn-catalogo-completo {
+                width: 64px;
+                padding: 10px;
+                bottom: 90px;
+                right: 20px;
+            }
+
+            .btn-catalogo-icon {
+                font-size: 1.6em;
+            }
+
+            .btn-catalogo-texto {
+                font-size: 0.55em;
+                letter-spacing: 0.6px;
+            }
+
+            .btn-catalogo-subtexto {
+                font-size: 0.48em;
+                letter-spacing: 0.3px;
+            }
+
+            .btn-catalogo-badge {
+                width: 26px;
+                height: 26px;
+                font-size: 1em;
+                top: -4px;
+                right: -4px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .btn-catalogo-completo {
+                width: 60px;
+                padding: 8px;
+                bottom: 80px;
+                right: 16px;
+                border-radius: 16px;
+            }
+
+            .btn-catalogo-icon {
+                font-size: 1.5em;
+            }
+
+            .btn-catalogo-texto {
+                font-size: 0.5em;
+                letter-spacing: 0.5px;
+            }
+
+            .btn-catalogo-subtexto {
+                font-size: 0.45em;
+                letter-spacing: 0.2px;
+            }
+
+            .btn-catalogo-badge {
+                width: 24px;
+                height: 24px;
+                font-size: 0.9em;
+                top: -4px;
+                right: -4px;
+                border: 1.5px solid #fff;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .btn-catalogo-completo {
+                width: 56px;
+                padding: 6px;
+                bottom: 70px;
+                right: 12px;
+            }
+
+            .btn-catalogo-icon svg {
+                width: 20px;
+                height: 20px;
+            }
+
+            .btn-catalogo-texto {
+                font-size: 0.48em;
+            }
+
+            .btn-catalogo-subtexto {
+                font-size: 0.42em;
+            }
+        }
+    </style>
+
+    <!-- Remover/Comentar o botão antigo do carrinho -->
+    <!-- BOTÃO ANTIGO DO CARRINHO REMOVIDO -->
+
+    <script>
+        // Remover evento do botão carrinho antigo se existir
+        const cartBtnOld = document.querySelector('.cart-btn-float');
+        if (cartBtnOld) {
+            cartBtnOld.remove();
+        }
+
+        // ========== SISTEMA DE POSICIONAMENTO ESTÁTICO FLUTUANTE ==========
+        const btnCatalogo = document.querySelector('.btn-catalogo-completo');
+
+        function atualizarPosicaoBotoes() {
+            if (!btnCatalogo) return;
+
+            const scrollY = window.scrollY;
+
+            // Manter posição fixa em relação ao viewport
+            // O botão sempre fica a 100px do bottom quando na página
+            btnCatalogo.style.position = 'fixed';
+            btnCatalogo.style.bottom = '180px';
+            btnCatalogo.style.right = '24px';
+
+            // Controlar visibilidade e opacidade
+            if (scrollY > 500) {
+                // Totalmente visível após rolar 500px
+                btnCatalogo.style.opacity = '1';
+                btnCatalogo.style.visibility = 'visible';
+                btnCatalogo.style.pointerEvents = 'auto';
+            } else if (scrollY > 300) {
+                // Transição suave entre 300 e 500px
+                const opacity = (scrollY - 300) / 200;
+                btnCatalogo.style.opacity = opacity.toFixed(2);
+                btnCatalogo.style.visibility = 'visible';
+                btnCatalogo.style.pointerEvents = opacity > 0.1 ? 'auto' : 'none';
+            } else {
+                // Oculto antes de 300px
+                btnCatalogo.style.opacity = '0';
+                btnCatalogo.style.visibility = 'hidden';
+                btnCatalogo.style.pointerEvents = 'none';
+            }
+        }
+
+        // Otimizar performance com throttle
+        let ticking = false;
+        function requestTick() {
+            if (!ticking) {
+                window.requestAnimationFrame(atualizarPosicaoBotoes);
+                ticking = true;
+                setTimeout(() => { ticking = false; }, 100);
+            }
+        }
+
+        window.addEventListener('scroll', requestTick, { passive: true });
+        window.addEventListener('resize', requestTick, { passive: true });
+
+        // Inicializar posição
+        atualizarPosicaoBotoes();
+    </script>
+</body>
+</html>
