@@ -1570,7 +1570,7 @@
             <div class="card-moto">
                 <div class="img-area">
                     <img src="img/mundodasmotos/junta.png" alt="Junta Cabeçote">
-                                                                                                                                                                                                                                                                                                                         </div>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                         </div>
                 <div class="marca">KMP</div>
                 <div class="nome">JUNTA CABEÇOTE BIZ 125/2006</div>
                 <div class="preco">R$ 6.00</div>
@@ -1594,6 +1594,75 @@
                 <div class="preco">R$ 60.00</div>
                 <button class="btn-detalhes" onclick="abrirDetalhes('KIT TRANSMISSÃO BIZ 100/2012-2015', 'DAROM', 60, 'img/mundodasmotos/KITTRANSMISSAODAROMBIZ10020122015.png')">Ver Detalhes</button>
             </div>
+        </div>
+
+        <!-- Seção "Ver Mais Produtos" -->
+        <div style="display: flex; justify-content: center; align-items: center; margin-top: 48px; padding: 32px 18px; flex-direction: column; gap: 24px;">
+            <div style="text-align: center;">
+                <h2 style="font-size: 1.8em; font-weight: 800; color: var(--cor-btn); margin: 0 0 12px 0; letter-spacing: 1px;">
+                    Deseja ver mais produtos?
+                </h2>
+                <p style="font-size: 1.1em; color: var(--cor-cinza); margin: 0; line-height: 1.6;">
+                    Confira nosso catálogo completo com mais de 156 produtos disponíveis para sua moto!
+                </p>
+            </div>
+            <a href="produtos.html" style="display: inline-flex; align-items: center; justify-content: center; gap: 12px; background: linear-gradient(135deg, var(--cor-btn) 0%, #e1306c 100%); color: #fff; padding: 16px 48px; border-radius: 28px; text-decoration: none; font-size: 1.15em; font-weight: 800; box-shadow: 0 6px 24px rgba(217, 4, 41, 0.3); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); letter-spacing: 0.5px;">
+                <span>🛍️ Ver Catálogo Completo</span>
+                <svg width="20" height="20" fill="none" viewBox="0 0 24 24" style="stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;">
+                    <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+            </a>
+            <style>
+                a[href="produtos.html"]:hover {
+                    transform: translateY(-3px);
+                    box-shadow: 0 10px 32px rgba(217, 4, 41, 0.5) !important;
+                    background: linear-gradient(135deg, #e1306c 0%, #a0031f 100%) !important;
+                }
+
+                a[href="produtos.html"]:active {
+                    transform: translateY(-1px);
+                    box-shadow: 0 4px 16px rgba(217, 4, 41, 0.3) !important;
+                }
+
+                /* Tema Escuro */
+                body.tema-escuro a[href="produtos.html"] {
+                    background: linear-gradient(135deg, #ff1744 0%, #e91e63 100%) !important;
+                    box-shadow: 0 6px 24px rgba(255, 23, 68, 0.4) !important;
+                }
+
+                body.tema-escuro a[href="produtos.html"]:hover {
+                    background: linear-gradient(135deg, #e91e63 0%, #c2185b 100%) !important;
+                    box-shadow: 0 10px 32px rgba(255, 23, 68, 0.6) !important;
+                }
+
+                /* Responsivo */
+                @media (max-width: 600px) {
+                    a[href="produtos.html"] {
+                        padding: 14px 32px !important;
+                        font-size: 1em !important;
+                    }
+
+                    h2 {
+                        font-size: 1.4em !important;
+                    }
+
+                    p {
+                        font-size: 1em !important;
+                    }
+                }
+
+                @media (max-width: 400px) {
+                    a[href="produtos.html"] {
+                        padding: 12px 24px !important;
+                        font-size: 0.95em !important;
+                        flex-wrap: wrap;
+                    }
+
+                    h2 {
+                        font-size: 1.2em !important;
+                    }
+                }
+            </style>
         </div>
     </section>
     <!-- FIM Sessão Produtos em Destaque -->
@@ -2421,15 +2490,13 @@ document.addEventListener("DOMContentLoaded", function() {
 
         /* Tema Escuro */
         body.tema-escuro .btn-catalogo-completo {
-            background: linear-gradient(135deg, #ff1744 0%, #e91e63 50%, #c2185b 100%);
-            box-shadow: 0 8px 32px rgba(255, 23, 68, 0.4), inset 0 1px 2px rgba(255, 255, 255, 0.15);
-            border-color: rgba(255, 255, 255, 0.1);
+            background: linear-gradient(135deg, #ff1744 0%, #e91e63 100%) !important;
+            box-shadow: 0 6px 24px rgba(255, 23, 68, 0.4) !important;
         }
 
         body.tema-escuro .btn-catalogo-completo:hover {
-            background: linear-gradient(135deg, #e91e63 0%, #c2185b 50%, #ad1457 100%);
-            box-shadow: 0 12px 40px rgba(255, 23, 68, 0.6), inset 0 1px 2px rgba(255, 255, 255, 0.2);
-            border-color: rgba(255, 255, 255, 0.2);
+            background: linear-gradient(135deg, #e91e63 0%, #c2185b 100%) !important;
+            box-shadow: 0 10px 32px rgba(255, 23, 68, 0.6) !important;
         }
 
         /* Responsivo */
