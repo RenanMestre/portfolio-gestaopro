@@ -305,6 +305,8 @@
             grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
             gap: 32px;
             justify-items: center;
+            width: 100%;
+            box-sizing: border-box;
         }
         .card-moto {
             background: linear-gradient(120deg, #fff 60%, #f7f7f7 100%);
@@ -339,18 +341,24 @@
             border-radius: 10px;
             background: #ffffff;
         }
-        .card-moto .marca {
-            font-size: 1em;
-            color: var(--cor-cinza);
-            font-weight: 500;
-            margin-bottom: 2px;
+        .card-moto .marca,
+        .card-moto .nome {
+            word-break: break-word;
+            overflow-wrap: anywhere;
+            max-width: 100%;
         }
         .card-moto .nome {
-            font-size: 1.25em;
+            font-size: 1.1em;
             font-weight: 700;
             color: var(--cor-preto);
             margin-bottom: 8px;
             text-align: center;
+        }
+        .card-moto .marca {
+            font-size: 0.98em;
+            color: var(--cor-cinza);
+            font-weight: 500;
+            margin-bottom: 2px;
         }
         .card-moto .preco {
             font-size: 1.18em;
@@ -579,6 +587,8 @@
         .carrinho-item-nome {
             flex: 1;
             font-weight: 500;
+            word-break: break-word;
+            overflow-wrap: anywhere;
         }
         .carrinho-item-preco {
             color: var(--cor-btn);
@@ -1123,46 +1133,39 @@
     <div class="theme-status-indicator" title="Tema: Claro"></div>
 
     <!-- Removido o botão tema do topo, mantenha apenas o botão flutuante -->
-    <!-- ...existing code... -->
     <div class="topo">
         <div class="topo-inner">
             <div class="logo">
-                <img src="img/moto.png" alt="Logo Mundo das Motos" style="height:64px;max-width:90px;width:auto;">
-                <span style="font-size:1.5em;">Mundo das Motos</span>
+                <img src="img/moto.png" alt="Logo Mundo das Motos" style="height:48px;max-width:70px;width:auto;">
+                <span>Mundo das Motos</span>
             </div>
-            <span style="margin-right:18px;"></span>
-            <nav class="menu">
-                <a href="#"></a>
-                <a href="#"></a>
-                <a href="#"></a>
-                <a href="#"></a>
-            </nav>
+            <!-- Removido menu vazio para evitar espaço desnecessário -->
             <div class="busca">
                 <input type="text" id="input-busca" placeholder="Buscar produtos, marcas e mais..." oninput="buscarProdutos()" autocomplete="off" />
             </div>
         </div>
     </div>
     <!-- Contador de Produtos -->
-    <section id="produtos-destaque" style="max-width:1200px;margin:36px auto;padding:0 18px;">
-        <div style="background: linear-gradient(135deg, #d90429 0%, #e1306c 50%, #a0031f 100%); border-radius: 16px; padding: 24px 28px; margin-bottom: 28px; box-shadow: 0 8px 32px #d9042933; position: relative; overflow: hidden;">
-            <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 24px;">
+    <section id="produtos-destaque" style="max-width:1200px;margin:36px auto;padding:0 2vw;">
+        <div style="background: linear-gradient(135deg, #d90429 0%, #e1306c 50%, #a0031f 100%); border-radius: 16px; padding: 18px 10px; margin-bottom: 18px; box-shadow: 0 8px 32px #d9042933; position: relative; overflow: hidden;">
+            <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;">
                 <div>
-                    <div style="font-size: 1.15em; color: rgba(255, 255, 255, 0.9); font-weight: 600; margin-bottom: 8px; letter-spacing: 1px; text-transform: uppercase;">🏍️ Catálogo Disponível</div>
-                    <div style="font-size: 3.5em; font-weight: 900; color: #fff; line-height: 1; text-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); font-family: 'Courier New', monospace;" id="total-produtos">156</div>
-                    <div style="font-size: 1em; color: rgba(255, 255, 255, 0.85); margin-top: 8px;">Produtos Premium selecionados</div>
+                    <div style="font-size: 1em; color: rgba(255, 255, 255, 0.9); font-weight: 600; margin-bottom: 4px; letter-spacing: 1px; text-transform: uppercase;">🏍️ Catálogo Disponível</div>
+                    <div style="font-size: 2.2em; font-weight: 900; color: #fff; line-height: 1; text-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); font-family: 'Courier New', monospace;" id="total-produtos">156</div>
+                    <div style="font-size: 0.95em; color: rgba(255, 255, 255, 0.85); margin-top: 4px;">Produtos premium selecionados</div>
                 </div>
-                <div style="display: flex; gap: 18px; flex-wrap: wrap;">
-                    <div style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(8px); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 12px; padding: 16px 20px; text-align: center; flex: 1; min-width: 120px;">
-                        <span style="font-size: 2em; font-weight: 800; color: #fff; display: block;" id="stat-pecas">110</span>
-                        <span style="font-size: 0.85em; color: rgba(255, 255, 255, 0.8); margin-top: 4px; text-transform: uppercase; letter-spacing: 0.5px; display: block;">Peças</span>
+                <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                    <div style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(8px); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 12px; padding: 10px 8px; text-align: center; flex: 1; min-width: 80px;">
+                        <span style="font-size: 1.2em; font-weight: 800; color: #fff; display: block;" id="stat-pecas">110</span>
+                        <span style="font-size: 0.8em; color: rgba(255, 255, 255, 0.8); margin-top: 2px; text-transform: uppercase; letter-spacing: 0.5px; display: block;">Peças</span>
                     </div>
-                    <div style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(8px); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 12px; padding: 16px 20px; text-align: center; flex: 1; min-width: 120px;">
-                        <span style="font-size: 2em; font-weight: 800; color: #fff; display: block;" id="stat-pneus">6</span>
-                        <span style="font-size: 0.85em; color: rgba(255, 255, 255, 0.8); margin-top: 4px; text-transform: uppercase; letter-spacing: 0.5px; display: block;">Pneus</span>
+                    <div style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(8px); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 12px; padding: 10px 8px; text-align: center; flex: 1; min-width: 80px;">
+                        <span style="font-size: 1.2em; font-weight: 800; color: #fff; display: block;" id="stat-pneus">6</span>
+                        <span style="font-size: 0.8em; color: rgba(255, 255, 255, 0.8); margin-top: 2px; text-transform: uppercase; letter-spacing: 0.5px; display: block;">Pneus</span>
                     </div>
-                    <div style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(8px); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 12px; padding: 16px 20px; text-align: center; flex: 1; min-width: 120px;">
-                        <span style="font-size: 2em; font-weight: 800; color: #fff; display: block;" id="stat-acessorios">40</span>
-                        <span style="font-size: 0.85em; color: rgba(255, 255, 255, 0.8); margin-top: 4px; text-transform: uppercase; letter-spacing: 0.5px; display: block;">Acessórios</span>
+                    <div style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(8px); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 12px; padding: 10px 8px; text-align: center; flex: 1; min-width: 80px;">
+                        <span style="font-size: 1.2em; font-weight: 800; color: #fff; display: block;" id="stat-acessorios">40</span>
+                        <span style="font-size: 0.8em; color: rgba(255, 255, 255, 0.8); margin-top: 2px; text-transform: uppercase; letter-spacing: 0.5px; display: block;">Acessórios</span>
                     </div>
                 </div>
             </div>
@@ -1434,13 +1437,14 @@
             justify-content: center;
         }
         .btn-voltar-texto {
-            font-size: 0.65em;
+            font-size: 0.48em;
             font-weight: 800;
             text-transform: uppercase;
             letter-spacing: 0.6px;
             color: #fff;
             text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
             line-height: 1;
+            /* reduzido para caber no botão */
         }
         .btn-voltar-home:hover {
             transform: scale(1.15) translateY(-6px);
@@ -1505,14 +1509,147 @@
             box-shadow: 0 3px 12px rgba(37, 211, 102, 0.3), inset 0 1px 2px rgba(255, 255, 255, 0.3);
         }
 
-        /* Responsivo */
-        @media (max-width: 900px) {
-            .floating-buttons-stack { right: 16px; gap: 14px;}
-            .theme-toggle-btn, .btn-voltar-home, .whatsapp-float-btn { width: 48px; height: 48px; }
+        /* Corrige overflow do catálogo em mobile */
+        .catalogo {
+            width: 100%;
+            box-sizing: border-box;
         }
-        @media (max-width: 600px) {
-            .floating-buttons-stack { right: 8px; gap: 10px;}
-            .theme-toggle-btn, .btn-voltar-home, .whatsapp-float-btn { width: 44px; height: 44px; }
+        /* Corrige padding do container do catálogo */
+        @media (max-width: 700px) {
+            .catalogo {
+                padding: 0;
+            }
+        }
+        /* Ajusta o container dos cards para não sair da tela */
+        .catalogo > .card-moto {
+            min-width: 0;
+            width: 100%;
+            max-width: 340px;
+        }
+        /* Ajusta o menu de categorias para não quebrar em mobile */
+        .categorias-menu {
+            overflow-x: auto;
+            flex-wrap: nowrap;
+            gap: 10px;
+        }
+        .categorias-lista {
+            flex-wrap: nowrap;
+            gap: 10px;
+        }
+        .categoria-btn {
+            min-width: 90px;
+            font-size: 0.98em;
+            padding: 8px 12px;
+        }
+        /* Ajusta o topo/menu para mobile */
+        .topo-inner {
+            flex-wrap: wrap;
+            gap: 8px;
+            padding: 10px 2vw;
+        }
+        .logo span {
+            font-size: 1.2em;
+        }
+        .menu {
+            gap: 12px;
+            font-size: 0.95em;
+        }
+        .busca input {
+            width: 100%;
+            min-width: 0;
+            max-width: 98vw;
+            font-size: 1em;
+        }
+        /* Ajusta o banner para mobile */
+        .banner-content {
+            flex-direction: column;
+            gap: 12px;
+            padding: 18px 2vw;
+        }
+        .banner-text h1 {
+            font-size: 1.3em;
+        }
+        .banner-text p {
+            font-size: 1em;
+        }
+        .banner-img img {
+            max-width: 95vw;
+        }
+        /* Ajusta o stack de botões flutuantes para mobile */
+        .floating-buttons-stack {
+            right: 8px;
+            bottom: 8px;
+            gap: 8px;
+        }
+        .theme-toggle-btn, .btn-voltar-home, .whatsapp-float-btn {
+            width: 40px;
+            height: 40px;
+            min-width: 40px;
+            min-height: 40px;
+            font-size: 1em;
+        }
+        /* Ajusta modal produto para mobile */
+        .modal-produto {
+            padding: 10px 2vw 10px 2vw;
+            max-width: 98vw;
+        }
+        .modal-produto-conteudo {
+            flex-direction: column;
+            gap: 10px;
+            align-items: center;
+        }
+        .modal-produto-fotos, .modal-produto-info {
+            min-width: 0;
+            width: 100%;
+        }
+        .modal-produto-img {
+            width: 98vw;
+            max-width: 320px;
+        }
+        /* Ajusta modal carrinho para mobile */
+        .modal-carrinho {
+            padding: 10px 2vw 10px 2vw;
+            max-width: 98vw;
+        }
+        /* Ajusta textos do contador de produtos para não quebrar */
+        #produtos-destaque > div > div > div > div {
+            min-width: 0;
+        }
+        #produtos-destaque {
+            padding: 0 2vw;
+        }
+        /* Corrige overflow de textos longos */
+        .modal-produto-nome, .modal-produto-marca, .modal-produto-desc {
+            word-break: break-word;
+            overflow-wrap: anywhere;
+        }
+        /* Corrige overflow do botão do carrinho */
+        .cart-btn-float {
+            right: 8px;
+            bottom: 80px;
+            width: 48px;
+            height: 48px;
+            font-size: 1.3em;
+        }
+        /* Corrige overflow do rodapé */
+        footer {
+            padding: 18px 2vw 10px 2vw;
+            font-size: 0.98em;
+        }
+        /* Ajusta botões do carrinho para mobile */
+        .carrinho-btn {
+            font-size: 1em;
+            padding: 10px 0;
+        }
+        /* Ajusta lista do carrinho para mobile */
+        .carrinho-lista {
+            max-height: 120px;
+            font-size: 0.98em;
+        }
+        /* Ajusta o QR Code do PIX para não sair da tela */
+        #area-pix img {
+            max-width: 90vw;
+            height: auto;
         }
     </style>
 
