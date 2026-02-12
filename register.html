@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro - GESTÃOPRO</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            min-height: 100vh;
+            margin: 0;
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 16px;
+            background-attachment: fixed;
+        }
+
+        .logo {
+            margin-top: 24px;
+            margin-bottom: 20px;
+            text-align: center;
+            animation: slideDown 0.6s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .logo img {
+            width: 100px;
+            height: auto;
+        }
+
+        .logo h1 {
+            margin: 12px 0 4px 0;
+            font-size: clamp(1.8rem, 5vw, 2.4rem);
+            color: #fff;
+            font-weight: 800;
+            letter-spacing: 1px;
+            text-shadow: 2px 2px 4px rgba(30,60,114,0.3);
+        }
+
+        .logo p {
+            margin: 0;
+            color: #4fc3f7;
+            font-size: clamp(0.85rem, 3vw, 1rem);
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        .cadastro-container {
+            background: rgba(255,255,255,0.97);
+            border-radius: 20px;
+            box-shadow: 0 12px 40px rgba(30,60,114,0.25),
+                        0 0 1px rgba(30,60,114,0.1);
+            padding: clamp(20px, 6vw, 36px);
+            width: 100%;
+            max-width: 450px;
+            margin: 12px auto 32px auto;
+            display: flex;
+            flex-direction: column;
+            animation: fadeInUp 0.7s ease-out 0.2s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .cadastro-container h2 {
+            color: #1e3c72;
+            font-size: clamp(1.3rem, 4vw, 1.6rem);
+            margin: 0 0 6px 0;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .cadastro-container > p {
+            color: #666;
+            font-size: clamp(0.85rem, 2.5vw, 0.95rem);
+            margin: 0 0 20px 0;
+            line-height: 1.5;
+        }
+
+        .form-group {
+            margin-bottom: 14px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            display: block;
+            color: #1e3c72;
+            font-weight: 600;
+            margin-bottom: 6px;
+            font-size: clamp(0.8rem, 2vw, 0.9rem);
+            letter-spacing: 0.3px;
+        }
+
+        .input-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: clamp(10px, 2vw, 12px) 36px clamp(10px, 2vw, 12px) 40px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: clamp(0.9rem, 2.5vw, 1rem);
+            background: #fafbfc;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            color: #333;
+        }
+
+        .form-group input::placeholder {
+            color: #999;
+            font-size: clamp(0.85rem, 2vw, 0.95rem);
+        }
+
+        .form-group input:focus {
+            border-color: #4fc3f7;
+            background: #fff;
+            box-shadow: 0 0 0 3px rgba(79, 195, 247, 0.1);
+            outline: none;
+        }
+
+        .form-group input:valid {
+            border-color: #81c784;
+        }
+
+        .form-group .icon {
+            position: absolute;
+            left: 14px;
+            color: #4fc3f7;
+            font-size: clamp(0.95rem, 2vw, 1.1rem);
+            pointer-events: none;
+        }
+
+        .form-group .toggle-password {
+            position: absolute;
+            right: 12px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #4fc3f7;
+            font-size: clamp(0.95rem, 2vw, 1.1rem);
+            padding: 6px;
+            transition: color 0.2s;
+        }
+
+        .form-group .toggle-password:hover {
+            color: #1e88e5;
+        }
+
+        .cadastro-btn {
+            margin-top: 20px;
+            background: linear-gradient(135deg, #4fc3f7 0%, #81c784 100%);
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            padding: clamp(12px, 2.5vw, 14px) clamp(16px, 4vw, 24px);
+            font-size: clamp(0.95rem, 2.5vw, 1.1rem);
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(79, 195, 247, 0.3);
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cadastro-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255,255,255,0.2);
+            transition: left 0.3s ease;
+        }
+
+        .cadastro-btn:hover {
+            background: linear-gradient(135deg, #1e88e5 0%, #43a047 100%);
+            box-shadow: 0 6px 20px rgba(30, 136, 229, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .cadastro-btn:hover::before {
+            left: 100%;
+        }
+
+        .cadastro-btn:active {
+            transform: translateY(0);
+        }
+
+        .login-link {
+            margin-top: 18px;
+            text-align: center;
+            font-size: clamp(0.8rem, 2vw, 0.95rem);
+            color: #666;
+        }
+
+        .login-link a {
+            color: #1e88e5;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.2s;
+            position: relative;
+        }
+
+        .login-link a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #1e88e5;
+            transition: width 0.3s ease;
+        }
+
+        .login-link a:hover::after {
+            width: 100%;
+        }
+
+        /* Responsivo para tablets e maiores */
+        @media (min-width: 601px) and (max-width: 768px) {
+            body {
+                padding: 20px;
+            }
+
+            .cadastro-container {
+                max-width: 500px;
+            }
+        }
+
+        /* Responsivo para móvel pequeno */
+        @media (max-width: 480px) {
+            body {
+                padding: 12px;
+            }
+
+            .logo {
+                margin-top: 16px;
+                margin-bottom: 16px;
+            }
+
+            .logo img {
+                width: 85px;
+            }
+
+            .cadastro-container {
+                padding: 18px 16px 20px 16px;
+                margin: 8px auto 24px auto;
+                border-radius: 16px;
+            }
+
+            .form-group {
+                margin-bottom: 12px;
+            }
+
+            .form-group input {
+                padding: 10px 32px 10px 36px;
+                font-size: 16px; /* Evita zoom automático no iOS */
+            }
+
+            .cadastro-btn {
+                margin-top: 16px;
+                padding: 11px 20px;
+            }
+        }
+
+        /* Ultra responsivo para telas muito pequenas */
+        @media (max-width: 360px) {
+            .cadastro-container {
+                padding: 14px 12px 16px 12px;
+            }
+
+            .cadastro-container h2 {
+                font-size: 1.2rem;
+            }
+
+            .form-group input {
+                padding: 9px 30px 9px 34px;
+            }
+
+            .login-link {
+                font-size: 0.75rem;
+            }
+        }
+
+        /* Dark mode support */
+        @media (prefers-color-scheme: dark) {
+            .cadastro-container {
+                background: rgba(30, 60, 114, 0.95);
+            }
+
+            .cadastro-container h2,
+            .form-group label {
+                color: #4fc3f7;
+            }
+
+            .cadastro-container > p,
+            .login-link {
+                color: #b0bec5;
+            }
+
+            .form-group input {
+                background: rgba(255, 255, 255, 0.1);
+                border-color: rgba(255, 255, 255, 0.2);
+                color: #fff;
+            }
+
+            .form-group input::placeholder {
+                color: rgba(255, 255, 255, 0.6);
+            }
+
+            .form-group input:focus {
+                box-shadow: 0 0 0 3px rgba(79, 195, 247, 0.2);
+            }
+        }
+    </style>
+    <!-- Ícones via CDN (Font Awesome) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+    <div class="logo">
+        <img src="img/logo escura png.png" alt="Logo GESTÃOPRO" style="width: 160px; height: auto;" onerror="this.style.display='none'">
+    </div>
+    <form class="cadastro-container" autocomplete="off">
+        <h2>Crie sua conta</h2>
+        <p>Preencha os dados para cadastrar sua empresa no sistema</p>
+        
+        <div class="form-group">
+            <label for="empresa">Nome da Empresa</label>
+            <div class="input-wrapper">
+                <span class="icon"><i class="fa fa-building"></i></span>
+                <input type="text" id="empresa" name="empresa" placeholder="Minha Empresa Ltda" required>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="email">E-mail</label>
+            <div class="input-wrapper">
+                <span class="icon"><i class="fa fa-envelope"></i></span>
+                <input type="email" id="email" name="email" placeholder="seu@email.com" required>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="documento">CNPJ ou CPF</label>
+            <div class="input-wrapper">
+                <span class="icon"><i class="fa fa-id-card"></i></span>
+                <input type="text" id="documento" name="documento" placeholder="00.000.000/0001-00" required>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="whatsapp">WhatsApp</label>
+            <div class="input-wrapper">
+                <span class="icon"><i class="fa fa-whatsapp"></i></span>
+                <input type="tel" id="whatsapp" name="whatsapp" placeholder="(99) 99999-9999" required>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="endereco">Endereço</label>
+            <div class="input-wrapper">
+                <span class="icon"><i class="fa fa-map-marker-alt"></i></span>
+                <input type="text" id="endereco" name="endereco" placeholder="Rua, número, bairro, cidade" required>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="senha">Senha</label>
+            <div class="input-wrapper">
+                <span class="icon"><i class="fa fa-lock"></i></span>
+                <input type="password" id="senha" name="senha" placeholder="Digite sua senha" required>
+                <button type="button" class="toggle-password" onclick="togglePassword('senha', this)">
+                    <i class="fa fa-eye"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="confirmar-senha">Confirmar Senha</label>
+            <div class="input-wrapper">
+                <span class="icon"><i class="fa fa-lock"></i></span>
+                <input type="password" id="confirmar-senha" name="confirmar-senha" placeholder="Confirme sua senha" required>
+                <button type="button" class="toggle-password" onclick="togglePassword('confirmar-senha', this)">
+                    <i class="fa fa-eye"></i>
+                </button>
+            </div>
+        </div>
+
+        <button type="submit" class="cadastro-btn">Cadastrar</button>
+        
+        <div class="login-link">
+            Já tem uma conta? <a href="https://gestaoproapp.com.br/">Entrar aqui</a>
+        </div>
+    </form>
+
+    <script>
+        function togglePassword(fieldId, btn) {
+            const input = document.getElementById(fieldId);
+            if (input.type === "password") {
+                input.type = "text";
+                btn.innerHTML = '<i class="fa fa-eye-slash"></i>';
+            } else {
+                input.type = "password";
+                btn.innerHTML = '<i class="fa fa-eye"></i>';
+            }
+        }
+
+        // Validação de CNPJ/CPF em tempo real
+        document.getElementById('documento').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length <= 11) {
+                value = value.replace(/(\d{3})(\d)/, '$1.$2').replace(/(\d{3})(\d)/, '$1.$2').replace(/(\d{3})(\d{1,2})/, '$1-$2');
+            } else {
+                value = value.substring(0, 14).replace(/(\d{2})(\d)/, '$1.$2').replace(/(\d{3})(\d)/, '$1.$2').replace(/(\d{3})(\d)/, '$1/$2').replace(/(\d{4})(\d)/, '$1-$2');
+            }
+            e.target.value = value;
+        });
+
+        // Formatação de WhatsApp
+        document.getElementById('whatsapp').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            value = value.substring(0, 11);
+            value = value.replace(/(\d{2})(\d)/, '($1) $2').replace(/(\d{5})(\d)/, '$1-$2');
+            e.target.value = value;
+        });
+
+        // Validação ao submeter
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Formulário enviado! (Este é um exemplo - configure o backend)');
+        });
+    </script>
+</body>
+</html>
