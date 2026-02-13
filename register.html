@@ -71,8 +71,7 @@
         .cadastro-container {
             background: rgba(255,255,255,0.85);
             border-radius: 20px;
-            box-shadow: 0 12px 40px rgba(30,60,114,0.25),
-                        0 0 1px rgba(30,60,114,0.1);
+            box-shadow: 0 12px 40px rgba(30,60,114,0.25), 0 0 1px rgba(30,60,114,0.1);
             padding: clamp(20px, 6vw, 36px);
             width: 100%;
             max-width: 450px;
@@ -397,50 +396,20 @@
                 border-radius: 10px;
             }
         }
-        @media (max-width: 480px) {
-            body {
-                padding: 12px;
-            }
-            .logo {
-                margin-top: 24px;
-                margin-bottom: 20px;
-            }
-            .logo img {
-                width: 100px;
-            }
+        @media (max-width: 600px) {
             .cadastro-container {
-                background: rgba(255,255,255,0.85);
-                border-radius: 20px;
-                box-shadow: 0 12px 40px rgba(30,60,114,0.25), 0 0 1px rgba(30,60,114,0.1);
-                padding: clamp(20px, 6vw, 36px);
-                max-width: 450px;
-                margin: 12px auto 32px auto;
-                color: #1e3c72;
-            }
-            .cadastro-container h2,
-            .cadastro-container > p,
-            .form-group label,
-            .login-link,
-            .form-group input,
-            .requirement,
-            .password-strength,
-            .password-match {
-                color: #1e3c72;
-            }
-            .btn-group {
-                flex-direction: row;
-                gap: 10px;
-                margin-top: 20px;
-            }
-            .cadastro-btn, .whatsapp-btn {
-                padding: clamp(12px, 2.5vw, 14px) clamp(16px, 4vw, 24px);
-                font-size: clamp(0.95rem, 2.5vw, 1.1rem);
-                border-radius: 10px;
+                max-width: 98vw;
+                padding: clamp(12px, 4vw, 20px);
+                margin: 8px auto 18px auto;
+                /* NÃO altera background, border, box-shadow, color, tipografia */
             }
         }
-        @media (max-width: 360px) {
+        @media (max-width: 400px) {
             .cadastro-container {
-                padding: clamp(16px, 4vw, 20px);
+                max-width: 100vw;
+                padding: 8px 2vw;
+                margin: 6px auto 12px auto;
+                /* NÃO altera background, border, box-shadow, color, tipografia */
             }
         }
 
