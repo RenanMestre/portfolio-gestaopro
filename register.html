@@ -9,124 +9,236 @@
 * { box-sizing: border-box; }
 
 body {
-    background: linear-gradient(90deg, #1a3a70 0%, #0099ff 100%);
     min-height: 100vh;
     margin: 0;
     font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 16px;
+    padding: 0;
+    /* Gradiente premium azul-violeta com brilho */
+    background: linear-gradient(120deg, #1a2980 0%, #2563eb 40%, #100431 100%);
+    /* fallback para navegadores antigos */
+    background-color: #1a2980;
+    position: relative;
+    overflow-x: hidden;
 }
-
-/* LOGO */
-.logo { margin: 24px 0 20px; text-align: center; }
-
+body::before {
+    /* Efeito de brilho sutil no fundo */
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background: radial-gradient(ellipse at 70% 10%, #fff6 0%, #fff0 70%),
+                radial-gradient(ellipse at 20% 80%, #6e45e244 0%, #fff0 70%);
+    opacity: 0.7;
+    filter: blur(32px);
+    mix-blend-mode: lighten;
+}
+.logo {
+    margin: 48px 0 32px;
+    text-align: center;
+    z-index: 1;
+}
 .logo img {
-    width: 160px;
-    filter: drop-shadow(0 8px 16px rgba(0,0,0,0.4));
+    width: 180px;
+    filter: drop-shadow(0 8px 32px rgba(30,60,114,0.25));
+    border-radius: 18px;
+    background: rgba(255,255,255,0.08);
+    padding: 8px 18px;
+    backdrop-filter: blur(2px);
 }
-
-/* CARD */
 .cadastro-container {
-    background: rgba(255,255,255,0.9);
-    border-radius: 20px;
-    box-shadow: 0 12px 40px rgba(30,60,114,0.25);
-    padding: 32px;
-    width: 100%;
-    max-width: 450px;
+    /* Glassmorphism premium */
+    background: linear-gradient(135deg, #f3f6fa 0%, #eaf1fb 100%);
+    border-radius: 18px;
+    box-shadow: 0 8px 40px 0 rgba(30,60,114,0.18), 0 1.5px 8px 0 rgba(110,69,226,0.08);
+    padding: 38px 32px 32px 32px;
+    max-width: 370px;
     color: #1e3c72;
+    position: relative;
+    z-index: 1;
+    backdrop-filter: blur(18px) saturate(1.2);
+    -webkit-backdrop-filter: blur(18px) saturate(1.2);
+    border: none;
+    animation: fadeInUp 1s cubic-bezier(.4,1.4,.6,1) 0.2s both;
+    transition: box-shadow 0.3s;
 }
-
-/* TITULOS */
+.cadastro-container:hover, .cadastro-container:focus-within {
+    box-shadow: 0 18px 64px 0 rgba(30,60,114,0.22), 0 2px 16px 0 rgba(110,69,226,0.13);
+    border-color: rgba(110,69,226,0.18);
+}
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(32px);}
+    to { opacity: 1; transform: translateY(0);}
+}
 .cadastro-container h2 {
-    margin: 0 0 6px;
-    font-size: 1.5rem;
+    margin: 0 0 8px;
+    font-size: 2.1rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    color: #1a2980;
+    text-shadow: 0 2px 12px #26d0ce22;
 }
-
 .cadastro-container > p {
-    margin: 0 0 20px;
-    color: #666;
+    margin: 0 0 24px;
+    color: #4fc3f7;
+    font-size: 1.08rem;
+    font-weight: 500;
+    letter-spacing: 0.2px;
 }
-
-/* FORM */
-.form-group { margin-bottom: 14px; }
-
+.form-group { margin-bottom: 18px; }
 .form-group label {
     display: block;
-    font-weight: 600;
-    margin-bottom: 6px;
+    font-weight: 700;
+    margin-bottom: 7px;
+    color: #1a2980;
+    letter-spacing: 0.2px;
+    font-size: 1rem;
 }
-
 .input-wrapper {
     position: relative;
     display: flex;
     align-items: center;
 }
-
 .form-group input {
     width: 100%;
-    padding: 12px 40px;
-    border: 2px solid #e0e0e0;
-    border-radius: 10px;
-    font-size: 0.95rem;
-    background: #fafbfc;
-    transition: .2s;
-}
-
-.form-group input:focus {
-    border-color: #4fc3f7;
-    background: #fff;
-    box-shadow: 0 0 0 3px rgba(79,195,247,0.15);
-    outline: none;
-}
-
-.icon {
-    position: absolute;
-    left: 12px;
-    color: #4fc3f7;
-}
-
-/* BOTÃO */
-.btn-group { margin-top: 20px; }
-
-.whatsapp-btn {
-    width: 100%;
-    background: linear-gradient(135deg, #25D366, #128C7E);
-    color: #fff;
+    padding: 12px 44px 12px 44px;
     border: none;
     border-radius: 10px;
-    padding: 14px;
-    font-size: 1rem;
-    font-weight: 700;
+    font-size: 1.05rem;
+    background: #f3f6fa;
+    color: #222;
+    font-weight: 500;
+    box-shadow: 0 1.5px 8px 0 rgba(110,69,226,0.04);
+    outline: none;
+    transition: box-shadow 0.2s, background 0.2s;
+}
+.form-group input:focus {
+    background: #eaf1fb;
+    box-shadow: 0 0 0 2px #2563eb33;
+}
+.icon {
+    position: absolute;
+    left: 16px;
+    color: #6e45e2;
+    font-size: 1.15rem;
+    pointer-events: none;
+}
+.toggle-password {
+    position: absolute;
+    right: 12px;
+    background: none;
+    border: none;
     cursor: pointer;
-    transition: .2s;
+    color: #6e45e2;
+    font-size: 1.1rem;
+    padding: 6px;
+    transition: color 0.2s;
 }
-
+.toggle-password:hover {
+    color: #1a2980;
+}
+.btn-group { margin-top: 28px; }
+.whatsapp-btn {
+    width: 100%;
+    background: linear-gradient(90deg, #6e45e2 0%, #26d0ce 100%);
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    padding: 16px 0;
+    font-size: 1.13rem;
+    font-weight: 800;
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(.4,1.4,.6,1);
+    box-shadow: 0 4px 18px 0 rgba(110,69,226,0.13);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    position: relative;
+    overflow: hidden;
+    outline: none;
+}
+.whatsapp-btn:after {
+    content: "";
+    position: absolute;
+    left: 50%; top: 50%;
+    width: 0; height: 0;
+    background: rgba(255,255,255,0.18);
+    border-radius: 50%;
+    transform: translate(-50%,-50%);
+    transition: width 0.4s cubic-bezier(.4,1.4,.6,1), height 0.4s cubic-bezier(.4,1.4,.6,1);
+    z-index: 0;
+}
+.whatsapp-btn:active:after {
+    width: 180%;
+    height: 180%;
+}
 .whatsapp-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+    background: linear-gradient(90deg, #26d0ce 0%, #6e45e2 100%);
+    box-shadow: 0 8px 32px 0 rgba(110,69,226,0.18);
+    transform: translateY(-2px) scale(1.03);
 }
-
-/* LINK LOGIN */
 .login-link {
-    margin-top: 18px;
+    margin-top: 22px;
     text-align: center;
-    font-size: 0.9rem;
+    font-size: 1.01rem;
+    color: #6e45e2;
+    font-weight: 500;
 }
-
 .login-link a {
-    color: #1e88e5;
+    color: #1a2980;
     text-decoration: none;
     font-weight: bold;
+    transition: color 0.2s;
+    position: relative;
 }
-
-/* RESPONSIVO (sem mudar cores) */
-@media (max-width: 600px) {
+.login-link a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #26d0ce;
+    transition: width 0.3s;
+}
+.login-link a:hover::after {
+    width: 100%;
+}
+.login-link a:hover {
+    color: #26d0ce;
+}
+@media (max-width: 700px) {
+    .logo { margin: 32px 0 18px; }
     .cadastro-container {
-        padding: 20px;
-        margin: 10px;
+        max-width: 98vw;
+        padding: 24px 4vw 18px 4vw;
+        margin: 0 0 24px 0;
     }
+    .btn-group { margin-top: 18px; }
+}
+@media (max-width: 500px) {
+    .cadastro-container {
+        padding: 12px 2vw 10px 2vw;
+    }
+    .logo img { width: 120px; }
+    .cadastro-container h2 { font-size: 1.25rem; }
+    .cadastro-container > p { font-size: 0.97rem; }
+}
+@media (max-width: 400px) {
+    .cadastro-container {
+        padding: 6px 1vw 6px 1vw;
+    }
+}
+/* Animação de foco nos inputs */
+.form-group input:focus-visible {
+    animation: inputFocusPulse 0.5s;
+}
+@keyframes inputFocusPulse {
+    0% { box-shadow: 0 0 0 0 #26d0ce33; }
+    70% { box-shadow: 0 0 0 8px #26d0ce33; }
+    100% { box-shadow: 0 0 0 3px #26d0ce33; }
 }
 </style>
 
@@ -136,11 +248,10 @@ body {
 <body>
 
 <div class="logo">
-    <img src="img/logosombra.png" alt="Logo">
+    <img src="img/logo escura png.png" alt="Logo">
 </div>
 
-<form class="cadastro-container">
-
+<form class="cadastro-container" id="formularioCadastro">
     <h2>Crie sua conta</h2>
     <p>Preencha os dados para cadastrar sua empresa no sistema</p>
 
@@ -148,7 +259,7 @@ body {
         <label>Nome da Empresa</label>
         <div class="input-wrapper">
             <span class="icon"><i class="fa fa-building"></i></span>
-            <input type="text" placeholder="Minha Empresa Ltda" required>
+            <input type="text" id="empresa" placeholder="Minha Empresa Ltda" required>
         </div>
     </div>
 
@@ -156,7 +267,7 @@ body {
         <label>E-mail</label>
         <div class="input-wrapper">
             <span class="icon"><i class="fa fa-envelope"></i></span>
-            <input type="email" placeholder="seu@email.com" required>
+            <input type="email" id="email" placeholder="seu@email.com" required>
         </div>
     </div>
 
@@ -164,7 +275,7 @@ body {
         <label>CNPJ ou CPF</label>
         <div class="input-wrapper">
             <span class="icon"><i class="fa fa-id-card"></i></span>
-            <input type="text" placeholder="00.000.000/0001-00" required>
+            <input type="text" id="documento" placeholder="00.000.000/0001-00" required>
         </div>
     </div>
 
@@ -172,7 +283,7 @@ body {
         <label>WhatsApp</label>
         <div class="input-wrapper">
             <span class="icon"><i class="fa fa-mobile-alt"></i></span>
-            <input type="tel" placeholder="(99) 99999-9999" required>
+            <input type="tel" id="whatsapp" placeholder="(99) 99999-9999" required>
         </div>
     </div>
 
@@ -180,7 +291,7 @@ body {
         <label>Endereço</label>
         <div class="input-wrapper">
             <span class="icon"><i class="fa fa-map-marker-alt"></i></span>
-            <input type="text" placeholder="Rua, número, bairro, cidade" required>
+            <input type="text" id="endereco" placeholder="Rua, número, bairro, cidade" required>
         </div>
     </div>
 
@@ -188,8 +299,22 @@ body {
         <label>Senha</label>
         <div class="input-wrapper">
             <span class="icon"><i class="fa fa-lock"></i></span>
-            <input type="password" placeholder="Digite sua senha" required>
+            <input type="password" id="senha" placeholder="Digite sua senha" required>
+            <button type="button" class="toggle-password" onclick="togglePassword('senha', this)">
+                <i class="fa fa-eye"></i>
+            </button>
         </div>
+    </div>
+    <div class="form-group">
+        <label>Confirmar Senha</label>
+        <div class="input-wrapper">
+            <span class="icon"><i class="fa fa-lock"></i></span>
+            <input type="password" id="confirmar-senha" placeholder="Confirme sua senha" required>
+            <button type="button" class="toggle-password" onclick="togglePassword('confirmar-senha', this)">
+                <i class="fa fa-eye"></i>
+            </button>
+        </div>
+        <div id="confirmacaoSenha" style="margin-top:8px;font-size:0.95em;color:#c62828;display:none;"></div>
     </div>
 
     <div class="btn-group">
@@ -214,74 +339,24 @@ body {
             }
         }
 
-        function validarSenha() {
-            const senha = document.getElementById('senha').value;
-            const senhaForte = document.getElementById('senhaForte');
-            const temLength = senha.length >= 8;
-            const temUpperCase = /[A-Z]/.test(senha);
-            const temNumber = /[0-9]/.test(senha);
-            const temSpecial = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(senha);
-
-            document.getElementById('req-length').classList.toggle('met', temLength);
-            document.getElementById('req-length').classList.toggle('unmet', !temLength);
-            document.getElementById('req-length').querySelector('i').className = temLength ? 'fa fa-check' : 'fa fa-circle';
-
-            document.getElementById('req-upper').classList.toggle('met', temUpperCase);
-            document.getElementById('req-upper').classList.toggle('unmet', !temUpperCase);
-            document.getElementById('req-upper').querySelector('i').className = temUpperCase ? 'fa fa-check' : 'fa fa-circle';
-
-            document.getElementById('req-number').classList.toggle('met', temNumber);
-            document.getElementById('req-number').classList.toggle('unmet', !temNumber);
-            document.getElementById('req-number').querySelector('i').className = temNumber ? 'fa fa-check' : 'fa fa-circle';
-
-            document.getElementById('req-special').classList.toggle('met', temSpecial);
-            document.getElementById('req-special').classList.toggle('unmet', !temSpecial);
-            document.getElementById('req-special').querySelector('i').className = temSpecial ? 'fa fa-check' : 'fa fa-circle';
-
-            if (senha.length === 0) {
-                senhaForte.classList.remove('show');
-                return;
-            }
-
-            let forcaCount = 0;
-            if (temLength) forcaCount++;
-            if (temUpperCase) forcaCount++;
-            if (temNumber) forcaCount++;
-            if (temSpecial) forcaCount++;
-
-            senhaForte.classList.add('show');
-            senhaForte.classList.remove('fraca', 'media', 'forte');
-
-            if (forcaCount <= 1) {
-                senhaForte.textContent = '❌ Senha fraca - Adicione mais requisitos';
-                senhaForte.classList.add('fraca');
-            } else if (forcaCount === 2 || forcaCount === 3) {
-                senhaForte.textContent = '⚠️ Senha média - Atenda a todos os requisitos';
-                senhaForte.classList.add('media');
-            } else {
-                senhaForte.textContent = '✅ Senha forte - Excelente!';
-                senhaForte.classList.add('forte');
-            }
-            validarConfirmacao();
-        }
+        document.getElementById('senha').addEventListener('input', validarConfirmacao);
+        document.getElementById('confirmar-senha').addEventListener('input', validarConfirmacao);
 
         function validarConfirmacao() {
             const senha = document.getElementById('senha').value;
             const confirmar = document.getElementById('confirmar-senha').value;
             const confirmacaoElement = document.getElementById('confirmacaoSenha');
             if (confirmar.length === 0) {
-                confirmacaoElement.classList.remove('show');
+                confirmacaoElement.style.display = 'none';
                 return;
             }
-            confirmacaoElement.classList.add('show');
+            confirmacaoElement.style.display = 'block';
             if (senha === confirmar) {
                 confirmacaoElement.textContent = '✅ Senhas conferem!';
-                confirmacaoElement.classList.add('match');
-                confirmacaoElement.classList.remove('show');
-                setTimeout(() => confirmacaoElement.classList.add('show'), 10);
+                confirmacaoElement.style.color = '#2e7d32';
             } else {
                 confirmacaoElement.textContent = '❌ As senhas não conferem';
-                confirmacaoElement.classList.remove('match');
+                confirmacaoElement.style.color = '#c62828';
             }
         }
 
@@ -344,7 +419,7 @@ body {
 Por favor, criar o usuário no sistema.`;
             const mensagemCodificada = encodeURIComponent(mensagem);
             const numeroWhatsApp = '5562994496323';
-            const urlWhatsApp = `https://wa.me/${5562994496323}?text=${mensagemCodificada}`;
+            const urlWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${mensagemCodificada}`;
             window.open(urlWhatsApp, '_blank');
         }
 
