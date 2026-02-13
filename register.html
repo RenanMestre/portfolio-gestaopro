@@ -17,7 +17,7 @@ body {
     align-items: center;
     padding: 0;
     /* Gradiente premium azul-violeta com brilho */
-    background: linear-gradient(120deg, #1a2980 0%, #2563eb 40%, #100431 100%);
+    background: linear-gradient(120deg, #1a2980 0%, #26d0ce 40%, #6e45e2 100%);
     /* fallback para navegadores antigos */
     background-color: #1a2980;
     position: relative;
@@ -218,6 +218,81 @@ body::before {
     }
     .btn-group { margin-top: 18px; }
 }
+@media (max-width: 600px) {
+    body {
+        padding: 0;
+        min-height: 100vh;
+        background: linear-gradient(120deg, #1a2980 0%, #26d0ce 40%, #6e45e2 100%);
+        /* Mantém o gradiente premium */
+    }
+    .cadastro-container {
+        max-width: 98vw;
+        padding: 16px 3vw 12px 3vw;
+        margin: 0 auto 24px auto;
+        border-radius: 16px;
+        box-shadow: 0 6px 24px 0 rgba(30,60,114,0.18), 0 1px 6px 0 rgba(110,69,226,0.08);
+        background: rgba(255,255,255,0.92);
+        /* Glassmorphism mais claro para mobile */
+    }
+    .logo img {
+        width: 90px !important;
+        margin-bottom: 6px;
+        border-radius: 10px;
+        box-shadow: 0 2px 8px #1a298022;
+    }
+    .cadastro-container h2 {
+        font-size: 1.15rem;
+        margin-bottom: 2px;
+        text-align: center;
+    }
+    .cadastro-container > p {
+        font-size: 0.93rem;
+        margin-bottom: 16px;
+        text-align: center;
+    }
+    .form-group {
+        margin-bottom: 14px;
+        gap: 0;
+    }
+    .form-group label {
+        font-size: 0.93rem;
+        margin-bottom: 2px;
+        color: #2563eb;
+    }
+    .input-wrapper {
+        flex-direction: row;
+        align-items: center;
+    }
+    .form-group input {
+        font-size: 0.98rem;
+        padding: 10px 36px 10px 36px;
+        border-radius: 8px;
+        background: #f3f6fa;
+    }
+    .toggle-password {
+        font-size: 1rem;
+        padding: 4px;
+        right: 8px;
+    }
+    .icon {
+        left: 10px;
+        font-size: 1rem;
+    }
+    .btn-group {
+        margin-top: 12px;
+    }
+    .whatsapp-btn {
+        font-size: 1.01rem;
+        padding: 12px 0;
+        border-radius: 8px;
+        box-shadow: 0 2px 12px 0 rgba(110,69,226,0.13);
+    }
+    .login-link {
+        font-size: 0.93rem;
+        margin-top: 14px;
+        text-align: center;
+    }
+}
 @media (max-width: 500px) {
     .cadastro-container {
         padding: 12px 2vw 10px 2vw;
@@ -228,7 +303,32 @@ body::before {
 }
 @media (max-width: 400px) {
     .cadastro-container {
-        padding: 6px 1vw 6px 1vw;
+        padding: 8px 1vw 8px 1vw;
+        border-radius: 8px;
+    }
+    .logo img {
+        width: 70px !important;
+    }
+    .cadastro-container h2 {
+        font-size: 1rem;
+    }
+    .cadastro-container > p {
+        font-size: 0.85rem;
+    }
+    .form-group input {
+        font-size: 0.93rem;
+        padding: 8px 28px 8px 28px;
+    }
+    .btn-group {
+        margin-top: 8px;
+    }
+    .whatsapp-btn {
+        font-size: 0.95rem;
+        padding: 10px 0;
+    }
+    .login-link {
+        font-size: 0.85rem;
+        margin-top: 10px;
     }
 }
 /* Animação de foco nos inputs */
