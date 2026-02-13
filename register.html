@@ -10,7 +10,7 @@
         }
 
         body {
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            background: linear-gradient(90deg, #1a3a70 0%, #0099ff 100%);
             min-height: 100vh;
             margin: 0;
             font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -43,6 +43,12 @@
         .logo img {
             width: 100px;
             height: auto;
+            filter: drop-shadow(0 8px 16px rgba(0,0,0,0.4)) drop-shadow(0 4px 8px rgba(0,0,0,0.2));
+            transition: filter 0.3s ease;
+        }
+
+        .logo img:hover {
+            filter: drop-shadow(0 12px 24px rgba(0,0,0,0.5)) drop-shadow(0 6px 12px rgba(0,0,0,0.3));
         }
 
         .logo h1 {
@@ -63,7 +69,7 @@
         }
 
         .cadastro-container {
-            background: rgba(255,255,255,0.97);
+            background: rgba(255,255,255,0.85);
             border-radius: 20px;
             box-shadow: 0 12px 40px rgba(30,60,114,0.25),
                         0 0 1px rgba(30,60,114,0.1);
@@ -175,9 +181,14 @@
             color: #1e88e5;
         }
 
-        .cadastro-btn {
+        .btn-group {
+            display: flex;
+            gap: 10px;
             margin-top: 20px;
-            background: linear-gradient(135deg, #4fc3f7 0%, #81c784 100%);
+        }
+
+        .cadastro-btn, .whatsapp-btn {
+            flex: 1;
             color: #fff;
             border: none;
             border-radius: 10px;
@@ -186,14 +197,23 @@
             font-weight: 700;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(79, 195, 247, 0.3);
             letter-spacing: 0.5px;
             text-transform: uppercase;
             position: relative;
             overflow: hidden;
         }
 
-        .cadastro-btn::before {
+        .cadastro-btn {
+            background: linear-gradient(135deg, #4fc3f7 0%, #81c784 100%);
+            box-shadow: 0 4px 15px rgba(79, 195, 247, 0.3);
+        }
+
+        .whatsapp-btn {
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+        }
+
+        .cadastro-btn::before, .whatsapp-btn::before {
             content: '';
             position: absolute;
             top: 0;
@@ -210,11 +230,17 @@
             transform: translateY(-2px);
         }
 
-        .cadastro-btn:hover::before {
+        .whatsapp-btn:hover {
+            background: linear-gradient(135deg, #1da851 0%, #0f7d56 100%);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .cadastro-btn:hover::before, .whatsapp-btn:hover::before {
             left: 100%;
         }
 
-        .cadastro-btn:active {
+        .cadastro-btn:active, .whatsapp-btn:active {
             transform: translateY(0);
         }
 
@@ -246,6 +272,86 @@
 
         .login-link a:hover::after {
             width: 100%;
+        }
+
+        .password-strength {
+            display: none;
+            margin-top: 8px;
+            padding: 10px;
+            border-radius: 6px;
+            font-size: clamp(0.75rem, 2vw, 0.85rem);
+            font-weight: 600;
+        }
+
+        .password-strength.show {
+            display: block;
+        }
+
+        .password-strength.fraca {
+            background-color: #ffebee;
+            color: #c62828;
+            border-left: 4px solid #c62828;
+        }
+
+        .password-strength.media {
+            background-color: #fff3e0;
+            color: #e65100;
+            border-left: 4px solid #e65100;
+        }
+
+        .password-strength.forte {
+            background-color: #e8f5e9;
+            color: #2e7d32;
+            border-left: 4px solid #2e7d32;
+        }
+
+        .password-requirements {
+            margin-top: 8px;
+            font-size: clamp(0.75rem, 2vw, 0.85rem);
+            color: #666;
+        }
+
+        .requirement {
+            display: flex;
+            align-items: center;
+            margin: 4px 0;
+        }
+
+        .requirement i {
+            width: 18px;
+            text-align: center;
+            margin-right: 6px;
+            font-size: 0.9rem;
+        }
+
+        .requirement.met {
+            color: #2e7d32;
+        }
+
+        .requirement.unmet {
+            color: #c62828;
+        }
+
+        .password-match {
+            display: none;
+            margin-top: 8px;
+            padding: 10px;
+            border-radius: 6px;
+            font-size: clamp(0.75rem, 2vw, 0.85rem);
+            font-weight: 600;
+            border-left: 4px solid #c62828;
+            background-color: #ffebee;
+            color: #c62828;
+        }
+
+        .password-match.show {
+            display: block;
+        }
+
+        .password-match.match {
+            border-left-color: #2e7d32;
+            background-color: #e8f5e9;
+            color: #2e7d32;
         }
 
         /* Responsivo para tablets e maiores */
@@ -289,8 +395,13 @@
                 font-size: 16px; /* Evita zoom automático no iOS */
             }
 
-            .cadastro-btn {
+            .btn-group {
+                flex-direction: column;
+                gap: 8px;
                 margin-top: 16px;
+            }
+
+            .cadastro-btn, .whatsapp-btn {
                 padding: 11px 20px;
             }
         }
@@ -350,9 +461,9 @@
 </head>
 <body>
     <div class="logo">
-        <img src="img/logo escura png.png" alt="Logo GESTÃOPRO" style="width: 160px; height: auto;" onerror="this.style.display='none'">
+        <img src="img/logosombra.png" alt="Logo GESTÃOPRO" style="width: 160px; height: auto;" onerror="this.style.display='none'">
     </div>
-    <form class="cadastro-container" autocomplete="off">
+    <form class="cadastro-container" autocomplete="off" id="formularioCadastro">
         <h2>Crie sua conta</h2>
         <p>Preencha os dados para cadastrar sua empresa no sistema</p>
         
@@ -383,7 +494,7 @@
         <div class="form-group">
             <label for="whatsapp">WhatsApp</label>
             <div class="input-wrapper">
-                <span class="icon"><i class="fa fa-whatsapp"></i></span>
+                <span class="icon"><i class="fa fa-mobile-alt"></i></span>
                 <input type="tel" id="whatsapp" name="whatsapp" placeholder="(99) 99999-9999" required>
             </div>
         </div>
@@ -400,10 +511,25 @@
             <label for="senha">Senha</label>
             <div class="input-wrapper">
                 <span class="icon"><i class="fa fa-lock"></i></span>
-                <input type="password" id="senha" name="senha" placeholder="Digite sua senha" required>
+                <input type="password" id="senha" name="senha" placeholder="Digite sua senha" required oninput="validarSenha()">
                 <button type="button" class="toggle-password" onclick="togglePassword('senha', this)">
                     <i class="fa fa-eye"></i>
                 </button>
+            </div>
+            <div class="password-strength" id="senhaForte"></div>
+            <div class="password-requirements">
+                <div class="requirement unmet" id="req-length">
+                    <i class="fa fa-circle"></i> Mínimo 8 caracteres
+                </div>
+                <div class="requirement unmet" id="req-upper">
+                    <i class="fa fa-circle"></i> Letra maiúscula (A-Z)
+                </div>
+                <div class="requirement unmet" id="req-number">
+                    <i class="fa fa-circle"></i> Número (0-9)
+                </div>
+                <div class="requirement unmet" id="req-special">
+                    <i class="fa fa-circle"></i> Caractere especial (!@#$%^&*)
+                </div>
             </div>
         </div>
 
@@ -411,14 +537,19 @@
             <label for="confirmar-senha">Confirmar Senha</label>
             <div class="input-wrapper">
                 <span class="icon"><i class="fa fa-lock"></i></span>
-                <input type="password" id="confirmar-senha" name="confirmar-senha" placeholder="Confirme sua senha" required>
+                <input type="password" id="confirmar-senha" name="confirmar-senha" placeholder="Confirme sua senha" required oninput="validarConfirmacao()">
                 <button type="button" class="toggle-password" onclick="togglePassword('confirmar-senha', this)">
                     <i class="fa fa-eye"></i>
                 </button>
             </div>
+            <div class="password-match" id="confirmacaoSenha"></div>
         </div>
 
-        <button type="submit" class="cadastro-btn">Cadastrar</button>
+        <div class="btn-group">
+            <button type="button" class="whatsapp-btn" onclick="enviarWhatsApp(event)">
+                Criar conta
+            </button>
+        </div>
         
         <div class="login-link">
             Já tem uma conta? <a href="https://gestaoproapp.com.br/">Entrar aqui</a>
@@ -434,6 +565,88 @@
             } else {
                 input.type = "password";
                 btn.innerHTML = '<i class="fa fa-eye"></i>';
+            }
+        }
+
+        // Validação de força de senha
+        function validarSenha() {
+            const senha = document.getElementById('senha').value;
+            const senhaForte = document.getElementById('senhaForte');
+
+            // Validação de requisitos
+            const temLength = senha.length >= 8;
+            const temUpperCase = /[A-Z]/.test(senha);
+            const temNumber = /[0-9]/.test(senha);
+            const temSpecial = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(senha);
+
+            // Atualizar requisitos visuais
+            document.getElementById('req-length').classList.toggle('met', temLength);
+            document.getElementById('req-length').classList.toggle('unmet', !temLength);
+            document.getElementById('req-length').querySelector('i').className = temLength ? 'fa fa-check' : 'fa fa-circle';
+
+            document.getElementById('req-upper').classList.toggle('met', temUpperCase);
+            document.getElementById('req-upper').classList.toggle('unmet', !temUpperCase);
+            document.getElementById('req-upper').querySelector('i').className = temUpperCase ? 'fa fa-check' : 'fa fa-circle';
+
+            document.getElementById('req-number').classList.toggle('met', temNumber);
+            document.getElementById('req-number').classList.toggle('unmet', !temNumber);
+            document.getElementById('req-number').querySelector('i').className = temNumber ? 'fa fa-check' : 'fa fa-circle';
+
+            document.getElementById('req-special').classList.toggle('met', temSpecial);
+            document.getElementById('req-special').classList.toggle('unmet', !temSpecial);
+            document.getElementById('req-special').querySelector('i').className = temSpecial ? 'fa fa-check' : 'fa fa-circle';
+
+            // Calcular força da senha
+            if (senha.length === 0) {
+                senhaForte.classList.remove('show');
+                return;
+            }
+
+            let forcaCount = 0;
+            if (temLength) forcaCount++;
+            if (temUpperCase) forcaCount++;
+            if (temNumber) forcaCount++;
+            if (temSpecial) forcaCount++;
+
+            senhaForte.classList.add('show');
+            senhaForte.classList.remove('fraca', 'media', 'forte');
+
+            if (forcaCount <= 1) {
+                senhaForte.textContent = '❌ Senha fraca - Adicione mais requisitos';
+                senhaForte.classList.add('fraca');
+            } else if (forcaCount === 2 || forcaCount === 3) {
+                senhaForte.textContent = '⚠️ Senha média - Atenda a todos os requisitos';
+                senhaForte.classList.add('media');
+            } else {
+                senhaForte.textContent = '✅ Senha forte - Excelente!';
+                senhaForte.classList.add('forte');
+            }
+
+            // Validar confirmação se houver
+            validarConfirmacao();
+        }
+
+        // Validação de confirmação de senha
+        function validarConfirmacao() {
+            const senha = document.getElementById('senha').value;
+            const confirmar = document.getElementById('confirmar-senha').value;
+            const confirmacaoElement = document.getElementById('confirmacaoSenha');
+
+            if (confirmar.length === 0) {
+                confirmacaoElement.classList.remove('show');
+                return;
+            }
+
+            confirmacaoElement.classList.add('show');
+
+            if (senha === confirmar) {
+                confirmacaoElement.textContent = '✅ Senhas conferem!';
+                confirmacaoElement.classList.add('match');
+                confirmacaoElement.classList.remove('show');
+                setTimeout(() => confirmacaoElement.classList.add('show'), 10);
+            } else {
+                confirmacaoElement.textContent = '❌ As senhas não conferem';
+                confirmacaoElement.classList.remove('match');
             }
         }
 
@@ -456,10 +669,83 @@
             e.target.value = value;
         });
 
-        // Validação ao submeter
-        document.querySelector('form').addEventListener('submit', function(e) {
+        // Função para validar antes de enviar
+        function validarFormulario() {
+            const senha = document.getElementById('senha').value;
+            const confirmarSenha = document.getElementById('confirmar-senha').value;
+
+            // Verificar se as senhas conferem
+            if (senha !== confirmarSenha) {
+                alert('As senhas não conferem!');
+                return false;
+            }
+
+            // Verificar força da senha
+            const temLength = senha.length >= 8;
+            const temUpperCase = /[A-Z]/.test(senha);
+            const temNumber = /[0-9]/.test(senha);
+            const temSpecial = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(senha);
+
+            if (!(temLength && temUpperCase && temNumber && temSpecial)) {
+                alert('A senha não atende aos requisitos de segurança! Verifique os requisitos abaixo.');
+                return false;
+            }
+
+            return true;
+        }
+
+        // Função para enviar WhatsApp
+        function enviarWhatsApp(event) {
+            event.preventDefault();
+
+            // Validar senhas primeiro
+            if (!validarFormulario()) {
+                return;
+            }
+
+            // Validar se os campos estão preenchidos
+            const empresa = document.getElementById('empresa').value;
+            const email = document.getElementById('email').value;
+            const documento = document.getElementById('documento').value;
+            const whatsapp = document.getElementById('whatsapp').value;
+            const endereco = document.getElementById('endereco').value;
+            const senha = document.getElementById('senha').value;
+
+            if (!empresa || !email || !documento || !whatsapp || !endereco || !senha) {
+                alert('Por favor, preencha todos os campos obrigatórios!');
+                return;
+            }
+
+            // Criar mensagem formatada
+            const mensagem = `Olá! Gostaria de registrar um novo usuário com os seguintes dados:
+
+*Empresa:* ${empresa}
+*E-mail:* ${email}
+*CNPJ/CPF:* ${documento}
+*WhatsApp:* ${whatsapp}
+*Endereço:* ${endereco}
+
+Por favor, criar o usuário no sistema.`;
+
+            // Codificar a mensagem
+            const mensagemCodificada = encodeURIComponent(mensagem);
+
+            // SEU NÚMERO DO WHATSAPP (altere para seu número)
+            const numeroWhatsApp = '5562994496323'; // Exemplo: 55 + DDD + número
+
+            // Abrir WhatsApp
+            const urlWhatsApp = `https://wa.me/${5562994496323}?text=${mensagemCodificada}`;
+            window.open(urlWhatsApp, '_blank');
+        }
+
+        // Validação ao submeter formulário
+        document.getElementById('formularioCadastro').addEventListener('submit', function(e) {
             e.preventDefault();
-            alert('Formulário enviado! (Este é um exemplo - configure o backend)');
+
+            if (validarFormulario()) {
+                alert('Formulário enviado com sucesso! (Configure o backend para salvar os dados)');
+                // Aqui você pode adicionar código para enviar os dados ao servidor
+            }
         });
     </script>
 </body>
