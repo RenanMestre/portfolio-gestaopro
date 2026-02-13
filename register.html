@@ -17,7 +17,7 @@ body {
     align-items: center;
     padding: 0;
     /* Gradiente premium azul-violeta com brilho */
-    background: linear-gradient(120deg, #1a2980 0%, #26d0ce 40%, #6e45e2 100%);
+    background: linear-gradient(120deg, #1a2980 0%, #2563eb 40%, #13074b 100%);
     /* fallback para navegadores antigos */
     background-color: #1a2980;
     position: relative;
@@ -222,17 +222,22 @@ body::before {
     body {
         padding: 0;
         min-height: 100vh;
-        background: linear-gradient(120deg, #1a2980 0%, #26d0ce 40%, #6e45e2 100%);
-        /* Mantém o gradiente premium */
+        background: linear-gradient(120deg, #1a2980 0%, #2563eb 40%, #13074b 100%);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
     }
     .cadastro-container {
-        max-width: 98vw;
-        padding: 16px 3vw 12px 3vw;
-        margin: 0 auto 24px auto;
-        border-radius: 16px;
-        box-shadow: 0 6px 24px 0 rgba(30,60,114,0.18), 0 1px 6px 0 rgba(110,69,226,0.08);
-        background: rgba(255,255,255,0.92);
-        /* Glassmorphism mais claro para mobile */
+        max-width: 95vw;
+        padding: 24px 6vw 18px 6vw;
+        margin: 0 auto 32px auto;
+        border-radius: 18px;
+        box-shadow: 0 8px 32px 0 rgba(30,60,114,0.18), 0 1px 6px 0 rgba(110,69,226,0.08);
+        background: rgba(255,255,255,0.96);
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
     }
     .logo img {
         width: 90px !important;
@@ -241,12 +246,12 @@ body::before {
         box-shadow: 0 2px 8px #1a298022;
     }
     .cadastro-container h2 {
-        font-size: 1.15rem;
+        font-size: 1.18rem;
         margin-bottom: 2px;
         text-align: center;
     }
     .cadastro-container > p {
-        font-size: 0.93rem;
+        font-size: 0.95rem;
         margin-bottom: 16px;
         text-align: center;
     }
@@ -279,7 +284,7 @@ body::before {
         font-size: 1rem;
     }
     .btn-group {
-        margin-top: 12px;
+        margin-top: 16px;
     }
     .whatsapp-btn {
         font-size: 1.01rem;
@@ -293,18 +298,13 @@ body::before {
         text-align: center;
     }
 }
-@media (max-width: 500px) {
-    .cadastro-container {
-        padding: 12px 2vw 10px 2vw;
-    }
-    .logo img { width: 120px; }
-    .cadastro-container h2 { font-size: 1.25rem; }
-    .cadastro-container > p { font-size: 0.97rem; }
-}
 @media (max-width: 400px) {
     .cadastro-container {
-        padding: 8px 1vw 8px 1vw;
-        border-radius: 8px;
+        padding: 12px 4vw 12px 4vw;
+        border-radius: 10px;
+        max-width: 98vw;
+        left: 50%;
+        transform: translateX(-50%);
     }
     .logo img {
         width: 70px !important;
@@ -320,7 +320,7 @@ body::before {
         padding: 8px 28px 8px 28px;
     }
     .btn-group {
-        margin-top: 8px;
+        margin-top: 10px;
     }
     .whatsapp-btn {
         font-size: 0.95rem;
@@ -348,12 +348,14 @@ body::before {
 <body>
 
 <div class="logo">
-    <img src="img/logo escura png.png" alt="Logo">
 </div>
 
 <form class="cadastro-container" id="formularioCadastro">
+    <div class="logo">
+    <img src="img/logo clara png.png" alt="Logo">
+</div>
     <h2>Crie sua conta</h2>
-    <p>Preencha os dados para cadastrar sua empresa no sistema</p>
+    <p style="color: #444;">Preencha os dados para cadastrar sua empresa no sistema</p>
 
     <div class="form-group">
         <label>Nome da Empresa</label>
