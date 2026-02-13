@@ -396,8 +396,8 @@ body::before {
 
 <form class="cadastro-container" id="formularioCadastro">
     <div class="logo">
-    <img src="img/logo clara png.png" alt="Logo">
-</div>
+        <img src="img/logo clara png.png" alt="Logo">
+    </div>
     <h2>Crie sua conta</h2>
     <p style="color: #444;">Preencha os dados para cadastrar sua empresa no sistema</p>
 
@@ -445,17 +445,24 @@ body::before {
         <label>Senha</label>
         <div class="input-wrapper">
             <span class="icon"><i class="fa fa-lock"></i></span>
-            <input type="password" id="senha" placeholder="Digite sua senha" required>
+            <input type="password" id="senha" placeholder="Digite sua senha" required oninput="validarSenha()">
             <button type="button" class="toggle-password" onclick="togglePassword('senha', this)">
                 <i class="fa fa-eye"></i>
             </button>
+        </div>
+        <div id="senhaForte" class="password-strength" style="margin-top:8px;font-size:0.95em;display:none;"></div>
+        <div class="password-requirements" style="margin-top:6px;font-size:0.93em;">
+            <div id="req-length" class="requirement unmet"><i class="fa fa-circle"></i> Mínimo 8 caracteres</div>
+            <div id="req-upper" class="requirement unmet"><i class="fa fa-circle"></i> Letra maiúscula (A-Z)</div>
+            <div id="req-number" class="requirement unmet"><i class="fa fa-circle"></i> Número (0-9)</div>
+            <div id="req-special" class="requirement unmet"><i class="fa fa-circle"></i> Caractere especial (!@#$%^&*)</div>
         </div>
     </div>
     <div class="form-group">
         <label>Confirmar Senha</label>
         <div class="input-wrapper">
             <span class="icon"><i class="fa fa-lock"></i></span>
-            <input type="password" id="confirmar-senha" placeholder="Confirme sua senha" required>
+            <input type="password" id="confirmar-senha" placeholder="Confirme sua senha" required oninput="validarConfirmacao()">
             <button type="button" class="toggle-password" onclick="togglePassword('confirmar-senha', this)">
                 <i class="fa fa-eye"></i>
             </button>
@@ -485,8 +492,59 @@ body::before {
             }
         }
 
-        document.getElementById('senha').addEventListener('input', validarConfirmacao);
-        document.getElementById('confirmar-senha').addEventListener('input', validarConfirmacao);
+        function validarSenha() {
+            const senha = document.getElementById('senha').value;
+            const senhaForte = document.getElementById('senhaForte');
+            const temLength = senha.length >= 8;
+            const temUpperCase = /[A-Z]/.test(senha);
+            const temNumber = /[0-9]/.test(senha);
+            const temSpecial = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(senha);
+
+            document.getElementById('req-length').classList.toggle('met', temLength);
+            document.getElementById('req-length').classList.toggle('unmet', !temLength);
+            document.getElementById('req-length').querySelector('i').className = temLength ? 'fa fa-check' : 'fa fa-circle';
+
+            document.getElementById('req-upper').classList.toggle('met', temUpperCase);
+            document.getElementById('req-upper').classList.toggle('unmet', !temUpperCase);
+            document.getElementById('req-upper').querySelector('i').className = temUpperCase ? 'fa fa-check' : 'fa fa-circle';
+
+            document.getElementById('req-number').classList.toggle('met', temNumber);
+            document.getElementById('req-number').classList.toggle('unmet', !temNumber);
+            document.getElementById('req-number').querySelector('i').className = temNumber ? 'fa fa-check' : 'fa fa-circle';
+
+            document.getElementById('req-special').classList.toggle('met', temSpecial);
+            document.getElementById('req-special').classList.toggle('unmet', !temSpecial);
+            document.getElementById('req-special').querySelector('i').className = temSpecial ? 'fa fa-check' : 'fa fa-circle';
+
+            if (senha.length === 0) {
+                senhaForte.style.display = 'none';
+                return;
+            }
+
+            let forcaCount = 0;
+            if (temLength) forcaCount++;
+            if (temUpperCase) forcaCount++;
+            if (temNumber) forcaCount++;
+            if (temSpecial) forcaCount++;
+
+            senhaForte.style.display = 'block';
+            senhaForte.classList.remove('fraca', 'media', 'forte');
+
+            if (forcaCount <= 1) {
+                senhaForte.textContent = '❌ Senha fraca - Adicione mais requisitos';
+                senhaForte.classList.add('fraca');
+                senhaForte.style.color = '#c62828';
+            } else if (forcaCount === 2 || forcaCount === 3) {
+                senhaForte.textContent = '⚠️ Senha média - Atenda a todos os requisitos';
+                senhaForte.classList.add('media');
+                senhaForte.style.color = '#e65100';
+            } else {
+                senhaForte.textContent = '✅ Senha forte - Excelente!';
+                senhaForte.classList.add('forte');
+                senhaForte.style.color = '#2e7d32';
+            }
+            validarConfirmacao();
+        }
 
         function validarConfirmacao() {
             const senha = document.getElementById('senha').value;
@@ -505,6 +563,9 @@ body::before {
                 confirmacaoElement.style.color = '#c62828';
             }
         }
+
+        document.getElementById('senha').addEventListener('input', validarSenha);
+        document.getElementById('confirmar-senha').addEventListener('input', validarConfirmacao);
 
         document.getElementById('documento').addEventListener('input', function(e) {
             let value = e.target.value.replace(/\D/g, '');
@@ -541,8 +602,8 @@ body::before {
             return true;
         }
 
-        function enviarWhatsApp(event) {
-            event.preventDefault();
+        document.getElementById('formularioCadastro').addEventListener('submit', function(e) {
+            e.preventDefault();
             if (!validarFormulario()) return;
             const empresa = document.getElementById('empresa').value;
             const email = document.getElementById('email').value;
@@ -567,14 +628,6 @@ Por favor, criar o usuário no sistema.`;
             const numeroWhatsApp = '5562994496323';
             const urlWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${mensagemCodificada}`;
             window.open(urlWhatsApp, '_blank');
-        }
-
-        document.getElementById('formularioCadastro').addEventListener('submit', function(e) {
-            e.preventDefault();
-            if (validarFormulario()) {
-                alert('Formulário enviado com sucesso! (Configure o backend para salvar os dados)');
-                // Aqui você pode adicionar código para enviar os dados ao servidor
-            }
         });
     </script>
 </body>
