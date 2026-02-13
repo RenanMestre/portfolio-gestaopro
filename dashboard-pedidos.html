@@ -1,696 +1,217 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <title>Mundo das Motos - Dashboard de Pedidos</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Jost:400,500,700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --cor-principal: #23272a;
-            --cor-bg: #18191a;
-            --cor-card: #23272a;
-            --cor-texto: #f5f5f5;
-            --cor-preto: #fff;
-            --cor-cinza: #bbb;
-            --cor-borda: #333;
-            --cor-btn: #d90429;
-            --cor-btn-hover: #a0031f;
-            --cor-btn-text: #fff;
-            --cor-footer-bg: #101113;
-            --cor-footer-texto: #fff;
-            --cor-degrade1: #23272a;
-            --cor-degrade2: #18191a;
-            --cor-degrade3: #35363a;
-        }
-        html, body {
-            height: 100%;
-        }
-        body {
-            min-height: 100vh;
-            background: linear-gradient(135deg, var(--cor-degrade1) 0%, var(--cor-degrade2) 60%, var(--cor-degrade3) 100%);
-            color: var(--cor-texto);
-            font-family: 'Jost', Arial, Helvetica, sans-serif;
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        .topo {
-            background: linear-gradient(90deg, #23272a 60%, #18191a 100%);
-            box-shadow: 0 2px 12px #0002;
-            padding: 0;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-        .topo-inner {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 18px 24px;
-        }
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-        }
-        .logo img {
-            height: 48px;
-            width: auto;
-        }
-        .logo span {
-            font-size: 1.5em;
-            font-weight: 700;
-            color: var(--cor-btn);
-            letter-spacing: 2px;
-        }
-        .menu {
-            display: flex;
-            gap: 32px;
-        }
-        .menu a {
-            color: var(--cor-texto);
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 1.1em;
-            padding: 8px 0;
-            border-bottom: 2px solid transparent;
-            transition: border 0.2s, color 0.2s;
-        }
-        .menu a:hover, .menu a.active {
-            color: var(--cor-btn);
-            border-bottom: 2px solid var(--cor-btn);
-        }
-        .dashboard-container {
-            max-width: 1200px;
-            margin: 38px auto 0 auto;
-            background: linear-gradient(120deg, #23272a 60%, #18191a 100%);
-            border-radius: 18px;
-            box-shadow: 0 4px 24px #0007;
-            padding: 32px 12px;
-            display: flex;
-            flex-direction: column;
-            align-items: stretch;
-        }
-        h2 {
-            font-size: 2em;
-            color: var(--cor-btn);
-            margin-bottom: 28px;
-            font-weight: 800;
-            letter-spacing: 1px;
-            text-align: left;
-        }
-        .info-bar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: linear-gradient(90deg, #23272a 60%, #18191a 100%);
-            border-radius: 8px;
-            padding: 14px 22px;
-            margin-bottom: 22px;
-            font-size: 1.08em;
-            color: var(--cor-cinza);
-            font-weight: 600;
-            box-shadow: 0 2px 12px #0002;
-        }
-        .info-bar span {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .table-wrapper {
-            width: 100%;
-            overflow-x: auto;
-            display: flex;
-            justify-content: center;
-        }
-        table {
-            width: 100%;
-            max-width: 1150px;
-            min-width: 800px;
-            margin: 0 auto 18px auto;
-            border-collapse: separate;
-            border-spacing: 0;
-            background: var(--cor-card);
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 2px 12px #0004;
-            font-size: 0.93em;
-            table-layout: fixed;
-        }
-        th, td {
-            padding: 10px 5px;
-            text-align: center;
-            vertical-align: middle;
-            word-break: break-word;
-            font-size: 0.93em;
-        }
-        th {
-            background: var(--cor-btn);
-            color: #fff;
-            font-weight: 700;
-            font-size: 0.95em;
-            border-bottom: 2px solid #23272a;
-            position: sticky;
-            top: 0;
-            z-index: 2;
-            text-align: center;
-            letter-spacing: 0.5px;
-            white-space: nowrap;
-        }
-        /* Ajuste de largura para cada coluna */
-        th:nth-child(1), td:nth-child(1) { width: 7%; min-width: 60px; }
-        th:nth-child(2), td:nth-child(2) { width: 13%; min-width: 110px; }
-        th:nth-child(3), td:nth-child(3) { width: 15%; min-width: 120px; }
-        th:nth-child(4), td:nth-child(4) { width: 8%; min-width: 70px; }
-        th:nth-child(5), td:nth-child(5) { width: 10%; min-width: 90px; }
-        th:nth-child(6), td:nth-child(6) { width: 15%; min-width: 120px; }
-        th:nth-child(7), td:nth-child(7) { width: 10%; min-width: 90px; }
-        th:nth-child(8), td:nth-child(8) { width: 10%; min-width: 90px; }
-        th:nth-child(9), td:nth-child(9) { width: 7%; min-width: 60px; }
-        th:nth-child(10), td:nth-child(10) { width: 8%; min-width: 70px; }
-        tr {
-            background: #23272a;
-            transition: background 0.2s;
-        }
-        tr:nth-child(even) {
-            background: #18191a;
-        }
-        tr.pendente {
-            border-left: 4px solid #ffd600;
-            background: #2a2a1a;
-        }
-        tr.enviado {
-            border-left: 4px solid #43a047;
-            background: #1e2a1e;
-        }
-        td.status {
-            font-weight: 700;
-            font-size: 1em;
-        }
-        .btn-enviar {
-            background: #43a047;
-            color: #fff;
-            border: none;
-            border-radius: 8px;
-            padding: 10px 24px;
-            font-size: 1.08em;
-            font-family: 'Jost', Arial, Helvetica, sans-serif;
-            cursor: pointer;
-            font-weight: 700;
-            transition: background 0.2s;
-            box-shadow: 0 2px 8px #43a04733;
-        }
-        .btn-enviar:hover {
-            background: #388e3c;
-        }
-        .badge {
-            display: inline-block;
-            padding: 4px 12px;
-            border-radius: 12px;
-            font-size: 0.98em;
-            font-weight: 600;
-            color: #fff;
-            background: var(--cor-btn);
-            margin-right: 6px;
-            margin-bottom: 2px;
-            box-shadow: 0 2px 8px #d9042922;
-        }
-        .badge.enviado {
-            background: #43a047;
-        }
-        .whatsapp-btn {
-            display: inline-flex;
-            align-items: center;
-            background: #25d366;
-            color: #fff;
-            padding: 7px 16px;
-            border-radius: 6px;
-            font-weight: 700;
-            text-decoration: none;
-            font-size: 0.92em;
-            box-shadow: 0 2px 8px #25d36633;
-            transition: background 0.2s;
-            border: none;
-            outline: none;
-        }
-        .whatsapp-btn:hover {
-            background: #128c7e;
-        }
-        .whatsapp-btn svg {
-            margin-right: 7px;
-        }
-        .footer {
-            text-align: center;
-            color: #bbb;
-            font-size: 0.97em;
-            margin-top: 38px;
-            padding-bottom: 18px;
-            background: var(--cor-footer-bg);
-            border-radius: 0 0 18px 18px;
-        }
-        .menu-bar {
-            display: flex;
-            justify-content: flex-end;
-            align-items: center;
-            gap: 18px;
-            background: transparent;
-            padding: 0;
-            margin: 0;
-            border: none;
-            position: absolute;
-            top: 18px;
-            right: 32px;
-            z-index: 10;
-        }
-        .menu-btn {
-            background: #fff;
-            color: var(--cor-btn);
-            border: 1px solid #e3eaf6;
-            border-radius: 50%;
-            padding: 8px;
-            font-size: 1.15em;
-            font-family: 'Jost', Arial, Helvetica, sans-serif;
-            font-weight: 700;
-            cursor: pointer;
-            transition: background 0.2s, color 0.2s, border 0.2s;
-            box-shadow: 0 2px 8px #d9042911;
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-        }
-        .menu-tooltip {
-            display: none;
-            position: absolute;
-            top: 44px;
-            right: 0;
-            background: #fff0f0;
-            color: #d32f2f;
-            border: 1px solid #d32f2f;
-            border-radius: 6px;
-            padding: 6px 14px;
-            font-size: 0.95em;
-            font-family: 'Jost', Arial, Helvetica, sans-serif;
-            font-weight: 500;
-            box-shadow: 0 2px 8px #d32f2f22;
-            z-index: 100;
-            white-space: nowrap;
-            min-width: 160px;
-            text-align: left;
-        }
-        .menu-btn:hover + .menu-tooltip,
-        .menu-btn:focus + .menu-tooltip {
-            display: block;
-            animation: fadeInTooltip 0.2s;
-        }
-        @keyframes fadeInTooltip {
-            from { opacity: 0; transform: translateY(-6px);}
-            to { opacity: 1; transform: translateY(0);}
-        }
-        /* Responsivo */
-        @media (max-width: 1200px) {
-            .dashboard-container { padding: 18px 2vw; }
-            .table-wrapper { min-width: 0; }
-            table { max-width: 98vw; min-width: 600px; }
-            th, td { font-size: 0.97em; }
-        }
-        @media (max-width: 900px) {
-            .dashboard-container { padding: 8px 2vw; }
-            th, td { padding: 6px 2px; font-size: 0.90em; }
-            table { min-width: 520px; max-width: 98vw; }
-        }
-        @media (max-width: 700px) {
-            .dashboard-container { padding: 4px 0; }
-            .table-wrapper { padding: 0; }
-            table { min-width: 420px; max-width: 99vw; }
-            .info-bar { flex-direction: column; gap: 8px; align-items: flex-start; }
-            th, td { font-size: 0.89em; }
-        }
-        @media (max-width: 600px) {
-            .dashboard-container { padding: 2px 0; }
-            .table-wrapper { padding: 0; }
-            table, thead, tbody, th, td, tr { display: block; }
-            th { position: absolute; left: -9999px; }
-            tr { margin-bottom: 18px; border-radius: 8px; box-shadow: 0 2px 8px #d9042911; }
-            td { border: none; position: relative; padding-left: 50%; min-height: 32px; text-align: left; font-size: 0.92em; }
-            td:before {
-                position: absolute;
-                left: 12px;
-                top: 12px;
-                width: 45%;
-                white-space: nowrap;
-                font-weight: 700;
-                color: var(--cor-btn);
-            }
-            td:nth-of-type(1):before { content: "Pedido"; }
-            td:nth-of-type(2):before { content: "Cliente"; }
-            td:nth-of-type(3):before { content: "Produtos"; }
-            td:nth-of-type(4):before { content: "Quantidade"; }
-            td:nth-of-type(5):before { content: "Valor"; }
-            td:nth-of-type(6):before { content: "Endereço"; }
-            td:nth-of-type(7):before { content: "WhatsApp"; }
-            td:nth-of-type(8):before { content: "Data"; }
-            td:nth-of-type(9):before { content: "Status"; }
-            td:nth-of-type(10):before { content: "Ações"; }
-            .info-bar { flex-direction: column; gap: 6px; align-items: flex-start; padding: 10px 8px; font-size: 0.98em; }
-            .footer { font-size: 0.95em; }
-        }
-        @media (max-width: 400px) {
-            .dashboard-container { padding: 1px 0; }
-            .info-bar { font-size: 0.92em; }
-            .footer { font-size: 0.9em; }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GestãoPro • Criar conta</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+    font-family:'Segoe UI',system-ui,-apple-system,sans-serif;
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+    overflow:hidden;
+}
+
+/* glow background */
+body::before{
+    content:"";
+    position:absolute;
+    width:600px;
+    height:600px;
+    background:radial-gradient(circle,#00c6ff55,transparent 70%);
+    top:-150px;
+    left:-150px;
+    animation:float 8s ease-in-out infinite;
+}
+
+body::after{
+    content:"";
+    position:absolute;
+    width:500px;
+    height:500px;
+    background:radial-gradient(circle,#00ffb355,transparent 70%);
+    bottom:-150px;
+    right:-150px;
+    animation:float 10s ease-in-out infinite reverse;
+}
+
+@keyframes float{
+    0%,100%{transform:translateY(0)}
+    50%{transform:translateY(25px)}
+}
+
+/* card */
+.card{
+    width:100%;
+    max-width:440px;
+    padding:36px 32px;
+    border-radius:22px;
+    background:rgba(255,255,255,0.08);
+    backdrop-filter:blur(18px);
+    border:1px solid rgba(255,255,255,0.12);
+    box-shadow:0 25px 60px rgba(0,0,0,.35);
+    animation:fadeUp .8s ease;
+}
+
+@keyframes fadeUp{
+    from{opacity:0;transform:translateY(40px)}
+    to{opacity:1;transform:translateY(0)}
+}
+
+/* logo */
+.logo{
+    text-align:center;
+    margin-bottom:22px;
+}
+
+.logo img{
+    width:150px;
+    filter:drop-shadow(0 10px 25px rgba(0,0,0,.5));
+}
+
+/* titles */
+h2{
+    color:#fff;
+    text-align:center;
+    font-size:1.6rem;
+    margin-bottom:6px;
+}
+
+.subtitle{
+    color:#b9d6df;
+    text-align:center;
+    font-size:.9rem;
+    margin-bottom:24px;
+}
+
+/* inputs */
+.form-group{margin-bottom:14px;position:relative}
+
+input{
+    width:100%;
+    padding:14px 42px;
+    border-radius:12px;
+    border:1px solid rgba(255,255,255,.15);
+    background:rgba(255,255,255,.06);
+    color:#fff;
+    font-size:.95rem;
+    transition:.25s;
+}
+
+input::placeholder{color:#cfe7ee}
+
+input:focus{
+    outline:none;
+    border-color:#00c6ff;
+    box-shadow:0 0 0 3px #00c6ff33;
+}
+
+/* icons */
+.icon{
+    position:absolute;
+    left:14px;
+    top:50%;
+    transform:translateY(-50%);
+    color:#8edfff;
+}
+
+/* button */
+.btn{
+    width:100%;
+    margin-top:10px;
+    padding:15px;
+    border:none;
+    border-radius:14px;
+    font-weight:700;
+    font-size:1rem;
+    color:#002b36;
+    background:linear-gradient(135deg,#00c6ff,#00ffb3);
+    cursor:pointer;
+    transition:.3s;
+}
+
+.btn:hover{
+    transform:translateY(-2px);
+    box-shadow:0 12px 30px #00ffb344;
+}
+
+/* footer */
+.footer{
+    margin-top:18px;
+    text-align:center;
+    font-size:.85rem;
+    color:#9ecad3;
+}
+
+.footer a{
+    color:#00e1ff;
+    text-decoration:none;
+    font-weight:600;
+}
+
+/* mobile */
+@media(max-width:480px){
+    .card{margin:16px;padding:28px 22px}
+}
+</style>
 </head>
+
 <body>
-    <div class="topo">
-        <div class="topo-inner">
-            <div class="logo">
-                <img src="img/moto.png" alt="Logo Mundo das Motos">
-                <span>Mundo das Motos</span>
-            </div>
-            <nav class="menu">
-                <a href="#" class="menu-btn" onclick="baixarBackup()" title="Baixar backup JSON" style="display:inline-flex;align-items:center;gap:6px;background:transparent;color:#d90429;border:none;padding:0 8px;font-weight:500;font-size:1em;box-shadow:none;transition:color 0.2s;">
-                    <style>
-                        @media (max-width: 700px) {
-                            .menu {
-                                flex-direction: column;
-                                gap: 10px;
-                                align-items: flex-end;
-                                background: #23272a;
-                                position: absolute;
-                                top: 70px;
-                                right: 0;
-                                width: 100vw;
-                                padding: 18px 0 12px 0;
-                                border-radius: 0 0 18px 18px;
-                                box-shadow: 0 2px 12px #0002;
-                            }
-                            .topo-inner {
-                                flex-direction: column;
-                                align-items: flex-start;
-                                padding: 14px 8px 0 8px;
-                                position: relative;
-                            }
-                            .logo {
-                                margin-bottom: 8px;
-                            }
-                            .menu a {
-                                font-size: 1.08em;
-                                padding: 10px 18px;
-                                border-radius: 8px;
-                                width: 90vw;
-                                text-align: right;
-                                border-bottom: none;
-                                border-left: 4px solid transparent;
-                                transition: border 0.2s, color 0.2s, background 0.2s;
-                            }
-                            .menu a:hover, .menu a.active {
-                                background: #18191a;
-                                color: var(--cor-btn);
-                                border-left: 4px solid var(--cor-btn);
-                            }
-                        }
-                        @media (max-width: 400px) {
-                            .menu a {
-                                font-size: 1em;
-                                padding: 8px 10px;
-                                width: 98vw;
-                            }
-                        }
-                    </style>
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" style="margin-right:4px;">
-                        <rect x="4" y="4" width="16" height="16" rx="4" stroke="#d90429" stroke-width="2" fill="#fff"/>
-                        <path d="M12 8v5m0 0l-2-2m2 2l2-2m-6 5h8" stroke="#d90429" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                    <span class="backup-label" style="font-weight:500;font-size:1.1em;color:#d90429;display:inline-block;position:relative;transition:color 0.2s;">
-                        Backup
-                    </span>
-                    <style>
-                        .backup-label:hover, .backup-label:focus {
-                            color: #fff !important;
-                        }
-                        .backup-label::after {
-                            content: "";
-                            display: block;
-                            width: 100%;
-                            height: 2px;
-                            background: #d90429;
-                            position: absolute;
-                            left: 0;
-                            bottom: -11px;
-                            transition: background 0.2s;
-                        }
-                        .backup-label:hover::after, .backup-label:focus::after {
-                            background: #fff;
-                        }
-                    </style>
-                </a>
-                </a>
-                
-                <a href="mundodasmotos.html" class="catalogo-link" style="display:inline-flex;align-items:center;justify-content:center;font-weight:500;font-size:1.08em;color:#fff;background:#23272a;border-radius:8px;padding:10px 18px;transition:background 0.2s, color 0.2s;text-align:center;">
-                    Catálogo
-                </a>
-                <style>
-                    @media (max-width: 700px) {
-                        .menu {
-                            flex-direction: column;
-                            gap: 10px;
-                            align-items: center !important;
-                            background: #23272a;
-                            position: absolute;
-                            top: 70px;
-                            right: 0;
-                            width: 100vw;
-                            padding: 18px 0 12px 0;
-                            border-radius: 0 0 18px 18px;
-                            box-shadow: 0 2px 12px #0002;
-                        }
-                        .menu a.catalogo-link {
-                            margin: 0 auto;
-                            width: 90vw;
-                            justify-content: center;
-                            background: #d90429;
-                            color: #fff;
-                            border-left: 4px solid #d90429;
-                        }
-                        .menu a.catalogo-link:hover, .menu a.catalogo-link:focus {
-                            background: #a0031f;
-                            color: #fff;
-                        }
-                        .menu a.backup-label {
-                            margin: 0 auto;
-                            width: 90vw;
-                            justify-content: center;
-                        }
-                    }
-                </style>
-            
-                <a href="dashboard-pedidos.html" class="active" style="display:inline-flex;align-items:center;justify-content:center;font-weight:500;font-size:1.08em;color:#fff;background:#23272a;border-radius:8px;padding:10px 18px;transition:background 0.2s, color 0.2s;text-align:center;">
-                    Pedidos
-                </a>
-                <style>
-                @media (max-width: 700px) {
-                    .menu {
-                        flex-direction: column;
-                        gap: 10px;
-                        align-items: center !important;
-                        background: #23272a;
-                        position: absolute;
-                        top: 70px;
-                        right: 0;
-                        width: 100vw;
-                        padding: 18px 0 12px 0;
-                        border-radius: 0 0 18px 18px;
-                        box-shadow: 0 2px 12px #0002;
-                    }
-                    .menu a.active {
-                        margin: 0 auto;
-                        width: 90vw;
-                        justify-content: center;
-                        background: #d90429;
-                        color: #fff;
-                        border-left: 4px solid #d90429;
-                    }
-                    .menu a.active:hover, .menu a.active:focus {
-                        background: #a0031f;
-                        color: #fff;
-                    }
-                    .menu a.backup-label {
-                        margin: 0 auto;
-                        width: 90vw;
-                        justify-content: center;
-                    }
-                }
-                </style>
-                
-            </nav>
-        </div>
+
+<form class="card">
+
+    <div class="logo">
+        <img src="img/logosombra.png">
     </div>
-    <div class="dashboard-container">
-        <div class="menu-bar">
-            <button class="menu-btn" onclick="baixarBackup()" title="Baixar backup JSON" tabindex="0">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-                    <rect x="4" y="4" width="16" height="16" rx="4" stroke="#d90429" stroke-width="2" fill="#fff"/>
-                    <path d="M12 8v5m0 0l-2-2m2 2l2-2m-6 5h8" stroke="#d90429" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-            </button>
-            <div class="menu-tooltip">
-                ⚠️ Faça o backup dos pedidos diariamente.<br>
-                Clique para baixar o arquivo JSON.
-            </div>
-        </div>
-        <h2>Dashboard de Pedidos</h2>
-        <div class="info-bar">
-            <span>📦 <b>Total de Pedidos:</b> <span id="total-pedidos">0</span></span>
-            <span>🟢 <b>Enviados:</b> <span id="total-enviados">0</span></span>
-            <span>🟡 <b>Pendentes:</b> <span id="total-pendentes">0</span></span>
-        </div>
-        <div class="table-wrapper">
-            <table id="tabela-pedidos">
-                <thead>
-                    <tr>
-                        <th>Pedido</th>
-                        <th>Cliente</th>
-                        <th>Produtos</th>
-                        <th>Quantidade</th>
-                        <th>Valor</th>
-                        <th>Endereço</th>
-                        <th>WhatsApp</th>
-                        <th>Data</th>
-                        <th>Status</th>
-                        <th>Ações</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- Os pedidos serão inseridos via JS -->
-                </tbody>
-            </table>
-        </div>
+
+    <h2>Crie sua conta</h2>
+    <p class="subtitle">Comece agora no GestãoPro</p>
+
+    <div class="form-group">
+        <i class="fa fa-building icon"></i>
+        <input type="text" placeholder="Nome da empresa" required>
     </div>
+
+    <div class="form-group">
+        <i class="fa fa-envelope icon"></i>
+        <input type="email" placeholder="Seu e-mail" required>
+    </div>
+
+    <div class="form-group">
+        <i class="fa fa-id-card icon"></i>
+        <input type="text" placeholder="CNPJ ou CPF" required>
+    </div>
+
+    <div class="form-group">
+        <i class="fa fa-phone icon"></i>
+        <input type="tel" placeholder="WhatsApp" required>
+    </div>
+
+    <div class="form-group">
+        <i class="fa fa-map-marker-alt icon"></i>
+        <input type="text" placeholder="Endereço" required>
+    </div>
+
+    <div class="form-group">
+        <i class="fa fa-lock icon"></i>
+        <input type="password" placeholder="Senha segura" required>
+    </div>
+
+    <button class="btn">Criar conta</button>
+
     <div class="footer">
-        &copy; 2026 Mundo das Motos | Dashboard de Pedidos
+        Já possui acesso? <a href="#">Entrar</a>
     </div>
-    <script>
-        function buscarPedidos() {
-            let pedidos = [];
-            try {
-                pedidos = JSON.parse(localStorage.getItem('pedidos_motos')) || [];
-            } catch (e) {
-                pedidos = [];
-            }
-            renderPedidos(pedidos.slice().reverse());
-        }
 
-        function renderPedidos(pedidos) {
-            const tbody = document.querySelector("#tabela-pedidos tbody");
-            const totalPedidos = document.getElementById("total-pedidos");
-            const totalEnviados = document.getElementById("total-enviados");
-            const totalPendentes = document.getElementById("total-pendentes");
-            tbody.innerHTML = "";
-            let enviados = 0, pendentes = 0;
-            if (!pedidos || pedidos.length === 0) {
-                tbody.innerHTML = `<tr><td colspan="10" style="text-align:center;color:#888;">Nenhum pedido recebido.</td></tr>`;
-                totalPedidos.textContent = "0";
-                totalEnviados.textContent = "0";
-                totalPendentes.textContent = "0";
-                return;
-            }
-            pedidos.forEach((pedido, idx) => {
-                const statusClass = pedido.status === "Enviado" ? "enviado" : "pendente";
-                if (pedido.status === "Enviado") enviados++; else pendentes++;
-                const whatsappBtn = pedido.whatsapp
-                    ? `<a href="https://wa.me/${pedido.whatsapp.replace(/\D/g,'')}" target="_blank" class="whatsapp-btn" title="Enviar mensagem">
-                        <svg width="20" height="20" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="16" fill="#25d366"/><path d="M22.7 19.3c-.4-.2-2.3-1.1-2.6-1.2-.3-.1-.5-.2-.7.2-.2.4-.8 1.2-1 1.4-.2.2-.4.3-.8.1-.4-.2-1.7-.6-3.2-2-1.2-1.1-2-2.4-2.2-2.8-.2-.4 0-.6.2-.8.2-.2.4-.5.6-.7.2-.2.2-.4.3-.6.1-.2 0-.5-.1-.7-.1-.2-.7-1.7-1-2.3-.3-.6-.6-.5-.8-.5-.2 0-.5 0-.7 0-.2 0-.6.1-.9.4-.3.3-1.2 1.2-1.2 2.9 0 1.7 1.2 3.3 1.4 3.5.2.2 2.3 3.6 5.6 4.9.8.3 1.4.5 1.9.6.8.1 1.5.1 2.1.1.6 0 2-.8 2.3-1.6.3-.8.3-1.5.2-1.6-.1-.1-.3-.2-.7-.4z" fill="#fff"/></svg>
-                        WhatsApp
-                       </a>`
-                    : '-';
+</form>
 
-                // Produtos, quantidades e preços em colunas separadas
-                let produtosHtml = '', quantidadesHtml = '', precosHtml = '';
-                if (pedido.produtos && Array.isArray(pedido.produtos) && pedido.produtos.length > 0) {
-                    if (typeof pedido.produtos[0] === 'object') {
-                        produtosHtml = pedido.produtos.map(p =>
-                            `<span class="badge${pedido.status === "Enviado" ? " enviado" : ""}">${p.nome}</span>`
-                        ).join("<br>");
-                        quantidadesHtml = pedido.produtos.map(p =>
-                            `<span style="color:#1976d2;font-weight:600;">${p.quantidade || 1}</span>`
-                        ).join("<br>");
-                        precosHtml = pedido.produtos.map(p =>
-                            `<span style="color:#bbb;font-size:0.98em;">R$ ${(Number(p.preco) * (p.quantidade || 1)).toLocaleString('pt-BR', {minimumFractionDigits:2})}</span>`
-                        ).join("<br>");
-                    } else {
-                        // Suporte legado: só nome
-                        produtosHtml = pedido.produtos.map(p =>
-                            `<span class="badge${pedido.status === "Enviado" ? " enviado" : ""}">${p}</span>`
-                        ).join("<br>");
-                        quantidadesHtml = '-';
-                        precosHtml = '-';
-                    }
-                }
-
-                tbody.innerHTML += `
-                    <tr class="${statusClass}">
-                        <td>#${pedido.id}</td>
-                        <td>
-                            <strong>${pedido.cliente}</strong><br>
-                            <span style="font-size:0.95em;color:#bbb;">${pedido.email}</span>
-                        </td>
-                        <td>${produtosHtml}</td>
-                        <td>${quantidadesHtml}</td>
-                        <td>${precosHtml}</td>
-                        <td>
-                            <span style="font-size:0.98em;color:#bbb;">${pedido.endereco || '-'}</span>
-                        </td>
-                        <td>
-                            ${whatsappBtn}
-                        </td>
-                        <td>${pedido.data}</td>
-                        <td class="status">${pedido.status}</td>
-                        <td>
-                            ${pedido.status === "Pendente" ? `<button class="btn-enviar" onclick="marcarEnviado(${pedido.id})">Marcar como Enviado</button>` : '<span style="color:#43a047;font-weight:600;">✔ Enviado</span>'}
-                        </td>
-                    </tr>
-                `;
-            });
-            totalPedidos.textContent = pedidos.length;
-            totalEnviados.textContent = enviados;
-            totalPendentes.textContent = pendentes;
-        }
-
-        function marcarEnviado(id) {
-            let pedidos = JSON.parse(localStorage.getItem('pedidos_motos')) || [];
-            pedidos = pedidos.map(p => p.id === id ? { ...p, status: "Enviado" } : p);
-            localStorage.setItem('pedidos_motos', JSON.stringify(pedidos));
-            buscarPedidos();
-        }
-
-        function baixarBackup() {
-            let pedidos = [];
-            try {
-                pedidos = JSON.parse(localStorage.getItem('pedidos_motos')) || [];
-            } catch (e) {
-                pedidos = [];
-            }
-            const blob = new Blob([JSON.stringify(pedidos, null, 2)], { type: "application/json" });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = 'pedidos-mundo-das-motos.json';
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-            URL.revokeObjectURL(url);
-        }
-
-        buscarPedidos();
-        setInterval(buscarPedidos, 10000);
-    </script>
 </body>
 </html>
