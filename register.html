@@ -1,533 +1,207 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <title>Gestão Pro</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        * {
-            box-sizing: border-box;
-        }
+<meta charset="UTF-8">
+<title>Gestão Pro</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        body {
-            background: linear-gradient(90deg, #1a3a70 0%, #0099ff 100%);
-            min-height: 100vh;
-            margin: 0;
-            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-start;
-            padding: 16px;
-            background-attachment: fixed;
-        }
+<style>
+* { box-sizing: border-box; }
 
-        .logo {
-            margin-top: 24px;
-            margin-bottom: 20px;
-            text-align: center;
-            animation: slideDown 0.6s ease-out;
-        }
+body {
+    background: linear-gradient(90deg, #1a3a70 0%, #0099ff 100%);
+    min-height: 100vh;
+    margin: 0;
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 16px;
+}
 
-        @keyframes slideDown {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+/* LOGO */
+.logo { margin: 24px 0 20px; text-align: center; }
 
-        .logo img {
-            width: 100px;
-            height: auto;
-            filter: drop-shadow(0 8px 16px rgba(0,0,0,0.4)) drop-shadow(0 4px 8px rgba(0,0,0,0.2));
-            transition: filter 0.3s ease;
-        }
+.logo img {
+    width: 160px;
+    filter: drop-shadow(0 8px 16px rgba(0,0,0,0.4));
+}
 
-        .logo img:hover {
-            filter: drop-shadow(0 12px 24px rgba(0,0,0,0.5)) drop-shadow(0 6px 12px rgba(0,0,0,0.3));
-        }
+/* CARD */
+.cadastro-container {
+    background: rgba(255,255,255,0.9);
+    border-radius: 20px;
+    box-shadow: 0 12px 40px rgba(30,60,114,0.25);
+    padding: 32px;
+    width: 100%;
+    max-width: 450px;
+    color: #1e3c72;
+}
 
-        .logo h1 {
-            margin: 12px 0 4px 0;
-            font-size: clamp(1.8rem, 5vw, 2.4rem);
-            color: #fff;
-            font-weight: 800;
-            letter-spacing: 1px;
-            text-shadow: 2px 2px 4px rgba(30,60,114,0.3);
-        }
+/* TITULOS */
+.cadastro-container h2 {
+    margin: 0 0 6px;
+    font-size: 1.5rem;
+}
 
-        .logo p {
-            margin: 0;
-            color: #4fc3f7;
-            font-size: clamp(0.85rem, 3vw, 1rem);
-            font-weight: 500;
-            letter-spacing: 0.5px;
-        }
+.cadastro-container > p {
+    margin: 0 0 20px;
+    color: #666;
+}
 
-        .cadastro-container {
-            background: rgba(255,255,255,0.85);
-            border-radius: 20px;
-            box-shadow: 0 12px 40px rgba(30,60,114,0.25), 0 0 1px rgba(30,60,114,0.1);
-            padding: clamp(20px, 6vw, 36px);
-            width: 100%;
-            max-width: 450px;
-            margin: 12px auto 32px auto;
-            display: flex;
-            flex-direction: column;
-            animation: fadeInUp 0.7s ease-out 0.2s both;
-            color: #1e3c72;
-        }
+/* FORM */
+.form-group { margin-bottom: 14px; }
 
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+.form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
 
-        .cadastro-container h2 {
-            color: #1e3c72;
-            font-size: clamp(1.3rem, 4vw, 1.6rem);
-            margin: 0 0 6px 0;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-        }
+.input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
 
-        .cadastro-container > p {
-            color: #666;
-            font-size: clamp(0.85rem, 2.5vw, 0.95rem);
-            margin: 0 0 20px 0;
-            line-height: 1.5;
-        }
+.form-group input {
+    width: 100%;
+    padding: 12px 40px;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    background: #fafbfc;
+    transition: .2s;
+}
 
-        .form-group {
-            margin-bottom: 14px;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-        }
+.form-group input:focus {
+    border-color: #4fc3f7;
+    background: #fff;
+    box-shadow: 0 0 0 3px rgba(79,195,247,0.15);
+    outline: none;
+}
 
-        .form-group label {
-            display: block;
-            color: #1e3c72;
-            font-weight: 600;
-            margin-bottom: 6px;
-            font-size: clamp(0.8rem, 2vw, 0.9rem);
-            letter-spacing: 0.3px;
-        }
+.icon {
+    position: absolute;
+    left: 12px;
+    color: #4fc3f7;
+}
 
-        .input-wrapper {
-            position: relative;
-            display: flex;
-            align-items: center;
-        }
+/* BOTÃO */
+.btn-group { margin-top: 20px; }
 
-        .form-group input {
-            width: 100%;
-            padding: clamp(10px, 2vw, 12px) 36px clamp(10px, 2vw, 12px) 40px;
-            border: 2px solid #e0e0e0;
-            border-radius: 10px;
-            font-size: clamp(0.9rem, 2.5vw, 1rem);
-            background: #fafbfc;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            color: #333;
-        }
+.whatsapp-btn {
+    width: 100%;
+    background: linear-gradient(135deg, #25D366, #128C7E);
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    padding: 14px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: .2s;
+}
 
-        .form-group input::placeholder {
-            color: #999;
-            font-size: clamp(0.85rem, 2vw, 0.95rem);
-        }
+.whatsapp-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+}
 
-        .form-group input:focus {
-            border-color: #4fc3f7;
-            background: #fff;
-            box-shadow: 0 0 0 3px rgba(79, 195, 247, 0.1);
-            outline: none;
-        }
+/* LINK LOGIN */
+.login-link {
+    margin-top: 18px;
+    text-align: center;
+    font-size: 0.9rem;
+}
 
-        .form-group input:valid {
-            border-color: #81c784;
-        }
+.login-link a {
+    color: #1e88e5;
+    text-decoration: none;
+    font-weight: bold;
+}
 
-        .form-group .icon {
-            position: absolute;
-            left: 14px;
-            color: #4fc3f7;
-            font-size: clamp(0.95rem, 2vw, 1.1rem);
-            pointer-events: none;
-        }
+/* RESPONSIVO (sem mudar cores) */
+@media (max-width: 600px) {
+    .cadastro-container {
+        padding: 20px;
+        margin: 10px;
+    }
+}
+</style>
 
-        .form-group .toggle-password {
-            position: absolute;
-            right: 12px;
-            background: none;
-            border: none;
-            cursor: pointer;
-            color: #4fc3f7;
-            font-size: clamp(0.95rem, 2vw, 1.1rem);
-            padding: 6px;
-            transition: color 0.2s;
-        }
-
-        .form-group .toggle-password:hover {
-            color: #1e88e5;
-        }
-
-        .btn-group {
-            display: flex;
-            gap: 10px;
-            margin-top: 20px;
-        }
-
-        .cadastro-btn, .whatsapp-btn {
-            flex: 1;
-            color: #fff;
-            border: none;
-            border-radius: 10px;
-            padding: clamp(12px, 2.5vw, 14px) clamp(16px, 4vw, 24px);
-            font-size: clamp(0.95rem, 2.5vw, 1.1rem);
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .cadastro-btn {
-            background: linear-gradient(135deg, #4fc3f7 0%, #81c784 100%);
-            box-shadow: 0 4px 15px rgba(79, 195, 247, 0.3);
-        }
-
-        .whatsapp-btn {
-            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
-            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
-        }
-
-        .cadastro-btn::before, .whatsapp-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: rgba(255,255,255,0.2);
-            transition: left 0.3s ease;
-        }
-
-        .cadastro-btn:hover {
-            background: linear-gradient(135deg, #1e88e5 0%, #43a047 100%);
-            box-shadow: 0 6px 20px rgba(30, 136, 229, 0.4);
-            transform: translateY(-2px);
-        }
-
-        .whatsapp-btn:hover {
-            background: linear-gradient(135deg, #1da851 0%, #0f7d56 100%);
-            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
-            transform: translateY(-2px);
-        }
-
-        .cadastro-btn:hover::before, .whatsapp-btn:hover::before {
-            left: 100%;
-        }
-
-        .cadastro-btn:active, .whatsapp-btn:active {
-            transform: translateY(0);
-        }
-
-        .login-link {
-            margin-top: 18px;
-            text-align: center;
-            font-size: clamp(0.8rem, 2vw, 0.95rem);
-            color: #666;
-        }
-
-        .login-link a {
-            color: #1e88e5;
-            text-decoration: none;
-            font-weight: 700;
-            transition: all 0.2s;
-            position: relative;
-        }
-
-        .login-link a::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: #1e88e5;
-            transition: width 0.3s ease;
-        }
-
-        .login-link a:hover::after {
-            width: 100%;
-        }
-
-        .password-strength {
-            display: none;
-            margin-top: 8px;
-            padding: 10px;
-            border-radius: 6px;
-            font-size: clamp(0.75rem, 2vw, 0.85rem);
-            font-weight: 600;
-        }
-
-        .password-strength.show {
-            display: block;
-        }
-
-        .password-strength.fraca {
-            background-color: #ffebee;
-            color: #c62828;
-            border-left: 4px solid #c62828;
-        }
-
-        .password-strength.media {
-            background-color: #fff3e0;
-            color: #e65100;
-            border-left: 4px solid #e65100;
-        }
-
-        .password-strength.forte {
-            background-color: #e8f5e9;
-            color: #2e7d32;
-            border-left: 4px solid #2e7d32;
-        }
-
-        .password-requirements {
-            margin-top: 8px;
-            font-size: clamp(0.75rem, 2vw, 0.85rem);
-            color: #666;
-        }
-
-        .requirement {
-            display: flex;
-            align-items: center;
-            margin: 4px 0;
-        }
-
-        .requirement i {
-            width: 18px;
-            text-align: center;
-            margin-right: 6px;
-            font-size: 0.9rem;
-        }
-
-        .requirement.met {
-            color: #2e7d32;
-        }
-
-        .requirement.unmet {
-            color: #c62828;
-        }
-
-        .password-match {
-            display: none;
-            margin-top: 8px;
-            padding: 10px;
-            border-radius: 6px;
-            font-size: clamp(0.75rem, 2vw, 0.85rem);
-            font-weight: 600;
-            border-left: 4px solid #c62828;
-            background-color: #ffebee;
-            color: #c62828;
-        }
-
-        .password-match.show {
-            display: block;
-        }
-
-        .password-match.match {
-            border-left-color: #2e7d32;
-            background-color: #e8f5e9;
-            color: #2e7d32;
-        }
-
-        /* Responsivo: mobile igual desktop */
-        @media (max-width: 900px) {
-            body {
-                padding: 16px;
-            }
-            .logo {
-                margin-top: 24px;
-                margin-bottom: 20px;
-            }
-            .logo img {
-                width: 100px;
-            }
-            .cadastro-container {
-                background: rgba(255,255,255,0.85);
-                border-radius: 20px;
-                box-shadow: 0 12px 40px rgba(30,60,114,0.25), 0 0 1px rgba(30,60,114,0.1);
-                padding: clamp(20px, 6vw, 36px);
-                max-width: 450px;
-                margin: 12px auto 32px auto;
-                color: #1e3c72;
-            }
-            .cadastro-container h2,
-            .cadastro-container > p,
-            .form-group label,
-            .login-link,
-            .form-group input,
-            .requirement,
-            .password-strength,
-            .password-match {
-                color: #1e3c72;
-            }
-            .btn-group {
-                flex-direction: row;
-                gap: 10px;
-                margin-top: 20px;
-            }
-            .cadastro-btn, .whatsapp-btn {
-                padding: clamp(12px, 2.5vw, 14px) clamp(16px, 4vw, 24px);
-                font-size: clamp(0.95rem, 2.5vw, 1.1rem);
-                border-radius: 10px;
-            }
-        }
-        @media (max-width: 600px) {
-            .cadastro-container {
-                max-width: 98vw;
-                padding: clamp(12px, 4vw, 20px);
-                margin: 8px auto 18px auto;
-                /* NÃO altera background, border, box-shadow, color, tipografia */
-            }
-        }
-        @media (max-width: 400px) {
-            .cadastro-container {
-                max-width: 100vw;
-                padding: 8px 2vw;
-                margin: 6px auto 12px auto;
-                /* NÃO altera background, border, box-shadow, color, tipografia */
-            }
-        }
-
-        /* Dark mode support */
-        @media (prefers-color-scheme: dark) {
-            .cadastro-container {
-                background: rgba(30, 60, 114, 0.95);
-            }
-            .cadastro-container h2,
-            .form-group label {
-                color: #4fc3f7;
-            }
-            .cadastro-container > p,
-            .login-link {
-                color: #b0bec5;
-            }
-            .form-group input {
-                background: rgba(255, 255, 255, 0.1);
-                border-color: rgba(255, 255, 255, 0.2);
-                color: #fff;
-            }
-            .form-group input::placeholder {
-                color: rgba(255, 255, 255, 0.6);
-            }
-            .form-group input:focus {
-                box-shadow: 0 0 0 3px rgba(79, 195, 247, 0.2);
-            }
-        }
-    </style>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
+
 <body>
-    <div class="logo">
-        <img src="img/logosombra.png" alt="Logo GESTÃOPRO" style="width: 160px; height: auto;" onerror="this.style.display='none'">
+
+<div class="logo">
+    <img src="img/logosombra.png" alt="Logo">
+</div>
+
+<form class="cadastro-container">
+
+    <h2>Crie sua conta</h2>
+    <p>Preencha os dados para cadastrar sua empresa no sistema</p>
+
+    <div class="form-group">
+        <label>Nome da Empresa</label>
+        <div class="input-wrapper">
+            <span class="icon"><i class="fa fa-building"></i></span>
+            <input type="text" placeholder="Minha Empresa Ltda" required>
+        </div>
     </div>
-    <form class="cadastro-container" autocomplete="off" id="formularioCadastro">
-        <h2>Crie sua conta</h2>
-        <p>Preencha os dados para cadastrar sua empresa no sistema</p>
-        <div class="form-group">
-            <label for="empresa">Nome da Empresa</label>
-            <div class="input-wrapper">
-                <span class="icon"><i class="fa fa-building"></i></span>
-                <input type="text" id="empresa" name="empresa" placeholder="Minha Empresa Ltda" required>
-            </div>
+
+    <div class="form-group">
+        <label>E-mail</label>
+        <div class="input-wrapper">
+            <span class="icon"><i class="fa fa-envelope"></i></span>
+            <input type="email" placeholder="seu@email.com" required>
         </div>
-        <div class="form-group">
-            <label for="email">E-mail</label>
-            <div class="input-wrapper">
-                <span class="icon"><i class="fa fa-envelope"></i></span>
-                <input type="email" id="email" name="email" placeholder="seu@email.com" required>
-            </div>
+    </div>
+
+    <div class="form-group">
+        <label>CNPJ ou CPF</label>
+        <div class="input-wrapper">
+            <span class="icon"><i class="fa fa-id-card"></i></span>
+            <input type="text" placeholder="00.000.000/0001-00" required>
         </div>
-        <div class="form-group">
-            <label for="documento">CNPJ ou CPF</label>
-            <div class="input-wrapper">
-                <span class="icon"><i class="fa fa-id-card"></i></span>
-                <input type="text" id="documento" name="documento" placeholder="00.000.000/0001-00" required>
-            </div>
+    </div>
+
+    <div class="form-group">
+        <label>WhatsApp</label>
+        <div class="input-wrapper">
+            <span class="icon"><i class="fa fa-mobile-alt"></i></span>
+            <input type="tel" placeholder="(99) 99999-9999" required>
         </div>
-        <div class="form-group">
-            <label for="whatsapp">WhatsApp</label>
-            <div class="input-wrapper">
-                <span class="icon"><i class="fa fa-mobile-alt"></i></span>
-                <input type="tel" id="whatsapp" name="whatsapp" placeholder="(99) 99999-9999" required>
-            </div>
+    </div>
+
+    <div class="form-group">
+        <label>Endereço</label>
+        <div class="input-wrapper">
+            <span class="icon"><i class="fa fa-map-marker-alt"></i></span>
+            <input type="text" placeholder="Rua, número, bairro, cidade" required>
         </div>
-        <div class="form-group">
-            <label for="endereco">Endereço</label>
-            <div class="input-wrapper">
-                <span class="icon"><i class="fa fa-map-marker-alt"></i></span>
-                <input type="text" id="endereco" name="endereco" placeholder="Rua, número, bairro, cidade" required>
-            </div>
+    </div>
+
+    <div class="form-group">
+        <label>Senha</label>
+        <div class="input-wrapper">
+            <span class="icon"><i class="fa fa-lock"></i></span>
+            <input type="password" placeholder="Digite sua senha" required>
         </div>
-        <div class="form-group">
-            <label for="senha">Senha</label>
-            <div class="input-wrapper">
-                <span class="icon"><i class="fa fa-lock"></i></span>
-                <input type="password" id="senha" name="senha" placeholder="Digite sua senha" required oninput="validarSenha()">
-                <button type="button" class="toggle-password" onclick="togglePassword('senha', this)">
-                    <i class="fa fa-eye"></i>
-                </button>
-            </div>
-            <div class="password-strength" id="senhaForte"></div>
-            <div class="password-requirements">
-                <div class="requirement unmet" id="req-length">
-                    <i class="fa fa-circle"></i> Mínimo 8 caracteres
-                </div>
-                <div class="requirement unmet" id="req-upper">
-                    <i class="fa fa-circle"></i> Letra maiúscula (A-Z)
-                </div>
-                <div class="requirement unmet" id="req-number">
-                    <i class="fa fa-circle"></i> Número (0-9)
-                </div>
-                <div class="requirement unmet" id="req-special">
-                    <i class="fa fa-circle"></i> Caractere especial (!@#$%^&*)
-                </div>
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="confirmar-senha">Confirmar Senha</label>
-            <div class="input-wrapper">
-                <span class="icon"><i class="fa fa-lock"></i></span>
-                <input type="password" id="confirmar-senha" name="confirmar-senha" placeholder="Confirme sua senha" required oninput="validarConfirmacao()">
-                <button type="button" class="toggle-password" onclick="togglePassword('confirmar-senha', this)">
-                    <i class="fa fa-eye"></i>
-                </button>
-            </div>
-            <div class="password-match" id="confirmacaoSenha"></div>
-        </div>
-        <div class="btn-group">
-            <button type="button" class="whatsapp-btn" onclick="enviarWhatsApp(event)">
-                Criar conta
-            </button>
-        </div>
-        <div class="login-link">
-            Já tem uma conta? <a href="https://gestaoproapp.com.br/">Entrar aqui</a>
-        </div>
-    </form>
+    </div>
+
+    <div class="btn-group">
+        <button class="whatsapp-btn" type="submit">Criar conta</button>
+    </div>
+
+    <div class="login-link">
+        Já tem uma conta? <a href="https://gestaoproapp.com.br/">Entrar aqui</a>
+    </div>
+
+</form>
+
     <script>
         function togglePassword(fieldId, btn) {
             const input = document.getElementById(fieldId);
