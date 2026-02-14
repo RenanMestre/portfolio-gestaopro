@@ -248,6 +248,10 @@ body::before {
         flex-direction: column;
         align-items: center;
         position: static;
+        /* bordas transparentes laterais para centralizar visualmente */
+        border-left: 7vw solid transparent;
+        border-right: 7vw solid transparent;
+        box-sizing: border-box;
     }
     .logo {
         margin: 0 0 18px 0 !important;
@@ -346,6 +350,8 @@ body::before {
         padding: 12px 3vw 12px 3vw;
         border-radius: 10px;
         max-width: 99vw;
+        border-left: 3vw solid transparent;
+        border-right: 3vw solid transparent;
     }
     .logo img {
         width: 70px !important;
