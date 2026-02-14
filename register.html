@@ -264,7 +264,8 @@ body::before {
         width: 90px !important;
         margin-bottom: 8px;
         border-radius: 8px;
-        box-shadow: 0 2px 8px #1a298022;
+        /* Remover sombra no mobile */
+        box-shadow: none !important;
         display: block;
     }
     .cadastro-container h2 {
@@ -354,7 +355,8 @@ body::before {
         border-right: 10vw solid transparent;
     }
     .logo img {
-        width: 150px !important;
+        width: 70px !important;
+        box-shadow: none !important;
     }
     .cadastro-container h2 {
         font-size: 1rem;
