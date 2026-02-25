@@ -1,0 +1,1102 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="VAIVEM ENCOMENDAS - Transporte de mercadorias e passageiros entre Petrolina de Goiás e Goiânia. Viagens diárias, seguras e com preço acessível.">
+    <meta name="keywords" content="transportadora, encomendas, Petrolina, Goiânia, transporte, mercadorias, passageiros">
+    <meta name="author" content="VAIVEM ENCOMENDAS">
+    <meta name="robots" content="index, follow">
+    <title>VAIVEM ENCOMENDAS - Transporte Profissional Petrolina ↔ Goiânia</title>
+    
+    <style>
+        /* ===== RESET E VARIÁVEIS ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-dark: #003d7a;
+            --primary-light: #1a5fa0;
+            --accent-yellow: #FFC107;
+            --accent-orange: #FF9800;
+            --dark-text: #1a1a1a;
+            --light-text: #ffffff;
+            --light-bg: #f5f5f5;
+            --shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark-text);
+            background-color: #ffffff;
+        }
+
+        /* ===== HEADER FIXO ===== */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: var(--primary-dark);
+            color: var(--light-text);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: var(--shadow);
+            z-index: 1000;
+            gap: 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo::before {
+            content: "🚚";
+            font-size: 1.8rem;
+        }
+
+        nav {
+            display: flex;
+            gap: 2rem;
+            flex: 1;
+            justify-content: center;
+        }
+
+        nav a {
+            color: var(--light-text);
+            text-decoration: none;
+            font-weight: 600;
+            position: relative;
+            transition: var(--transition);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-yellow);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .whatsapp-btn {
+            background: linear-gradient(135deg, var(--accent-orange) 0%, var(--accent-yellow) 100%);
+            color: var(--dark-text);
+            padding: 0.7rem 1.5rem;
+            border: none;
+            border-radius: 25px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 2px 10px rgba(255, 193, 7, 0.3);
+            white-space: nowrap;
+        }
+
+        .whatsapp-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(255, 193, 7, 0.4);
+        }
+
+        /* ===== MENU RESPONSIVO ===== */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--light-text);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            margin-top: 70px;
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-light) 100%);
+            color: var(--light-text);
+            padding: 4rem 2rem;
+            text-align: center;
+            min-height: calc(100vh - 70px);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: rgba(255, 193, 7, 0.1);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            animation: slideInUp 0.8s ease-out;
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-size: clamp(2rem, 8vw, 3.5rem);
+            margin-bottom: 1rem;
+            font-weight: 800;
+            line-height: 1.2;
+        }
+
+        .hero .highlight {
+            color: var(--accent-yellow);
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+            opacity: 0.95;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, var(--accent-yellow) 0%, var(--accent-orange) 100%);
+            color: var(--primary-dark);
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 4px 20px rgba(255, 193, 7, 0.3);
+            text-decoration: none;
+            display: inline-block;
+            margin: 0 0.5rem;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 25px rgba(255, 193, 7, 0.4);
+        }
+
+        /* ===== SEÇÃO DE SERVIÇOS ===== */
+        .services {
+            padding: 5rem 2rem;
+            background-color: var(--light-bg);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
+            margin-bottom: 0.5rem;
+            color: var(--primary-dark);
+            font-weight: 800;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 3rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2.5rem 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border-top: 4px solid var(--accent-yellow);
+            cursor: pointer;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 25px rgba(0, 61, 122, 0.15);
+            border-top-color: var(--accent-orange);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .service-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--primary-dark);
+        }
+
+        .service-card p {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        /* ===== SEÇÃO NOSSAS ROTAS ===== */
+        .routes {
+            padding: 5rem 2rem;
+            background: white;
+        }
+
+        .routes-content {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .routes-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .route-card {
+            background: linear-gradient(135deg, var(--light-bg) 0%, #ffffff 100%);
+            border: 2px solid var(--accent-yellow);
+            border-radius: 15px;
+            padding: 2.5rem 2rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .route-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(255, 193, 7, 0.2);
+            border-color: var(--accent-orange);
+        }
+
+        .route-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 2px solid var(--accent-yellow);
+        }
+
+        .route-icon {
+            font-size: 2.5rem;
+        }
+
+        .route-card h3 {
+            font-size: 1.4rem;
+            color: var(--primary-dark);
+        }
+
+        .route-card p {
+            color: #666;
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .cities-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .city-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.75rem 1rem;
+            background: rgba(255, 193, 7, 0.1);
+            border-radius: 8px;
+            border-left: 3px solid var(--accent-yellow);
+            transition: var(--transition);
+        }
+
+        .city-item:hover {
+            background: rgba(255, 193, 7, 0.2);
+            transform: translateX(5px);
+        }
+
+        .city-icon {
+            font-size: 1.2rem;
+            min-width: 25px;
+            text-align: center;
+        }
+
+        .city-name {
+            font-weight: 600;
+            color: var(--primary-dark);
+        }
+
+        /* ===== SEÇÃO POR QUE ESCOLHER ===== */
+        .why-choose {
+            padding: 5rem 2rem;
+            background: var(--light-bg);
+        }
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .why-item {
+            display: flex;
+            gap: 1.5rem;
+            align-items: flex-start;
+            padding: 1.5rem;
+            border-radius: 10px;
+            background: white;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+        }
+
+        .why-item:hover {
+            background: #eef4ff;
+            transform: translateX(5px);
+        }
+
+        .why-icon {
+            font-size: 2.5rem;
+            min-width: 50px;
+            text-align: center;
+        }
+
+        .why-content h4 {
+            font-size: 1.1rem;
+            color: var(--primary-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .why-content p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        /* ===== SEÇÃO COMO FUNCIONA ===== */
+        .how-it-works {
+            padding: 5rem 2rem;
+            background: linear-gradient(135deg, #ffffff 0%, var(--light-bg) 100%);
+        }
+
+        .steps-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 3rem;
+            max-width: 1100px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .step {
+            text-align: center;
+            position: relative;
+        }
+
+        .step-number {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--accent-yellow) 0%, var(--accent-orange) 100%);
+            color: var(--primary-dark);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: 700;
+            margin: 0 auto 1.5rem;
+            box-shadow: 0 4px 15px rgba(255, 193, 7, 0.3);
+        }
+
+        .step h3 {
+            font-size: 1.3rem;
+            color: var(--primary-dark);
+            margin-bottom: 1rem;
+        }
+
+        .step p {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        /* ===== SEÇÃO DEPOIMENTOS ===== */
+        .testimonials {
+            padding: 5rem 2rem;
+            background: var(--primary-dark);
+            color: white;
+        }
+
+        .testimonials .section-title {
+            color: var(--accent-yellow);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .testimonial-card {
+            background: rgba(255, 193, 7, 0.1);
+            padding: 2rem;
+            border-radius: 10px;
+            border-left: 4px solid var(--accent-yellow);
+            transition: var(--transition);
+        }
+
+        .testimonial-card:hover {
+            background: rgba(255, 193, 7, 0.15);
+            transform: translateY(-5px);
+        }
+
+        .stars {
+            color: var(--accent-yellow);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .testimonial-text {
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            font-weight: 700;
+            color: var(--accent-yellow);
+        }
+
+        .testimonial-role {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* ===== SEÇÃO CONTATO ===== */
+        .contact {
+            padding: 5rem 2rem;
+            background: var(--light-bg);
+            text-align: center;
+        }
+
+        .contact-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .contact-item {
+            font-size: 1.1rem;
+            color: #666;
+        }
+
+        .contact-item strong {
+            color: var(--primary-dark);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .cta-large {
+            background: linear-gradient(135deg, var(--accent-yellow) 0%, var(--accent-orange) 100%);
+            color: var(--primary-dark);
+            padding: 1.2rem 3rem;
+            font-size: 1.2rem;
+            margin-top: 2rem;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: var(--primary-dark);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        footer p {
+            opacity: 0.9;
+        }
+
+        /* ===== BOTÃO FLUTUANTE WHATSAPP ===== */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #25D366 0%, #20BA5B 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            cursor: pointer;
+            z-index: 999;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+            transition: var(--transition);
+            text-decoration: none;
+            color: white;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1) translateY(-5px);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+        }
+
+        .whatsapp-float::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 3px solid #25D366;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(1.3);
+                opacity: 0;
+            }
+        }
+
+        /* ===== RESPONSIVIDADE ===== */
+        @media (max-width: 768px) {
+            header {
+                padding: 1rem;
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+
+            .logo {
+                font-size: 1.2rem;
+            }
+
+            nav {
+                display: none;
+                flex-direction: column;
+                gap: 1rem;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background: var(--primary-dark);
+                padding: 2rem;
+                width: 100%;
+            }
+
+            nav.active {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: block;
+                order: -1;
+            }
+
+            .whatsapp-btn {
+                padding: 0.6rem 1.2rem;
+                font-size: 0.9rem;
+                margin-left: auto;
+            }
+
+            .hero {
+                margin-top: 0;
+                padding: 3rem 1.5rem;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .cta-button {
+                padding: 0.8rem 2rem;
+                font-size: 1rem;
+                display: block;
+                margin: 0.75rem 0;
+            }
+
+            .services, .routes, .why-choose, .how-it-works, .testimonials, .contact {
+                padding: 3rem 1.5rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            nav a {
+                font-size: 0.95rem;
+            }
+
+            .routes-wrapper {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .whatsapp-float {
+                bottom: 20px;
+                right: 20px;
+                width: 55px;
+                height: 55px;
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                flex-direction: column;
+            }
+
+            .hero h1 {
+                font-size: 1.5rem;
+            }
+
+            .hero p {
+                font-size: 0.95rem;
+            }
+
+            .services-grid, .why-grid, .steps-container, .testimonials-grid {
+                gap: 1.5rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .cta-button {
+                padding: 0.7rem 1.5rem;
+                font-size: 0.95rem;
+            }
+
+            .route-card {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER FIXO -->
+    <header>
+        <div class="logo">VAIVEM ENCOMENDAS</div>
+        <button class="menu-toggle" id="menuToggle">☰</button>
+        <nav id="navMenu">
+            <a href="#inicio">Início</a>
+            <a href="#servicos">Serviços</a>
+            <a href="#rotas">Nossas Rotas</a>
+            <a href="#como-funciona">Como Funciona</a>
+            <a href="#depoimentos">Depoimentos</a>
+            <a href="#contato">Contato</a>
+        </nav>
+        <a href="https://wa.me/5562991234567?text=Olá%20VAIVEM%20ENCOMENDAS%2C%20gostaria%20de%20mais%20informações" target="_blank" class="whatsapp-btn">💬 Fale no WhatsApp</a>
+    </header>
+
+    <!-- SEÇÃO HERO -->
+    <section class="hero" id="inicio">
+        <div class="hero-content">
+            <h1>Seu transporte diário entre <span class="highlight">Petrolina de Goiás</span> e <span class="highlight">Goiânia!</span></h1>
+            <p>Encomendas rápidas, seguras e com preço justo. Nós levamos suas mercadorias e você com conforto e confiança. Viagens todos os dias!</p>
+            <div>
+                <a href="https://wa.me/5562991234567?text=Olá%20VAIVEM%20ENCOMENDAS%2C%20gostaria%20de%20mais%20informações" target="_blank" class="cta-button">🚀 Solicitar Transporte Agora</a>
+                <a href="#servicos" class="cta-button">📋 Conhecer Serviços</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO SERVIÇOS -->
+    <section class="services" id="servicos">
+        <h2 class="section-title">Nossos Serviços</h2>
+        <p class="section-subtitle">Soluções completas para suas necessidades de transporte</p>
+        
+        <div class="services-grid">
+            <div class="service-card">
+                <span class="service-icon">📦</span>
+                <h3>Envio de Encomendas</h3>
+                <p>Envie encomendas com segurança para Goiânia e cidades próximas. Rastreio disponível e entrega garantida.</p>
+            </div>
+
+            <div class="service-card">
+                <span class="service-icon">🚐</span>
+                <h3>Coleta em Seu Local</h3>
+                <p>Fazemos coleta de mercadorias diretamente no seu estabelecimento. Sem taxas adicionais para Petrolina.</p>
+            </div>
+
+            <div class="service-card">
+                <span class="service-icon">👥</span>
+                <h3>Transporte de Passageiros</h3>
+                <p>Viagens diárias e confortáveis para Goiânia. Veículos modernos com ar-condicionado e segurança garantida.</p>
+            </div>
+
+            <div class="service-card">
+                <span class="service-icon">⚡</span>
+                <h3>Entrega Rápida</h3>
+                <p>Serviço express para encomendas urgentes. Entrega no mesmo dia para Goiânia e região.</p>
+            </div>
+
+            <div class="service-card">
+                <span class="service-icon">✅</span>
+                <h3>Rastreamento</h3>
+                <p>Acompanhe sua encomenda em tempo real. Notificação de saída e chegada via WhatsApp.</p>
+            </div>
+
+            <div class="service-card">
+                <span class="service-icon">🔒</span>
+                <h3>Seguro Completo</h3>
+                <p>Todas as encomendas são protegidas. Cobertura total para danos ou perdas garantida.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO NOSSAS ROTAS -->
+    <section class="routes" id="rotas">
+        <div class="routes-content">
+            <h2 class="section-title">Nossas Rotas</h2>
+            <p class="section-subtitle">Cobertura completa nos trajetos entre Petrolina e Goiânia</p>
+
+            <div class="routes-wrapper">
+                <!-- ROTA 1 -->
+                <div class="route-card">
+                    <div class="route-header">
+                        <span class="route-icon">🛣️</span>
+                        <div>
+                            <h3>Rota Leste</h3>
+                            <p style="margin: 0; font-size: 0.95rem;">Petrolina → Goiânia</p>
+                        </div>
+                    </div>
+                    <p>Viagens frequentes nesta rota atendendo todas as cidades principais no trajeto.</p>
+                    <div class="cities-list">
+                        <div class="city-item">
+                            <span class="city-icon">🏢</span>
+                            <span class="city-name">Petrolina de Goiás</span>
+                        </div>
+                        <div class="city-item">
+                            <span class="city-icon">📍</span>
+                            <span class="city-name">Nerópolis</span>
+                        </div>
+                        <div class="city-item">
+                            <span class="city-icon">📍</span>
+                            <span class="city-name">Nova Veneza</span>
+                        </div>
+                        <div class="city-item">
+                            <span class="city-icon">📍</span>
+                            <span class="city-name">Damolândia</span>
+                        </div>
+                        <div class="city-item">
+                            <span class="city-icon">📍</span>
+                            <span class="city-name">Inhumas</span>
+                        </div>
+                        <div class="city-item">
+                            <span class="city-icon">📍</span>
+                            <span class="city-name">Goinira</span>
+                        </div>
+                        <div class="city-item">
+                            <span class="city-icon">🎯</span>
+                            <span class="city-name">Goiânia</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ROTA 2 -->
+                <div class="route-card">
+                    <div class="route-header">
+                        <span class="route-icon">🛣️</span>
+                        <div>
+                            <h3>Rota Oeste</h3>
+                            <p style="margin: 0; font-size: 0.95rem;">Ouro Verde → Goiânia</p>
+                        </div>
+                    </div>
+                    <p>Viagens regulares nesta rota atendendo cidades do noroeste com qualidade.</p>
+                    <div class="cities-list">
+                        <div class="city-item">
+                            <span class="city-icon">🏢</span>
+                            <span class="city-name">Ouro Verde</span>
+                        </div>
+                        <div class="city-item">
+                            <span class="city-icon">📍</span>
+                            <span class="city-name">Campo Limpo</span>
+                        </div>
+                        <div class="city-item">
+                            <span class="city-icon">📍</span>
+                            <span class="city-name">Anápolis</span>
+                        </div>
+                        <div class="city-item">
+                            <span class="city-icon">📍</span>
+                            <span class="city-name">Terezópolis</span>
+                        </div>
+                        <div class="city-item">
+                            <span class="city-icon">🎯</span>
+                            <span class="city-name">Goiânia</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO POR QUE ESCOLHER -->
+    <section class="why-choose">
+        <h2 class="section-title">Por Que Escolher a VAIVEM ENCOMENDAS?</h2>
+        <p class="section-subtitle">Razões que nos fazem a melhor opção da região</p>
+        
+        <div class="why-grid">
+            <div class="why-item">
+                <span class="why-icon">📅</span>
+                <div class="why-content">
+                    <h4>Viagens Diárias</h4>
+                    <p>Saímos de Petrolina para Goiânia TODOS OS DIAS. Frequência que você pode confiar.</p>
+                </div>
+            </div>
+
+            <div class="why-item">
+                <span class="why-icon">⏰</span>
+                <div class="why-content">
+                    <h4>Pontualidade Garantida</h4>
+                    <p>Chegamos no horário combinado. Sua confiança é o nosso compromisso.</p>
+                </div>
+            </div>
+
+            <div class="why-item">
+                <span class="why-icon">🔐</span>
+                <div class="why-content">
+                    <h4>100% Seguro</h4>
+                    <p>Motoristas experientes, veículos monitorados e seguro completo em todas as entregas.</p>
+                </div>
+            </div>
+
+            <div class="why-item">
+                <span class="why-icon">⚡</span>
+                <div class="why-content">
+                    <h4>Atendimento Rápido</h4>
+                    <p>Resposta imediata. Dúvidas? Fale conosco no WhatsApp 24/7.</p>
+                </div>
+            </div>
+
+            <div class="why-item">
+                <span class="why-icon">💰</span>
+                <div class="why-content">
+                    <h4>Preço Acessível</h4>
+                    <p>Melhor custo-benefício da região. Sem taxas escondidas, transparência total.</p>
+                </div>
+            </div>
+
+            <div class="why-item">
+                <span class="why-icon">🌍</span>
+                <div class="why-content">
+                    <h4>Rede Expandida</h4>
+                    <p>Atendemos Petrolina, Goiânia e cidades ao longo do trajeto. Cobertura completa.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO COMO FUNCIONA -->
+    <section class="how-it-works" id="como-funciona">
+        <h2 class="section-title">Como Funciona</h2>
+        <p class="section-subtitle">Simples, rápido e transparente</p>
+
+        <div class="steps-container">
+            <div class="step">
+                <div class="step-number">1</div>
+                <h3>Entre em Contato</h3>
+                <p>Mande uma mensagem no WhatsApp com sua encomenda ou informe que precisa viajar. Responderemos em minutos!</p>
+            </div>
+
+            <div class="step">
+                <div class="step-number">2</div>
+                <h3>Combinamos os Detalhes</h3>
+                <p>Defina o horário, local de coleta e entrega. Informamos o preço justo e confirmamos a viagem.</p>
+            </div>
+
+            <div class="step">
+                <div class="step-number">3</div>
+                <h3>Entregamos com Segurança</h3>
+                <p>Enviamos sua encomenda ou você viaja com conforto. Rastreio total e garantia de chegada no prazo.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO DEPOIMENTOS -->
+    <section class="testimonials" id="depoimentos">
+        <h2 class="section-title">O Que Nossos Clientes Dizem</h2>
+        <p class="section-subtitle" style="color: #fff;">Satisfação garantida em cada viagem</p>
+
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <p class="testimonial-text">"Envio meus produtos todas as semanas. Rápido, seguro e o preço é justo. Recomendo muito!"</p>
+                <p class="testimonial-author">João Silva</p>
+                <p class="testimonial-role">Loja Virtual</p>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <p class="testimonial-text">"Viajo sempre para Goiânia. Conforto, segurança e motorista educado. Melhor transportadora da região!"</p>
+                <p class="testimonial-author">Maria Santos</p>
+                <p class="testimonial-role">Passageira Frequente</p>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <p class="testimonial-text">"Precisei enviar uma encomenda com urgência. Eles entregaram no mesmo dia. Muito obrigado!"</p>
+                <p class="testimonial-author">Carlos Oliveira</p>
+                <p class="testimonial-role">Empresário</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO CONTATO -->
+    <section class="contact" id="contato">
+        <div class="contact-content">
+            <h2 class="section-title">Fale com a Gente Agora!</h2>
+            <p style="font-size: 1.1rem; color: #666; margin-bottom: 2rem;">Está pronto para enviar sua encomenda ou viajar com conforto? Entre em contato conosco!</p>
+
+            <div class="contact-info">
+                <div class="contact-item">
+                    <strong>📍 Localização</strong>
+                    Petrolina de Goiás | Goiânia e cidades ao longo das rotas
+                </div>
+                <div class="contact-item">
+                    <strong>📱 WhatsApp</strong>
+                    <a href="https://wa.me/5562991234567" target="_blank" style="color: #25D366; text-decoration: none; font-weight: bold;">+55 (62) 99123-4567</a>
+                </div>
+                <div class="contact-item">
+                    <strong>⏰ Atendimento</strong>
+                    Segunda a Domingo, 6h às 19h
+                </div>
+            </div>
+
+            <a href="https://wa.me/5562991234567?text=Olá%20VAIVEM%20ENCOMENDAS%2C%20gostaria%20de%20solicitar%20um%20transporte" target="_blank" class="cta-button cta-large">🚀 Solicitar Agora via WhatsApp</a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2026 VAIVEM ENCOMENDAS - Transporte de Mercadorias e Passageiros. Todos os direitos reservados.</p>
+        <p style="margin-top: 0.5rem; opacity: 0.7;">Petrolina de Goiás | Goiânia | Anápolis | Cidades ao longo do trajeto</p>
+    </footer>
+
+    <!-- BOTÃO FLUTUANTE WHATSAPP -->
+    <a href="https://wa.me/5562991234567?text=Olá%20VAIVEM%20ENCOMENDAS%2C%20gostaria%20de%20mais%20informações" target="_blank" class="whatsapp-float" title="Fale conosco no WhatsApp"></a>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        // Menu responsivo
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+
+        menuToggle.addEventListener('click', function() {
+            navMenu.classList.toggle('active');
+        });
+
+        // Fechar menu ao clicar em um link
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', function() {
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // Smooth scroll para links âncora (complemento para navegadores que não suportam scroll-behavior)
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Animações ao scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'slideInUp 0.6s ease-out forwards';
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Observar cards e itens
+        document.querySelectorAll('.service-card, .route-card, .why-item, .step, .testimonial-card').forEach(el => {
+            el.style.opacity = '0';
+            observer.observe(el);
+        });
+
+        // Fechar menu ao clicar fora
+        document.addEventListener('click', function(event) {
+            const isClickInsideNav = navMenu.contains(event.target);
+            const isClickOnToggle = menuToggle.contains(event.target);
+
+            if (!isClickInsideNav && !isClickOnToggle && navMenu.classList.contains('active')) {
+                navMenu.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>
