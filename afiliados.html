@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
@@ -634,6 +634,10 @@
                 <a href="https://webgestaopro.com.br/afiliados"><i class="bi bi-house-door"></i> <span>Início</span></a>
                 <a href="https://drive.google.com/drive/folders/13sa0kMw3IpY7svVKZlrL-6Hy92D_mgY5?usp=sharing"><i class="bi bi-file-earmark-arrow-down"></i> <span>Material</span></a>
                 <a href="https://chat.whatsapp.com/ELLIFoHZJFVJOqNLCaTzLR"><i class="bi bi-whatsapp"></i> <span>WhatsApp</span></a>
+
+                <!-- Novo item adicionado: Premiações -->
+                <a href="premiacao.html"><i class="bi bi-trophy"></i> <span>Premiações</span></a>
+
                 <a href="#" onclick="document.getElementById('affiliateModal').classList.add('show'); return false;" class="active"><i class="bi bi-currency-dollar"></i> <span>Comissões</span></a>
                 <a href="#" onclick="document.getElementById('affiliateModal').classList.add('show'); return false;"><i class="bi bi-bar-chart-line"></i> <span>Relatórios</span></a>
             </nav>
@@ -725,6 +729,7 @@
             </div>
         </div>
     </div>
+
     <script>
         // Exibe o indicador apenas em telas pequenas e se houver overflow
         function handleSidebarIndicator() {
@@ -808,5 +813,122 @@
             });
         });
     </script>
+
+    <!-- === Botão flutuante Premium — atualizado e com cor azul combinando === -->
+    <style>
+    /* Wrapper garante comportamento responsivo */
+    .gp-fab-wrapper { position:fixed; right:22px; bottom:28px; z-index:9999; display:flex; align-items:center; gap:10px; }
+
+    /* Botão principal: pill que expande em desktop e vira círculo em mobile */
+    .gp-fab {
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      text-decoration:none;
+      padding:14px 18px;
+      border-radius:999px;
+      /* Gradiente azul harmonizado com o tema */
+      background: linear-gradient(90deg, #63a4ff 0%, #1565a6 60%, #0b4f84 100%);
+      color:#fff;
+      font-weight:800;
+      box-shadow: 0 12px 40px rgba(11,21,30,0.06), 0 6px 18px rgba(11,21,30,0.08);
+      transform-origin:center;
+      transition: transform .18s ease, box-shadow .18s ease, opacity .12s ease;
+      -webkit-tap-highlight-color: transparent;
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    /* Subtle floating loop */
+    .gp-fab { animation: gp-float 4s ease-in-out infinite; }
+    @keyframes gp-float { 0%,100%{ transform: translateY(0) } 50%{ transform: translateY(-6px) } }
+
+    .gp-fab:hover { transform: translateY(-8px) scale(1.02); box-shadow: 0 20px 60px rgba(11,21,30,0.12); }
+
+    /* Icon */
+    .gp-fab i { font-size:20px; display:inline-block; filter: drop-shadow(0 6px 12px rgba(0,0,0,0.08)); }
+
+    /* Texto que aparece no pill */
+    .gp-fab .fab-text { font-size:14px; letter-spacing:0.2px; margin-right:2px; }
+
+    /* Mini badge R$ — agora combinando com o azul */
+    .gp-fab .fab-badge {
+      background:#fff; color:#1565a6; font-weight:900; font-size:12px;
+      padding:6px 8px; border-radius:12px; box-shadow:0 6px 18px rgba(11,21,30,0.06);
+      border:1px solid rgba(0,0,0,0.03);
+    }
+
+    /* Decorative sparkle (pseudo) */
+    .gp-fab::before {
+      content:"";
+      position:absolute;
+      right: -10px; top: -8px;
+      width:36px; height:36px; border-radius:50%;
+      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.18), transparent 40%);
+      filter: blur(6px); opacity:.6; transform:translateZ(0);
+      pointer-events:none;
+    }
+
+    /* Tooltip mini (desktop) */
+    .gp-fab-tooltip {
+      display:none;
+      position:fixed;
+      right:calc(22px + 90px);
+      bottom:34px;
+      background: #0f1724;
+      color:#fff;
+      padding:8px 12px;
+      border-radius:8px;
+      font-weight:700;
+      font-size:13px;
+      box-shadow:0 10px 30px rgba(2,8,15,0.4);
+      z-index:9998;
+    }
+    @media (min-width:920px){ .gp-fab-tooltip{ display:block } }
+
+    /* Mobile: apenas círculo com ícone */
+    @media (max-width:560px){
+      .gp-fab { padding:12px; width:62px; height:62px; border-radius:50%; justify-content:center; }
+      .gp-fab .fab-text, .gp-fab .fab-badge { display:none; }
+      .gp-fab-wrapper { right:16px; bottom:18px; }
+      .gp-fab-tooltip{ display:none; }
+    }
+
+    /* Focus accessibility */
+    .gp-fab:focus { outline: 3px solid rgba(99,164,255,0.18); outline-offset:4px; }
+    </style>
+
+    <div class="gp-fab-wrapper" aria-hidden="false">
+      <a href="premiacao.html" class="gp-fab" aria-label="Premiações — ver placas e bônus" title="Premiações — placas e bônus">        <span class="fab-badge">R$</span>
+      </a>
+      <div class="gp-fab-tooltip" role="status" aria-live="polite">Clique para ver suas placas e bônus</div>
+    </div>
+
+    <script>
+    (function(){
+      var btn = document.querySelector('.gp-fab');
+      if(!btn) return;
+      btn.addEventListener('click', function(){
+        var rip = document.createElement('span');
+        rip.style.position = 'absolute';
+        rip.style.left = '50%'; rip.style.top = '50%';
+        rip.style.transform = 'translate(-50%,-50%)';
+        rip.style.width = rip.style.height = '16px';
+        rip.style.background = 'rgba(255,255,255,0.12)';
+        rip.style.borderRadius = '50%';
+        rip.style.pointerEvents = 'none';
+        rip.style.opacity = '1';
+        rip.style.transition = 'all 420ms cubic-bezier(.2,.8,.2,1)';
+        btn.appendChild(rip);
+        requestAnimationFrame(function(){
+          rip.style.width = '220px';
+          rip.style.height = '220px';
+          rip.style.opacity = '0';
+        });
+        setTimeout(function(){ rip.remove(); }, 450);
+      });
+    })();
+    </script>
+    <!-- === /Botão flutuante atualizado === -->
+
 </body>
 </html>
