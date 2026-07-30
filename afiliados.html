@@ -634,8 +634,8 @@
                 <a href="https://webgestaopro.com.br/afiliados"><i class="bi bi-house-door"></i> <span>Início</span></a>
                 <a href="https://drive.google.com/drive/folders/13sa0kMw3IpY7svVKZlrL-6Hy92D_mgY5?usp=sharing"><i class="bi bi-file-earmark-arrow-down"></i> <span>Material</span></a>
                 <a href="https://chat.whatsapp.com/ELLIFoHZJFVJOqNLCaTzLR"><i class="bi bi-whatsapp"></i> <span>WhatsApp</span></a>
-                <a href="https://dash.ticto.com.br/invitation/affiliation/PE313EA89" class="active"><i class="bi bi-currency-dollar"></i> <span>Comissões</span></a>
-                <a href="https://dash.ticto.com.br/dashboard"><i class="bi bi-bar-chart-line"></i> <span>Relatórios</span></a>
+                <a href="#" onclick="document.getElementById('affiliateModal').classList.add('show'); return false;" class="active"><i class="bi bi-currency-dollar"></i> <span>Comissões</span></a>
+                <a href="#" onclick="document.getElementById('affiliateModal').classList.add('show'); return false;"><i class="bi bi-bar-chart-line"></i> <span>Relatórios</span></a>
             </nav>
             <!-- Indicador de rolagem discreto só no mobile -->
             <div class="sidebar-scroll-indicator" style="display:none;">
@@ -682,7 +682,7 @@
                         <div class="card-icon"><i class="bi bi-bar-chart-line"></i></div>
                         <div class="card-title">Painel de Resultados</div>
                         <div class="card-desc">Acompanhe suas vendas, comissões e desempenho em tempo real.</div>
-                        <a href="https://dash.ticto.com.br/dashboard" target="_blank"><i class="bi bi-graph-up"></i> Acessar Painel</a>
+                        <a href="#" onclick="document.getElementById('affiliateModal').classList.add('show'); return false;"><i class="bi bi-graph-up"></i> Acessar Painel</a>
                     </div>
                 </div>
                 <div class="videos-section">
@@ -755,9 +755,11 @@
         var closeButton = document.getElementById('closeAffiliateModal');
         var platformButtons = document.querySelectorAll('.platform-button');
 
-        openButton.addEventListener('click', function () {
-            affiliateModal.classList.add('show');
-        });
+        if (openButton) {
+            openButton.addEventListener('click', function () {
+                affiliateModal.classList.add('show');
+            });
+        }
 
         closeButton.addEventListener('click', function () {
             affiliateModal.classList.remove('show');
