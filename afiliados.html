@@ -885,11 +885,53 @@
     }
     @media (min-width:920px){ .gp-fab-tooltip{ display:block } }
 
-    /* Mobile: apenas círculo com ícone */
+    /* Mobile: botão compacto, alinhado e profissional */
     @media (max-width:560px){
-      .gp-fab { padding:12px; width:62px; height:62px; border-radius:50%; justify-content:center; }
-      .gp-fab .fab-text, .gp-fab .fab-badge { display:none; }
-      .gp-fab-wrapper { right:16px; bottom:18px; }
+      .gp-fab-wrapper {
+        right:14px;
+        bottom:16px;
+        gap:0;
+      }
+
+      .gp-fab {
+        position:relative;
+        width:56px;
+        height:56px;
+        padding:0;
+        border-radius:50%;
+        justify-content:center;
+        align-items:center;
+        box-shadow: 0 10px 24px rgba(11,21,30,0.18), 0 4px 12px rgba(11,21,30,0.12);
+        overflow:hidden;
+        animation:none;
+      }
+
+      .gp-fab:hover { transform: translateY(-2px) scale(1.01); }
+
+      .gp-fab::before {
+        right: 4px;
+        top: 4px;
+        width: 18px;
+        height: 18px;
+        opacity: 0.72;
+        filter: blur(4px);
+      }
+
+      .gp-fab .fab-badge {
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        width:30px;
+        height:30px;
+        padding:0;
+        border-radius:50%;
+        font-size:13px;
+        line-height:1;
+        border:2px solid rgba(21,101,166,0.16);
+        box-shadow: inset 0 0 0 1px rgba(255,255,255,0.28);
+      }
+
+      .gp-fab .fab-text { display:none; }
       .gp-fab-tooltip{ display:none; }
     }
 
